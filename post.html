@@ -89,11 +89,12 @@
         position: fixed;
         top: 0; left: 0;
         width: 100%;
-        background-color: rgba(2, 2, 2, 0.97);
+        background-color: rgba(2, 2, 2, 0.88);
         border-bottom: 1px solid rgba(255,255,255,0.04);
         backdrop-filter: blur(24px) saturate(1.2);
         -webkit-backdrop-filter: blur(24px) saturate(1.2);
         z-index: 1000;
+        transition: background-color 0.3s ease;
     }
     .nav-container {
         max-width: 1600px;
@@ -169,6 +170,7 @@
         border: 1px solid rgba(255,0,0,0.3);
         border-radius: 6px;
         z-index: 1100;
+        touch-action: manipulation;
     }
     .hamburger-bars {
         display: flex;
@@ -185,6 +187,10 @@
     .hamburger.open .hamburger-bars span:nth-child(2) { opacity: 0; transform: scaleX(0); }
     .hamburger.open .hamburger-bars span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
+    @keyframes menuFadeIn {
+        from { opacity: 0; transform: translateY(15px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
     #mobile-nav {
         display: none;
         position: fixed;
@@ -198,8 +204,21 @@
         justify-content: center;
         align-items: center;
         gap: 36px;
+        overflow: hidden;
     }
     #mobile-nav.open { display: flex; }
+    #mobile-nav.open > * {
+        animation: menuFadeIn 0.4s ease forwards;
+        opacity: 0;
+    }
+    #mobile-nav.open > *:nth-child(1) { animation-delay: 0.1s; }
+    #mobile-nav.open > *:nth-child(2) { animation-delay: 0.15s; }
+    #mobile-nav.open > *:nth-child(3) { animation-delay: 0.2s; }
+    #mobile-nav.open > *:nth-child(4) { animation-delay: 0.25s; }
+    #mobile-nav.open > *:nth-child(5) { animation-delay: 0.3s; }
+    #mobile-nav.open > *:nth-child(6) { animation-delay: 0.35s; }
+    #mobile-nav.open > *:nth-child(7) { animation-delay: 0.4s; }
+    #mobile-nav.open > *:nth-child(8) { animation-delay: 0.45s; }
     #mobile-nav a {
         color: rgba(255,255,255,0.7);
         text-decoration: none;
@@ -209,8 +228,9 @@
         letter-spacing: 0.12em;
         text-transform: uppercase;
         transition: color 0.3s ease;
+        touch-action: manipulation;
     }
-    #mobile-nav a:hover { color: var(--accent-color); }
+    #mobile-nav a:hover, #mobile-nav a:active { color: var(--accent-color); }
 
     /* ═══ LAYOUT ═══ */
     .main-content {
