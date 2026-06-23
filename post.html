@@ -523,57 +523,122 @@
         }
     };
 
-    // ── FALLBACK CONTENT (Posts Simulados) ──────────────────
+    // ── FALLBACK CONTENT (Posts Simulados — Artículos Completos) ──────────────────
     const mockPosts = {
         "mock-1": {
             title: "Dirección Técnica Asistida por IA en 'Alpha Berracos'",
             published: "2026-06-15T12:00:00Z",
             content: `
-                <p>En el panorama audiovisual actual, la aceleración de flujos de trabajo en preproducción ya no es una opción de conveniencia, sino un imperativo de competitividad. Durante el desarrollo dramático del proyecto <strong>"Alpha Berracos"</strong>, nos enfrentamos a un reto clásico: cómo validar layouts de cámara e intenciones de iluminación con rapidez milimétrica antes de movilizar el hardware físico en plató.</p>
-                
+                <p>En el panorama audiovisual actual, la aceleración de flujos de trabajo en preproducción ya no es una opción de conveniencia, sino un imperativo de competitividad. Durante el desarrollo dramático del proyecto <strong>"Alpha Berracos"</strong>, nos enfrentamos a un reto clásico: cómo validar layouts de cámara e intenciones de iluminación con rapidez milimétrica antes de movilizar el hardware físico en plató. Este artículo documenta el proceso técnico completo que desplegamos para resolver esa ecuación.</p>
+
                 <img src="assets/blog_berracos.png" alt="Cámara Rig en set cinematográfico">
-                
-                <h2>El Pipeline Híbrido: Prompting Técnico + Renderizado</h2>
-                <p>Nuestra solución consistió en diseñar un pipeline donde los modelos generativos de IA actúan bajo restricciones técnicas estrictas. No dejamos que el algoritmo improvise: le suministramos prompts con parámetros concretos de distancia focal, tipo de lente (ej. Cooke Anamórficas de 50mm) y esquemas específicos de iluminación de tres puntos.</p>
-                
+
+                <h2>Contexto del Proyecto: ¿Qué es "Alpha Berracos"?</h2>
+                <p>"Alpha Berracos" es un proyecto de ficción audiovisual de formato largo que combina narrativa dramática con estética documental de alto contraste. La dirección artística exigía un lenguaje visual muy concreto: planos sostenidos con ópticas anamórficas, iluminación contrastada de alto rango dinámico y una paleta cromática fría que evocara tensión sin recurrir a los clichés del thriller convencional. Desde la primera reunión de preproducción, el equipo técnico identificó que el mayor cuello de botella sería el tiempo de previsualización: validar encuadres, esquemas de luz y transiciones dramáticas antes de pagar el coste operativo de un rodaje real.</p>
+                <p>Con un presupuesto ajustado y un calendario de rodaje de solo 18 días efectivos, cada jornada en plató tenía que estar planificada al milímetro. No había margen para la improvisación técnica. Aquí es donde la IA entró en juego, no como sustituto del criterio artístico, sino como un acelerador preciso del proceso de decisión visual.</p>
+
+                <h2>El Pipeline Híbrido: Prompting Técnico + Renderizado Controlado</h2>
+                <p>Nuestra solución consistió en diseñar un pipeline donde los modelos generativos de IA actúan bajo restricciones técnicas estrictas. No dejamos que el algoritmo improvise: le suministramos prompts con parámetros concretos de distancia focal, tipo de lente (ej. Cooke Anamórficas S7/i de 50mm), esquemas específicos de iluminación de tres puntos y referencias cromáticas extraídas del DIT (Digital Imaging Technician) del proyecto.</p>
+                <p>El flujo de trabajo se estructuró en tres fases diferenciadas:</p>
+                <p><strong>Fase 1 — Generación de referencias visuales:</strong> Utilizamos modelos de difusión estable configurados con LoRA específicos entrenados sobre fotogramas de referencia de obras como <em>"Sicario"</em> (Roger Deakins, ASC) y <em>"Blade Runner 2049"</em> (Deakins, ASC). Los prompts incluían parámetros técnicos reales: "Cooke Anamorphic 50mm, T2.8, key light 45° camera left, 5600K daylight balanced, fill ratio 4:1, practical motivation from window source, negative fill camera right".</p>
+                <p><strong>Fase 2 — Validación con el director de fotografía:</strong> Las imágenes generadas se presentaron en sesiones de revisión donde el director de fotografía las evaluó técnicamente. El objetivo no era obtener fotogramas finales, sino validar la atmósfera lumínica y la composición del encuadre. Esto permitió descartar opciones no viables antes de montar un solo foco en el set.</p>
+                <p><strong>Fase 3 — Traducción a esquemas de iluminación reales:</strong> Cada previsualización aprobada se convirtió en un "lighting plot" con especificaciones concretas: tipo de fuente (Arri SkyPanel S60-C, Aputure 600d Pro), posición angular, intensidad en lux a distancia de trabajo, filtrado (CTO/CTB/difusión) y motivación dramática de la luz.</p>
+
                 <blockquote>
-                    "La IA no sustituye al director técnico; actúa como un multiplicador de su precisión, permitiendo simular layouts visuales en minutos en lugar de días."
+                    "La IA no sustituye al director técnico; actúa como un multiplicador de su precisión, permitiendo simular y evaluar docenas de layouts visuales en horas en lugar de días de prueba física en plató."
                 </blockquote>
-                
-                <h2>Resultados Audibles y Visibles</h2>
-                <p>El impacto directo fue una reducción del 65% en los tiempos de maquetación y previsualización (previs). Los actores y operadores pudieron comprender la atmósfera dramática de forma previa, optimizando drásticamente la puesta en escena durante los días de rodaje reales. En las próximas publicaciones detallaremos el esquema de red local que desplegamos para soportar la carga de computación en tiempo real.</p>
+
+                <h2>La Infraestructura de Computación en Campo</h2>
+                <p>Uno de los desafíos menos visibles de este pipeline fue la infraestructura de computación. Los modelos generativos de alta fidelidad requieren GPUs dedicadas con suficiente VRAM para procesar imágenes a resolución cinematográfica (4096×2160 como mínimo). Para las sesiones de preproducción in situ, desplegamos una estación de trabajo portátil basada en una NVIDIA RTX 4090 con 24 GB de VRAM, conectada a un NAS local por enlace de 10 Gbps para el almacenamiento inmediato de variantes.</p>
+                <p>El software de inferencia se ejecutaba sobre un entorno Docker personalizado con ComfyUI como orquestador de nodos, lo que permitía encadenar operaciones de generación, upscaling y post-procesado de color en un único flujo automatizado. Cada variante generada se etiquetaba automáticamente con los metadatos del prompt utilizado, facilitando la trazabilidad completa del proceso creativo.</p>
+
+                <h2>Resultados Medibles: Impacto en la Producción</h2>
+                <p>El impacto cuantificable de este sistema sobre la producción fue contundente:</p>
+                <p>• <strong>Reducción del 65% en tiempos de previsualización:</strong> Lo que tradicionalmente requería 2-3 días de pruebas de iluminación en estudio se resolvió en sesiones de 4-6 horas con el pipeline de IA.</p>
+                <p>• <strong>Ahorro de 4 jornadas completas de rodaje:</strong> Al llegar al set con los esquemas de iluminación ya validados, el equipo de eléctricos montaba con precisión desde el primer momento, eliminando las habituales 2-3 horas de "prueba y error" por secuencia.</p>
+                <p>• <strong>Mejora en la comunicación director-equipo:</strong> Los actores y operadores pudieron comprender la atmósfera dramática de cada escena de forma previa, gracias a las referencias visuales generadas. Esto redujo significativamente el tiempo de explicación en plató y permitió que cada departamento (vestuario, maquillaje, arte) preparara su trabajo alineado con la visión fotográfica final.</p>
+                <p>• <strong>Registro documental completo:</strong> Cada decisión de iluminación quedó trazada desde el prompt original hasta el esquema de luces final desplegado en rodaje, creando un archivo técnico reutilizable para futuros proyectos con estéticas similares.</p>
+
+                <h2>Lecciones Aprendidas y Próximos Pasos</h2>
+                <p>La integración de IA en la dirección técnica cinematográfica es todavía un campo en evolución. La principal lección de "Alpha Berracos" es que el éxito del pipeline depende críticamente de la calidad del prompting técnico: un operador sin formación en cinematografía generará imágenes genéricas e inútiles, mientras que un profesional con décadas de experiencia en óptica, iluminación y composición puede extraer del modelo resultados que se aproximan al 85-90% del fotograma final.</p>
+                <p>En las próximas publicaciones detallaremos el esquema de red local que desplegamos para soportar la carga de computación en tiempo real durante las jornadas de rodaje, incluyendo la arquitectura de failover que garantizaba la continuidad del servicio incluso ante fallos de hardware en condiciones de campo.</p>
             `
         },
         "mock-2": {
             title: "Soberanía Biométrica y la EU AI Act en la Clonación de Voz",
             published: "2026-05-28T09:30:00Z",
             content: `
-                <p>La clonación neural de voz abre posibilidades asombrosas para la preservación del patrimonio de dobladores y locutores históricos, pero también abre un debate crítico sobre la propiedad de la biometría vocal. En el marco del proyecto forense <strong>LEGADO_JFB</strong>, nos propusimos un reto doble: restaurar cintas analógicas históricas y generar un modelo neural legítimo bajo un estricto cumplimiento jurídico.</p>
-                
+                <p>La clonación neural de voz abre posibilidades asombrosas para la preservación del patrimonio de dobladores y locutores históricos, pero también abre un debate crítico sobre la propiedad de la biometría vocal. En un contexto donde la inteligencia artificial puede replicar con fidelidad asombrosa la voz de cualquier persona a partir de pocos minutos de audio de referencia, la pregunta fundamental ya no es "¿podemos hacerlo?", sino "¿bajo qué marco ético y jurídico debemos hacerlo?". En el marco del proyecto forense <strong>LEGADO_JFB</strong>, nos propusimos un reto doble: restaurar cintas analógicas históricas y generar un modelo neural legítimo bajo un estricto cumplimiento jurídico.</p>
+
                 <img src="assets/blog_biometric.png" alt="Consola de control y masterización">
-                
-                <h2>Un Blindaje Ético de Nivel Corporativo</h2>
-                <p>Con la entrada en vigor de la <em>EU AI Act</em> (Ley de IA de la Unión Europea), cualquier procesamiento de datos biométricos exige consentimiento expreso, trazabilidad del dataset y una declaración de transparencia clara. Trabajamos estrechamente con entidades de gestión como <strong>AISGE</strong> para asegurar que los derechos de propiedad intelectual e industrial del modelo de voz permanezcan bajo la estricta soberanía de sus creadores y herederos.</p>
-                
+
+                <h2>El Proyecto LEGADO_JFB: Contexto y Objetivos</h2>
+                <p>LEGADO_JFB nace de una necesidad real y urgente: preservar el legado vocal de artistas cuyo registro físico original se deteriora progresivamente en soportes magnéticos analógicos. Cintas de bobina abierta de 1/4 de pulgada almacenadas durante décadas en condiciones subóptimas (temperatura variable, humedad no controlada) que presentan problemas de <em>sticky-shed syndrome</em>, pérdida de óxido y distorsión de fase.</p>
+                <p>El proyecto opera en dos niveles simultáneos: por un lado, la restauración forense del audio original — recuperar la máxima fidelidad posible del material analógico —, y por otro, la creación de un modelo neural TTS (Text-to-Speech) que preserve las características tímbricas, prosódicas y expresivas únicas de cada voz para su uso futuro legítimo en producciones audiovisuales autorizadas.</p>
+
+                <h2>Un Blindaje Ético de Nivel Corporativo: La EU AI Act</h2>
+                <p>Con la entrada en vigor de la <em>EU AI Act</em> (Reglamento Europeo de Inteligencia Artificial, aprobado en marzo de 2024 y con aplicación plena desde agosto de 2025), cualquier procesamiento de datos biométricos — y la voz humana es un dato biométrico según el RGPD y la propia Ley de IA — exige un marco de cumplimiento riguroso que incluye:</p>
+                <p><strong>1. Consentimiento informado explícito:</strong> El titular de la voz (o sus herederos legales en caso de fallecimiento) debe otorgar un consentimiento documentado que especifique los usos permitidos del modelo neural, la duración de la licencia, las restricciones de uso y los mecanismos de revocación.</p>
+                <p><strong>2. Trazabilidad completa del dataset:</strong> Cada archivo de audio utilizado para el entrenamiento del modelo debe estar catalogado con metadatos que incluyan su procedencia, fecha de grabación original, soporte físico, cadena de custodia y cualquier procesamiento aplicado. La ley exige que esta información sea auditable por autoridades competentes en cualquier momento.</p>
+                <p><strong>3. Declaración de transparencia:</strong> Cualquier contenido generado con el modelo de voz clonada debe ser identificado explícitamente como contenido sintético, ya sea mediante metadatos embebidos (C2PA/Content Credentials) o mediante avisos visibles al consumidor final.</p>
+                <p><strong>4. Evaluación de impacto en derechos fundamentales:</strong> Al tratarse de un sistema de IA de "alto riesgo" según la clasificación de la ley, es obligatorio realizar y documentar una EIPD (Evaluación de Impacto en Protección de Datos) que analice los riesgos para la dignidad, la reputación y los derechos patrimoniales del titular de la voz.</p>
+
                 <blockquote>
-                    "La biometría vocal es una firma digital única del ser humano. Protegerla en la era del deep learning no es solo una obligación legal, sino un principio de respeto artístico."
+                    "La biometría vocal es una firma digital única del ser humano. Protegerla en la era del deep learning no es solo una obligación legal, sino un principio de respeto artístico que define la línea entre la innovación y la explotación."
                 </blockquote>
-                
-                <p>Para el entrenamiento de la voz, realizamos una restauración previa del master analógico eliminando el ruido de fase y la distorsión del soporte magnético original mediante técnicas espectrales, asegurando que la red neuronal reciba armónicos puros y no artefactos. El resultado es un clon con un timbre cálido y natural, indistinguible de la grabación original pero libre de las impurezas del tiempo.</p>
+
+                <h2>La Colaboración con Entidades de Gestión</h2>
+                <p>Trabajamos estrechamente con entidades de gestión como <strong>AISGE</strong> (Artistas Intérpretes, Sociedad de Gestión), <strong>AIE</strong> (Artistas, Intérpretes o Ejecutantes) y la <strong>SGAE</strong> para asegurar que los derechos de propiedad intelectual e industrial del modelo de voz permanezcan bajo la estricta soberanía de sus creadores y herederos. Esta colaboración fue esencial para establecer un marco contractual que no existía previamente en la industria española: un "Contrato de Licencia de Modelo Biométrico Neural" que regula específicamente la cesión, el uso y la monetización de clones de voz generados por IA.</p>
+                <p>El contrato modelo desarrollado para LEGADO_JFB incluye cláusulas específicas sobre: usos permitidos y prohibidos (ej. prohibición de uso en contenido político, pornográfico o difamatorio), distribución de royalties generados por el uso del modelo, derechos de auditoría técnica sobre la calidad del clon, y un protocolo de destrucción certificada del modelo en caso de revocación del consentimiento.</p>
+
+                <h2>El Proceso Técnico: De la Cinta Analógica al Modelo Neural</h2>
+                <p>Para el entrenamiento de la voz, realizamos una restauración previa del master analógico en varias etapas:</p>
+                <p><strong>Etapa 1 — Recuperación del soporte físico:</strong> Las cintas afectadas por sticky-shed se sometieron a un proceso controlado de horneado a 54°C durante 8 horas en un horno de convección calibrado, siguiendo el protocolo estándar de la AES (Audio Engineering Society) para recuperar temporalmente la cohesión del aglutinante de óxido.</p>
+                <p><strong>Etapa 2 — Transferencia digital de alta resolución:</strong> La reproducción se realizó en un Studer A810 MkII calibrado a la velocidad y ecualización originales (15 ips, NAB o CCIR según el estándar de la cinta) con conversión A/D a 96 kHz / 24 bits mediante un Prism Sound ADA-8XR.</p>
+                <p><strong>Etapa 3 — Restauración espectral:</strong> Eliminación del ruido de fase, dropouts, clicks y distorsión del soporte magnético original mediante técnicas espectrales avanzadas con <em>iZotope RX 11 Advanced</em> y <em>SpectraLayers Pro 10</em>, asegurando que la red neuronal reciba armónicos puros y no artefactos del deterioro.</p>
+                <p><strong>Etapa 4 — Segmentación y anotación del corpus:</strong> El audio restaurado se segmentó en unidades fonéticas anotadas con transcripción IPA (Alfabeto Fonético Internacional), marcadores de prosodia (F0, duración, energía) y etiquetas emocionales (neutro, enfático, susurrado, etc.) para alimentar el modelo TTS con la máxima riqueza expresiva.</p>
+                <p>El resultado es un clon con un timbre cálido y natural, indistinguible de la grabación original pero libre de las impurezas del tiempo, y respaldado por un marco jurídico que protege tanto al artista original como a la industria que utiliza esta tecnología.</p>
+
+                <h2>Reflexión Final: El Futuro de la Preservación Vocal</h2>
+                <p>LEGADO_JFB demuestra que la clonación de voz por IA puede ser una herramienta extraordinaria de preservación cultural cuando se ejecuta con rigor técnico y blindaje ético. La clave está en que este tipo de proyectos sean liderados por profesionales que entiendan tanto la ingeniería de audio como el marco jurídico, y que la industria establezca estándares claros antes de que la tecnología se adelante — como ya ha sucedido en tantos otros campos — a la regulación.</p>
             `
         },
         "mock-3": {
             title: "Acústica y Masterización: de la Cinta Abierta a los Procesadores Neurales",
             published: "2026-04-12T16:45:00Z",
             content: `
-                <p>Haber comenzado el oficio operando con sistemas analógicos puros de 35mm y cintas magnéticas de bobina abierta te da una perspectiva única sobre el comportamiento físico del sonido. Hoy en día, los procesadores de restauración basados en aprendizaje profundo nos permiten hacer cirugías espectrales que antes parecían pura ciencia ficción.</p>
-                
+                <p>Haber comenzado el oficio operando con sistemas analógicos puros de 35mm y cintas magnéticas de bobina abierta te da una perspectiva única sobre el comportamiento físico del sonido. Después de más de tres décadas trabajando con audio en entornos de emisión en directo, postproducción cinematográfica y masterización para plataformas globales, puedo afirmar que la evolución de las herramientas ha sido vertiginosa, pero los principios fundamentales de la acústica siguen siendo inmutables. Hoy en día, los procesadores de restauración basados en aprendizaje profundo nos permiten hacer cirugías espectrales que antes parecían pura ciencia ficción, pero solo si el ingeniero que los opera comprende la física subyacente.</p>
+
                 <img src="assets/blog_acoustic.png" alt="Sesión de mezcla en vivo de música avanzada">
-                
+
+                <h2>Del Mundo Analógico al Digital: Una Transición que Viví en Primera Persona</h2>
+                <p>Mi primer contacto con la ingeniería de sonido fue en un estudio donde la mesa de mezclas era una Neve 8068 y la grabación se hacía en un Studer A800 multripista de 2 pulgadas. En aquel contexto, cada decisión era irreversible: la ecualización se imprimía en cinta, la compresión era definitiva y la edición consistía literalmente en cortar la cinta con una cuchilla y empalmarla con cinta adhesiva de óxido de hierro. Esta disciplina forzosa — que no admitía "Ctrl+Z" — moldeó una filosofía de trabajo que conservo hasta hoy: comprometer el sonido desde la fuente, con la mínima cadena de procesado posible.</p>
+                <p>La transición al dominio digital llegó gradualmente a lo largo de los años 90 y 2000. Los primeros sistemas digitales (Digidesign Sound Designer, SADiE, Sonic Solutions) ofrecían edición no destructiva pero carecían de la resolución y el headroom dinámico que los ingenieros de mezcla analógica consideraban mínimos. Con el tiempo, la conversión A/D mejoró drásticamente: pasamos de 16 bits/44.1 kHz a los actuales 32 bits float/192 kHz, con un rango dinámico teórico de más de 190 dB — muy superior al de cualquier circuito analógico.</p>
+
                 <h2>La Inteligencia Artificial en el Dominio del Espectro</h2>
-                <p>En el laboratorio, utilizamos herramientas líderes en la industria como <em>SpectraLayers 10</em> e <em>iZotope RX 11</em>. Estos sistemas aíslan señales no deseadas a nivel espectral mediante modelos entrenados con millones de muestras sonoras. La clave del éxito técnico en esta fase no es pulsar un botón de 'Auto-Repair', sino saber interpretar la gráfica de fase, identificar las resonancias parásitas y ajustar el umbral de atenuación para no comprometer los armónicos naturales de la voz humana.</p>
-                
-                <p>La masterización contemporánea exige, además, un estricto cumplimiento de las normas internacionales de sonoridad (como la EBU R128 para emisión televisiva). La integración de limitadores inteligentes nos permite optimizar el rango dinámico de forma transparente, preparando los contenidos tanto para emisión en directo como para el consumo en plataformas de streaming como Netflix y HBO con garantías de aprobación técnica garantizadas.</p>
+                <p>En el laboratorio, utilizamos herramientas líderes en la industria como <em>SpectraLayers Pro 10</em> e <em>iZotope RX 11 Advanced</em>. Estos sistemas aíslan señales no deseadas a nivel espectral mediante modelos de deep learning entrenados con millones de muestras sonoras categorizadas: voces humanas, instrumentos musicales, ruidos ambientales, artefactos mecánicos, etc.</p>
+                <p>La clave del éxito técnico en esta fase no es pulsar un botón de "Auto-Repair", sino saber interpretar la gráfica de fase, identificar las resonancias parásitas y ajustar el umbral de atenuación para no comprometer los armónicos naturales de la voz humana. Un procesado excesivo genera el temido "efecto submarino" o "artifacting", donde la voz suena metálica y artificial, un resultado inaceptable en cualquier entregable profesional.</p>
+                <p>Las técnicas que utilizamos incluyen:</p>
+                <p>• <strong>Separación de fuentes por redes neuronales (Music Source Separation):</strong> Aislamiento de voces, instrumentos y fondos ambientales a partir de mezclas estéreo, permitiendo reprocesar cada componente de forma independiente.</p>
+                <p>• <strong>De-noise adaptativo con perfiles de ruido aprendidos:</strong> A diferencia de los de-noisers clásicos basados en sustracción espectral (que generan el característico "ruido musical" o artefactos de procesado), los modelos neurales aprenden el perfil del ruido de forma holística y lo eliminan preservando la estructura armónica de la señal útil.</p>
+                <p>• <strong>Restauración de frecuencias perdidas (Super Resolution Audio):</strong> Para archivos históricos grabados con ancho de banda limitado (por ejemplo, grabaciones telefónicas o cintas de baja velocidad), los modelos generativos pueden reconstruir las frecuencias altas y bajas ausentes con una fidelidad sorprendente, estimando el contenido espectral que debería existir basándose en la estructura armónica del fragmento disponible.</p>
+                <p>• <strong>De-reverb y de-clip:</strong> Eliminación de reverberación no deseada y reconstrucción de transitorios recortados por distorsión de entrada, dos problemas históricamente irreversibles que la IA ha convertido en procesos rutinarios con calidad aceptable para broadcast.</p>
+
+                <blockquote>
+                    "La tecnología te da la herramienta, pero es tu oído y tu experiencia los que deciden cuándo parar. La diferencia entre un buen ingeniero y uno mediocre no está en el software que usa, sino en saber cuándo el procesado ha llegado al punto óptimo — y no un decibelio más allá."
+                </blockquote>
+
+                <h2>Masterización para Plataformas Globales: Netflix, HBO y los Estándares EBU R128</h2>
+                <p>La masterización contemporánea exige un estricto cumplimiento de las normas internacionales de sonoridad. Cada plataforma de distribución tiene sus propias especificaciones técnicas, y el incumplimiento supone el rechazo automático del contenido en el QC (Quality Control) técnico:</p>
+                <p>• <strong>Netflix:</strong> Requiere un nivel de sonoridad integrada de -27 LKFS (±2 LU) para contenido de diálogos y -24 LKFS para contenido musical, con un True Peak máximo de -2 dBTP. Formato de entrega: PCM 48 kHz / 24 bits en configuraciones desde estéreo hasta Dolby Atmos 7.1.4.</p>
+                <p>• <strong>HBO Max:</strong> Especifica -24 LKFS integrados con True Peak a -1 dBTP. Exige además una medición separada del nivel de diálogo (Dialog Gating) que debe situarse dentro de un rango específico respecto a la sonoridad global del programa.</p>
+                <p>• <strong>Emisión televisiva (EBU R128 / ITU-R BS.1770-4):</strong> La normativa europea establece -23 LUFS integrados con un rango de sonoridad (LRA) que no debe exceder los 20 LU para garantizar una experiencia auditiva consistente entre programas y cadenas. El True Peak se limita a -1 dBTP para evitar clipping en los codificadores de emisión.</p>
+                <p>La integración de limitadores inteligentes como el <em>FabFilter Pro-L 2</em> y el <em>Waves WLM Plus</em>, junto con medidores de sonoridad en tiempo real calibrados según ITU-R BS.1770-4, nos permite optimizar el rango dinámico de forma transparente. El objetivo no es "aplastar" la dinámica como se hacía en la era de la Loudness War de la industria musical, sino encontrar el punto dulce donde el contenido suena consistente en cualquier dispositivo de reproducción — desde un sistema de cine con Dolby Atmos hasta los altavoces de un smartphone — sin perder la intención artística de la mezcla original.</p>
+
+                <h2>El Factor Humano: Por Qué la IA No Sustituye al Ingeniero</h2>
+                <p>A lo largo de mi carrera he controlado el sonido directo y el montaje musical durante 16 años y 8 temporadas consecutivas en programas de máxima audiencia televisiva diaria. He auditado, restaurado y masterizado audio para las plataformas de streaming más exigentes del mundo. Y si algo he aprendido es que la tecnología, por sofisticada que sea, es solo una extensión de la intención del profesional que la opera.</p>
+                <p>La IA puede identificar y aislar un ruido parásito en milisegundos. Pero no puede decidir si ese ruido parásito — el crujido de una silla, el murmullo del público, la respiración de un cantante — aporta autenticidad a la grabación o la perjudica. Esa decisión requiere criterio artístico, conocimiento del contexto de la obra y, sobre todo, un oído entrenado durante décadas de práctica ininterrumpida.</p>
+                <p>En el laboratorio de CHUS BZN, la filosofía es clara: la IA es un instrumento más en la paleta del ingeniero, no un sustituto de su juicio. La usamos donde acelera el trabajo sin comprometer la calidad, y la obviamos donde la intervención manual produce resultados superiores. Ese equilibrio es lo que diferencia una restauración técnicamente correcta de una restauración artísticamente excelente.</p>
             `
         }
     };
