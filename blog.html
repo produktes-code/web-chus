@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Blog &amp; Novedades | Jesús Ferrer García (CHUS BZN)</title>
+<meta content="Blog profesional y canal de novedades de Jesús Ferrer García. Artículos sobre ingeniería audiovisual, integración de IA y tecnología broadcast." name="description"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                colors: {
+                    "accent-color": "#00a3ff",
+                    "accent-dim": "#004a77",
+                    "bg-color": "#020202",
+                    "surface-color": "#080808",
+                    "text-primary": "#f5f5f5",
+                    "text-secondary": "#a3a3a3"
+                },
+                fontFamily: {
+                    "sans": ["Libre Franklin", "sans-serif"],
+                    "mono": ["JetBrains Mono", "monospace"]
+                }
+            }
+        }
+    }
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,300;0,400;0,700;0,800;1,300&amp;family=JetBrains+Mono:wght@300;500;700&amp;display=swap" rel="stylesheet"/>
+<style>
+    :root {
+        --bg-color: #020202;
+        --surface-color: #080808;
+        --text-primary: #f5f5f5;
+        --text-secondary: #a3a3a3;
+        --accent-color: #00a3ff;
+        --accent-dim: #004a77;
+        --font-main: 'Libre Franklin', sans-serif;
+        --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    html, body {
+        overflow-x: hidden;
+        width: 100%;
+        -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+        background-color: var(--bg-color);
+        color: var(--text-primary);
+        font-family: var(--font-main);
+        line-height: 1.7;
+        position: relative;
+        font-weight: 300;
+    }
+
+    /* Cinematic Grain Overlay */
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0; left: 0;
+        width: 100vw; height: 100vh;
+        pointer-events: none;
+        z-index: 9999;
+        background: linear-gradient(rgba(2,2,2,0) 50%, rgba(0,0,0,0.25) 50%),
+                    linear-gradient(90deg, rgba(255,0,0,0.02), rgba(0,255,0,0.01), rgba(0,0,255,0.02));
+        background-size: 100% 3px, 4px 100%;
+        opacity: 0.12;
+        mix-blend-mode: overlay;
+    }
+
+    /* ═══ GLOWS ═══ */
+    .bg-glow {
+        position: fixed;
+        border-radius: 50%;
+        filter: blur(180px);
+        opacity: 0.12;
+        z-index: -1;
+        pointer-events: none;
+    }
+    .glow-1 { top: -10%; left: -10%; width: 50vw; height: 50vw; background: radial-gradient(circle, #004a77, transparent); }
+    .glow-2 { top: 40%; right: -20%; width: 60vw; height: 60vw; background: radial-gradient(circle, #002022, transparent); }
+
+    /* ═══ HEADER ═══ */
+    header {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%;
+        background-color: rgba(2, 2, 2, 0.97);
+        border-bottom: 1px solid rgba(255,255,255,0.04);
+        backdrop-filter: blur(24px) saturate(1.2);
+        -webkit-backdrop-filter: blur(24px) saturate(1.2);
+        z-index: 1000;
+    }
+    .nav-container {
+        max-width: 1600px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 40px;
+        padding: 20px 40px;
+    }
+    .logo {
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        font-size: 1.15rem;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-shrink: 0;
+        color: #fff;
+    }
+    .logo-sep { color: rgba(255,255,255,0.2); font-weight: 300; }
+    .logo-tagline {
+        color: var(--accent-color);
+        font-family: var(--font-mono);
+        font-weight: 600;
+        opacity: 0.95;
+        font-size: 1.05rem;
+        letter-spacing: 0.02em;
+    }
+    nav { flex: 1; }
+    nav ul {
+        display: flex;
+        list-style: none;
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 0; margin: 0;
+    }
+    nav a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-size: 0.72rem;
+        transition: color 0.3s ease;
+        font-family: var(--font-mono);
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        white-space: nowrap;
+        position: relative;
+    }
+    nav a::after {
+        content: '';
+        position: absolute;
+        width: 0; height: 1px;
+        bottom: -4px; left: 0;
+        background-color: var(--accent-color);
+        transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    nav a:hover { color: #fff; }
+    nav a:hover::after, nav a.nav-active::after { width: 100%; }
+    nav a.nav-active { color: #fff; }
+
+    /* Hamburger */
+    .hamburger {
+        display: none;
+        flex-direction: row;
+        align-items: center;
+        gap: 12px;
+        cursor: pointer;
+        padding: 6px 10px;
+        background: rgba(255,0,0,0.1);
+        border: 1px solid rgba(255,0,0,0.3);
+        border-radius: 6px;
+        z-index: 1100;
+    }
+    .hamburger-bars {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+    .hamburger span {
+        display: block;
+        width: 26px; height: 2px;
+        background: #fff;
+        transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .hamburger.open .hamburger-bars span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .hamburger.open .hamburger-bars span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open .hamburger-bars span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    #mobile-nav {
+        display: none;
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(2,2,2,0.98);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        z-index: 1050;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 36px;
+    }
+    #mobile-nav.open { display: flex; }
+    #mobile-nav a {
+        color: rgba(255,255,255,0.7);
+        text-decoration: none;
+        font-family: var(--font-mono);
+        font-size: 1.3rem;
+        font-weight: 500;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        transition: color 0.3s ease;
+    }
+    #mobile-nav a:hover { color: var(--accent-color); }
+
+    /* ═══ LAYOUT ═══ */
+    .main-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 140px 20px 80px;
+    }
+
+    /* Tech Cards for Blog Grid */
+    .blog-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 32px;
+        margin-top: 48px;
+    }
+    @media(min-width: 768px) {
+        .blog-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media(min-width: 1024px) {
+        .blog-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .blog-card {
+        background: linear-gradient(145deg, rgba(16,16,16,0.92), rgba(8,8,8,0.97));
+        border: 1px solid rgba(255,255,255,0.04);
+        position: relative;
+        overflow: hidden;
+        transition: all 0.4s ease;
+        display: flex;
+        flex-direction: column;
+        border-radius: 4px;
+    }
+    .blog-card:hover {
+        border-color: rgba(0,163,255,0.25);
+        transform: translateY(-4px);
+        box-shadow: 0 16px 36px rgba(0,0,0,0.5);
+    }
+    .blog-img-container {
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+        border-bottom: 1px solid rgba(255,255,255,0.04);
+        position: relative;
+        background: #111;
+    }
+    .blog-img-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.7;
+        transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+    .blog-card:hover .blog-img-container img {
+        transform: scale(1.04);
+        opacity: 0.95;
+    }
+    .blog-content {
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+    .blog-date {
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        color: var(--accent-color);
+        margin-bottom: 12px;
+        letter-spacing: 0.08em;
+    }
+    .blog-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #fff;
+        line-height: 1.4;
+        margin-bottom: 12px;
+        transition: color 0.3s;
+    }
+    .blog-card:hover .blog-title {
+        color: var(--accent-color);
+    }
+    .blog-excerpt {
+        font-size: 0.88rem;
+        color: var(--text-secondary);
+        line-height: 1.6;
+        margin-bottom: 20px;
+        flex-grow: 1;
+    }
+    .blog-link {
+        font-family: var(--font-mono);
+        font-size: 0.76rem;
+        text-transform: uppercase;
+        color: #fff;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-weight: 500;
+        letter-spacing: 0.06em;
+    }
+    .blog-link svg {
+        transition: transform 0.3s ease;
+    }
+    .blog-card:hover .blog-link svg {
+        transform: translateX(4px);
+    }
+
+    /* ═══ FOOTER ═══ */
+    footer {
+        padding: 60px 20px;
+        text-align: center;
+        border-top: 1px solid rgba(255,255,255,0.04);
+        background-color: #040404;
+        font-family: var(--font-mono);
+        font-size: 0.65rem;
+        color: rgba(255,255,255,0.15);
+        letter-spacing: 0.12em;
+    }
+
+    /* Media queries */
+    @media (max-width: 1024px) {
+        header { position: sticky; top: 0; }
+        .nav-container { padding: 16px 20px; }
+        nav, .desktop-lang { display: none !important; }
+        .hamburger { display: flex; }
+        .main-content { padding-top: 40px; }
+    }
+</style>
+</head>
+<body>
+<div class="bg-glow glow-1"></div>
+<div class="bg-glow glow-2"></div>
+
+<!-- ═══ HEADER ═══ -->
+<header id="main-header">
+<div class="nav-container">
+    <div class="logo">
+        JESÚS FERRER GARCÍA
+        <span class="logo-sep">/</span>
+        <span class="logo-tagline">CHUS BZN</span>
+    </div>
+    <nav aria-label="Navegación principal">
+        <ul>
+            <li><a data-i18n="t_2" href="index.html#manif">01. Manifiesto</a></li>
+            <li><a data-i18n="t_3" href="index.html#ia">02. Ecosistema IA</a></li>
+            <li><a data-i18n="t_4" href="index.html#broadcast">03. Broadcast &amp; Cert</a></li>
+            <li><a data-i18n="t_5" href="index.html#trayectoria">04. Trayectoria</a></li>
+            <li><a data-i18n="t_6" href="index.html#compliance">05. Compliance</a></li>
+            <li><a data-i18n="t_7" href="index.html#github">06. GitHub Pool</a></li>
+            <li><a class="nav-active" data-i18n="t_125" href="blog.html">07. Blog</a></li>
+        </ul>
+    </nav>
+    <div class="desktop-lang" style="display:flex; align-items:center; gap:8px;">
+        <span style="color:#ff0000; font-family:var(--font-mono); font-size:0.75rem; font-weight:bold; letter-spacing:1px;">IDIOMAS:</span>
+        <select id="lang-select" style="background: transparent; color: var(--text-secondary); border: none; font-family: var(--font-mono); font-size: 0.78rem; text-transform: uppercase; cursor: pointer; outline: none;">
+            <option value="es" style="background: #000;">🇪🇸 ESPAÑOL</option>
+            <option value="en" style="background: #000;">🇬🇧 ENGLISH</option>
+            <option value="de" style="background: #000;">🇩🇪 DEUTSCH</option>
+            <option value="ru" style="background: #000;">🇷🇺 РУССКИЙ</option>
+            <option value="ja" style="background: #000;">🇯🇵 日本語</option>
+            <option value="uk" style="background: #000;">🇺🇦 УКРАЇНСЬКА</option>
+            <option value="zh-CN" style="background: #000;">🇨🇳 中文</option>
+            <option value="ar" style="background: #000;">🇸🇦 العربية</option>
+        </select>
+    </div>
+    <button aria-expanded="false" aria-label="Menú" class="hamburger" id="hamburger-btn">
+        <div style="color: #ff3333; font-family: var(--font-mono); font-size: 0.9rem; font-weight: bold; letter-spacing: 1px;">MENÚ</div>
+        <div class="hamburger-bars">
+            <span></span><span></span><span></span>
+        </div>
+    </button>
+</div>
+</header>
+
+<!-- Mobile Nav Overlay -->
+<div aria-label="Menú móvil" id="mobile-nav" role="navigation">
+    <a class="mobile-nav-link" data-i18n="t_8" href="index.html#manif">01. Manifiesto</a>
+    <a class="mobile-nav-link" data-i18n="t_9" href="index.html#ia">02. Ecosistema IA</a>
+    <a class="mobile-nav-link" data-i18n="t_10" href="index.html#broadcast">03. Broadcast &amp; Cert</a>
+    <a class="mobile-nav-link" data-i18n="t_11" href="index.html#trayectoria">04. Trayectoria</a>
+    <a class="mobile-nav-link" data-i18n="t_12" href="index.html#compliance">05. Compliance</a>
+    <a class="mobile-nav-link" data-i18n="t_13" href="index.html#github">06. GitHub Pool</a>
+    <a class="mobile-nav-link" data-i18n="t_125" href="blog.html">07. Blog</a>
+    <span style="color:#ff0000; font-family:var(--font-mono); font-size:1rem; font-weight:bold; letter-spacing:1px; margin-top:20px; text-align:center;">IDIOMAS:</span>
+    <select id="mobile-lang-select" style="background: transparent; color: rgba(255,255,255,0.7); border: none; font-family: var(--font-mono); font-size: 1.3rem; text-transform: uppercase; cursor: pointer; outline: none; margin-top: 10px; text-align: center;">
+        <option value="es" style="background: #000;">🇪🇸 ESPAÑOL</option>
+        <option value="en" style="background: #000;">🇬🇧 ENGLISH</option>
+        <option value="de" style="background: #000;">🇩🇪 DEUTSCH</option>
+        <option value="ru" style="background: #000;">🇷🇺 РУССКИЙ</option>
+        <option value="ja" style="background: #000;">🇯🇵 日本語</option>
+        <option value="uk" style="background: #000;">🇺🇦 УКРАЇНСЬКА</option>
+        <option value="zh-CN" style="background: #000;">🇨🇳 中文</option>
+        <option value="ar" style="background: #000;">🇸🇦 العربية</option>
+    </select>
+</div>
+
+<div class="main-content">
+    <div style="font-family: var(--font-mono); color: var(--accent-color); font-size: 0.75rem; margin-bottom: 20px; letter-spacing: 0.18em; text-transform: uppercase;">
+        // ARCHIVE_FEED
+    </div>
+    <h1 data-i18n="t_126" class="text-3xl sm:text-5xl font-extrabold tracking-tight uppercase mb-8" style="background: linear-gradient(135deg, #ffffff 0%, #d0d0d0 50%, #a0a0a0 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+        Blog &amp; Novedades
+    </h1>
+    <p data-i18n="t_127" class="text-base sm:text-lg mb-12 leading-relaxed max-w-2xl font-light text-secondary">
+        Espacio dedicado a compartir avances técnicos, pruebas de laboratorio con Inteligencia Artificial, integraciones de sistemas audiovisuales y reflexiones sobre el ecosistema digital contemporáneo.
+    </p>
+
+    <!-- Grid Container -->
+    <div class="blog-grid" id="blog-posts-container">
+        <!-- Loader / Fallback -->
+        <div class="col-span-full py-12 text-center text-sm font-mono text-secondary" id="blog-loader">
+            Cargando entradas desde Blogger...
+        </div>
+    </div>
+</div>
+
+<footer>
+    [ TERMINAL ABIERTA ] // COPYRIGHT 2026 JESÚS FERRER GARCÍA // ALL SYSTEMS OPERATIONAL
+</footer>
+
+<script>
+    // ── CONFIGURACIÓN DE BLOGGER ────────────────────────
+    // Reemplaza con tus claves reales cuando estén listas.
+    // Si se dejan vacías o hay un error, el sistema cargará los posts simulados de demostración.
+    const BLOGGER_BLOG_ID = "8737045333650211847"; 
+    const BLOGGER_API_KEY = "";
+
+    // Diccionario de localización interna para etiquetas dinámicas
+    const labels = {
+        es: {
+            readArticle: "Leer Artículo",
+            loading: "Cargando entradas desde Blogger..."
+        },
+        en: {
+            readArticle: "Read Article",
+            loading: "Loading posts from Blogger..."
+        },
+        de: {
+            readArticle: "Artikel lesen",
+            loading: "Beiträge von Blogger laden..."
+        },
+        ru: {
+            readArticle: "Читать статью",
+            loading: "Загрузка записей из Blogger..."
+        },
+        ja: {
+            readArticle: "記事を読む",
+            loading: "Bloggerから投稿を読み込んでいます..."
+        },
+        uk: {
+            readArticle: "Читати статтю",
+            loading: "Завантаження дописів із Blogger..."
+        },
+        "zh-CN": {
+            readArticle: "阅读文章",
+            loading: "正在从 Blogger 加载文章..."
+        },
+        ar: {
+            readArticle: "اقرأ المقال",
+            loading: "جاري تحميل المشاركات من Blogger..."
+        }
+    };
+
+    // ── POSTS SIMULADOS DE FALLBACK (Noticias Nuevas y Actualizadas) ──────────────────
+    const mockPosts = [
+        {
+            id: "mock-1",
+            title: "Dirección Técnica Asistida por IA en 'Alpha Berracos'",
+            published: "2026-06-15T12:00:00Z",
+            excerpt: "Cómo hemos estructurado un pipeline híbrido que acelera la previsualización y el desarrollo dramático de layouts visuales optimizados para cine utilizando modelos avanzados.",
+            imageUrl: "assets/blog_berracos.png"
+        },
+        {
+            id: "mock-2",
+            title: "Soberanía Biométrica y la EU AI Act en la Clonación de Voz",
+            published: "2026-05-28T09:30:00Z",
+            excerpt: "Análisis del marco jurídico de la Ley de Inteligencia Artificial de la UE aplicada a la preservación biométrica de archivos históricos de doblaje y locución.",
+            imageUrl: "assets/blog_biometric.png"
+        },
+        {
+            id: "mock-3",
+            title: "Acústica y Masterización: de la Cinta Abierta a los Procesadores Neurales",
+            published: "2026-04-12T16:45:00Z",
+            excerpt: "Reflexiones sobre la evolución técnica de los procesos de restauración e ingeniería de mezcla de audio, desde sistemas físicos a algoritmos espectrales de armónicos.",
+            imageUrl: "assets/blog_acoustic.png"
+        }
+    ];
+
+    // ── Hamburger Menu ──────────────────────────────────
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const mobileNav = document.getElementById('mobile-nav');
+    const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+    function openMenu() {
+        mobileNav.classList.add('open');
+        hamburgerBtn.classList.add('open');
+        hamburgerBtn.setAttribute('aria-expanded', 'true');
+    }
+    function closeMenu() {
+        mobileNav.classList.remove('open');
+        hamburgerBtn.classList.remove('open');
+        hamburgerBtn.setAttribute('aria-expanded', 'false');
+    }
+    hamburgerBtn.addEventListener('click', () => {
+        if (mobileNav.classList.contains('open')) closeMenu();
+        else openMenu();
+    });
+    mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
+
+    // Helper: Formatear fecha localizada
+    function formatDate(dateStr) {
+        const currentLang = localStorage.getItem('site_lang') || 'es';
+        const localeMap = {
+            'es': 'es-ES',
+            'en': 'en-US',
+            'de': 'de-DE',
+            'ru': 'ru-RU',
+            'ja': 'ja-JP',
+            'uk': 'uk-UA',
+            'zh-CN': 'zh-CN',
+            'ar': 'ar-SA'
+        };
+        const locale = localeMap[currentLang] || 'es-ES';
+        const d = new Date(dateStr);
+        return d.toLocaleDateString(locale, { year: 'numeric', month: 'long', day: 'numeric' }).toUpperCase();
+    }
+
+    let loadedPosts = [];
+
+    // Renderizar listado de posts
+    function renderPosts(posts) {
+        loadedPosts = posts;
+        const container = document.getElementById('blog-posts-container');
+        if (!container) return;
+        container.innerHTML = '';
+        
+        const currentLang = localStorage.getItem('site_lang') || 'es';
+        const t = labels[currentLang] || labels['es'];
+        
+        posts.forEach(post => {
+            const card = document.createElement('div');
+            card.className = 'blog-card';
+            
+            const imageSrc = post.imageUrl || 'assets/mixing_console_bg.jpg';
+            
+            card.innerHTML = `
+                <div class="blog-img-container">
+                    <img src="${imageSrc}" alt="${post.title}" onerror="this.src='assets/mixing_console_bg.jpg'">
+                </div>
+                <div class="blog-content">
+                    <div class="blog-date">${formatDate(post.published)}</div>
+                    <h3 class="blog-title">${post.title}</h3>
+                    <p class="blog-excerpt">${post.excerpt}</p>
+                    <a href="post.html?id=${post.id}" class="blog-link">
+                        ${t.readArticle}
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4.5 2.5L8 6L4.5 9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
+            `;
+            container.appendChild(card);
+        });
+    }
+
+    // Inicializar el texto del cargador de forma localizada
+    function initLoaderText() {
+        const loader = document.getElementById('blog-loader');
+        if (loader) {
+            const currentLang = localStorage.getItem('site_lang') || 'es';
+            const t = labels[currentLang] || labels['es'];
+            loader.textContent = t.loading;
+        }
+    }
+
+    // Cargar entradas desde Blogger o Fallback
+    async function loadBlogData() {
+        initLoaderText();
+        if (BLOGGER_BLOG_ID && BLOGGER_API_KEY) {
+            try {
+                const response = await fetch(`https://www.googleapis.com/blogger/v3/blogs/${BLOGGER_BLOG_ID}/posts?key=${BLOGGER_API_KEY}`);
+                if (!response.ok) throw new Error('Error al cargar datos');
+                const data = await response.json();
+                
+                if (data.items && data.items.length > 0) {
+                    const parsedPosts = data.items.map(item => {
+                        let imageUrl = '';
+                        const tempDiv = document.createElement('div');
+                        tempDiv.innerHTML = item.content;
+                        const firstImg = tempDiv.querySelector('img');
+                        if (firstImg) imageUrl = firstImg.src;
+
+                        const textOnly = tempDiv.textContent || tempDiv.innerText || "";
+                        const excerpt = textOnly.substring(0, 150) + (textOnly.length > 150 ? '...' : '');
+
+                        return {
+                            id: item.id,
+                            title: item.title,
+                            published: item.published,
+                            excerpt: excerpt,
+                            imageUrl: imageUrl
+                        };
+                    });
+                    renderPosts(parsedPosts);
+                    return;
+                }
+            } catch (e) {
+                console.error("API de Blogger falló, cargando posts de fallback:", e);
+            }
+        }
+        
+        setTimeout(() => {
+            renderPosts(mockPosts);
+        }, 300);
+    }
+
+    // Manejar el cambio de idioma dinámico
+    const langSelect = document.getElementById('lang-select');
+    const mobileLangSelect = document.getElementById('mobile-lang-select');
+    
+    if (langSelect) {
+        langSelect.addEventListener('change', () => {
+            setTimeout(() => {
+                initLoaderText();
+                if (loadedPosts.length > 0) renderPosts(loadedPosts);
+            }, 50);
+        });
+    }
+    if (mobileLangSelect) {
+        mobileLangSelect.addEventListener('change', () => {
+            setTimeout(() => {
+                initLoaderText();
+                if (loadedPosts.length > 0) renderPosts(loadedPosts);
+            }, 50);
+        });
+    }
+
+    window.addEventListener('DOMContentLoaded', loadBlogData);
+</script>
+
+<!-- i18n Scripts -->
+<script src="js/translations.js"></script>
+<script src="js/i18n.js"></script>
+
+</body>
+</html>

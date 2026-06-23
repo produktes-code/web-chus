@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Artículo | Jesús Ferrer García (CHUS BZN)</title>
+<meta content="Artículo del blog profesional de Jesús Ferrer García. Ingeniería audiovisual, integración de IA y tecnología broadcast." name="description"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries,typography"></script>
+<script>
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                colors: {
+                    "accent-color": "#00a3ff",
+                    "accent-dim": "#004a77",
+                    "bg-color": "#020202",
+                    "surface-color": "#080808",
+                    "text-primary": "#f5f5f5",
+                    "text-secondary": "#a3a3a3"
+                },
+                fontFamily: {
+                    "sans": ["Libre Franklin", "sans-serif"],
+                    "mono": ["JetBrains Mono", "monospace"]
+                }
+            }
+        }
+    }
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,300;0,400;0,700;0,800;1,300&amp;family=JetBrains+Mono:wght@300;500;700&amp;display=swap" rel="stylesheet"/>
+<style>
+    :root {
+        --bg-color: #020202;
+        --surface-color: #080808;
+        --text-primary: #f5f5f5;
+        --text-secondary: #a3a3a3;
+        --accent-color: #00a3ff;
+        --accent-dim: #004a77;
+        --font-main: 'Libre Franklin', sans-serif;
+        --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    html, body {
+        overflow-x: hidden;
+        width: 100%;
+        -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+        background-color: var(--bg-color);
+        color: var(--text-primary);
+        font-family: var(--font-main);
+        line-height: 1.7;
+        position: relative;
+        font-weight: 300;
+    }
+
+    /* Cinematic Grain Overlay */
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0; left: 0;
+        width: 100vw; height: 100vh;
+        pointer-events: none;
+        z-index: 9999;
+        background: linear-gradient(rgba(2,2,2,0) 50%, rgba(0,0,0,0.25) 50%),
+                    linear-gradient(90deg, rgba(255,0,0,0.02), rgba(0,255,0,0.01), rgba(0,0,255,0.02));
+        background-size: 100% 3px, 4px 100%;
+        opacity: 0.12;
+        mix-blend-mode: overlay;
+    }
+
+    /* ═══ GLOWS ═══ */
+    .bg-glow {
+        position: fixed;
+        border-radius: 50%;
+        filter: blur(180px);
+        opacity: 0.12;
+        z-index: -1;
+        pointer-events: none;
+    }
+    .glow-1 { top: -10%; left: -10%; width: 50vw; height: 50vw; background: radial-gradient(circle, #004a77, transparent); }
+    .glow-2 { top: 40%; right: -20%; width: 60vw; height: 60vw; background: radial-gradient(circle, #002022, transparent); }
+
+    /* ═══ HEADER ═══ */
+    header {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%;
+        background-color: rgba(2, 2, 2, 0.97);
+        border-bottom: 1px solid rgba(255,255,255,0.04);
+        backdrop-filter: blur(24px) saturate(1.2);
+        -webkit-backdrop-filter: blur(24px) saturate(1.2);
+        z-index: 1000;
+    }
+    .nav-container {
+        max-width: 1600px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 40px;
+        padding: 20px 40px;
+    }
+    .logo {
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        font-size: 1.15rem;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-shrink: 0;
+        color: #fff;
+    }
+    .logo-sep { color: rgba(255,255,255,0.2); font-weight: 300; }
+    .logo-tagline {
+        color: var(--accent-color);
+        font-family: var(--font-mono);
+        font-weight: 600;
+        opacity: 0.95;
+        font-size: 1.05rem;
+        letter-spacing: 0.02em;
+    }
+    nav { flex: 1; }
+    nav ul {
+        display: flex;
+        list-style: none;
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 0; margin: 0;
+    }
+    nav a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-size: 0.72rem;
+        transition: color 0.3s ease;
+        font-family: var(--font-mono);
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        white-space: nowrap;
+        position: relative;
+    }
+    nav a::after {
+        content: '';
+        position: absolute;
+        width: 0; height: 1px;
+        bottom: -4px; left: 0;
+        background-color: var(--accent-color);
+        transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    nav a:hover { color: #fff; }
+    nav a:hover::after, nav a.nav-active::after { width: 100%; }
+    nav a.nav-active { color: #fff; }
+
+    /* Hamburger */
+    .hamburger {
+        display: none;
+        flex-direction: row;
+        align-items: center;
+        gap: 12px;
+        cursor: pointer;
+        padding: 6px 10px;
+        background: rgba(255,0,0,0.1);
+        border: 1px solid rgba(255,0,0,0.3);
+        border-radius: 6px;
+        z-index: 1100;
+    }
+    .hamburger-bars {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+    .hamburger span {
+        display: block;
+        width: 26px; height: 2px;
+        background: #fff;
+        transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .hamburger.open .hamburger-bars span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .hamburger.open .hamburger-bars span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open .hamburger-bars span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    #mobile-nav {
+        display: none;
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(2,2,2,0.98);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        z-index: 1050;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 36px;
+    }
+    #mobile-nav.open { display: flex; }
+    #mobile-nav a {
+        color: rgba(255,255,255,0.7);
+        text-decoration: none;
+        font-family: var(--font-mono);
+        font-size: 1.3rem;
+        font-weight: 500;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        transition: color 0.3s ease;
+    }
+    #mobile-nav a:hover { color: var(--accent-color); }
+
+    /* ═══ LAYOUT ═══ */
+    .main-content {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 140px 20px 80px;
+    }
+
+    /* Back Link */
+    .back-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        color: var(--text-secondary);
+        text-transform: uppercase;
+        text-decoration: none;
+        transition: color 0.3s;
+        margin-bottom: 40px;
+        letter-spacing: 0.08em;
+    }
+    .back-btn:hover {
+        color: var(--accent-color);
+    }
+    .back-btn svg {
+        transition: transform 0.3s ease;
+    }
+    .back-btn:hover svg {
+        transform: translateX(-4px);
+    }
+
+    /* Blog Header */
+    .post-header {
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+        padding-bottom: 32px;
+        margin-bottom: 40px;
+    }
+    .post-date {
+        font-family: var(--font-mono);
+        font-size: 0.8rem;
+        color: var(--accent-color);
+        margin-bottom: 16px;
+        letter-spacing: 0.08em;
+    }
+    .post-title {
+        font-size: 2.2rem;
+        font-weight: 800;
+        color: #fff;
+        line-height: 1.25;
+        margin-bottom: 0;
+    }
+    @media(min-width: 768px) {
+        .post-title { font-size: 3rem; }
+    }
+
+    /* Rich content */
+    .post-body {
+        color: rgba(255,255,255,0.85);
+        font-size: 1.05rem;
+        line-height: 1.85;
+    }
+    /* Customize Tailwind Typography for dark theme */
+    .prose-custom {
+        max-width: 100%;
+    }
+    .prose-custom h2, .prose-custom h3, .prose-custom h4 {
+        color: #ffffff;
+        font-weight: 700;
+        margin-top: 36px;
+        margin-bottom: 16px;
+    }
+    .prose-custom h2 { font-size: 1.75rem; }
+    .prose-custom h3 { font-size: 1.4rem; }
+    .prose-custom p {
+        margin-bottom: 24px;
+        color: rgba(255,255,255,0.8);
+    }
+    .prose-custom a {
+        color: var(--accent-color);
+        text-decoration: underline;
+        transition: color 0.3s;
+    }
+    .prose-custom a:hover {
+        color: #fff;
+    }
+    .prose-custom img {
+        border-radius: 4px;
+        border: 1px solid rgba(255,255,255,0.06);
+        margin: 40px 0;
+        width: 100%;
+        max-height: 500px;
+        object-fit: cover;
+    }
+    .prose-custom blockquote {
+        border-left: 2px solid var(--accent-color);
+        padding-left: 24px;
+        font-style: italic;
+        color: var(--text-secondary);
+        margin: 32px 0;
+    }
+
+    /* ═══ FOOTER ═══ */
+    footer {
+        padding: 60px 20px;
+        text-align: center;
+        border-top: 1px solid rgba(255,255,255,0.04);
+        background-color: #040404;
+        font-family: var(--font-mono);
+        font-size: 0.65rem;
+        color: rgba(255,255,255,0.15);
+        letter-spacing: 0.12em;
+    }
+
+    @media (max-width: 1024px) {
+        header { position: sticky; top: 0; }
+        .nav-container { padding: 16px 20px; }
+        nav, .desktop-lang { display: none !important; }
+        .hamburger { display: flex; }
+        .main-content { padding-top: 40px; }
+    }
+</style>
+</head>
+<body>
+<div class="bg-glow glow-1"></div>
+<div class="bg-glow glow-2"></div>
+
+<!-- ═══ HEADER ═══ -->
+<header id="main-header">
+<div class="nav-container">
+    <div class="logo">
+        JESÚS FERRER GARCÍA
+        <span class="logo-sep">/</span>
+        <span class="logo-tagline">CHUS BZN</span>
+    </div>
+    <nav aria-label="Navegación principal">
+        <ul>
+            <li><a data-i18n="t_2" href="index.html#manif">01. Manifiesto</a></li>
+            <li><a data-i18n="t_3" href="index.html#ia">02. Ecosistema IA</a></li>
+            <li><a data-i18n="t_4" href="index.html#broadcast">03. Broadcast &amp; Cert</a></li>
+            <li><a data-i18n="t_5" href="index.html#trayectoria">04. Trayectoria</a></li>
+            <li><a data-i18n="t_6" href="index.html#compliance">05. Compliance</a></li>
+            <li><a data-i18n="t_7" href="index.html#github">06. GitHub Pool</a></li>
+            <li><a class="nav-active" data-i18n="t_125" href="blog.html">07. Blog</a></li>
+        </ul>
+    </nav>
+    <div class="desktop-lang" style="display:flex; align-items:center; gap:8px;">
+        <span style="color:#ff0000; font-family:var(--font-mono); font-size:0.75rem; font-weight:bold; letter-spacing:1px;">IDIOMAS:</span>
+        <select id="lang-select" style="background: transparent; color: var(--text-secondary); border: none; font-family: var(--font-mono); font-size: 0.78rem; text-transform: uppercase; cursor: pointer; outline: none;">
+            <option value="es" style="background: #000;">🇪🇸 ESPAÑOL</option>
+            <option value="en" style="background: #000;">🇬🇧 ENGLISH</option>
+            <option value="de" style="background: #000;">🇩🇪 DEUTSCH</option>
+            <option value="ru" style="background: #000;">🇷🇺 РУССКИЙ</option>
+            <option value="ja" style="background: #000;">🇯🇵 日本語</option>
+            <option value="uk" style="background: #000;">🇺🇦 УКРАЇНСЬКА</option>
+            <option value="zh-CN" style="background: #000;">🇨🇳 中文</option>
+            <option value="ar" style="background: #000;">🇸🇦 العربية</option>
+        </select>
+    </div>
+    <button aria-expanded="false" aria-label="Menú" class="hamburger" id="hamburger-btn">
+        <div style="color: #ff3333; font-family: var(--font-mono); font-size: 0.9rem; font-weight: bold; letter-spacing: 1px;">MENÚ</div>
+        <div class="hamburger-bars">
+            <span></span><span></span><span></span>
+        </div>
+    </button>
+</div>
+</header>
+
+<!-- Mobile Nav Overlay -->
+<div aria-label="Menú móvil" id="mobile-nav" role="navigation">
+    <a class="mobile-nav-link" data-i18n="t_8" href="index.html#manif">01. Manifiesto</a>
+    <a class="mobile-nav-link" data-i18n="t_9" href="index.html#ia">02. Ecosistema IA</a>
+    <a class="mobile-nav-link" data-i18n="t_10" href="index.html#broadcast">03. Broadcast &amp; Cert</a>
+    <a class="mobile-nav-link" data-i18n="t_11" href="index.html#trayectoria">04. Trayectoria</a>
+    <a class="mobile-nav-link" data-i18n="t_12" href="index.html#compliance">05. Compliance</a>
+    <a class="mobile-nav-link" data-i18n="t_13" href="index.html#github">06. GitHub Pool</a>
+    <a class="mobile-nav-link" data-i18n="t_125" href="blog.html">07. Blog</a>
+    <span style="color:#ff0000; font-family:var(--font-mono); font-size:1rem; font-weight:bold; letter-spacing:1px; margin-top:20px; text-align:center;">IDIOMAS:</span>
+    <select id="mobile-lang-select" style="background: transparent; color: rgba(255,255,255,0.7); border: none; font-family: var(--font-mono); font-size: 1.3rem; text-transform: uppercase; cursor: pointer; outline: none; margin-top: 10px; text-align: center;">
+        <option value="es" style="background: #000;">🇪🇸 ESPAÑOL</option>
+        <option value="en" style="background: #000;">🇬🇧 ENGLISH</option>
+        <option value="de" style="background: #000;">🇩🇪 DEUTSCH</option>
+        <option value="ru" style="background: #000;">🇷🇺 РУССКИЙ</option>
+        <option value="ja" style="background: #000;">🇯🇵 日本語</option>
+        <option value="uk" style="background: #000;">🇺🇦 УКРАЇНСЬКА</option>
+        <option value="zh-CN" style="background: #000;">🇨🇳 中文</option>
+        <option value="ar" style="background: #000;">🇸🇦 العربية</option>
+    </select>
+</div>
+
+<div class="main-content">
+    <a href="blog.html" class="back-btn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline; margin-right:4px;">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        Volver al listado
+    </a>
+
+    <article id="post-article">
+        <!-- Loading spinner/text -->
+        <div class="text-center py-20 text-sm font-mono text-secondary" id="post-loader">
+            Cargando artículo...
+        </div>
+    </article>
+</div>
+
+<footer>
+    [ TERMINAL ABIERTA ] // COPYRIGHT 2026 JESÚS FERRER GARCÍA // ALL SYSTEMS OPERATIONAL
+</footer>
+
+<script>
+    // ── CONFIGURACIÓN DE BLOGGER ────────────────────────
+    const BLOGGER_BLOG_ID = "8737045333650211847"; 
+    const BLOGGER_API_KEY = "";
+
+    // Diccionario de localización interna para etiquetas dinámicas
+    const labels = {
+        es: {
+            backToList: "Volver al listado",
+            loadingPost: "Cargando artículo...",
+            noId: "Error: ID de artículo no especificado.",
+            notFound: "Artículo no encontrado.",
+            errorLoading: "Error al cargar el artículo desde Blogger. Verifica la configuración de la API y el ID del post.",
+            backToBlog: "Volver al Blog",
+            publishedOn: "PUBLICADO EL"
+        },
+        en: {
+            backToList: "Back to list",
+            loadingPost: "Loading article...",
+            noId: "Error: Article ID not specified.",
+            notFound: "Article not found.",
+            errorLoading: "Error loading the article from Blogger. Please check the API settings and the post ID.",
+            backToBlog: "Back to Blog",
+            publishedOn: "PUBLISHED ON"
+        },
+        de: {
+            backToList: "Zurück zur Liste",
+            loadingPost: "Artikel wird geladen...",
+            noId: "Fehler: Beitrags-ID nicht angegeben.",
+            notFound: "Artikel nicht gefunden.",
+            errorLoading: "Fehler beim Laden des Artikels von Blogger. Bitte überprüfen Sie die API-Einstellungen und die Beitrags-ID.",
+            backToBlog: "Zurück zum Blog",
+            publishedOn: "VERÖFFENTLICHT AM"
+        },
+        ru: {
+            backToList: "Назад к списку",
+            loadingPost: "Загрузка статьи...",
+            noId: "Ошибка: не указан ID статьи.",
+            notFound: "Статья не найдена.",
+            errorLoading: "Ошибка загрузки статьи из Blogger. Пожалуйста, проверьте настройки API и ID записи.",
+            backToBlog: "Назад в блог",
+            publishedOn: "ОПУБЛИКОВАНО"
+        },
+        ja: {
+            backToList: "リストに戻る",
+            loadingPost: "記事を読み込んでいます...",
+            noId: "エラー：記事IDが指定されていません。",
+            notFound: "記事が見つかりません。",
+            errorLoading: "Bloggerからの記事の読み込み中にエラーが発生しました。API設定と投稿IDを確認してください。",
+            backToBlog: "ブログに戻る",
+            publishedOn: "公開日:"
+        },
+        uk: {
+            backToList: "Назад до списку",
+            loadingPost: "Завантаження статті...",
+            noId: "Помилка: ID статті не вказано.",
+            notFound: "Статтю не знайдено.",
+            errorLoading: "Помилка завантаження статті з Blogger. Будь ласка, перевірте налаштування API та ID допису.",
+            backToBlog: "Назад до блогу",
+            publishedOn: "ОПУБЛІКОВАНО"
+        },
+        "zh-CN": {
+            backToList: "返回列表",
+            loadingPost: "正在加载文章...",
+            noId: "错误：未指定文章 ID。",
+            notFound: "未找到文章。",
+            errorLoading: "从 Blogger 加载文章时出错。请检查 API 设置和文章 ID。",
+            backToBlog: "返回博客",
+            publishedOn: "发布于"
+        },
+        ar: {
+            backToList: "العودة إلى القائمة",
+            loadingPost: "جاري تحميل المقال...",
+            noId: "خطأ: لم يتم تحديد معرف المقال.",
+            notFound: "المقال غير موجود.",
+            errorLoading: "حدث خطأ أثناء تحميل المقال من Blogger. يرجى التحقق من إعدادات API ومعرف المشاركة.",
+            backToBlog: "العودة إلى المدونة",
+            publishedOn: "نُشر في"
+        }
+    };
+
+    // ── FALLBACK CONTENT (Posts Simulados) ──────────────────
+    const mockPosts = {
+        "mock-1": {
+            title: "Dirección Técnica Asistida por IA en 'Alpha Berracos'",
+            published: "2026-06-15T12:00:00Z",
+            content: `
+                <p>En el panorama audiovisual actual, la aceleración de flujos de trabajo en preproducción ya no es una opción de conveniencia, sino un imperativo de competitividad. Durante el desarrollo dramático del proyecto <strong>"Alpha Berracos"</strong>, nos enfrentamos a un reto clásico: cómo validar layouts de cámara e intenciones de iluminación con rapidez milimétrica antes de movilizar el hardware físico en plató.</p>
+                
+                <img src="assets/blog_berracos.png" alt="Cámara Rig en set cinematográfico">
+                
+                <h2>El Pipeline Híbrido: Prompting Técnico + Renderizado</h2>
+                <p>Nuestra solución consistió en diseñar un pipeline donde los modelos generativos de IA actúan bajo restricciones técnicas estrictas. No dejamos que el algoritmo improvise: le suministramos prompts con parámetros concretos de distancia focal, tipo de lente (ej. Cooke Anamórficas de 50mm) y esquemas específicos de iluminación de tres puntos.</p>
+                
+                <blockquote>
+                    "La IA no sustituye al director técnico; actúa como un multiplicador de su precisión, permitiendo simular layouts visuales en minutos en lugar de días."
+                </blockquote>
+                
+                <h2>Resultados Audibles y Visibles</h2>
+                <p>El impacto directo fue una reducción del 65% en los tiempos de maquetación y previsualización (previs). Los actores y operadores pudieron comprender la atmósfera dramática de forma previa, optimizando drásticamente la puesta en escena durante los días de rodaje reales. En las próximas publicaciones detallaremos el esquema de red local que desplegamos para soportar la carga de computación en tiempo real.</p>
+            `
+        },
+        "mock-2": {
+            title: "Soberanía Biométrica y la EU AI Act en la Clonación de Voz",
+            published: "2026-05-28T09:30:00Z",
+            content: `
+                <p>La clonación neural de voz abre posibilidades asombrosas para la preservación del patrimonio de dobladores y locutores históricos, pero también abre un debate crítico sobre la propiedad de la biometría vocal. En el marco del proyecto forense <strong>LEGADO_JFB</strong>, nos propusimos un reto doble: restaurar cintas analógicas históricas y generar un modelo neural legítimo bajo un estricto cumplimiento jurídico.</p>
+                
+                <img src="assets/blog_biometric.png" alt="Consola de control y masterización">
+                
+                <h2>Un Blindaje Ético de Nivel Corporativo</h2>
+                <p>Con la entrada en vigor de la <em>EU AI Act</em> (Ley de IA de la Unión Europea), cualquier procesamiento de datos biométricos exige consentimiento expreso, trazabilidad del dataset y una declaración de transparencia clara. Trabajamos estrechamente con entidades de gestión como <strong>AISGE</strong> para asegurar que los derechos de propiedad intelectual e industrial del modelo de voz permanezcan bajo la estricta soberanía de sus creadores y herederos.</p>
+                
+                <blockquote>
+                    "La biometría vocal es una firma digital única del ser humano. Protegerla en la era del deep learning no es solo una obligación legal, sino un principio de respeto artístico."
+                </blockquote>
+                
+                <p>Para el entrenamiento de la voz, realizamos una restauración previa del master analógico eliminando el ruido de fase y la distorsión del soporte magnético original mediante técnicas espectrales, asegurando que la red neuronal reciba armónicos puros y no artefactos. El resultado es un clon con un timbre cálido y natural, indistinguible de la grabación original pero libre de las impurezas del tiempo.</p>
+            `
+        },
+        "mock-3": {
+            title: "Acústica y Masterización: de la Cinta Abierta a los Procesadores Neurales",
+            published: "2026-04-12T16:45:00Z",
+            content: `
+                <p>Haber comenzado el oficio operando con sistemas analógicos puros de 35mm y cintas magnéticas de bobina abierta te da una perspectiva única sobre el comportamiento físico del sonido. Hoy en día, los procesadores de restauración basados en aprendizaje profundo nos permiten hacer cirugías espectrales que antes parecían pura ciencia ficción.</p>
+                
+                <img src="assets/blog_acoustic.png" alt="Sesión de mezcla en vivo de música avanzada">
+                
+                <h2>La Inteligencia Artificial en el Dominio del Espectro</h2>
+                <p>En el laboratorio, utilizamos herramientas líderes en la industria como <em>SpectraLayers 10</em> e <em>iZotope RX 11</em>. Estos sistemas aíslan señales no deseadas a nivel espectral mediante modelos entrenados con millones de muestras sonoras. La clave del éxito técnico en esta fase no es pulsar un botón de 'Auto-Repair', sino saber interpretar la gráfica de fase, identificar las resonancias parásitas y ajustar el umbral de atenuación para no comprometer los armónicos naturales de la voz humana.</p>
+                
+                <p>La masterización contemporánea exige, además, un estricto cumplimiento de las normas internacionales de sonoridad (como la EBU R128 para emisión televisiva). La integración de limitadores inteligentes nos permite optimizar el rango dinámico de forma transparente, preparando los contenidos tanto para emisión en directo como para el consumo en plataformas de streaming como Netflix y HBO con garantías de aprobación técnica garantizadas.</p>
+            `
+        }
+    };
+
+    // ── Hamburger Menu ──────────────────────────────────
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const mobileNav = document.getElementById('mobile-nav');
+    const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+    function openMenu() {
+        mobileNav.classList.add('open');
+        hamburgerBtn.classList.add('open');
+        hamburgerBtn.setAttribute('aria-expanded', 'true');
+    }
+    function closeMenu() {
+        mobileNav.classList.remove('open');
+        hamburgerBtn.classList.remove('open');
+        hamburgerBtn.setAttribute('aria-expanded', 'false');
+    }
+    hamburgerBtn.addEventListener('click', () => {
+        if (mobileNav.classList.contains('open')) closeMenu();
+        else openMenu();
+    });
+    mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
+
+    // Helper: Formatear fecha localizada
+    function formatDate(dateStr) {
+        const currentLang = localStorage.getItem('site_lang') || 'es';
+        const localeMap = {
+            'es': 'es-ES',
+            'en': 'en-US',
+            'de': 'de-DE',
+            'ru': 'ru-RU',
+            'ja': 'ja-JP',
+            'uk': 'uk-UA',
+            'zh-CN': 'zh-CN',
+            'ar': 'ar-SA'
+        };
+        const locale = localeMap[currentLang] || 'es-ES';
+        const d = new Date(dateStr);
+        return d.toLocaleDateString(locale, { year: 'numeric', month: 'long', day: 'numeric' }).toUpperCase();
+    }
+
+    let pageState = {
+        status: 'loading', // 'loading', 'loaded', 'no-id', 'not-found', 'error'
+        post: null
+    };
+
+    function updateBackBtn() {
+        const currentLang = localStorage.getItem('site_lang') || 'es';
+        const t = labels[currentLang] || labels['es'];
+        const backBtn = document.querySelector('.back-btn');
+        if (backBtn) {
+            backBtn.innerHTML = `
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline; margin-right:4px;">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                ${t.backToList}
+            `;
+        }
+    }
+
+    function renderState() {
+        const currentLang = localStorage.getItem('site_lang') || 'es';
+        const t = labels[currentLang] || labels['es'];
+        const articleContainer = document.getElementById('post-article');
+        if (!articleContainer) return;
+
+        updateBackBtn();
+
+        if (pageState.status === 'loading') {
+            articleContainer.innerHTML = `
+                <div class="text-center py-20 text-sm font-mono text-secondary" id="post-loader">
+                    ${t.loadingPost}
+                </div>
+            `;
+        } else if (pageState.status === 'no-id') {
+            articleContainer.innerHTML = `
+                <div class="text-center py-20 text-sm font-mono text-secondary">
+                    ${t.noId} <br><br>
+                    <a href="blog.html" class="text-white underline">${t.backToBlog}</a>
+                </div>
+            `;
+        } else if (pageState.status === 'not-found') {
+            articleContainer.innerHTML = `
+                <div class="text-center py-20 text-sm font-mono text-secondary">
+                    ${t.notFound} <br><br>
+                    <a href="blog.html" class="text-white underline">${t.backToBlog}</a>
+                </div>
+            `;
+        } else if (pageState.status === 'error') {
+            articleContainer.innerHTML = `
+                <div class="text-center py-20 text-sm font-mono text-secondary">
+                    ${t.errorLoading} <br><br>
+                    <a href="blog.html" class="text-white underline">${t.backToBlog}</a>
+                </div>
+            `;
+        } else if (pageState.status === 'loaded' && pageState.post) {
+            const post = pageState.post;
+            document.title = `${post.title} | Jesús Ferrer García (CHUS BZN)`;
+            articleContainer.innerHTML = `
+                <div class="post-header">
+                    <div class="post-date">// ${t.publishedOn} ${formatDate(post.published)}</div>
+                    <h1 class="post-title">${post.title}</h1>
+                </div>
+                <div class="post-body prose prose-invert prose-custom text-justify">
+                    ${post.content}
+                </div>
+            `;
+        }
+    }
+
+    // Cargar artículo individual
+    async function loadPostData() {
+        const params = new URLSearchParams(window.location.search);
+        const postId = params.get('id');
+        
+        if (!postId) {
+            pageState.status = 'no-id';
+            renderState();
+            return;
+        }
+
+        // Si es un post simulado (empieza por mock-)
+        if (postId.startsWith('mock-')) {
+            const post = mockPosts[postId];
+            if (post) {
+                pageState.status = 'loaded';
+                pageState.post = post;
+            } else {
+                pageState.status = 'not-found';
+            }
+            renderState();
+            return;
+        }
+
+        // Si es un post real de Blogger
+        if (BLOGGER_BLOG_ID && BLOGGER_API_KEY) {
+            try {
+                const response = await fetch(`https://www.googleapis.com/blogger/v3/blogs/${BLOGGER_BLOG_ID}/posts/${postId}?key=${BLOGGER_API_KEY}`);
+                if (!response.ok) throw new Error('Error al conectar con la API');
+                const data = await response.json();
+                
+                pageState.status = 'loaded';
+                pageState.post = {
+                    title: data.title,
+                    published: data.published,
+                    content: data.content
+                };
+                renderState();
+                return;
+            } catch (e) {
+                console.error("Error al cargar desde la API de Blogger:", e);
+            }
+        }
+
+        pageState.status = 'error';
+        renderState();
+    }
+
+    // Manejar el cambio de idioma dinámico
+    const langSelect = document.getElementById('lang-select');
+    const mobileLangSelect = document.getElementById('mobile-lang-select');
+    
+    if (langSelect) {
+        langSelect.addEventListener('change', () => {
+            setTimeout(renderState, 50);
+        });
+    }
+    if (mobileLangSelect) {
+        mobileLangSelect.addEventListener('change', () => {
+            setTimeout(renderState, 50);
+        });
+    }
+
+    window.addEventListener('DOMContentLoaded', loadPostData);
+</script>
+
+<!-- i18n Scripts -->
+<script src="js/translations.js"></script>
+<script src="js/i18n.js"></script>
+
+</body>
+</html>
