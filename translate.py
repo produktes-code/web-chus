@@ -40,11 +40,12 @@ def translate_item(key, original, lang_code):
     translator = GoogleTranslator(source='es', target=lang_code)
     try:
         return key, translator.translate(original)
-    except:
+    except Exception as e:
         try:
             time.sleep(1)
             return key, translator.translate(original)
-        except:
+        except Exception as e_retry:
+            print(f"Error translating {key}: {e_retry}", file=sys.stderr)
             return key, original
 
 for lang_code, lang_name in languages.items():
