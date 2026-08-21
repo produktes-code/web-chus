@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Perfil &amp; Trayectoria Auditada | CHUS BZN Studio</title>
+<meta content="Perfil auditado y trayectoria laboral histórica de CHUS BZN. Más de 33 años de experiencia en cine, televisión, audio broadcast e integración de Inteligencia Artificial en Barcelona." name="description"/>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Hanken+Grotesk:ital,wght@0,300;0,400;0,600;0,700;1,300&amp;family=JetBrains+Mono:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                colors: {
+                    "signal-red": "#FF1F1F",
+                    "signal-red-hover": "#D91616",
+                    "terminal-green": "#00FF41",
+                    "bg-black": "#000000",
+                    "surface-dim": "#121212",
+                    "surface-card": "#181818",
+                    "text-primary": "#FFFFFF",
+                    "text-secondary": "#A3A3A3"
+                },
+                fontFamily: {
+                    "headline": ["Anton", "sans-serif"],
+                    "sans": ["Hanken Grotesk", "sans-serif"],
+                    "mono": ["JetBrains Mono", "monospace"]
+                }
+            }
+        }
+    }
+</script>
+
+<style>
+    :root {
+        --bg-black: #000000;
+        --surface-dim: #121212;
+        --signal-red: #FF1F1F;
+        --terminal-green: #00FF41;
+        --font-headline: 'Anton', sans-serif;
+        --font-sans: 'Hanken Grotesk', sans-serif;
+        --font-mono: 'JetBrains Mono', monospace;
+    html, body { overflow-x: hidden; max-width: 100vw; }
+    body { background-color: #000; color: #fff; font-family: var(--font-sans); }
+    .glass-panel { background: rgba(18, 18, 18, 0.85); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.08); }
+    .reveal { opacity: 0; transform: translateY(24px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+    
+    /* Timeline styling */
+    .timeline-container { position: relative; border-left: 2px solid rgba(255, 31, 31, 0.4); margin-left: 12px; padding-left: 24px; }
+    .timeline-item { position: relative; margin-bottom: 40px; }
+    .timeline-item::before {
+        content: '';
+        position: absolute;
+        left: -31px; top: 6px;
+        width: 12px; height: 12px;
+        border-radius: 50%;
+        background-color: var(--signal-red);
+        box-shadow: 0 0 10px var(--signal-red);
+    }
+</style>
+</head>
+
+<body class="bg-black text-white selection:bg-signal-red selection:text-white">
+
+<!-- ═══ HEADER / NAVIGATION UNIFICADA ═══ -->
+<header class="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/10 h-20 transition-all duration-300">
+    <div class="max-w-[1440px] mx-auto px-6 sm:px-10 h-full flex justify-between items-center">
+        
+        <!-- Brand Logo -->
+        <a href="index.html" class="flex items-center gap-3 text-decoration-none group">
+            <span class="font-headline text-3xl tracking-tight text-signal-red group-hover:scale-105 transition-transform">CHUS BZN</span>
+            <span class="hidden sm:inline-block font-mono text-[10px] text-white/50 tracking-widest uppercase border-l border-white/20 pl-3">
+                PERFIL &amp; TRAYECTORIA AUDITADA
+            </span>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden xl:flex items-center gap-8 font-mono text-xs uppercase tracking-widest text-white/80">
+            <a href="index.html" class="hover:text-signal-red transition-colors" data-i18n="t_nav_home">01. Servicios a Medida</a>
+            <a href="#manifiesto" class="hover:text-signal-red transition-colors" data-i18n="t_nav_manif">02. Manifiesto</a>
+            <a href="#ia" class="hover:text-signal-red transition-colors" data-i18n="t_nav_ai">03. Ecosistema IA</a>
+            <a href="#broadcast" class="hover:text-signal-red transition-colors" data-i18n="t_nav_fpcat">04. FPCAT &amp; Cert</a>
+            <a href="#trayectoria" class="hover:text-signal-red transition-colors" data-i18n="t_nav_timeline">05. Timeline 33 Años</a>
+            <a href="#compliance" class="hover:text-signal-red transition-colors" data-i18n="t_nav_compliance">06. Compliance</a>
+        </nav>
+
+        <!-- Selector de Idiomas -->
+        <div class="flex items-center gap-4">
+            <select id="lang-select" aria-label="Seleccionar idioma" class="bg-black/80 border border-white/20 text-white text-xs font-mono px-2 py-1 uppercase cursor-pointer outline-none hover:border-signal-red">
+                <option value="es">🇪🇸 ES</option>
+                <option value="en">🇬🇧 EN</option>
+                <option value="de">🇩🇪 DE</option>
+                <option value="ru">🇷🇺 RU</option>
+                <option value="ja">🇯🇵 JA</option>
+                <option value="uk">🇺🇦 UK</option>
+                <option value="zh-CN">🇨🇳 ZH</option>
+                <option value="ar">🇸🇦 AR</option>
+            </select>
+        </div>
+    </div>
+</header>
+
+<main class="relative z-10 pt-32 pb-24">
+
+    <!-- ═══ HERO / PRESENTACIÓN AUDITADA ═══ -->
+    <section id="manifiesto" class="px-6 sm:px-10 max-w-[1440px] mx-auto mb-20 reveal active">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <div class="lg:col-span-8 space-y-6">
+                <div class="inline-flex items-center gap-2 border border-signal-red/40 px-3 py-1 bg-surface-dim font-mono text-xs text-signal-red">
+                    <span class="w-2 h-2 rounded-full bg-signal-red animate-ping"></span>
+                    <span>AUDITORÍA PROFESIONAL DE SOLVENCIA</span>
+                </div>
+                <h1 class="font-headline text-4xl sm:text-6xl uppercase text-white tracking-tight">
+                    CHUS BZN // <br/>
+                    <span class="text-signal-red">AUDITORÍA &amp; TRAYECTORIA INDUSTRIAL</span>
+                </h1>
+                <p class="font-sans text-lg text-text-secondary font-light leading-relaxed">
+                    <strong>CHUS BZN</strong> cuenta con una trayectoria de más de 33 años liderando la arquitectura de sistemas audiovisuales, sonido broadcast y desarrollo de Inteligencia Artificial para las principales cadenas de televisión, productoras y plataformas de streaming globales.
+                </p>
+                <div class="flex flex-wrap gap-3 font-mono text-xs text-white/80">
+                    <span class="glass-panel px-3 py-2 border border-white/10">33+ Años de Solvencia Auditada</span>
+                    <span class="glass-panel px-3 py-2 border border-white/10">Acreditación Oficial FPCAT Nivel 3</span>
+                    <span class="glass-panel px-3 py-2 border border-white/10">Socio SGAE / AISGE / AEDYP / AIE</span>
+                </div>
+            </div>
+
+            <div class="lg:col-span-4 flex justify-center">
+                <div class="glass-panel p-3 border border-white/15 w-64 h-80 overflow-hidden">
+                    <img src="assets/retrato_formal.png" alt="Dirección Técnica CHUS BZN" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"/>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ ECOSISTEMA DE DESARROLLO PROPIO & SOFTWARE IA ═══ -->
+    <section id="ia" class="py-16 px-6 sm:px-10 max-w-[1440px] mx-auto bg-surface-dim/40 border-y border-white/10 reveal">
+        <div class="text-center space-y-4 mb-14 max-w-4xl mx-auto">
+            <span class="font-mono text-signal-red text-xs uppercase tracking-widest">// SOFTWARE PROPIETARIO &amp; CASOS DE ESTUDIO</span>
+            <h2 class="font-headline text-4xl uppercase text-white">Ecosistema IA &amp; Prototipado</h2>
+        </div>
+
+        <!-- Cards de Software Propietario -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+            <div class="glass-panel p-6 border border-white/10 space-y-3">
+                <div class="flex items-center gap-3">
+                    <img src="assets/icon_sps.png" alt="Studio Pro Suite" class="w-10 h-10 rounded"/>
+                    <div>
+                        <h3 class="font-headline text-xl text-white">Studio Pro Suite</h3>
+                        <span class="font-mono text-[10px] text-signal-red">v1.0.0 Stable // Electron + React</span>
+                    </div>
+                </div>
+                <p class="font-sans text-xs text-text-secondary font-light">Ecosistema modular de escritorio para edición avanzada de vídeo, procesamiento masivo de imágenes y consola DAW de masterización.</p>
+            </div>
+
+            <div class="glass-panel p-6 border border-white/10 space-y-3">
+                <div class="flex items-center gap-3">
+                    <img src="assets/icon_csp.png" alt="Cine Station Pro" class="w-10 h-10 rounded"/>
+                    <div>
+                        <h3 class="font-headline text-xl text-white">Cine Station Pro</h3>
+                        <span class="font-mono text-[10px] text-signal-red">v1.0.0 Stable // FastAPI + FFmpeg</span>
+                    </div>
+                </div>
+                <p class="font-sans text-xs text-text-secondary font-light">Pipeline cinematográfico acelerado para inyección dinámica de LUTs profesionales (.cube), colorimetría en tiempo real y transcodificación de alta eficiencia.</p>
+            </div>
+
+            <div class="glass-panel p-6 border border-white/10 space-y-3">
+                <div class="flex items-center gap-3">
+                    <img src="assets/icon_bmc.png" alt="Brand Music Curator" class="w-10 h-10 rounded"/>
+                    <div>
+                        <h3 class="font-headline text-xl text-white">Brand Music Curator</h3>
+                        <span class="font-mono text-[10px] text-signal-red">v1.0.0 Stable // LLM Multimodal</span>
+                    </div>
+                </div>
+                <p class="font-sans text-xs text-text-secondary font-light">Motor de curación musical asistido por IA para estrategias de identidad sonora, locuciones neuronales y playlists comerciales.</p>
+            </div>
+        </div>
+
+        <!-- Casos de Estudio -->
+        <div class="space-y-4">
+            <h3 class="font-headline text-2xl text-white">Casos de Estudio Destacados</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 font-sans text-xs text-text-secondary font-light">
+                <div class="glass-panel p-6 border border-white/10 space-y-2">
+                    <strong class="text-white text-sm block">1. Dirección Técnica en Cine Asistido — "Alpha Berracos"</strong>
+                    <p>Despliegue de un flujo de trabajo híbrido integral donde la IA actúa como vector de aceleración en la generación de entornos visuales dinámicos, diseño conceptual de personajes y continuidad de guion optimizado para distribución masiva.</p>
+                </div>
+                <div class="glass-panel p-6 border border-white/10 space-y-2">
+                    <strong class="text-white text-sm block">2. Preservación Biométrica Neural — Proyecto LEGADO_JFB</strong>
+                    <p>Flujo forense de audio para entrenamiento y clonación neural legítima de voz a partir de cintas analógicas y masters históricos. Cumplimiento estricto del EU AI Act y blindaje con AISGE.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ CUALIFICACIONES OFICIALES FPCAT (14 UNIDADES DE COMPETENCIA) ═══ -->
+    <section id="broadcast" class="py-20 px-6 sm:px-10 max-w-[1440px] mx-auto reveal">
+        <div class="text-center space-y-4 mb-14 max-w-4xl mx-auto">
+            <span class="font-mono text-signal-red text-xs uppercase tracking-widest">// ACREDITACIÓN OFICIAL GENERALITAT DE CATALUNYA</span>
+            <h2 class="font-headline text-4xl uppercase text-white">Cualificaciones FPCAT (14 Unidades de Competencia)</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 font-sans text-xs">
+            <!-- Nivel 3 -->
+            <div class="glass-panel p-6 border border-white/10 space-y-4">
+                <div class="font-mono text-signal-red text-xs uppercase font-bold">// NIVEL 3 (GRADO SUPERIOR) — SONIDO PARA AUDIOVISUALES</div>
+                <ul class="space-y-2 text-text-secondary font-light">
+                    <li><strong class="text-white">UC1408_3:</strong> Definición y planificación de proyectos de sonido complejos para audiovisual y directo.</li>
+                    <li><strong class="text-white">UC1409_3:</strong> Supervisión de instalación y mantenimiento de sistemas de sonido profesionales.</li>
+                    <li><strong class="text-white">UC1410_3:</strong> Ajuste de equipos y captación de sonido para grabación o emisión broadcast.</li>
+                    <li><strong class="text-white">UC1411_3:</strong> Postproducción de proyectos de sonido (mezcla, diseño sonoro y masterización EBU R128).</li>
+                    <li><strong class="text-white">UC1412_3:</strong> Verificación y ajuste de sistemas de sonorización en recintos complejos.</li>
+                    <li><strong class="text-white">UC1413_3:</strong> Control de sonido en artes escénicas y eventos multitudinarios en directo.</li>
+                </ul>
+            </div>
+
+            <!-- Niveles 2 y 1 -->
+            <div class="glass-panel p-6 border border-white/10 space-y-4">
+                <div class="font-mono text-signal-red text-xs uppercase font-bold">// NIVELES 2 Y 1 — ANIMACIÓN MUSICAL, VISUAL E IMAGEN</div>
+                <ul class="space-y-2 text-text-secondary font-light">
+                    <li><strong class="text-white">UC1396_2:</strong> Programación y montaje de sesiones de animación musical y visual en vivo.</li>
+                    <li><strong class="text-white">UC1397_2:</strong> Mezcla y animación musical en directo con iluminación y vídeo.</li>
+                    <li><strong class="text-white">UC1398_2:</strong> Animación visual en vivo integrando elementos escénicos.</li>
+                    <li><strong class="text-white">UC1402_2:</strong> Montaje, desmontaje y mantenimiento de equipamiento AV profesional.</li>
+                    <li><strong class="text-white">UC1403_2:</strong> Mezcla directa y grabación en producciones de sonido en vivo.</li>
+                    <li><strong class="text-white">UC1404_2:</strong> Microfonía y posicionamiento espectral en sonido.</li>
+                    <li><strong class="text-white">UC0928_2:</strong> Digitalización y tratamiento digital de imágenes.</li>
+                    <li><strong class="text-white">UC1401_1:</strong> Montaje de productos fotográficos profesionales.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ TIMELINE LABORAL HISTÓRICA (33 AÑOS) ═══ -->
+    <section id="trayectoria" class="py-20 px-6 sm:px-10 max-w-[1440px] mx-auto bg-surface-dim/30 border-y border-white/10 reveal">
+        <div class="text-center space-y-4 mb-14 max-w-4xl mx-auto">
+            <span class="font-mono text-signal-red text-xs uppercase tracking-widest">// HISTORIAL DE PROYECTOS &amp; PRODUCCIONES (1987 - PRESENTE)</span>
+            <h2 class="font-headline text-4xl uppercase text-white">Trayectoria Industrial de 33 Años</h2>
+        </div>
+
+        <div class="timeline-container">
+            <div class="timeline-item">
+                <span class="font-mono text-xs text-signal-red">2020 - PRESENTE</span>
+                <h3 class="font-headline text-2xl text-white">Productor Audiovisual Senior &amp; IA Specialist</h3>
+                <span class="font-mono text-xs text-white/50 block mb-2">Actuara12 (Laboratorio &amp; Estudio Propietario)</span>
+                <p class="font-sans text-xs text-text-secondary font-light">Liderazgo técnico en eventos corporativos, producciones cinematográficas y desarrollo de soluciones basadas en Inteligencia Artificial.</p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="font-mono text-xs text-signal-red">2019 - 2020</span>
+                <h3 class="font-headline text-2xl text-white">Especialista Tecnológico</h3>
+                <span class="font-mono text-xs text-white/50 block mb-2">Apple Computers</span>
+                <p class="font-sans text-xs text-text-secondary font-light">Arquitectura de soluciones y consultoría tecnológica de alto nivel para el sector creativo y corporativo de Barcelona.</p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="font-mono text-xs text-signal-red">2014 - 2019</span>
+                <h3 class="font-headline text-2xl text-white">Diseñador de Sonido &amp; Montador Musical</h3>
+                <span class="font-mono text-xs text-white/50 block mb-2">Visiona TV / TV3 / TVE1</span>
+                <p class="font-sans text-xs text-text-secondary font-light">Diseño sonoro para "Dinàmiks" (TV3) y montaje musical para formatos de entretenimiento de máxima audiencia nacional como "Juego de Niños" (TVE1) con Javier Sardà.</p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="font-mono text-xs text-signal-red">2008 - 2014</span>
+                <h3 class="font-headline text-2xl text-white">Técnico de Doblaje Senior</h3>
+                <span class="font-mono text-xs text-white/50 block mb-2">Digitsound S.L.</span>
+                <p class="font-sans text-xs text-text-secondary font-light">Doblaje y postproducción de largometrajes cinematográficos (trilogía El Señor de los Anillos) y series de televisión (American Horror Story, CSI) para Netflix, HBO y Sony Pictures.</p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="font-mono text-xs text-signal-red">1990 - 2006 (16 Años en Plantilla Titular)</span>
+                <h3 class="font-headline text-2xl text-white">Técnico Audiovisual &amp; Montador Musical Titular</h3>
+                <span class="font-mono text-xs text-white/50 block mb-2">Gestmusic (Endemol Shine Iberia)</span>
+                <p class="font-sans text-xs text-text-secondary font-light">Control de sonido directo y efectos durante las 8 temporadas consecutivas de "Crónicas Marcianas", el programa líder histórico de televisión en España.</p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="font-mono text-xs text-signal-red">1987 - 1990</span>
+                <h3 class="font-headline text-2xl text-white">Técnico de Doblaje (Inicios de Oficio)</h3>
+                <span class="font-mono text-xs text-white/50 block mb-2">Tecni.3 (Badalona)</span>
+                <p class="font-sans text-xs text-text-secondary font-light">Operación con tecnología analógica industrial: sistemas de 35mm, grabadores multipista de cinta abierta y código de tiempo analógico.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ COMPLIANCE & BLINDAJE LEGAL ═══ -->
+    <section id="compliance" class="py-16 px-6 sm:px-10 max-w-[1440px] mx-auto reveal">
+        <div class="text-center space-y-4 mb-14 max-w-4xl mx-auto">
+            <span class="font-mono text-signal-red text-xs uppercase tracking-widest">// MARCO ÉTICO Y SEGURIDAD JURÍDICA</span>
+            <h2 class="font-headline text-4xl uppercase text-white">Compliance &amp; Gestión de Derechos</h2>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 font-mono text-xs">
+            <div class="glass-panel p-6 border border-white/10 text-center">
+                <div class="text-signal-red font-headline text-3xl mb-2">SGAE</div>
+                <p class="text-text-secondary font-sans text-xs">Protección de derechos de autor y composiciones musicales.</p>
+            </div>
+            <div class="glass-panel p-6 border border-white/10 text-center">
+                <div class="text-signal-red font-headline text-3xl mb-2">AISGE</div>
+                <p class="text-text-secondary font-sans text-xs">Protección de interpretaciones y soberanía biométrica vocal.</p>
+            </div>
+            <div class="glass-panel p-6 border border-white/10 text-center">
+                <div class="text-signal-red font-headline text-3xl mb-2">AEDYP</div>
+                <p class="text-text-secondary font-sans text-xs">Asociación de DJs y Productores de Música Electrónica.</p>
+            </div>
+            <div class="glass-panel p-6 border border-white/10 text-center">
+                <div class="text-signal-red font-headline text-3xl mb-2">AIE</div>
+                <p class="text-text-secondary font-sans text-xs">Gestión de propiedad intelectual de artistas ejecutantes.</p>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="bg-black py-12 px-6 border-t border-white/10 text-center font-mono text-xs text-white/50">
+    <p>© 2026 CHUS BZN // TRAYECTORIA Y SOLVENCIA TÉCNICA AUDITADA</p>
+</footer>
+
+<script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('active');
+        });
+    }, { threshold: 0.1 });
+    reveals.forEach(r => observer.observe(r));
+</script>
+<script src="js/translations.js"></script>
+<script src="js/i18n.js"></script>
+</body>
+</html>

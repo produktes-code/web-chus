@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CHUS BZN | Arquitectura de Sistemas Audiovisuales</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Hanken+Grotesk:wght@300;400;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "terminal-green": "#00FF41",
+                        "on-tertiary-fixed": "#002203",
+                        "tertiary-fixed": "#72ff70",
+                        "background": "#000000",
+                        "on-primary-fixed-variant": "#930006",
+                        "on-tertiary-container": "#003205",
+                        "secondary-container": "#454747",
+                        "signal-red": "#FF1F1F",
+                        "primary-container": "#ff5446",
+                        "surface-dim": "#131313",
+                        "tertiary-container": "#00a827",
+                        "on-primary": "#690003",
+                        "on-secondary-container": "#b4b5b5",
+                        "primary": "#ffb4aa",
+                        "surface-glass": "rgba(255, 255, 255, 0.05)",
+                        "outline": "#b08782",
+                        "surface-variant": "#353535",
+                        "secondary-fixed": "#e2e2e2",
+                        "on-tertiary": "#003907",
+                        "surface-container-low": "#1b1b1b",
+                        "surface-bright": "#393939",
+                        "grid-line": "rgba(255, 255, 255, 0.1)",
+                        "error-container": "#93000a",
+                        "surface": "#131313",
+                        "inverse-primary": "#c0000c",
+                        "surface-container-high": "#2a2a2a",
+                        "on-error": "#690005",
+                        "on-secondary-fixed-variant": "#454747",
+                        "on-surface": "#e2e2e2",
+                        "secondary": "#c6c6c7",
+                        "primary-fixed": "#ffdad5",
+                        "on-background": "#e2e2e2",
+                        "surface-container-lowest": "#0e0e0e",
+                        "surface-container": "#1f1f1f",
+                        "surface-tint": "#ffb4aa",
+                        "on-surface-variant": "#e9bcb6",
+                        "on-primary-container": "#5c0002",
+                        "outline-variant": "#5f3f3a",
+                        "on-primary-fixed": "#410001",
+                        "on-tertiary-fixed-variant": "#00530e",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary": "#2f3131",
+                        "primary-fixed-dim": "#ffb4aa",
+                        "secondary-fixed-dim": "#c6c6c7",
+                        "error": "#ffb4ab",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "surface-container-highest": "#353535",
+                        "tertiary-fixed-dim": "#00e639",
+                        "inverse-surface": "#e2e2e2",
+                        "inverse-on-surface": "#303030",
+                        "tertiary": "#00e639"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "section-gap": "120px",
+                        "container-max": "1440px",
+                        "margin-safe": "40px",
+                        "gutter": "24px",
+                        "unit": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Anton"],
+                        "body-md": ["Hanken Grotesk"],
+                        "label-tech": ["JetBrains Mono"],
+                        "headline-md": ["Anton"],
+                        "headline-lg-mobile": ["Anton"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "label-code": ["JetBrains Mono"],
+                        "headline-xl": ["Anton"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["64px", {"lineHeight": "110%", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "160%", "fontWeight": "400"}],
+                        "label-tech": ["14px", {"lineHeight": "140%", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "headline-md": ["32px", {"lineHeight": "120%", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["40px", {"lineHeight": "110%", "fontWeight": "400"}],
+                        "body-lg": ["20px", {"lineHeight": "160%", "fontWeight": "400"}],
+                        "label-code": ["12px", {"lineHeight": "140%", "fontWeight": "400"}],
+                        "headline-xl": ["96px", {"lineHeight": "100%", "letterSpacing": "-0.02em", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #000000;
+            color: #e2e2e2;
+            overflow-x: hidden;
+        }
+        .grid-background {
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .text-glow-red {
+            text-shadow: 0 0 10px rgba(255, 31, 31, 0.5);
+        }
+        .hover-red-border:hover {
+            border-color: #FF1F1F;
+        }
+    </style>
+</head>
+<body class="font-body-md">
+<!-- Grid Overlay -->
+<div class="fixed inset-0 grid-background pointer-events-none z-0"></div>
+<!-- Header Navigation -->
+<header class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-white/10">
+<div class="flex justify-between items-center px-margin-safe h-20 max-w-container-max mx-auto">
+<div class="font-headline-md text-headline-md text-signal-red tracking-tighter">CHUS BZN</div>
+<nav class="hidden md:flex gap-8 items-center font-label-tech text-label-tech uppercase">
+<a class="text-primary border-b border-primary pb-1" href="#">VIDEO CREATIVO</a>
+<a class="text-on-surface hover:text-primary transition-colors" href="#">EVENTOS EN VIVO</a>
+<a class="text-on-surface hover:text-primary transition-colors" href="#">DISEÑO SONORO</a>
+<a class="text-on-surface hover:text-primary transition-colors" href="#">FORMACIÓN</a>
+<a class="text-on-surface hover:text-primary transition-colors" href="#">DESARROLLO WEB</a>
+<a class="text-on-surface hover:text-primary transition-colors" href="#">PORTAFOLIO</a>
+</nav>
+<button class="bg-white text-black font-label-tech px-6 py-2 uppercase text-sm hover:bg-signal-red hover:text-white transition-all">CONTACTO</button>
+</div>
+</header>
+<main class="relative z-10 pt-20">
+<!-- Hero Section -->
+<section class="min-h-screen flex flex-col justify-center px-margin-safe max-w-container-max mx-auto py-20">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
+<div class="lg:col-span-7 space-y-8">
+<div class="inline-block border border-signal-red px-3 py-1 font-label-code text-signal-red">
+                        ESTADO_SISTEMA: ACTIVO // CERTIFICACIÓN_FPCAT_NVL3
+                    </div>
+<h1 class="font-headline-xl text-headline-xl uppercase leading-none">
+                        CURACIÓN AUDIOVISUAL <span class="text-signal-red">A MEDIDA</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                        Especialistas en ingeniería técnica de vanguardia e integración estratégica de Inteligencia Artificial. Elevamos infraestructuras críticas para cine, TV y entornos corporativos de alto rendimiento.
+                    </p>
+</div>
+<div class="lg:col-span-5 relative">
+<div class="aspect-square glass-panel overflow-hidden relative">
+<img alt="Visualización técnica CHUS BZN" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALX0xeHr9q7GY1gOk-nMGnXpB9s4vAugguXU0_G20nRAWJ3uIWrJYrOYdX4m3fmiifPZp-LTC6QlsaA9eBFYWjPj3Da7zgSxqMgb6RVJVGZ6kOeMKTzfR501bFAwiByYhXAwxyXUrgc_cAbvfWDJl9teE96urqs-V36ASgdsvYRY74cxKEzDQE9fS_lWzmVLh7SP2LnaT1qmvgpQjfH4rTuvmtIBHzOCZT_H8FjW8Hf3OpZWKop0mVDGGtk09Yt3tRF6NuLki40Jrs"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+</div>
+<!-- Technical leaking lines -->
+<div class="absolute -top-4 -right-4 w-24 h-24 border-t-2 border-r-2 border-signal-red"></div>
+<div class="absolute -bottom-4 -left-4 w-24 h-24 border-b-2 border-l-2 border-signal-red opacity-50"></div>
+</div>
+</div>
+</section>
+<!-- Service Windows (Bento Grid) -->
+<section class="py-section-gap px-margin-safe max-w-container-max mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
+<div class="space-y-2">
+<span class="font-label-code text-signal-red">[ SERVICIOS_NÚCLEO ]</span>
+<h2 class="font-headline-lg text-headline-lg uppercase">Módulos de Servicio</h2>
+</div>
+<p class="font-label-code text-on-surface-variant max-w-md text-right hidden md:block">
+                    MODALIDAD_OPERATIVA: SISTEMA_MULTIFACÉTICO<br/>
+                    LISTO_PARA_DESPLIEGUE_0.1
+                </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Video Creatividad -->
+<div class="group relative glass-panel p-2 hover-red-border transition-all duration-500 cursor-pointer">
+<div class="aspect-[1.5] overflow-hidden mb-4 relative">
+<img alt="Icono Vídeo Creatividad" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNJH73r8g5I9pJaJFu5svByRgcr4QBPa9A1knvHRuraYwDHUEph5URvRuSFvNYyCADN_Sd80BDCqfis_OzhadiQMbrntxVSmLEweo--x4i1nJQK5oyGx45-VmK-AV6ctH2CQJgZQpAfAYUiG-FGrihPUk8ust0IETVRM2-kdc14G6tqQmFz4Tamn_ZxU8OODnds3kxDNtvdhm_2ELDigSeY9Kn-BAFsd_F-IzQKyQmuD23O10JuCdb6juOWgJuLMDYYPLi42Ebs-LU"/>
+<div class="absolute inset-0 bg-signal-red/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<div class="p-4">
+<h3 class="font-headline-md text-headline-md uppercase mb-2">VIDEO CREATIVIDAD</h3>
+<p class="text-on-surface-variant font-label-code text-xs uppercase">Captación de alta precisión &amp; Narrativa Visual</p>
+</div>
+<div class="absolute top-4 right-4 bg-black/60 px-2 py-1 font-label-code text-[10px] text-signal-red border border-signal-red/30">MÓDULO_01</div>
+</div>
+<!-- Eventos en Vivo -->
+<div class="group relative glass-panel p-2 hover-red-border transition-all duration-500 cursor-pointer">
+<div class="aspect-[1.5] overflow-hidden mb-4 relative">
+<img alt="Icono Eventos en Vivo" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmdce9hnAEeU7pn0UE3OFzUyKqg0WbquKLAoJW5MrBMNbgRGWb-SzG7B_XAD81co3R18GcviV6QfTI9sB-_Us89t1gtbsGYwOPQK5kaq7r_-ruB-lWOLv2MkCquhU1LYJiWUJL7bY2qO7bMEAtE5l5UJH1NO_7AkxslHYZxK_jjOSoLEkwFEsHqDuH7nKf9N2by-55D_O2Z1SsXmrX8d48IFyRsjT29jGy_fWWZQnVgPlUSCFmBnybd0N4G3AUgMA4I8DGU-ldiG7n"/>
+<div class="absolute inset-0 bg-signal-red/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<div class="p-4">
+<h3 class="font-headline-md text-headline-md uppercase mb-2">EVENTOS EN VIVO</h3>
+<p class="text-on-surface-variant font-label-code text-xs uppercase">Dirección Técnica &amp; Streaming Broadcast</p>
+</div>
+<div class="absolute top-4 right-4 bg-black/60 px-2 py-1 font-label-code text-[10px] text-signal-red border border-signal-red/30">MÓDULO_02</div>
+</div>
+<!-- Diseño Sonoro -->
+<div class="group relative glass-panel p-2 hover-red-border transition-all duration-500 cursor-pointer">
+<div class="aspect-[1.5] overflow-hidden mb-4 relative">
+<img alt="Icono Diseño Sonoro" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBp91KXBkT8DlnE5ZseLzgX8wlpHrnHuwccYim7hsWKlgKx63YW-eJaFstec5Nwx0gKsCIwhMDEkewPXAZQL5bf-i5iYUc_juKxxg6_mSbFrt2YvJDUPe0zEMacgzxHzQDUywFBopWVTb4APd4A-gkbu18jCEZIYz_4BDkDPjxzTsf8dYaKbNjkV1JdoQXRTZseVngiyMB9oxi9Ye9g07qJ6fUE_kB9HTAMV-bmp1j37uyFnQtPz3_6nOvGIf329w955YgjReMOE-PF"/>
+<div class="absolute inset-0 bg-signal-red/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<div class="p-4">
+<h3 class="font-headline-md text-headline-md uppercase mb-2">DISEÑO SONORO</h3>
+<p class="text-on-surface-variant font-label-code text-xs uppercase">Ingeniería Acústica &amp; Identidad Sonora</p>
+</div>
+<div class="absolute top-4 right-4 bg-black/60 px-2 py-1 font-label-code text-[10px] text-signal-red border border-signal-red/30">MÓDULO_03</div>
+</div>
+<!-- Formación -->
+<div class="group relative glass-panel p-2 hover-red-border transition-all duration-500 cursor-pointer">
+<div class="aspect-[1.5] overflow-hidden mb-4 relative">
+<img alt="Icono Formación" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVrLy3QPlRfo8nSNfby7IAFmYSjG4XzcDCJGI9CBYzTv5jij5oizei4Fw4MxDywhRuz4C3hozBx-7Jyv5weByNLhFN3hYNAP2ub6732OxLw_6edjBxUfFkF0DCYCFNdBW62lmTBLoJvFLPZmATGHra3fXecnAOIyBILlDiSWH0-CJAIBw1p3XPeKu4IfOGbn-JyZ3AmZ6ssMBi_t8CR31StrzEupAbUw_Mq965TM737nVQpm9d5vW35AspJj7FPECdIFYWT4Ewc_lP"/>
+<div class="absolute inset-0 bg-signal-red/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<div class="p-4">
+<h3 class="font-headline-md text-headline-md uppercase mb-2">FORMACIÓN</h3>
+<p class="text-on-surface-variant font-label-code text-xs uppercase">Consultoría Estratégica &amp; Masterclasses Técnicas</p>
+</div>
+<div class="absolute top-4 right-4 bg-black/60 px-2 py-1 font-label-code text-[10px] text-signal-red border border-signal-red/30">MÓDULO_04</div>
+</div>
+<!-- Creación Web -->
+<div class="group relative glass-panel p-2 hover-red-border transition-all duration-500 cursor-pointer">
+<div class="aspect-[1.5] overflow-hidden mb-4 relative">
+<img alt="Icono Creación Web" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4bgCLtvTVbj3SyEQLl64ngZFXu6jigcxovrnIjxENgTLdNruQF0nPXJRKHSYN6GLnjEvi9fJO1eYscVSpWLFUdtjN2X-8jxK2m_rhCVmpaQu-3G4y3T1FgAXEmlYl12n0bh20LZoLJJzPFWcYWoK4YkHkp0od6vmzZy4zusSt1WN4sIrGUtogGx84DAdlLNxVbmCz8orvpgO1j6ugGXauZCsghLPD8KFfUI6CjlXH2kXKnq_JwnD-bLmXpMo8Pfub5qj2nYtpsIvY"/>
+<div class="absolute inset-0 bg-signal-red/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<div class="p-4">
+<h3 class="font-headline-md text-headline-md uppercase mb-2">CREACIÓN WEB</h3>
+<p class="text-on-surface-variant font-label-code text-xs uppercase">Arquitectura Full-Stack &amp; Multimedia</p>
+</div>
+<div class="absolute top-4 right-4 bg-black/60 px-2 py-1 font-label-code text-[10px] text-signal-red border border-signal-red/30">MÓDULO_05</div>
+</div>
+<!-- Portafolio -->
+<div class="group relative glass-panel p-2 hover-red-border transition-all duration-500 cursor-pointer bg-signal-red/5">
+<div class="aspect-[1.5] flex items-center justify-center mb-4 border border-white/5 bg-black/40">
+<span class="material-symbols-outlined text-6xl text-signal-red/40 group-hover:scale-125 transition-transform">folder_open</span>
+</div>
+<div class="p-4">
+<h3 class="font-headline-md text-headline-md uppercase mb-2">PORTAFOLIO</h3>
+<p class="text-on-surface-variant font-label-code text-xs uppercase">Historial de Proyectos &amp; Casos de Éxito</p>
+</div>
+<div class="absolute top-4 right-4 bg-signal-red px-2 py-1 font-label-code text-[10px] text-white">ACCESO_RECIENTE</div>
+</div>
+</div>
+</section>
+<!-- About / Methodology Section -->
+<section class="py-section-gap bg-surface-container-lowest relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-1 bg-signal-red"></div>
+<div class="px-margin-safe max-w-container-max mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div class="space-y-8">
+<div class="font-label-code text-signal-red">01 // MANIFIESTO_AGENCIA</div>
+<h2 class="font-headline-lg text-headline-lg uppercase">Metodología Híbrida</h2>
+<div class="space-y-6 font-body-lg text-on-surface-variant">
+<p>
+                                CHUS BZN opera bajo una visión donde la ingeniería técnica tradicional y la maestría en algoritmos convergen. Nuestra metodología se basa en transferir décadas de experiencia en entornos analógicos reales al entrenamiento y despliegue de soluciones basadas en Inteligencia Artificial.
+                            </p>
+<p class="text-base text-on-surface border-l-2 border-signal-red pl-6 italic">
+                                "La excelencia no es solo técnica, es el marco legal y de seguridad que ofrecemos a cada socio. Desde la gestión de derechos con SGAE y AISGE hasta el cumplimiento estricto del EU AI Act."
+                            </p>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="glass-panel p-6">
+<div class="text-4xl font-headline-md text-signal-red mb-1">30+</div>
+<div class="font-label-code text-xs uppercase">Años de Trayectoria Sectorial</div>
+</div>
+<div class="glass-panel p-6">
+<div class="text-4xl font-headline-md text-signal-red mb-1">100%</div>
+<div class="font-label-code text-xs uppercase">Cumplimiento Legal Auditado</div>
+</div>
+</div>
+</div>
+<div class="relative group">
+<div class="aspect-video overflow-hidden grayscale brightness-75 hover:grayscale-0 transition-all duration-1000">
+<img alt="Visualización de Metodología Técnica" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALX0xeHr9q7GY1gOk-nMGnXpB9s4vAugguXU0_G20nRAWJ3uIWrJYrOYdX4m3fmiifPZp-LTC6QlsaA9eBFYWjPj3Da7zgSxqMgb6RVJVGZ6kOeMKTzfR501bFAwiByYhXAwxyXUrgc_cAbvfWDJl9teE96urqs-V36ASgdsvYRY74cxKEzDQE9fS_lWzmVLh7SP2LnaT1qmvgpQjfH4rTuvmtIBHzOCZT_H8FjW8Hf3OpZWKop0mVDGGtk09Yt3tRF6NuLki40Jrs"/>
+</div>
+<div class="absolute -top-8 -right-8 w-48 h-48 bg-signal-red/10 rounded-full blur-3xl group-hover:bg-signal-red/20 transition-all"></div>
+<div class="absolute bottom-4 left-4 font-label-code text-[10px] text-white/40 uppercase tracking-widest">DIAGRAMA_OPERATIVO_V2.0</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Quote Form -->
+<section class="py-section-gap px-margin-safe max-w-container-max mx-auto" id="presupuesto">
+<div class="max-w-4xl mx-auto glass-panel p-8 md:p-16 border-t-2 border-signal-red">
+<div class="mb-12 text-center">
+<span class="font-label-code text-signal-red uppercase tracking-widest">[ PROTOCOLO_DE_PRESUPUESTO ]</span>
+<h2 class="font-headline-lg text-headline-lg uppercase mt-4">Solicitud de Servicio</h2>
+<p class="font-body-md text-on-surface-variant mt-2">Iniciemos el despliegue técnico de su próximo proyecto profesional.</p>
+</div>
+<form class="grid grid-cols-1 md:grid-cols-2 gap-8 font-label-tech">
+<div class="space-y-1">
+<label class="text-[10px] uppercase text-on-surface-variant">Razón Social / Nombre</label>
+<input class="w-full bg-transparent border-0 border-b border-white/20 focus:ring-0 focus:border-signal-red transition-colors text-on-surface py-2" placeholder="&gt; _" type="text"/>
+</div>
+<div class="space-y-1">
+<label class="text-[10px] uppercase text-on-surface-variant">Correo Electrónico Corporativo</label>
+<input class="w-full bg-transparent border-0 border-b border-white/20 focus:ring-0 focus:border-signal-red transition-colors text-on-surface py-2" placeholder="&gt; _" type="email"/>
+</div>
+<div class="space-y-1">
+<label class="text-[10px] uppercase text-on-surface-variant">Organización / Empresa</label>
+<input class="w-full bg-transparent border-0 border-b border-white/20 focus:ring-0 focus:border-signal-red transition-colors text-on-surface py-2" placeholder="&gt; _" type="text"/>
+</div>
+<div class="space-y-1">
+<label class="text-[10px] uppercase text-on-surface-variant">Módulo de Servicio</label>
+<select class="w-full bg-transparent border-0 border-b border-white/20 focus:ring-0 focus:border-signal-red transition-colors text-on-surface py-2">
+<option class="bg-black">Seleccionar módulo...</option>
+<option class="bg-black">Vídeo Creativo</option>
+<option class="bg-black">Eventos en Vivo</option>
+<option class="bg-black">Diseño Sonoro</option>
+<option class="bg-black">Formación / Asesoría</option>
+<option class="bg-black">Desarrollo Web</option>
+</select>
+</div>
+<div class="md:col-span-2 space-y-1">
+<label class="text-[10px] uppercase text-on-surface-variant">Especificaciones Técnicas</label>
+<textarea class="w-full bg-transparent border-0 border-b border-white/20 focus:ring-0 focus:border-signal-red transition-colors text-on-surface py-2 resize-none" placeholder="&gt; Defina los requerimientos del sistema..." rows="4"></textarea>
+</div>
+<div class="space-y-1">
+<label class="text-[10px] uppercase text-on-surface-variant">Plazo Estimado</label>
+<input class="w-full bg-transparent border-0 border-b border-white/20 focus:ring-0 focus:border-signal-red transition-colors text-on-surface py-2 [color-scheme:dark]" type="date"/>
+</div>
+<div class="md:col-span-2 pt-8">
+<button class="w-full bg-white text-black font-headline-md text-2xl py-6 uppercase hover:bg-signal-red hover:text-white transition-all transform active:scale-[0.98]" type="submit">
+                            ENVIAR PROTOCOLO DE CONTACTO
+                        </button>
+</div>
+</form>
+</div>
+</section>
+<!-- Credentials Strip -->
+<section class="py-12 border-y border-white/10 bg-white/[0.02]">
+<div class="px-margin-safe max-w-container-max mx-auto flex flex-wrap justify-center items-center gap-12 grayscale opacity-40">
+<span class="font-label-tech text-lg font-bold">CERTIFICACIÓN_FPCAT</span>
+<span class="font-label-tech text-lg font-bold">MARCO_LEGAL_SGAE</span>
+<span class="font-label-tech text-lg font-bold">DERECHOS_AISGE</span>
+<span class="font-label-tech text-lg font-bold">MIEMBRO_AEDYP</span>
+<span class="font-label-tech text-lg font-bold">SOCIO_AIE</span>
+<span class="font-label-tech text-lg font-bold">CUMPLIMIENTO_EU_AI_ACT</span>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest w-full py-20 border-t border-signal-red">
+<div class="px-margin-safe max-w-container-max mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-start gap-16 mb-20">
+<div class="space-y-6 max-w-sm">
+<div class="font-headline-md text-headline-md text-on-surface">CHUS BZN</div>
+<p class="font-label-code text-on-surface-variant text-xs">
+                        Ingeniería Audiovisual de Alto Nivel &amp; Arquitectura de IA Generativa. Operaciones desde Barcelona para mercado global.
+                    </p>
+<div class="flex gap-4">
+<a class="w-10 h-10 border border-white/10 flex items-center justify-center hover:bg-signal-red hover:border-signal-red transition-all" href="#">
+<span class="material-symbols-outlined text-sm">alternate_email</span>
+</a>
+<a class="w-10 h-10 border border-white/10 flex items-center justify-center hover:bg-signal-red hover:border-signal-red transition-all" href="#">
+<span class="material-symbols-outlined text-sm">terminal</span>
+</a>
+<a class="w-10 h-10 border border-white/10 flex items-center justify-center hover:bg-signal-red hover:border-signal-red transition-all" href="#">
+<span class="material-symbols-outlined text-sm">share</span>
+</a>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-12 md:gap-24 font-label-code uppercase text-xs">
+<div class="space-y-4">
+<div class="text-signal-red">Navegación</div>
+<ul class="space-y-2 text-on-surface-variant">
+<li><a class="hover:text-white transition-colors" href="#">Metodología</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Ecosistema IA</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Transmisión</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Código Fuente</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<div class="text-signal-red">Marco Legal</div>
+<ul class="space-y-2 text-on-surface-variant">
+<li><a class="hover:text-white transition-colors" href="#">Cumplimiento</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Regulación IA UE</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Derechos SGAE</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Privacidad</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/5 font-label-code text-[10px] text-on-surface-variant tracking-widest gap-4">
+<div>© 2024 CHUS BZN - ARQUITECTURA AUDIOVISUAL. REGISTROS DEL SISTEMA PROTEGIDOS.</div>
+<div class="flex gap-8">
+<span>ESTADO: OPERATIVO</span>
+<span>CIFRADO: AES-256</span>
+<span>UBICACIÓN: NODO_BCN</span>
+</div>
+</div>
+</div>
+</footer>
+<!-- Interactive Terminal Effect (Micro-interaction) -->
+<div class="fixed bottom-8 right-8 bg-black/80 backdrop-blur-md border border-white/10 p-3 font-label-code text-[10px] text-terminal-green z-50 pointer-events-none hidden md:block" id="terminal-cursor">
+<span id="terminal-text">INICIO_SISTEMA: LISTO...</span>
+<span class="animate-pulse">_</span>
+</div>
+<script>
+        // Atmospheric effect for terminal text in Spanish
+        const terminalText = document.getElementById('terminal-text');
+        const logs = [
+            'INICIO_SISTEMA: LISTO...',
+            'SINCRONIZANDO_MOTORES_MEDIA...',
+            'MODELOS_IA_CARGADOS: 100%',
+            'VÍNCULO_BROADCAST_ESTABLECIDO',
+            'MONITORIZANDO_FLUJO_USUARIO...',
+            'RENDIMIENTO_SISTEMA: ÓPTIMO',
+            'LATENCIA: 14MS'
+        ];
+        let index = 0;
+        setInterval(() => {
+            index = (index + 1) % logs.length;
+            terminalText.textContent = logs[index];
+        }, 4000);
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('bg-black', 'h-16');
+                header.classList.remove('h-20');
+            } else {
+                header.classList.remove('bg-black', 'h-16');
+                header.classList.add('h-20');
+            }
+        });
+    </script>
+</body></html>
