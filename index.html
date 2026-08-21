@@ -740,15 +740,15 @@
         </div>
     </section>
 
-    <!-- ═══ MUESTRA DE PRODUCCIONES GENERATIVAS (8 TARJETAS COMPACTAS CON VÍDEO EN VIVO Y LINKS INDIVIDUALES) ═══ -->
+    <!-- ═══ MUESTRA DE PRODUCCIONES GENERATIVAS (8 TARJETAS COMPACTAS CON REPRODUCCIÓN EN MODAL LIGHTBOX CON AUDIO) ═══ -->
     <section id="showcase" class="py-20 px-6 sm:px-10 max-w-[1440px] mx-auto reveal">
         <div class="text-center space-y-3 mb-12 max-w-4xl mx-auto">
-            <span class="font-mono text-signal-red text-xs uppercase tracking-widest">// SHOWCASE VIVO DE PRODUCCIONES &amp; REELS (LINKS INDIVIDUALES)</span>
+            <span class="font-mono text-signal-red text-xs uppercase tracking-widest">// SHOWCASE VIVO DE PRODUCCIONES &amp; REELS</span>
             <h2 class="font-headline text-3xl sm:text-5xl uppercase text-white tracking-tight section-headline-clean">
                 Muestra de Producciones Generativas
             </h2>
             <p class="font-sans text-sm text-text-secondary font-light max-w-2xl mx-auto leading-relaxed">
-                Cada tarjeta dispone de su <strong>clip en movimiento en vivo único</strong> y su <strong>enlace directo original</strong> a Instagram o YouTube para escuchar el audio completo en alta fidelidad.
+                Haga clic sobre cualquier tarjeta o el botón <strong>PLAY</strong> para abrir el reproductor modal y escuchar la pieza con <strong>audio completo en alta fidelidad</strong>.
             </p>
         </div>
 
@@ -756,14 +756,14 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             
             <!-- VÍDEO 01: Instagram Reel "America'n Job 🇺🇸" -->
-            <div class="glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group">
+            <div onclick="openVideoModal('american_job')" class="glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer">
                 <div class="space-y-2.5">
                     <div class="flex justify-between items-center font-mono text-[9px]">
                         <span class="text-signal-red font-bold uppercase tracking-wider">// INSTAGRAM REEL (ACTING IA)</span>
                         <span class="text-terminal-green animate-pulse">[PLAY EN VIVO]</span>
                     </div>
                     
-                    <a href="https://www.instagram.com/p/DQh86inDDTm/" target="_blank" rel="noopener" class="relative w-full aspect-[4/3] bg-black border border-white/10 overflow-hidden rounded shadow-xl group block">
+                    <div class="relative w-full aspect-[4/3] bg-black border border-white/10 overflow-hidden rounded shadow-xl group block">
                         <video src="assets/american_job.mp4" poster="assets/american_job.jpg" autoplay loop muted playsinline class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100"></video>
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-center justify-center pointer-events-none">
                             <div class="w-10 h-10 bg-signal-red group-hover:bg-white text-white group-hover:text-signal-red rounded-full flex items-center justify-center shadow-lg shadow-signal-red/50 transition-all transform group-hover:scale-110">
@@ -772,9 +772,9 @@
                         </div>
                         <div class="absolute bottom-1.5 left-1.5 right-1.5 flex justify-between items-center font-mono text-[8px] text-white bg-black/85 backdrop-blur-md px-2 py-1 rounded border border-white/10">
                             <span>INSTAGRAM REEL</span>
-                            <span class="text-signal-red font-bold uppercase">AUDIO &rarr;</span>
+                            <span class="text-signal-red font-bold uppercase">ESCUCHAR AUDIO &rarr;</span>
                         </div>
-                    </a>
+                    </div>
 
                     <div class="space-y-1">
                         <h3 class="font-headline text-lg text-white uppercase group-hover:text-signal-red transition-colors line-clamp-1">
@@ -788,21 +788,21 @@
 
                 <div class="pt-2 border-t border-white/10 flex justify-between items-center font-mono text-[9px]">
                     <span class="text-white/50 uppercase">FORMATO: REEL 9:16</span>
-                    <a href="https://www.instagram.com/p/DQh86inDDTm/" target="_blank" rel="noopener" class="text-signal-red font-bold uppercase hover:underline">
-                        VER EN INSTAGRAM &rarr;
-                    </a>
+                    <span class="text-signal-red font-bold uppercase group-hover:underline">
+                        REPRODUCIR CON AUDIO &rarr;
+                    </span>
                 </div>
             </div>
 
-            <!-- VÍDEO 02: KILLA — Gorilla Ops (YouTube Short / Instagram) -->
-            <div class="glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group">
+            <!-- VÍDEO 02: KILLA — Gorilla Ops -->
+            <div onclick="openVideoModal('killa')" class="glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer">
                 <div class="space-y-2.5">
                     <div class="flex justify-between items-center font-mono text-[9px]">
                         <span class="text-signal-red font-bold uppercase tracking-wider">// ACTION &amp; GORILLA IA</span>
                         <span class="text-terminal-green animate-pulse">[PLAY EN VIVO]</span>
                     </div>
                     
-                    <a href="https://www.youtube.com/shorts/C3dbBEv3miw" target="_blank" rel="noopener" class="relative w-full aspect-[4/3] bg-black border border-white/10 overflow-hidden rounded shadow-xl group block">
+                    <div class="relative w-full aspect-[4/3] bg-black border border-white/10 overflow-hidden rounded shadow-xl group block">
                         <video src="assets/killa.mp4" poster="assets/killa.jpg" autoplay loop muted playsinline class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100"></video>
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-center justify-center pointer-events-none">
                             <div class="w-10 h-10 bg-signal-red group-hover:bg-white text-white group-hover:text-signal-red rounded-full flex items-center justify-center shadow-lg shadow-signal-red/50 transition-all transform group-hover:scale-110">
@@ -811,9 +811,9 @@
                         </div>
                         <div class="absolute bottom-1.5 left-1.5 right-1.5 flex justify-between items-center font-mono text-[8px] text-white bg-black/85 backdrop-blur-md px-2 py-1 rounded border border-white/10">
                             <span>YOUTUBE SHORT</span>
-                            <span class="text-signal-red font-bold uppercase">AUDIO &rarr;</span>
+                            <span class="text-signal-red font-bold uppercase">ESCUCHAR AUDIO &rarr;</span>
                         </div>
-                    </a>
+                    </div>
 
                     <div class="space-y-1">
                         <h3 class="font-headline text-lg text-white uppercase group-hover:text-signal-red transition-colors line-clamp-1">
@@ -827,21 +827,21 @@
 
                 <div class="pt-2 border-t border-white/10 flex justify-between items-center font-mono text-[9px]">
                     <span class="text-white/50 uppercase">FORMATO: SHORT IA</span>
-                    <a href="https://www.youtube.com/shorts/C3dbBEv3miw" target="_blank" rel="noopener" class="text-signal-red font-bold uppercase hover:underline">
-                        VER SHORT &rarr;
-                    </a>
+                    <span class="text-signal-red font-bold uppercase group-hover:underline">
+                        REPRODUCIR CON AUDIO &rarr;
+                    </span>
                 </div>
             </div>
 
-            <!-- VÍDEO 03: Peaky Muppets 🎩🔪 (YouTube Shorts) -->
-            <div class="glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group">
+            <!-- VÍDEO 03: Peaky Muppets 🎩🔪 -->
+            <div onclick="openVideoModal('peaky_muppets')" class="glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer">
                 <div class="space-y-2.5">
                     <div class="flex justify-between items-center font-mono text-[9px]">
                         <span class="text-signal-red font-bold uppercase tracking-wider">// MOTION IA &amp; SHORT</span>
                         <span class="text-terminal-green animate-pulse">[PLAY EN VIVO]</span>
                     </div>
                     
-                    <a href="https://www.youtube.com/shorts/jntG8a0HgF4" target="_blank" rel="noopener" class="relative w-full aspect-[4/3] bg-black border border-white/10 overflow-hidden rounded shadow-xl group block">
+                    <div class="relative w-full aspect-[4/3] bg-black border border-white/10 overflow-hidden rounded shadow-xl group block">
                         <video src="assets/peaky_muppets.mp4" poster="assets/peaky_muppets.jpg" autoplay loop muted playsinline class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100"></video>
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-center justify-center pointer-events-none">
                             <div class="w-10 h-10 bg-signal-red group-hover:bg-white text-white group-hover:text-signal-red rounded-full flex items-center justify-center shadow-lg shadow-signal-red/50 transition-all transform group-hover:scale-110">
@@ -850,9 +850,9 @@
                         </div>
                         <div class="absolute bottom-1.5 left-1.5 right-1.5 flex justify-between items-center font-mono text-[8px] text-white bg-black/85 backdrop-blur-md px-2 py-1 rounded border border-white/10">
                             <span>YOUTUBE SHORT</span>
-                            <span class="text-signal-red font-bold uppercase">AUDIO &rarr;</span>
+                            <span class="text-signal-red font-bold uppercase">ESCUCHAR AUDIO &rarr;</span>
                         </div>
-                    </a>
+                    </div>
 
                     <div class="space-y-1">
                         <h3 class="font-headline text-lg text-white uppercase group-hover:text-signal-red transition-colors line-clamp-1">
@@ -866,21 +866,21 @@
 
                 <div class="pt-2 border-t border-white/10 flex justify-between items-center font-mono text-[9px]">
                     <span class="text-white/50 uppercase">FORMATO: SHORT IA</span>
-                    <a href="https://www.youtube.com/shorts/jntG8a0HgF4" target="_blank" rel="noopener" class="text-signal-red font-bold uppercase hover:underline">
-                        VER SHORT &rarr;
-                    </a>
+                    <span class="text-signal-red font-bold uppercase group-hover:underline">
+                        REPRODUCIR CON AUDIO &rarr;
+                    </span>
                 </div>
             </div>
 
             <!-- VÍDEO 04: VENENO (BreakBeat Mix) -->
-            <div class="glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group">
+            <div onclick="openVideoModal('veneno')" class="glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer">
                 <div class="space-y-2.5">
                     <div class="flex justify-between items-center font-mono text-[9px]">
                         <span class="text-signal-red font-bold uppercase tracking-wider">// SONIDO &amp; RAVE 90S</span>
                         <span class="text-terminal-green animate-pulse">[PLAY EN VIVO]</span>
                     </div>
                     
-                    <a href="https://www.youtube.com/shorts/sSIBsZEcKTk" target="_blank" rel="noopener" class="relative w-full aspect-[4/3] bg-black border border-white/10 overflow-hidden rounded shadow-xl group block">
+                    <div class="relative w-full aspect-[4/3] bg-black border border-white/10 overflow-hidden rounded shadow-xl group block">
                         <video src="assets/veneno.mp4" poster="assets/blueprint_sonido.png" autoplay loop muted playsinline class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100"></video>
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-center justify-center pointer-events-none">
                             <div class="w-10 h-10 bg-signal-red group-hover:bg-white text-white group-hover:text-signal-red rounded-full flex items-center justify-center shadow-lg shadow-signal-red/50 transition-all transform group-hover:scale-110">
@@ -889,9 +889,9 @@
                         </div>
                         <div class="absolute bottom-1.5 left-1.5 right-1.5 flex justify-between items-center font-mono text-[8px] text-white bg-black/85 backdrop-blur-md px-2 py-1 rounded border border-white/10">
                             <span>YOUTUBE SHORT</span>
-                            <span class="text-signal-red font-bold uppercase">AUDIO &rarr;</span>
+                            <span class="text-signal-red font-bold uppercase">ESCUCHAR AUDIO &rarr;</span>
                         </div>
-                    </a>
+                    </div>
 
                     <div class="space-y-1">
                         <h3 class="font-headline text-lg text-white uppercase group-hover:text-signal-red transition-colors line-clamp-1">
@@ -905,21 +905,21 @@
 
                 <div class="pt-2 border-t border-white/10 flex justify-between items-center font-mono text-[9px]">
                     <span class="text-white/50 uppercase">FORMATO: AUDIO &amp; VÍDEO</span>
-                    <a href="https://www.youtube.com/shorts/sSIBsZEcKTk" target="_blank" rel="noopener" class="text-signal-red font-bold uppercase hover:underline">
-                        VER SHORT &rarr;
-                    </a>
+                    <span class="text-signal-red font-bold uppercase group-hover:underline">
+                        REPRODUCIR CON AUDIO &rarr;
+                    </span>
                 </div>
             </div>
 
             <!-- VÍDEO 05: BIENVENIDOS A MI CIUDAD / Barcelona Dusty Clown -->
-            <div class="glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group">
+            <div onclick="openVideoModal('barcelona_clown')" class="glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer">
                 <div class="space-y-2.5">
                     <div class="flex justify-between items-center font-mono text-[9px]">
                         <span class="text-signal-red font-bold uppercase tracking-wider">// CINEMÁTICA BARCELONA</span>
                         <span class="text-terminal-green animate-pulse">[PLAY EN VIVO]</span>
                     </div>
                     
-                    <a href="https://www.youtube.com/shorts/xsjyo_bV5RA" target="_blank" rel="noopener" class="relative w-full aspect-[4/3] bg-black border border-white/10 overflow-hidden rounded shadow-xl group block">
+                    <div class="relative w-full aspect-[4/3] bg-black border border-white/10 overflow-hidden rounded shadow-xl group block">
                         <video src="assets/barcelona_clown.mp4" poster="assets/barcelona_clown.jpg" autoplay loop muted playsinline class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100"></video>
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-center justify-center pointer-events-none">
                             <div class="w-10 h-10 bg-signal-red group-hover:bg-white text-white group-hover:text-signal-red rounded-full flex items-center justify-center shadow-lg shadow-signal-red/50 transition-all transform group-hover:scale-110">
@@ -928,9 +928,9 @@
                         </div>
                         <div class="absolute bottom-1.5 left-1.5 right-1.5 flex justify-between items-center font-mono text-[8px] text-white bg-black/85 backdrop-blur-md px-2 py-1 rounded border border-white/10">
                             <span>YOUTUBE SHORT</span>
-                            <span class="text-signal-red font-bold uppercase">AUDIO &rarr;</span>
+                            <span class="text-signal-red font-bold uppercase">ESCUCHAR AUDIO &rarr;</span>
                         </div>
-                    </a>
+                    </div>
 
                     <div class="space-y-1">
                         <h3 class="font-headline text-lg text-white uppercase group-hover:text-signal-red transition-colors line-clamp-1">
@@ -944,21 +944,21 @@
 
                 <div class="pt-2 border-t border-white/10 flex justify-between items-center font-mono text-[9px]">
                     <span class="text-white/50 uppercase">FORMATO: SHORT IA</span>
-                    <a href="https://www.youtube.com/shorts/xsjyo_bV5RA" target="_blank" rel="noopener" class="text-signal-red font-bold uppercase hover:underline">
-                        VER SHORT &rarr;
-                    </a>
+                    <span class="text-signal-red font-bold uppercase group-hover:underline">
+                        REPRODUCIR CON AUDIO &rarr;
+                    </span>
                 </div>
             </div>
 
             <!-- VÍDEO 06: BRONX 1980 — La Era Dorada -->
-            <div class="glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group">
+            <div onclick="openVideoModal('bronx_1980')" class="glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer">
                 <div class="space-y-2.5">
                     <div class="flex justify-between items-center font-mono text-[9px]">
                         <span class="text-signal-red font-bold uppercase tracking-wider">// CULTURA HIP HOP</span>
                         <span class="text-terminal-green animate-pulse">[PLAY EN VIVO]</span>
                     </div>
                     
-                    <a href="https://www.youtube.com/shorts/l-_uE3Zg7do" target="_blank" rel="noopener" class="relative w-full aspect-[4/3] bg-black border border-white/10 overflow-hidden rounded shadow-xl group block">
+                    <div class="relative w-full aspect-[4/3] bg-black border border-white/10 overflow-hidden rounded shadow-xl group block">
                         <video src="assets/bronx_1980.mp4" poster="assets/bronx_1980.jpg" autoplay loop muted playsinline class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100"></video>
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-center justify-center pointer-events-none">
                             <div class="w-10 h-10 bg-signal-red group-hover:bg-white text-white group-hover:text-signal-red rounded-full flex items-center justify-center shadow-lg shadow-signal-red/50 transition-all transform group-hover:scale-110">
@@ -967,9 +967,9 @@
                         </div>
                         <div class="absolute bottom-1.5 left-1.5 right-1.5 flex justify-between items-center font-mono text-[8px] text-white bg-black/85 backdrop-blur-md px-2 py-1 rounded border border-white/10">
                             <span>YOUTUBE SHORT</span>
-                            <span class="text-signal-red font-bold uppercase">AUDIO &rarr;</span>
+                            <span class="text-signal-red font-bold uppercase">ESCUCHAR AUDIO &rarr;</span>
                         </div>
-                    </a>
+                    </div>
 
                     <div class="space-y-1">
                         <h3 class="font-headline text-lg text-white uppercase group-hover:text-signal-red transition-colors line-clamp-1">
@@ -983,21 +983,21 @@
 
                 <div class="pt-2 border-t border-white/10 flex justify-between items-center font-mono text-[9px]">
                     <span class="text-white/50 uppercase">FORMATO: SHORT RAP</span>
-                    <a href="https://www.youtube.com/shorts/l-_uE3Zg7do" target="_blank" rel="noopener" class="text-signal-red font-bold uppercase hover:underline">
-                        VER SHORT &rarr;
-                    </a>
+                    <span class="text-signal-red font-bold uppercase group-hover:underline">
+                        REPRODUCIR CON AUDIO &rarr;
+                    </span>
                 </div>
             </div>
 
             <!-- VÍDEO 07: ROBO SMOKE 🤖 -->
-            <div class="glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group">
+            <div onclick="openVideoModal('robo_smoke')" class="glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer">
                 <div class="space-y-2.5">
                     <div class="flex justify-between items-center font-mono text-[9px]">
                         <span class="text-signal-red font-bold uppercase tracking-wider">// COMEDIA DISTÓPICA</span>
                         <span class="text-terminal-green animate-pulse">[PLAY EN VIVO]</span>
                     </div>
                     
-                    <a href="https://www.youtube.com/shorts/O8NZ0_EFM7U" target="_blank" rel="noopener" class="relative w-full aspect-[4/3] bg-black border border-white/10 overflow-hidden rounded shadow-xl group block">
+                    <div class="relative w-full aspect-[4/3] bg-black border border-white/10 overflow-hidden rounded shadow-xl group block">
                         <video src="assets/robo_smoke.mp4" poster="assets/robo_smoke.jpg" autoplay loop muted playsinline class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100"></video>
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-center justify-center pointer-events-none">
                             <div class="w-10 h-10 bg-signal-red group-hover:bg-white text-white group-hover:text-signal-red rounded-full flex items-center justify-center shadow-lg shadow-signal-red/50 transition-all transform group-hover:scale-110">
@@ -1006,9 +1006,9 @@
                         </div>
                         <div class="absolute bottom-1.5 left-1.5 right-1.5 flex justify-between items-center font-mono text-[8px] text-white bg-black/85 backdrop-blur-md px-2 py-1 rounded border border-white/10">
                             <span>YOUTUBE SHORT</span>
-                            <span class="text-signal-red font-bold uppercase">AUDIO &rarr;</span>
+                            <span class="text-signal-red font-bold uppercase">ESCUCHAR AUDIO &rarr;</span>
                         </div>
-                    </a>
+                    </div>
 
                     <div class="space-y-1">
                         <h3 class="font-headline text-lg text-white uppercase group-hover:text-signal-red transition-colors line-clamp-1">
@@ -1022,21 +1022,21 @@
 
                 <div class="pt-2 border-t border-white/10 flex justify-between items-center font-mono text-[9px]">
                     <span class="text-white/50 uppercase">FORMATO: SHORT IA</span>
-                    <a href="https://www.youtube.com/shorts/O8NZ0_EFM7U" target="_blank" rel="noopener" class="text-signal-red font-bold uppercase hover:underline">
-                        VER SHORT &rarr;
-                    </a>
+                    <span class="text-signal-red font-bold uppercase group-hover:underline">
+                        REPRODUCIR CON AUDIO &rarr;
+                    </span>
                 </div>
             </div>
 
             <!-- VÍDEO 08: CODE BLACK — Cyberpunk Dystopia -->
-            <div class="glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group">
+            <div onclick="openVideoModal('code_black')" class="glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer">
                 <div class="space-y-2.5">
                     <div class="flex justify-between items-center font-mono text-[9px]">
                         <span class="text-signal-red font-bold uppercase tracking-wider">// CYBERPUNK NOIR</span>
                         <span class="text-terminal-green animate-pulse">[PLAY EN VIVO]</span>
                     </div>
                     
-                    <a href="https://www.youtube.com/shorts/RtmcwkMDd0w" target="_blank" rel="noopener" class="relative w-full aspect-[4/3] bg-black border border-white/10 overflow-hidden rounded shadow-xl group block">
+                    <div class="relative w-full aspect-[4/3] bg-black border border-white/10 overflow-hidden rounded shadow-xl group block">
                         <video src="assets/code_black.mp4" poster="assets/code_black.jpg" autoplay loop muted playsinline class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100"></video>
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-center justify-center pointer-events-none">
                             <div class="w-10 h-10 bg-signal-red group-hover:bg-white text-white group-hover:text-signal-red rounded-full flex items-center justify-center shadow-lg shadow-signal-red/50 transition-all transform group-hover:scale-110">
@@ -1045,9 +1045,9 @@
                         </div>
                         <div class="absolute bottom-1.5 left-1.5 right-1.5 flex justify-between items-center font-mono text-[8px] text-white bg-black/85 backdrop-blur-md px-2 py-1 rounded border border-white/10">
                             <span>YOUTUBE SHORT</span>
-                            <span class="text-signal-red font-bold uppercase">AUDIO &rarr;</span>
+                            <span class="text-signal-red font-bold uppercase">ESCUCHAR AUDIO &rarr;</span>
                         </div>
-                    </a>
+                    </div>
 
                     <div class="space-y-1">
                         <h3 class="font-headline text-lg text-white uppercase group-hover:text-signal-red transition-colors line-clamp-1">
@@ -1061,11 +1061,14 @@
 
                 <div class="pt-2 border-t border-white/10 flex justify-between items-center font-mono text-[9px]">
                     <span class="text-white/50 uppercase">FORMATO: SHORT NOIR</span>
-                    <a href="https://www.youtube.com/shorts/RtmcwkMDd0w" target="_blank" rel="noopener" class="text-signal-red font-bold uppercase hover:underline">
-                        VER SHORT &rarr;
-                    </a>
+                    <span class="text-signal-red font-bold uppercase group-hover:underline">
+                        REPRODUCIR CON AUDIO &rarr;
+                    </span>
                 </div>
             </div>
+
+        </div>
+    </section>
 
         </div>
     </section>
@@ -1405,6 +1408,34 @@
     </div>
 </div>
 
+<!-- ═══ REPRODUCTOR MODAL LIGHTBOX DE VÍDEO CON AUDIO COMPLETO ═══ -->
+<div id="video-modal" class="modal-backdrop" onclick="closeVideoModal(event)">
+    <div class="glass-panel p-4 sm:p-6 max-w-4xl w-full max-h-[92vh] overflow-y-auto border border-signal-red/50 relative space-y-4 shadow-2xl" onclick="event.stopPropagation()">
+        
+        <!-- Botón de Cerrar Modal -->
+        <button onclick="closeVideoModal()" class="absolute top-3 right-3 text-white/70 hover:text-signal-red font-mono text-2xl z-20 w-9 h-9 bg-black/60 rounded-full flex items-center justify-center border border-white/20 transition-all">&times;</button>
+        
+        <!-- Cabecera de la Producción -->
+        <div class="space-y-1">
+            <span id="vmodal-badge" class="font-mono text-xs text-signal-red tracking-widest uppercase">// REPRODUCTOR VIVO CON AUDIO</span>
+            <h3 id="vmodal-title" class="font-headline text-2xl sm:text-3xl text-white uppercase tracking-tight">---</h3>
+        </div>
+
+        <!-- Contenedor del Reproductor de Vídeo con Audio Nativo -->
+        <div class="relative w-full aspect-video bg-black border border-white/20 rounded overflow-hidden shadow-2xl flex items-center justify-center">
+            <video id="vmodal-player" controls autoplay class="w-full h-full object-contain"></video>
+        </div>
+
+        <!-- Descripción & Botón a la Fuente Oficial -->
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pt-2 border-t border-white/10 font-mono text-xs">
+            <p id="vmodal-desc" class="font-sans text-xs text-text-secondary font-light max-w-xl">---</p>
+            <a id="vmodal-link" href="#" target="_blank" rel="noopener" class="bg-signal-red hover:bg-white text-white hover:text-signal-red font-mono text-xs px-5 py-2.5 uppercase tracking-wider font-bold transition-all whitespace-nowrap shadow-lg">
+                ABRIR EN FUENTE ORIGINAL &rarr;
+            </a>
+        </div>
+    </div>
+</div>
+
 <!-- ═══ INTERACTIVE LIVE TERMINAL FLOATING ═══ -->
 <div class="fixed bottom-6 right-6 bg-black/90 border border-white/15 p-3 font-mono text-[10px] text-terminal-green z-50 shadow-2xl hidden md:block" id="live-terminal">
     <span id="terminal-msg">[ SYS_LOG: VÍNCULO_BROADCAST_ESTABLECIDO ]</span>
@@ -1556,6 +1587,90 @@
 
     function closeServiceModal(e) {
         document.getElementById('service-modal').classList.remove('open');
+    }
+
+    // ═══ SHOWCASE LIGHTBOX VIDEO PLAYER WITH FULL AUDIO ═══
+    const SHOWCASE_DATA = {
+        american_job: {
+            title: "America'n Job 🇺🇸",
+            badge: "// INSTAGRAM REEL (ACTING IA)",
+            video: "assets/american_job.mp4",
+            desc: "Acting I.A por @chus_bzn: Estética cinemática estilo 1967, prompting de animación de personajes y mezcla sonoras con John Williams - Prologue (JFK) & Walter Cronkite.",
+            link: "https://www.instagram.com/p/DQh86inDDTm/"
+        },
+        killa: {
+            title: "KILLA — Gorilla Ops 🦍🔥",
+            badge: "// ACTION & GORILLA IA",
+            video: "assets/killa.mp4",
+            desc: "Producción generativa con animación de personajes, chicas y gorilas militares de acción.",
+            link: "https://www.youtube.com/shorts/C3dbBEv3miw"
+        },
+        peaky_muppets: {
+            title: "Peaky Muppets 🎩🔪",
+            badge: "// MOTION IA & SHORT",
+            video: "assets/peaky_muppets.mp4",
+            desc: "Parodia animada combinando la estética de Peaky Blinders con marionetas expresivas y lipsync generativo.",
+            link: "https://www.youtube.com/shorts/jntG8a0HgF4"
+        },
+        veneno: {
+            title: "VENENO (BreakBeat Mix)",
+            badge: "// SONIDO & RAVE 90S",
+            video: "assets/veneno.mp4",
+            desc: "Creación de sonido original con ritmos BreakBeat, sintetizadores ácidos y montaje dinámico estilo noventero.",
+            link: "https://www.youtube.com/shorts/sSIBsZEcKTk"
+        },
+        barcelona_clown: {
+            title: "BIENVENIDOS A MI CIUDAD 🎭",
+            badge: "// CINEMÁTICA BARCELONA",
+            video: "assets/barcelona_clown.mp4",
+            desc: "Hiperrealismo cinemático sobre el personaje urbano de Barcelona, entorno IA y sonido EBU R128.",
+            link: "https://www.youtube.com/shorts/xsjyo_bV5RA"
+        },
+        bronx_1980: {
+            title: "BRONX 1980",
+            badge: "// CULTURA HIP HOP",
+            video: "assets/bronx_1980.mp4",
+            desc: "Tributo cinemático al nacimiento del Hip Hop en Nueva York 1980 con compresión analógica.",
+            link: "https://www.youtube.com/shorts/l-_uE3Zg7do"
+        },
+        robo_smoke: {
+            title: "ROBO SMOKE 🤖",
+            badge: "// COMEDIA DISTÓPICA",
+            video: "assets/robo_smoke.mp4",
+            desc: "Animación 3D de personajes robotizados con efectos de partículas de humo generativo.",
+            link: "https://www.youtube.com/shorts/O8NZ0_EFM7U"
+        },
+        code_black: {
+            title: "CODE BLACK — Cyberpunk",
+            badge: "// CYBERPUNK NOIR",
+            video: "assets/code_black.mp4",
+            desc: "Estética de cómic noir futurista, iluminación de neón y diseño de sonido cybernetic.",
+            link: "https://www.youtube.com/shorts/RtmcwkMDd0w"
+        }
+    };
+
+    function openVideoModal(key) {
+        const data = SHOWCASE_DATA[key];
+        if (!data) return;
+        document.getElementById('vmodal-badge').textContent = data.badge;
+        document.getElementById('vmodal-title').textContent = data.title;
+        document.getElementById('vmodal-desc').textContent = data.desc;
+        document.getElementById('vmodal-link').href = data.link;
+        
+        const player = document.getElementById('vmodal-player');
+        player.src = data.video;
+        player.muted = false; // Audio ENABLED natively in modal!
+        player.play().catch(err => console.log('Autoplay handled:', err));
+        
+        document.getElementById('video-modal').classList.add('open');
+    }
+
+    function closeVideoModal(e) {
+        const modal = document.getElementById('video-modal');
+        modal.classList.remove('open');
+        const player = document.getElementById('vmodal-player');
+        player.pause();
+        player.src = '';
     }
 
     // Mobile Navigation Toggle
