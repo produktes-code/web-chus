@@ -740,69 +740,182 @@
         </div>
     </section>
 
-    <!-- ═══ REPRODUCTORES DE VÍDEO OPERATIVOS CON PRIMER FOTOGRAMA VISIBLE ═══ -->
+    <!-- ═══ PARRILLA DE MUESTRA DE PRODUCCIONES GENERATIVAS (RED DISEÑADA PARA MÁS VÍDEOS) ═══ -->
     <section id="showcase" class="py-24 px-6 sm:px-10 max-w-[1440px] mx-auto reveal">
-        <div class="text-center space-y-4 mb-16 max-w-3xl mx-auto">
-            <span class="font-mono text-signal-red text-xs uppercase tracking-widest">// VÍDEOS EN VIVO OPERATIVOS EN LA WEB</span>
-            <h2 class="font-headline text-4xl sm:text-6xl uppercase text-white tracking-tight section-headline-clean">Muestra de Producciones Generativas</h2>
-            <p class="font-sans text-sm text-text-secondary font-light">
-                Presione PLAY o acceda directamente para visionar los trailers y piezas de laboratorio en resolución 4K.
+        <div class="text-center space-y-4 mb-16 max-w-4xl mx-auto">
+            <span class="font-mono text-signal-red text-xs uppercase tracking-widest">// GALERÍA VIVA DE PRODUCCIONES &amp; REEL SHOWCASE</span>
+            <h2 class="font-headline text-4xl sm:text-6xl uppercase text-white tracking-tight section-headline-clean">
+                Muestra de Producciones Generativas
+            </h2>
+            <p class="font-sans text-base text-text-secondary font-light max-w-2xl mx-auto leading-relaxed">
+                Haga clic en el botón <strong>PLAY</strong> o en la tarjeta para abrir el vídeo en su plataforma original (Instagram / YouTube) y escucharlo con audio completo en alta calidad.
             </p>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <!-- Retícula de Producciones Reales Ampliable (3 a 4 Columnas) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             
-            <!-- Embedded Video Player 01: Alpha Berracos Teaser / Cine IA -->
-            <div class="glass-panel p-6 border border-white/15 space-y-4">
-                <div class="flex justify-between items-center font-mono text-xs">
-                    <span class="text-signal-red font-bold uppercase">// PRODUCCIÓN CINE IA: "ALPHA BERRACOS"</span>
-                    <span class="text-terminal-green text-[10px]">VIDEO_PLAYER_01 [READY]</span>
-                </div>
-                
-                <!-- Responsive Video Container con Poster HD y Play Button -->
-                <div class="relative w-full aspect-video bg-black border border-white/10 overflow-hidden shadow-2xl group cursor-pointer">
-                    <img src="assets/blog_berracos.png" alt="Alpha Berracos Cine IA" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80 group-hover:opacity-100">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-center justify-center">
-                        <a href="https://www.youtube.com/@chus_bzn" target="_blank" rel="noopener" class="w-16 h-16 bg-signal-red hover:bg-white text-white hover:text-signal-red rounded-full flex items-center justify-center shadow-lg shadow-signal-red/50 transition-all transform group-hover:scale-110">
-                            <svg class="w-8 h-8 translate-x-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                        </a>
+            <!-- VÍDEO 01: Instagram Reel Oficial (DQh86inDDTm) -->
+            <div class="glass-panel p-5 border border-white/15 space-y-4 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group">
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center font-mono text-[10px]">
+                        <span class="text-signal-red font-bold uppercase tracking-widest">// INSTAGRAM REEL</span>
+                        <span class="text-terminal-green">[ONLINE]</span>
                     </div>
-                    <div class="absolute bottom-3 left-3 right-3 flex justify-between items-center font-mono text-[10px] text-white/80 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded">
-                        <span>FORMATO: 4K ANAMÓRFICO IA</span>
-                        <span class="text-signal-red font-bold">REPRODUCR EN YOUTUBE &rarr;</span>
+                    
+                    <!-- Contenedor Visual del Reel con Botón PLAY Animado y Enlace Directo -->
+                    <a href="https://www.instagram.com/reel/DQh86inDDTm/?utm_source=ig_web_copy_link&igsi=MzRlODBiNWFlZA==" target="_blank" rel="noopener" class="relative w-full aspect-video bg-black border border-white/10 overflow-hidden rounded group-hover:shadow-2xl group-hover:shadow-signal-red/20 transition-all block">
+                        <img src="assets/blueprint_metodologia.png" alt="Barcelona Dusty Clown Instagram Reel" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-85 group-hover:opacity-100">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex items-center justify-center">
+                            <div class="w-14 h-14 bg-signal-red group-hover:bg-white text-white group-hover:text-signal-red rounded-full flex items-center justify-center shadow-lg shadow-signal-red/50 transition-all transform group-hover:scale-110 group-hover:rotate-12">
+                                <svg class="w-7 h-7 translate-x-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                        </div>
+                        <div class="absolute bottom-2 left-2 right-2 flex justify-between items-center font-mono text-[9px] text-white/90 bg-black/80 backdrop-blur-md px-2.5 py-1 rounded border border-white/10">
+                            <span>REEL OFICIAL // INSTAGRAM</span>
+                            <span class="text-signal-red font-bold">REPRODUCIR CON AUDIO &rarr;</span>
+                        </div>
+                    </a>
+
+                    <!-- Ventana de Información Técnica -->
+                    <div class="space-y-1.5 pt-1">
+                        <h3 class="font-headline text-xl text-white uppercase group-hover:text-signal-red transition-colors">
+                            Barcelona Dusty Clown
+                        </h3>
+                        <p class="font-sans text-xs text-text-secondary font-light leading-relaxed">
+                            Producción cinemática hiperrealista ambientada en Barcelona. Generación de entorno con Inteligencia Artificial y diseño de audio envolvente.
+                        </p>
                     </div>
                 </div>
 
-                <div class="font-sans text-xs text-text-secondary space-y-1">
-                    <strong class="text-white block">Cine Cinemático Asistido por IA:</strong>
-                    <p class="font-light">Generación de entornos anamórficos, ComfyUI pipelines, renderizado de alta fidelidad y dirección técnica cinematográfica por CHUS BZN.</p>
+                <div class="pt-3 border-t border-white/10 flex justify-between items-center font-mono text-[10px]">
+                    <span class="text-white/50 uppercase">FORMATO: REEL 9:16 / HD</span>
+                    <a href="https://www.instagram.com/reel/DQh86inDDTm/?utm_source=ig_web_copy_link&igsi=MzRlODBiNWFlZA==" target="_blank" rel="noopener" class="text-signal-red font-bold uppercase hover:underline">
+                        VER EN INSTAGRAM &rarr;
+                    </a>
                 </div>
             </div>
 
-            <!-- Embedded Video Player 02: LEGADO_JFB Voice IA -->
-            <div class="glass-panel p-6 border border-white/15 space-y-4">
-                <div class="flex justify-between items-center font-mono text-xs">
-                    <span class="text-signal-red font-bold uppercase">// PROYECTO LEGADO_JFB &amp; VOICE IA</span>
-                    <span class="text-terminal-green text-[10px]">VIDEO_PLAYER_02 [READY]</span>
-                </div>
-                
-                <!-- Responsive Video Container con Poster HD y Play Button -->
-                <div class="relative w-full aspect-video bg-black border border-white/10 overflow-hidden shadow-2xl group cursor-pointer">
-                    <img src="assets/blog_biometric.png" alt="Preservación Biométrica Vocal Voice IA" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80 group-hover:opacity-100">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-center justify-center">
-                        <a href="https://www.youtube.com/@chus_bzn" target="_blank" rel="noopener" class="w-16 h-16 bg-signal-red hover:bg-white text-white hover:text-signal-red rounded-full flex items-center justify-center shadow-lg shadow-signal-red/50 transition-all transform group-hover:scale-110">
-                            <svg class="w-8 h-8 translate-x-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                        </a>
+            <!-- VÍDEO 02: Producción Cine IA "Alpha Berracos" (YouTube) -->
+            <div class="glass-panel p-5 border border-white/15 space-y-4 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group">
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center font-mono text-[10px]">
+                        <span class="text-signal-red font-bold uppercase tracking-widest">// PRODUCCIÓN CINE IA</span>
+                        <span class="text-terminal-green">[ONLINE]</span>
                     </div>
-                    <div class="absolute bottom-3 left-3 right-3 flex justify-between items-center font-mono text-[10px] text-white/80 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded">
-                        <span>BIOMETRÍA NEURAL VOCAL</span>
-                        <span class="text-signal-red font-bold">REPRODUCIR EN YOUTUBE &rarr;</span>
+                    
+                    <!-- Contenedor Visual con Botón PLAY -->
+                    <a href="https://www.youtube.com/watch?v=ePZFgCWyd5A" target="_blank" rel="noopener" class="relative w-full aspect-video bg-black border border-white/10 overflow-hidden rounded group-hover:shadow-2xl group-hover:shadow-signal-red/20 transition-all block">
+                        <img src="assets/blog_berracos.png" alt="Alpha Berracos Cine IA" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-85 group-hover:opacity-100">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex items-center justify-center">
+                            <div class="w-14 h-14 bg-signal-red group-hover:bg-white text-white group-hover:text-signal-red rounded-full flex items-center justify-center shadow-lg shadow-signal-red/50 transition-all transform group-hover:scale-110 group-hover:rotate-12">
+                                <svg class="w-7 h-7 translate-x-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                        </div>
+                        <div class="absolute bottom-2 left-2 right-2 flex justify-between items-center font-mono text-[9px] text-white/90 bg-black/80 backdrop-blur-md px-2.5 py-1 rounded border border-white/10">
+                            <span>CANAL OFICIAL // YOUTUBE</span>
+                            <span class="text-signal-red font-bold">REPRODUCIR CON AUDIO &rarr;</span>
+                        </div>
+                    </a>
+
+                    <!-- Ventana de Información Técnica -->
+                    <div class="space-y-1.5 pt-1">
+                        <h3 class="font-headline text-xl text-white uppercase group-hover:text-signal-red transition-colors">
+                            Alpha Berracos Teaser
+                        </h3>
+                        <p class="font-sans text-xs text-text-secondary font-light leading-relaxed">
+                            Pipeline cinemático híbrido con ópticas anamórficas sintéticas, renderizado ComfyUI y masterización sonoras broadcast.
+                        </p>
                     </div>
                 </div>
 
-                <div class="font-sans text-xs text-text-secondary space-y-1">
-                    <strong class="text-white block">Preservación Biométrica Vocal &amp; Audio Forense:</strong>
-                    <p class="font-light">Restauración espectral de cintas analógicas y clonación neural de voz legítima bajo cumplimiento estricto del EU AI Act y AISGE.</p>
+                <div class="pt-3 border-t border-white/10 flex justify-between items-center font-mono text-[10px]">
+                    <span class="text-white/50 uppercase">FORMATO: 4K ANAMÓRFICO</span>
+                    <a href="https://www.youtube.com/watch?v=ePZFgCWyd5A" target="_blank" rel="noopener" class="text-signal-red font-bold uppercase hover:underline">
+                        VER EN YOUTUBE &rarr;
+                    </a>
+                </div>
+            </div>
+
+            <!-- VÍDEO 03: Producción Motion IA "Peaky Muppets" (Instagram / YouTube Short) -->
+            <div class="glass-panel p-5 border border-white/15 space-y-4 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group">
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center font-mono text-[10px]">
+                        <span class="text-signal-red font-bold uppercase tracking-widest">// MOTION &amp; ANIMACIÓN IA</span>
+                        <span class="text-terminal-green">[ONLINE]</span>
+                    </div>
+                    
+                    <!-- Contenedor Visual con Botón PLAY -->
+                    <a href="https://www.youtube.com/shorts/jntG8a0HgF4" target="_blank" rel="noopener" class="relative w-full aspect-video bg-black border border-white/10 overflow-hidden rounded group-hover:shadow-2xl group-hover:shadow-signal-red/20 transition-all block">
+                        <img src="assets/blueprint_video.png" alt="Peaky Muppets Animation IA" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-85 group-hover:opacity-100">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex items-center justify-center">
+                            <div class="w-14 h-14 bg-signal-red group-hover:bg-white text-white group-hover:text-signal-red rounded-full flex items-center justify-center shadow-lg shadow-signal-red/50 transition-all transform group-hover:scale-110 group-hover:rotate-12">
+                                <svg class="w-7 h-7 translate-x-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                        </div>
+                        <div class="absolute bottom-2 left-2 right-2 flex justify-between items-center font-mono text-[9px] text-white/90 bg-black/80 backdrop-blur-md px-2.5 py-1 rounded border border-white/10">
+                            <span>SHORT &amp; REEL // PROMPTING</span>
+                            <span class="text-signal-red font-bold">REPRODUCIR CON AUDIO &rarr;</span>
+                        </div>
+                    </a>
+
+                    <!-- Ventana de Información Técnica -->
+                    <div class="space-y-1.5 pt-1">
+                        <h3 class="font-headline text-xl text-white uppercase group-hover:text-signal-red transition-colors">
+                            Peaky Muppets
+                        </h3>
+                        <p class="font-sans text-xs text-text-secondary font-light leading-relaxed">
+                            Parodia animada combinando la estética de Peaky Blinders con muñecos expresivos y lipsync generativo.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="pt-3 border-t border-white/10 flex justify-between items-center font-mono text-[10px]">
+                    <span class="text-white/50 uppercase">FORMATO: VERTICAL / HD</span>
+                    <a href="https://www.youtube.com/shorts/jntG8a0HgF4" target="_blank" rel="noopener" class="text-signal-red font-bold uppercase hover:underline">
+                        VER SHORT / REEL &rarr;
+                    </a>
+                </div>
+            </div>
+
+            <!-- VÍDEO 04: Producción Sonido & Vídeo "Veneno 90s Rave" -->
+            <div class="glass-panel p-5 border border-white/15 space-y-4 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group">
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center font-mono text-[10px]">
+                        <span class="text-signal-red font-bold uppercase tracking-widest">// PRODUCCIÓN MUSICAL &amp; VÍDEO</span>
+                        <span class="text-terminal-green">[ONLINE]</span>
+                    </div>
+                    
+                    <!-- Contenedor Visual con Botón PLAY -->
+                    <a href="https://www.youtube.com/watch?v=sSIBsZEcKTk" target="_blank" rel="noopener" class="relative w-full aspect-video bg-black border border-white/10 overflow-hidden rounded group-hover:shadow-2xl group-hover:shadow-signal-red/20 transition-all block">
+                        <img src="assets/blueprint_sonido.png" alt="Veneno Breakbeat 90s Rave" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-85 group-hover:opacity-100">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex items-center justify-center">
+                            <div class="w-14 h-14 bg-signal-red group-hover:bg-white text-white group-hover:text-signal-red rounded-full flex items-center justify-center shadow-lg shadow-signal-red/50 transition-all transform group-hover:scale-110 group-hover:rotate-12">
+                                <svg class="w-7 h-7 translate-x-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                        </div>
+                        <div class="absolute bottom-2 left-2 right-2 flex justify-between items-center font-mono text-[9px] text-white/90 bg-black/80 backdrop-blur-md px-2.5 py-1 rounded border border-white/10">
+                            <span>AUDIO &amp; CLIP // RAVE 90S</span>
+                            <span class="text-signal-red font-bold">REPRODUCIR CON AUDIO &rarr;</span>
+                        </div>
+                    </a>
+
+                    <!-- Ventana de Información Técnica -->
+                    <div class="space-y-1.5 pt-1">
+                        <h3 class="font-headline text-xl text-white uppercase group-hover:text-signal-red transition-colors">
+                            VENENO (BreakBeat Mix)
+                        </h3>
+                        <p class="font-sans text-xs text-text-secondary font-light leading-relaxed">
+                            Creación de sonido original con ritmos BreakBeat, sintetizadores ácidos y montaje dinámico estilo noventero.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="pt-3 border-t border-white/10 flex justify-between items-center font-mono text-[10px]">
+                    <span class="text-white/50 uppercase">FORMATO: AUDIO &amp; VÍDEO PRO</span>
+                    <a href="https://www.youtube.com/watch?v=sSIBsZEcKTk" target="_blank" rel="noopener" class="text-signal-red font-bold uppercase hover:underline">
+                        VER EN YOUTUBE &rarr;
+                    </a>
                 </div>
             </div>
 
