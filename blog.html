@@ -48,6 +48,11 @@
         -webkit-text-size-adjust: 100%;
     }
 
+    html, body {
+        overflow-x: hidden;
+        max-width: 100vw;
+    }
+
     body {
         background-color: var(--bg-color);
         color: var(--text-primary);
@@ -362,44 +367,30 @@
 <div class="bg-glow glow-1"></div>
 <div class="bg-glow glow-2"></div>
 
-<!-- ═══ HEADER ═══ -->
-<header id="main-header">
-<div class="nav-container">
-    <a href="index.html" class="logo" style="text-decoration: none;">
-        JESÚS FERRER GARCÍA
-        <span class="logo-sep">/</span>
-        <span class="logo-tagline">CHUS BZN</span>
+<!-- ═══ HEADER UNIFICADO (Simplificado: Solo botón de retorno) ═══ -->
+<header id="main-header" style="background: rgba(0,0,0,0.92); backdrop-filter: blur(16px); border-b: 1px solid rgba(255,255,255,0.1); position: fixed; top: 0; width: 100%; z-index: 1000; height: 80px;">
+<div class="nav-container" style="max-width: 1440px; margin: 0 auto; padding: 0 32px; height: 100%; display: flex; justify-content: space-between; align-items: center;">
+    <a href="index.html" class="logo" style="text-decoration: none; display: flex; align-items: center; gap: 12px;">
+        <img src="assets/logo.jpg" alt="CHUS BZN Logo Oficial" style="height: 44px; width: auto; object-fit: contain; border: 1px solid rgba(255,255,255,0.2); padding: 2px; border-radius: 4px;"/>
+        <span class="logo-tagline" style="font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: rgba(255,255,255,0.5); letter-spacing: 2px; text-transform: uppercase; border-left: 1px solid rgba(255,255,255,0.2); padding-left: 12px;">BLOG &amp; NOVEDADES</span>
     </a>
-    <nav aria-label="Navegación principal">
-        <ul>
-            <li><a data-i18n="t_2" href="index.html#manif">01. Manifiesto</a></li>
-            <li><a data-i18n="t_3" href="index.html#ia">02. Ecosistema IA</a></li>
-            <li><a data-i18n="t_4" href="index.html#broadcast">03. Broadcast &amp; Cert</a></li>
-            <li><a data-i18n="t_5" href="index.html#trayectoria">04. Trayectoria</a></li>
-            <li><a data-i18n="t_6" href="index.html#compliance">05. Compliance</a></li>
-            <li><a data-i18n="t_7" href="index.html#github">06. GitHub Pool</a></li>
-            <li><a class="nav-active" data-i18n="t_125" href="blog.html">07. Blog</a></li>
-        </ul>
-    </nav>
-    <div class="desktop-lang" style="display:flex; align-items:center; gap:8px;">
-        <span style="color:#ff0000; font-family:var(--font-mono); font-size:0.75rem; font-weight:bold; letter-spacing:1px;">IDIOMAS:</span>
-        <select id="lang-select" style="background: transparent; color: var(--text-secondary); border: none; font-family: var(--font-mono); font-size: 0.78rem; text-transform: uppercase; cursor: pointer; outline: none;">
-            <option value="es" style="background: #000;">🇪🇸 ESPAÑOL</option>
-            <option value="en" style="background: #000;">🇬🇧 ENGLISH</option>
-            <option value="de" style="background: #000;">🇩🇪 DEUTSCH</option>
-            <option value="ru" style="background: #000;">🇷🇺 РУССКИЙ</option>
-            <option value="ja" style="background: #000;">🇯🇵 日本語</option>
-            <option value="uk" style="background: #000;">🇺🇦 УКРАЇНСЬКА</option>
-            <option value="zh-CN" style="background: #000;">🇨🇳 中文</option>
-            <option value="ar" style="background: #000;">🇸🇦 العربية</option>
+    
+    <!-- Botón único y claro de regreso a la Portada Principal -->
+    <div style="display: flex; align-items: center; gap: 16px;">
+        <a href="index.html" style="background: #FF1F1F; color: #FFFFFF; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: bold; padding: 10px 20px; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; transition: background 0.3s;" onmouseover="this.style.background='#D91616'" onmouseout="this.style.background='#FF1F1F'">
+            &larr; VOLVER A PORTADA PRINCIPAL (CHUS BZN HUB)
+        </a>
+        <select id="lang-select" style="background: rgba(0,0,0,0.8); color: #fff; border: 1px solid rgba(255,255,255,0.2); font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; cursor: pointer; outline: none; padding: 6px 10px;">
+            <option value="es">🇪🇸 ES</option>
+            <option value="en">🇬🇧 EN</option>
+            <option value="de">🇩🇪 DE</option>
+            <option value="ru">🇷🇺 RU</option>
+            <option value="ja">🇯🇵 JA</option>
+            <option value="uk">🇺🇦 UK</option>
+            <option value="zh-CN">🇨🇳 ZH</option>
+            <option value="ar">🇸🇦 AR</option>
         </select>
     </div>
-    <button aria-expanded="false" aria-label="Menú" class="hamburger" id="hamburger-btn">
-        <div style="color: #ff3333; font-family: var(--font-mono); font-size: 0.9rem; font-weight: bold; letter-spacing: 1px;">MENÚ</div>
-        <div class="hamburger-bars">
-            <span></span><span></span><span></span>
-        </div>
-    </button>
 </div>
 </header>
 
@@ -604,13 +595,20 @@
         }
     }
 
-    // Cargar entradas desde Blogger o Fallback
+    // Cargar entradas instantáneamente de forma local con intento rápido en segundo plano
     async function loadBlogData() {
         initLoaderText();
+        // Renderizar inmediatamente los datos locales para 0ms de espera
+        renderPosts(mockPosts);
+
         if (BLOGGER_BLOG_ID && BLOGGER_API_KEY) {
             try {
-                const response = await fetch(`https://www.googleapis.com/blogger/v3/blogs/${BLOGGER_BLOG_ID}/posts?key=${BLOGGER_API_KEY}`);
-                if (!response.ok) throw new Error('Error al cargar datos');
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 2000);
+                const response = await fetch(`https://www.googleapis.com/blogger/v3/blogs/${BLOGGER_BLOG_ID}/posts?key=${BLOGGER_API_KEY}`, { signal: controller.signal });
+                clearTimeout(timeoutId);
+                
+                if (!response.ok) return;
                 const data = await response.json();
                 
                 if (data.items && data.items.length > 0) {
@@ -633,10 +631,10 @@
                         };
                     });
                     renderPosts(parsedPosts);
-                    return;
                 }
-            } catch (e) {
-                console.error("API de Blogger falló, cargando posts de fallback:", e);
+            } catch (err) {
+                // Si la API remota falla o tarda, mantenemos la carga instantánea local
+                console.error("API de Blogger falló o tardó demasiado, usando posts de fallback:", err);
             }
         }
         
