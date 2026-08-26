@@ -432,7 +432,7 @@
 
     <article id="post-article">
         <!-- Loading spinner/text -->
-        <div class="text-center py-20 text-sm font-mono text-secondary" id="post-loader">
+        <div class="text-center py-20 text-sm font-mono text-secondary">
             Cargando artículo...
         </div>
     </article>
@@ -712,7 +712,7 @@
 
         if (pageState.status === 'loading') {
             articleContainer.innerHTML = `
-                <div class="text-center py-20 text-sm font-mono text-secondary" id="post-loader">
+                <div class="text-center py-20 text-sm font-mono text-secondary">
                     ${t.loadingPost}
                 </div>
             `;
