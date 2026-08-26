@@ -65,6 +65,23 @@
         background-color: var(--signal-red);
         box-shadow: 0 0 10px var(--signal-red);
     }
+    /* Mobile Menu Overlay */
+    #mobile-menu {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.98);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        z-index: 1000;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 24px;
+    }
+    #mobile-menu.open {
+        display: flex;
+    }
 </style>
 </head>
 
@@ -104,9 +121,24 @@
                 <option value="zh-CN">🇨🇳 ZH</option>
                 <option value="ar">🇸🇦 AR</option>
             </select>
+
+            <!-- Mobile Hamburger Button -->
+            <button id="mobile-btn" class="xl:hidden p-2 text-white hover:text-signal-red focus:outline-none" aria-label="Menú móvil">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
         </div>
     </div>
 </header>
+
+<!-- Mobile Navigation Overlay -->
+<div id="mobile-menu">
+    <a href="index.html" class="mobile-link text-xl font-headline uppercase tracking-widest text-white hover:text-signal-red" data-i18n="t_nav_home">01. Servicios a Medida</a>
+    <a href="#manifiesto" class="mobile-link text-xl font-headline uppercase tracking-widest text-white hover:text-signal-red" data-i18n="t_nav_manif">02. Manifiesto</a>
+    <a href="#ia" class="mobile-link text-xl font-headline uppercase tracking-widest text-white hover:text-signal-red" data-i18n="t_nav_ai">03. Ecosistema IA</a>
+    <a href="#broadcast" class="mobile-link text-xl font-headline uppercase tracking-widest text-white hover:text-signal-red" data-i18n="t_nav_fpcat">04. FPCAT &amp; Cert</a>
+    <a href="#trayectoria" class="mobile-link text-xl font-headline uppercase tracking-widest text-white hover:text-signal-red" data-i18n="t_nav_timeline">05. Timeline 33 Años</a>
+    <a href="#compliance" class="mobile-link text-xl font-headline uppercase tracking-widest text-white hover:text-signal-red" data-i18n="t_nav_compliance">06. Compliance</a>
+</div>
 
 <main class="relative z-10 pt-32 pb-24">
 
@@ -332,6 +364,23 @@
         });
     }, { threshold: 0.1 });
     reveals.forEach(r => observer.observe(r));
+
+    // Mobile navigation toggle
+    const mobileBtn = document.getElementById('mobile-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    if (mobileBtn && mobileMenu) {
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+            });
+        });
+    }
 </script>
 <script src="js/translations.js"></script>
 <script src="js/i18n.js"></script>

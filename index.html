@@ -158,8 +158,9 @@
         transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .glass-panel:hover {
-        border-color: rgba(255, 31, 31, 0.5);
-        box-shadow: 0 0 35px rgba(255, 31, 31, 0.15);
+        border-color: rgba(255, 31, 31, 0.6);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.85), 0 0 25px rgba(255, 31, 31, 0.18);
+        transform: translateY(-4px);
     }
 
     /* Service Cards */
@@ -552,7 +553,7 @@
             </a>
 
             <!-- GitHub Card -->
-            <a href="https://github.com/produktes-code" target="_blank" rel="noopener" class="glass-panel p-8 border border-white/10 hover:border-signal-red space-y-4 group transition-all">
+            <a id="github" href="https://github.com/produktes-code" target="_blank" rel="noopener" class="glass-panel p-8 border border-white/10 hover:border-signal-red space-y-4 group transition-all scroll-mt-24">
                 <div class="flex items-center justify-between">
                     <div class="p-3 bg-signal-red/20 text-signal-red rounded-lg group-hover:bg-signal-red group-hover:text-white transition-colors">
                         <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
@@ -568,8 +569,9 @@
     </section>
 
     <!-- ═══ REJILLA INTERACTIVA DE 8 SERVICIOS A MEDIDA ═══ -->
-    <section id="servicios" class="py-24 px-6 sm:px-10 max-w-[1440px] mx-auto border-t border-white/10 reveal">
-        <div class="text-center space-y-4 mb-16 max-w-3xl mx-auto">
+    <section id="servicios" class="py-24 border-t border-white/10 bg-white/[0.01] reveal">
+        <div class="max-w-[1440px] mx-auto px-6 sm:px-10">
+            <div class="text-center space-y-4 mb-16 max-w-3xl mx-auto">
             <span class="font-mono text-signal-red text-xs uppercase tracking-widest">// CATÁLOGO DE SOLUCIONES TÉCNICAS</span>
             <h2 class="font-headline text-4xl sm:text-6xl uppercase text-white tracking-tight section-headline-clean">Servicios &amp; Trabajos a Medida</h2>
             <p class="font-sans text-sm text-text-secondary font-light">
@@ -684,11 +686,14 @@
             </div>
 
         </div>
+        </div>
     </section>
 
     <!-- ═══ ECOSISTEMA DE DESARROLLO PROPIO (Recuperación de Imagotipos Propietarios) ═══ -->
-    <section id="ecosistema" class="py-24 px-6 sm:px-10 max-w-[1440px] mx-auto bg-surface-dim/70 border-y border-white/10 reveal">
-        <div class="text-center space-y-4 mb-14 max-w-4xl mx-auto">
+    <section id="ecosistema" class="py-24 bg-surface-dim/70 border-y border-white/10 reveal">
+        <div id="ia" class="scroll-mt-24"></div>
+        <div class="max-w-[1440px] mx-auto px-6 sm:px-10">
+            <div class="text-center space-y-4 mb-14 max-w-4xl mx-auto">
             <span class="font-mono text-signal-red text-xs uppercase tracking-widest">// SOFTWARE PROPIETARIO AUDITADO DE LOS REPOSITORIOS</span>
             <h2 class="font-headline text-4xl sm:text-5xl uppercase text-white tracking-tight section-headline-clean">Ecosistema IA &amp; Prototipado</h2>
             <p class="font-sans text-base text-text-secondary max-w-3xl mx-auto font-light leading-relaxed">
@@ -741,11 +746,13 @@
             </div>
 
         </div>
+        </div>
     </section>
 
     <!-- ═══ MUESTRA DE PRODUCCIONES GENERATIVAS (8 TARJETAS COMPACTAS CON REPRODUCCIÓN EN MODAL LIGHTBOX BASADO EN DATOS) ═══ -->
-    <section id="showcase" class="py-20 px-6 sm:px-10 max-w-[1440px] mx-auto reveal">
-        <div class="text-center space-y-3 mb-12 max-w-4xl mx-auto">
+    <section id="showcase" class="py-20 reveal">
+        <div class="max-w-[1440px] mx-auto px-6 sm:px-10">
+            <div class="text-center space-y-3 mb-12 max-w-4xl mx-auto">
             <span class="font-mono text-signal-red text-xs uppercase tracking-widest">// SHOWCASE VIVO DE PRODUCCIONES &amp; REELS</span>
             <h2 class="font-headline text-3xl sm:text-5xl uppercase text-white tracking-tight section-headline-clean">
                 Muestra de Producciones Generativas
@@ -1135,10 +1142,12 @@
             </div>
 
         </div>
+        </div>
     </section>
 
     <!-- ═══ PERFIL & TRAYECTORIA AUDITADA (33 AÑOS + FOTO FORMAL + FPCAT) ═══ -->
-    <section id="metodologia" class="py-24 px-6 sm:px-10 max-w-[1440px] mx-auto border-t border-white/10 reveal">
+    <section id="metodologia" class="py-24 border-t border-white/10 bg-white/[0.01] reveal">
+        <div class="max-w-[1440px] mx-auto px-6 sm:px-10">
         
         <!-- Header Centrado de Sección -->
         <div class="text-center space-y-4 mb-16 max-w-4xl mx-auto">
@@ -1155,7 +1164,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-16">
             
             <!-- Left Column: Manifiesto Corporativo -->
-            <div class="lg:col-span-7 space-y-6">
+            <div id="manif" class="lg:col-span-7 space-y-6 scroll-mt-24">
                 <div class="glass-panel p-8 border border-white/15 space-y-4 relative overflow-hidden">
                     <div class="absolute top-0 left-0 w-1 h-full bg-signal-red"></div>
                     <span class="font-mono text-xs text-signal-red uppercase tracking-widest font-bold">// MANIFIESTO INDUSTRIAL CHUS BZN</span>
@@ -1216,7 +1225,7 @@
         </div>
 
         <!-- 2. Timeline Histórico de 33 Años de Trayectoria (1987 - Presente) -->
-        <div class="mb-20 space-y-8">
+        <div id="trayectoria" class="mb-20 space-y-8 scroll-mt-24">
             <div class="text-center space-y-2">
                 <span class="font-mono text-signal-red text-xs uppercase tracking-widest">// HISTORIAL DE PROYECTOS &amp; PRODUCCIONES</span>
                 <h3 class="font-headline text-3xl uppercase text-white">Timeline Industrial de 33 Años</h3>
@@ -1277,7 +1286,7 @@
         </div>
 
         <!-- 3. Cualificaciones Oficiales FPCAT (14 Unidades de Competencia Generalitat de Catalunya) -->
-        <div class="space-y-8">
+        <div id="broadcast" class="space-y-8 scroll-mt-24">
             <div class="text-center space-y-2">
                 <span class="font-mono text-signal-red text-xs uppercase tracking-widest">// ACREDITACIÓN OFICIAL GENERALITAT DE CATALUNYA</span>
                 <h3 class="font-headline text-3xl uppercase text-white">Cualificaciones FPCAT (14 Unidades de Competencia)</h3>
@@ -1313,7 +1322,7 @@
                 </div>
             </div>
         </div>
-
+        </div>
     </section>
 
     <!-- ═══ FORMULARIO DE ENCARGO AMPLIADO (+ Desplegable OTROS) ═══ -->
@@ -1387,7 +1396,7 @@
     </section>
 
     <!-- ═══ CINTA DE COMPLIANCE JURÍDICO ═══ -->
-    <section class="py-12 border-y border-white/10 bg-surface-dim/30">
+    <section id="compliance" class="py-12 border-y border-white/10 bg-surface-dim/30 scroll-mt-24">
         <div class="max-w-[1440px] mx-auto px-6 flex flex-wrap justify-center sm:justify-between items-center gap-6 font-mono text-[11px] text-white/50 tracking-widest uppercase">
             <span>PROTECCIÓN_SGAE</span>
             <span>SOBERANÍA_AISGE</span>
@@ -1486,7 +1495,7 @@
         </div>
 
         <!-- Contenedor donde se inyectará el reproductor dinámicamente -->
-        <div id="modal-content" class="relative w-full aspect-video bg-black border border-white/20 rounded overflow-hidden shadow-2xl flex items-center justify-center">
+        <div id="modal-content" class="relative w-full bg-black border border-white/20 rounded overflow-hidden shadow-2xl flex items-center justify-center transition-all duration-300">
             <!-- Inyección de iFrame o HTML5 Video -->
         </div>
 
@@ -1671,6 +1680,22 @@
         if (vmodalDesc) vmodalDesc.textContent = desc || '---';
         if (vmodalLink) vmodalLink.href = link || '#';
 
+        if (modalContent) {
+            if (ratio === '9/16' || platform === 'instagram') {
+                modalContent.style.width = 'auto';
+                modalContent.style.maxWidth = '100%';
+                modalContent.style.aspectRatio = '9/16';
+                modalContent.style.maxHeight = '62vh';
+                modalContent.style.margin = '0 auto';
+            } else {
+                modalContent.style.width = '100%';
+                modalContent.style.maxWidth = 'none';
+                modalContent.style.aspectRatio = '16/9';
+                modalContent.style.maxHeight = 'none';
+                modalContent.style.margin = '0';
+            }
+        }
+
         let embedHTML = '';
         if (platform === 'youtube' && id) {
             embedHTML = `<iframe class="w-full h-full rounded border-0" style="aspect-ratio: ${ratio || '16/9'};" src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>`;
@@ -1691,7 +1716,14 @@
 
     const closeVideoModal = (e) => {
         if (videoModal) videoModal.classList.remove('open');
-        if (modalContent) modalContent.innerHTML = ''; // Destruye el iFrame para cortar el audio inmediatamente y liberar RAM
+        if (modalContent) {
+            modalContent.innerHTML = ''; // Destruye el iFrame para cortar el audio inmediatamente y liberar RAM
+            modalContent.style.width = '';
+            modalContent.style.maxWidth = '';
+            modalContent.style.aspectRatio = '';
+            modalContent.style.maxHeight = '';
+            modalContent.style.margin = '';
+        }
     };
 
     if (showcaseGrid) {
