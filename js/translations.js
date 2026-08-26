@@ -1,5 +1,12 @@
 const translations = {
   "es": {
+    "t_nav_home": "01. Servicios a Medida",
+    "t_nav_manif": "02. Manifiesto",
+    "t_nav_ai": "03. Ecosistema IA",
+    "t_nav_fpcat": "04. FPCAT & Cert",
+    "t_nav_timeline": "05. Timeline 33 Años",
+    "t_nav_compliance": "06. Compliance",
+
     "t_1": "CHUS BZN",
     "t_nav_services": "01. Servicios",
     "t_nav_audit": "02. Perfil Auditado",
@@ -156,6 +163,13 @@ const translations = {
     "t_127": "Espacio dedicado a compartir avances técnicos, pruebas de laboratorio con Inteligencia Artificial, integraciones de sistemas audiovisuales y reflexiones sobre el ecosistema digital contemporáneo."
   },
   "en": {
+    "t_nav_home": "01. Custom Services",
+    "t_nav_manif": "02. Manifesto",
+    "t_nav_ai": "03. AI Ecosystem",
+    "t_nav_fpcat": "04. FPCAT & Cert",
+    "t_nav_timeline": "05. 33-Year Timeline",
+    "t_nav_compliance": "06. Compliance",
+
     "t_nav_services": "01. Services",
     "t_nav_audit": "02. Audited Profile",
     "t_nav_ai": "03. AI Ecosystem",
@@ -312,6 +326,13 @@ const translations = {
     "t_127": "Space dedicated to sharing technical breakthroughs, laboratory tests with Artificial Intelligence, audiovisual systems integration, and reflections on the contemporary digital ecosystem."
   },
   "de": {
+    "t_nav_home": "01. Maßgeschneiderte Dienstleistungen",
+    "t_nav_manif": "02. Manifest",
+    "t_nav_ai": "03. KI-Ökosystem",
+    "t_nav_fpcat": "04. FPCAT & Zertifizierung",
+    "t_nav_timeline": "05. 33-Jahre Zeitachse",
+    "t_nav_compliance": "06. Compliance",
+
     "t_6": "05. Compliance",
     "t_4": "03. Übertragung & Zert",
     "t_2": "01. Manifest",
@@ -441,6 +462,13 @@ const translations = {
     "t_127": "Bereich für den Austausch von technischen Fortschritten, Labortests mit künstlicher Intelligenz, audiovisuelle Systemintegrationen und Reflexionen über das zeitgenössische digitale Ökosystem."
   },
   "ru": {
+    "t_nav_home": "01. Индивидуальные услуги",
+    "t_nav_manif": "02. Манифест",
+    "t_nav_ai": "03. Экосистема ИИ",
+    "t_nav_fpcat": "04. FPCAT и сертификат",
+    "t_nav_timeline": "05. 33-летняя история",
+    "t_nav_compliance": "06. Соответствие",
+
     "t_14": "АКТИВНЫЙ",
     "t_3": "02. Экосистема искусственного интеллекта",
     "t_9": "02. Экосистема искусственного интеллекта",
@@ -570,6 +598,13 @@ const translations = {
     "t_127": "Пространство, посвященное обмену техническими достижениями, лабораторным испытаниям искусственного интеллекта, интеграции аудиовизуальных систем и размышлениям о современной цифровой экосистеме."
   },
   "ja": {
+    "t_nav_home": "01. カスタムサービス",
+    "t_nav_manif": "02. マニフェスト",
+    "t_nav_ai": "03. AIエコシステム",
+    "t_nav_fpcat": "04. FPCAT & 証明書",
+    "t_nav_timeline": "05. 33年のタイムライン",
+    "t_nav_compliance": "06. コンプライアンス",
+
     "t_14": "アクティブ",
     "t_11": "04. キャリア",
     "t_2": "01.マニフェスト",
@@ -699,6 +734,13 @@ const translations = {
     "t_127": "技術的な進歩、人工知能による実験室テスト、音響映像システムの統合、および現代のデジタルエコシステムに関する考察を共有するためのスペース。"
   },
   "uk": {
+    "t_nav_home": "01. Індивідуальні послуги",
+    "t_nav_manif": "02. Маніфест",
+    "t_nav_ai": "03. ШІ Екосистема",
+    "t_nav_fpcat": "04. FPCAT та сертифікат",
+    "t_nav_timeline": "05. 33-річна історія",
+    "t_nav_compliance": "06. Відповідність",
+
     "t_3": "02. ШІ Екосистема",
     "t_20": "Офіційна акредитація вищого ступеня",
     "t_19": "Стратегічне поєднання аналогової звукоінженерії та найсучаснішого Generative AI. Три десятиліття провідні критичні інфраструктури в кіно, телебаченні та міських середовищах.",
@@ -828,6 +870,13 @@ const translations = {
     "t_127": "Простір, присвячений обміну технічними досягненнями, лабораторним випробуванням штучного інтелекту, інтеграції аудіовізуальних систем та роздумам про сучасну цифрову екосистему."
   },
   "zh-CN": {
+    "t_nav_home": "01. 定制服务",
+    "t_nav_manif": "02. 宣言",
+    "t_nav_ai": "03. 人工智能生态",
+    "t_nav_fpcat": "04. FPCAT & 认证",
+    "t_nav_timeline": "05. 33年历程",
+    "t_nav_compliance": "06. 合规性",
+
     "t_2": "01.宣言",
     "t_4": "03. 广播&认证",
     "t_10": "03. 广播&认证",
@@ -957,6 +1006,13 @@ const translations = {
     "t_127": "致力于分享技术进步、人工智能实验室测试、视听系统集成以及对当代数字生态系统反思的空间。"
   },
   "ar": {
+    "t_nav_home": "01. خدمات مخصصة",
+    "t_nav_manif": "02. البيان",
+    "t_nav_ai": "03. نظام الذكاء الاصطناعي",
+    "t_nav_fpcat": "04. FPCAT والشهادات",
+    "t_nav_timeline": "05. مسيرة 33 عاماً",
+    "t_nav_compliance": "06. الامtثال",
+
     "t_8": "01. البيان",
     "t_5": "04. الوظيفي",
     "t_7": "06. تجمع جيثب",
