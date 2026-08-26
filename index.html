@@ -61,6 +61,21 @@
         font-family: var(--font-sans);
         line-height: 1.6;
         overflow-x: hidden;
+        position: relative;
+    }
+
+    /* Organic Cinematic Noise Texture (Filtro SVG Fractal de Alta Frecuencia) */
+    body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        width: 100vw;
+        height: 100vh;
+        pointer-events: none;
+        z-index: 9999;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        opacity: 0.022; /* Sutil y premium */
+        mix-blend-mode: overlay;
     }
 
     /* Blueprint Grid Overlay */
@@ -71,29 +86,33 @@
         background-size: 48px 48px;
     }
 
-    /* Organic Animated Orbs & Ambient Fluid Wave */
+    /* Organic Background Orbs (Fijos para parallax dinámico) */
     .organic-orb-1 {
-        position: absolute;
+        position: fixed;
+        top: 0; left: 0;
         width: 600px; height: 600px;
         background: radial-gradient(circle, rgba(255, 31, 31, 0.22) 0%, rgba(255, 255, 255, 0.05) 40%, transparent 70%);
         pointer-events: none;
         z-index: 0;
         filter: blur(90px);
+        will-change: transform;
         animation: organic-morph 12s ease-in-out infinite alternate;
     }
     .organic-orb-2 {
-        position: absolute;
+        position: fixed;
+        top: 0; left: 0;
         width: 500px; height: 500px;
         background: radial-gradient(circle, rgba(255, 255, 255, 0.12) 0%, rgba(255, 31, 31, 0.18) 50%, transparent 70%);
         pointer-events: none;
         z-index: 0;
         filter: blur(80px);
+        will-change: transform;
         animation: organic-morph 16s ease-in-out infinite alternate-reverse;
     }
     @keyframes organic-morph {
-        0% { transform: scale(1) translate(0px, 0px) rotate(0deg); border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
-        50% { transform: scale(1.2) translate(40px, -30px) rotate(180deg); border-radius: 60% 40% 30% 70% / 50% 30% 70% 40%; }
-        100% { transform: scale(0.9) translate(-30px, 40px) rotate(360deg); border-radius: 30% 70% 50% 50% / 60% 40% 50% 60%; }
+        0% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+        50% { border-radius: 60% 40% 30% 70% / 50% 30% 70% 40%; }
+        100% { border-radius: 30% 70% 50% 50% / 60% 40% 50% 60%; }
     }
 
     /* Icon Illumination & Continuous Organic Float */
@@ -202,6 +221,10 @@
         animation: marquee-scroll 22s linear infinite;
         font-family: var(--font-mono);
         font-weight: 700;
+        will-change: transform;
+        transform: translate3d(0, 0, 0);
+        backface-visibility: hidden;
+        perspective: 1000px;
     }
     .marquee-track span.txt-red {
         color: #ff1f1f;
@@ -214,8 +237,8 @@
         filter: none !important;
     }
     @keyframes marquee-scroll {
-        0% { transform: translateX(0%); }
-        100% { transform: translateX(-50%); }
+        0% { transform: translate3d(0, 0, 0); }
+        100% { transform: translate3d(-50%, 0, 0); }
     }
 
     /* Scroll reveal */
@@ -367,8 +390,8 @@
 <main class="relative z-10 pt-20">
 
     <!-- Dynamic Glow & Organic Orbs Background -->
-    <div class="organic-orb-1 top-20 left-1/4"></div>
-    <div class="organic-orb-2 top-96 right-10"></div>
+    <div class="organic-orb-1"></div>
+    <div class="organic-orb-2"></div>
 
     <!-- ═══ HERO PRINCIPAL CON EFECTO TYPEWRITER & MATRIX RAIN STREAM ═══ -->
     <section class="py-16 px-6 sm:px-10 max-w-[1440px] mx-auto flex flex-col justify-center relative min-h-[85vh]">
@@ -1796,6 +1819,44 @@
         lIdx = (lIdx + 1) % logs.length;
         if (termMsg) termMsg.textContent = logs[lIdx];
     }, 4000);
+
+    // Mouse reactive background orbs with inertial Lerp
+    const orb1 = document.querySelector('.organic-orb-1');
+    const orb2 = document.querySelector('.organic-orb-2');
+
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let orb1X = window.innerWidth / 4;
+    let orb1Y = window.innerHeight / 4;
+    let orb2X = window.innerWidth * 3 / 4;
+    let orb2Y = window.innerHeight * 3 / 4;
+
+    window.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    });
+
+    function animateOrbs() {
+        if (orb1) {
+            orb1X += (mouseX - orb1X - 300) * 0.04;
+            orb1Y += (mouseY - orb1Y - 300) * 0.04;
+            orb1.style.transform = `translate3d(${orb1X}px, ${orb1Y}px, 0)`;
+        }
+        if (orb2) {
+            orb2X += (mouseX - orb2X - 250) * 0.025;
+            orb2Y += (mouseY - orb2Y - 250) * 0.025;
+            orb2.style.transform = `translate3d(${orb2X}px, ${orb2Y}px, 0)`;
+        }
+        requestAnimationFrame(animateOrbs);
+    }
+    
+    // Solo activar en pantallas grandes (ordenador) para rendimiento óptimo
+    if (window.innerWidth > 1024) {
+        animateOrbs();
+    } else {
+        if (orb1) orb1.style.transform = `translate3d(${orb1X}px, ${orb1Y}px, 0)`;
+        if (orb2) orb2.style.transform = `translate3d(${orb2X}px, ${orb2Y}px, 0)`;
+    }
 </script>
 
 <script src="js/translations.js"></script>
