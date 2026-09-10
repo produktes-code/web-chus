@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html class="dark" lang="es">
 <head>
 <meta charset="utf-8"/>
@@ -357,91 +358,89 @@
 <body>
 <div class="bg-glow glow-1"></div>
 <div class="bg-glow glow-2"></div>
-
 <!-- ═══ HEADER ═══ -->
 <header id="main-header">
 <div class="nav-container">
-    <a href="index.html" class="logo" style="text-decoration: none;">
+<a class="logo" href="index.html" style="text-decoration: none;">
         JESÚS FERRER GARCÍA
         <span class="logo-sep">/</span>
-        <span class="logo-tagline">CHUS BZN</span>
-    </a>
-    <nav aria-label="Navegación principal">
-        <ul>
-            <li><a data-i18n="t_2" href="index.html#manif">01. Manifiesto</a></li>
-            <li><a data-i18n="t_3" href="index.html#ia">02. Ecosistema IA</a></li>
-            <li><a data-i18n="t_4" href="index.html#broadcast">03. Broadcast &amp; Cert</a></li>
-            <li><a data-i18n="t_5" href="index.html#trayectoria">04. Trayectoria</a></li>
-            <li><a data-i18n="t_6" href="index.html#compliance">05. Compliance</a></li>
-            <li><a data-i18n="t_7" href="index.html#github">06. GitHub Pool</a></li>
-            <li><a class="nav-active" data-i18n="t_125" href="blog.html">07. Blog</a></li>
-        </ul>
-    </nav>
-    <div class="desktop-lang" style="display:flex; align-items:center; gap:8px;">
-        <span style="color:#ff0000; font-family:var(--font-mono); font-size:0.75rem; font-weight:bold; letter-spacing:1px;">IDIOMAS:</span>
-        <select id="lang-select" style="background: transparent; color: var(--text-secondary); border: none; font-family: var(--font-mono); font-size: 0.78rem; text-transform: uppercase; cursor: pointer; outline: none;">
-            <option value="es" style="background: #000;">🇪🇸 ESPAÑOL</option>
-            <option value="en" style="background: #000;">🇬🇧 ENGLISH</option>
-            <option value="de" style="background: #000;">🇩🇪 DEUTSCH</option>
-            <option value="ru" style="background: #000;">🇷🇺 РУССКИЙ</option>
-            <option value="ja" style="background: #000;">🇯🇵 日本語</option>
-            <option value="uk" style="background: #000;">🇺🇦 УКРАЇНСЬКА</option>
-            <option value="zh-CN" style="background: #000;">🇨🇳 中文</option>
-            <option value="ar" style="background: #000;">🇸🇦 العربية</option>
-        </select>
-    </div>
-    <button aria-expanded="false" aria-label="Menú" class="hamburger" id="hamburger-btn">
-        <div style="color: #ff3333; font-family: var(--font-mono); font-size: 0.9rem; font-weight: bold; letter-spacing: 1px;">MENÚ</div>
-        <div class="hamburger-bars">
-            <span></span><span></span><span></span>
-        </div>
-    </button>
+<span class="logo-tagline">CHUS BZN</span>
+</a>
+<nav aria-label="Navegación principal">
+<ul>
+<li><a data-i18n="t_2" href="index.html#manif">01. Manifiesto</a></li>
+<li><a data-i18n="t_3" href="index.html#ia">02. Ecosistema IA</a></li>
+<li><a data-i18n="t_4" href="index.html#broadcast">03. Broadcast &amp; Cert</a></li>
+<li><a data-i18n="t_5" href="index.html#trayectoria">04. Trayectoria</a></li>
+<li><a data-i18n="t_6" href="index.html#compliance">05. Compliance</a></li>
+<li><a data-i18n="t_7" href="index.html#github">06. GitHub Pool</a></li>
+<li><a class="nav-active" data-i18n="t_125" href="blog.html">07. Blog</a></li>
+</ul>
+</nav>
+<div class="desktop-lang" style="display:flex; align-items:center; gap:8px;">
+<span style="color:#ff0000; font-family:var(--font-mono); font-size:0.75rem; font-weight:bold; letter-spacing:1px;">IDIOMAS:</span>
+<select id="lang-select" style="background: transparent; color: var(--text-secondary); border: none; font-family: var(--font-mono); font-size: 0.78rem; text-transform: uppercase; cursor: pointer; outline: none;">
+<option style="background: #000;" value="es">🇪🇸 ESPAÑOL</option>
+<option style="background: #000;" value="ca">🚩 CATALÀ</option>
+<option style="background: #000;" value="en">🇬🇧 ENGLISH</option>
+<option style="background: #000;" value="it">🇮🇹 ITALIANO</option>
+<option style="background: #000;" value="de">🇩🇪 DEUTSCH</option>
+<option style="background: #000;" value="ru">🇷🇺 РУССКИЙ</option>
+<option style="background: #000;" value="ja">🇯🇵 日本語</option>
+<option style="background: #000;" value="uk">🇺🇦 УКРАЇНСЬКА</option>
+<option style="background: #000;" value="zh-CN">🇨🇳 中文</option>
+<option style="background: #000;" value="ar">🇸🇦 العربية</option>
+</select>
+</div>
+<button aria-expanded="false" aria-label="Menú" class="hamburger" id="hamburger-btn">
+<div style="color: #ff3333; font-family: var(--font-mono); font-size: 0.9rem; font-weight: bold; letter-spacing: 1px;">MENÚ</div>
+<div class="hamburger-bars">
+<span></span><span></span><span></span>
+</div>
+</button>
 </div>
 </header>
-
 <!-- Mobile Nav Overlay -->
 <div aria-label="Menú móvil" id="mobile-nav" role="navigation">
-    <a class="mobile-nav-link" data-i18n="t_8" href="index.html#manif">01. Manifiesto</a>
-    <a class="mobile-nav-link" data-i18n="t_9" href="index.html#ia">02. Ecosistema IA</a>
-    <a class="mobile-nav-link" data-i18n="t_10" href="index.html#broadcast">03. Broadcast &amp; Cert</a>
-    <a class="mobile-nav-link" data-i18n="t_11" href="index.html#trayectoria">04. Trayectoria</a>
-    <a class="mobile-nav-link" data-i18n="t_12" href="index.html#compliance">05. Compliance</a>
-    <a class="mobile-nav-link" data-i18n="t_13" href="index.html#github">06. GitHub Pool</a>
-    <a class="mobile-nav-link" data-i18n="t_125" href="blog.html">07. Blog</a>
-    <span style="color:#ff0000; font-family:var(--font-mono); font-size:1rem; font-weight:bold; letter-spacing:1px; margin-top:20px; text-align:center;">IDIOMAS:</span>
-    <select id="mobile-lang-select" style="background: transparent; color: rgba(255,255,255,0.7); border: none; font-family: var(--font-mono); font-size: 1.3rem; text-transform: uppercase; cursor: pointer; outline: none; margin-top: 10px; text-align: center;">
-        <option value="es" style="background: #000;">🇪🇸 ESPAÑOL</option>
-        <option value="en" style="background: #000;">🇬🇧 ENGLISH</option>
-        <option value="de" style="background: #000;">🇩🇪 DEUTSCH</option>
-        <option value="ru" style="background: #000;">🇷🇺 РУССКИЙ</option>
-        <option value="ja" style="background: #000;">🇯🇵 日本語</option>
-        <option value="uk" style="background: #000;">🇺🇦 УКРАЇНСЬКА</option>
-        <option value="zh-CN" style="background: #000;">🇨🇳 中文</option>
-        <option value="ar" style="background: #000;">🇸🇦 العربية</option>
-    </select>
+<a class="mobile-nav-link" data-i18n="t_8" href="index.html#manif">01. Manifiesto</a>
+<a class="mobile-nav-link" data-i18n="t_9" href="index.html#ia">02. Ecosistema IA</a>
+<a class="mobile-nav-link" data-i18n="t_10" href="index.html#broadcast">03. Broadcast &amp; Cert</a>
+<a class="mobile-nav-link" data-i18n="t_11" href="index.html#trayectoria">04. Trayectoria</a>
+<a class="mobile-nav-link" data-i18n="t_12" href="index.html#compliance">05. Compliance</a>
+<a class="mobile-nav-link" data-i18n="t_13" href="index.html#github">06. GitHub Pool</a>
+<a class="mobile-nav-link" data-i18n="t_125" href="blog.html">07. Blog</a>
+<span style="color:#ff0000; font-family:var(--font-mono); font-size:1rem; font-weight:bold; letter-spacing:1px; margin-top:20px; text-align:center;">IDIOMAS:</span>
+<select id="mobile-lang-select" style="background: transparent; color: rgba(255,255,255,0.7); border: none; font-family: var(--font-mono); font-size: 1.3rem; text-transform: uppercase; cursor: pointer; outline: none; margin-top: 10px; text-align: center;">
+<option style="background: #000;" value="es">🇪🇸 ESPAÑOL</option>
+<option style="background: #000;" value="ca">🚩 CATALÀ</option>
+<option style="background: #000;" value="en">🇬🇧 ENGLISH</option>
+<option style="background: #000;" value="it">🇮🇹 ITALIANO</option>
+<option style="background: #000;" value="de">🇩🇪 DEUTSCH</option>
+<option style="background: #000;" value="ru">🇷🇺 РУССКИЙ</option>
+<option style="background: #000;" value="ja">🇯🇵 日本語</option>
+<option style="background: #000;" value="uk">🇺🇦 УКРАЇНСЬКА</option>
+<option style="background: #000;" value="zh-CN">🇨🇳 中文</option>
+<option style="background: #000;" value="ar">🇸🇦 العربية</option>
+</select>
 </div>
-
 <div class="main-content">
-    <a href="blog.html" class="back-btn">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline; margin-right:4px;">
-            <line x1="19" y1="12" x2="5" y2="12"></line>
-            <polyline points="12 19 5 12 12 5"></polyline>
-        </svg>
+<a class="back-btn" href="blog.html">
+<svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="display:inline; margin-right:4px;" viewbox="0 0 24 24" width="14">
+<line x1="19" x2="5" y1="12" y2="12"></line>
+<polyline points="12 19 5 12 12 5"></polyline>
+</svg>
         Volver al listado
     </a>
-
-    <article id="post-article">
-        <!-- Loading spinner/text -->
-        <div class="text-center py-20 text-sm font-mono text-secondary">
+<article id="post-article">
+<!-- Loading spinner/text -->
+<div class="text-center py-20 text-sm font-mono text-secondary">
             Cargando artículo...
         </div>
-    </article>
+</article>
 </div>
-
 <footer>
     [ TERMINAL ABIERTA ] // COPYRIGHT 2026 JESÚS FERRER GARCÍA // ALL SYSTEMS OPERATIONAL
 </footer>
-
 <script>
     // ── CONFIGURACIÓN DE BLOGGER ────────────────────────
     const BLOGGER_BLOG_ID = "8737045333650211847"; 
@@ -817,10 +816,8 @@
 
     window.addEventListener('DOMContentLoaded', loadPostData);
 </script>
-
 <!-- i18n Scripts -->
 <script src="js/translations.js"></script>
 <script src="js/i18n.js"></script>
-
 </body>
 </html>
