@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html class="dark" lang="es">
 <head>
 <meta charset="utf-8"/>
@@ -366,80 +367,77 @@
 <body>
 <div class="bg-glow glow-1"></div>
 <div class="bg-glow glow-2"></div>
-
 <!-- ═══ HEADER UNIFICADO (Simplificado: Solo botón de retorno) ═══ -->
 <header id="main-header" style="background: rgba(0,0,0,0.92); backdrop-filter: blur(16px); border-b: 1px solid rgba(255,255,255,0.1); position: fixed; top: 0; width: 100%; z-index: 1000; height: 80px;">
 <div class="nav-container" style="max-width: 1440px; margin: 0 auto; padding: 0 32px; height: 100%; display: flex; justify-content: space-between; align-items: center;">
-    <a href="index.html" class="logo" style="text-decoration: none; display: flex; align-items: center; gap: 12px;">
-        <img src="assets/logo.jpg" alt="CHUS BZN Logo Oficial" style="height: 44px; width: auto; object-fit: contain; border: 1px solid rgba(255,255,255,0.2); padding: 2px; border-radius: 4px;"/>
-        <span class="logo-tagline" style="font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: rgba(255,255,255,0.5); letter-spacing: 2px; text-transform: uppercase; border-left: 1px solid rgba(255,255,255,0.2); padding-left: 12px;">BLOG &amp; NOVEDADES</span>
-    </a>
-    
-    <!-- Botón único y claro de regreso a la Portada Principal -->
-    <div style="display: flex; align-items: center; gap: 16px;">
-        <a href="index.html" style="background: #FF1F1F; color: #FFFFFF; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: bold; padding: 10px 20px; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; transition: background 0.3s;" onmouseover="this.style.background='#D91616'" onmouseout="this.style.background='#FF1F1F'">
-            &larr; VOLVER A PORTADA PRINCIPAL (CHUS BZN HUB)
+<a class="logo" href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 12px;">
+<img alt="CHUS BZN Logo Oficial" src="assets/logo.jpg" style="height: 44px; width: auto; object-fit: contain; border: 1px solid rgba(255,255,255,0.2); padding: 2px; border-radius: 4px;"/>
+<span class="logo-tagline" style="font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: rgba(255,255,255,0.5); letter-spacing: 2px; text-transform: uppercase; border-left: 1px solid rgba(255,255,255,0.2); padding-left: 12px;">BLOG &amp; NOVEDADES</span>
+</a>
+<!-- Botón único y claro de regreso a la Portada Principal -->
+<div style="display: flex; align-items: center; gap: 16px;">
+<a href="index.html" onmouseout="this.style.background='#FF1F1F'" onmouseover="this.style.background='#D91616'" style="background: #FF1F1F; color: #FFFFFF; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: bold; padding: 10px 20px; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; transition: background 0.3s;">
+            ← VOLVER A PORTADA PRINCIPAL (CHUS BZN HUB)
         </a>
-        <select id="lang-select" style="background: rgba(0,0,0,0.8); color: #fff; border: 1px solid rgba(255,255,255,0.2); font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; cursor: pointer; outline: none; padding: 6px 10px;">
-            <option value="es">🇪🇸 ES</option>
-            <option value="en">🇬🇧 EN</option>
-            <option value="de">🇩🇪 DE</option>
-            <option value="ru">🇷🇺 RU</option>
-            <option value="ja">🇯🇵 JA</option>
-            <option value="uk">🇺🇦 UK</option>
-            <option value="zh-CN">🇨🇳 ZH</option>
-            <option value="ar">🇸🇦 AR</option>
-        </select>
-    </div>
+<select id="lang-select" style="background: rgba(0,0,0,0.8); color: #fff; border: 1px solid rgba(255,255,255,0.2); font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; cursor: pointer; outline: none; padding: 6px 10px;">
+<option style="background: #000;" value="es">🇪🇸 ESPAÑOL</option>
+<option style="background: #000;" value="ca">🚩 CATALÀ</option>
+<option style="background: #000;" value="en">🇬🇧 ENGLISH</option>
+<option style="background: #000;" value="it">🇮🇹 ITALIANO</option>
+<option style="background: #000;" value="de">🇩🇪 DEUTSCH</option>
+<option style="background: #000;" value="ru">🇷🇺 РУССКИЙ</option>
+<option style="background: #000;" value="ja">🇯🇵 日本語</option>
+<option style="background: #000;" value="uk">🇺🇦 УКРАЇНСЬКА</option>
+<option style="background: #000;" value="zh-CN">🇨🇳 中文</option>
+<option style="background: #000;" value="ar">🇸🇦 العربية</option>
+</select>
+</div>
 </div>
 </header>
-
 <!-- Mobile Nav Overlay -->
 <div aria-label="Menú móvil" id="mobile-nav" role="navigation">
-    <a class="mobile-nav-link" data-i18n="t_8" href="index.html#manif">01. Manifiesto</a>
-    <a class="mobile-nav-link" data-i18n="t_9" href="index.html#ia">02. Ecosistema IA</a>
-    <a class="mobile-nav-link" data-i18n="t_10" href="index.html#broadcast">03. Broadcast &amp; Cert</a>
-    <a class="mobile-nav-link" data-i18n="t_11" href="index.html#trayectoria">04. Trayectoria</a>
-    <a class="mobile-nav-link" data-i18n="t_12" href="index.html#compliance">05. Compliance</a>
-    <a class="mobile-nav-link" data-i18n="t_13" href="index.html#github">06. GitHub Pool</a>
-    <a class="mobile-nav-link" data-i18n="t_125" href="blog.html">07. Blog</a>
-    <span style="color:#ff0000; font-family:var(--font-mono); font-size:1rem; font-weight:bold; letter-spacing:1px; margin-top:20px; text-align:center;">IDIOMAS:</span>
-    <select id="mobile-lang-select" style="background: transparent; color: rgba(255,255,255,0.7); border: none; font-family: var(--font-mono); font-size: 1.3rem; text-transform: uppercase; cursor: pointer; outline: none; margin-top: 10px; text-align: center;">
-        <option value="es" style="background: #000;">🇪🇸 ESPAÑOL</option>
-        <option value="en" style="background: #000;">🇬🇧 ENGLISH</option>
-        <option value="de" style="background: #000;">🇩🇪 DEUTSCH</option>
-        <option value="ru" style="background: #000;">🇷🇺 РУССКИЙ</option>
-        <option value="ja" style="background: #000;">🇯🇵 日本語</option>
-        <option value="uk" style="background: #000;">🇺🇦 УКРАЇНСЬКА</option>
-        <option value="zh-CN" style="background: #000;">🇨🇳 中文</option>
-        <option value="ar" style="background: #000;">🇸🇦 العربية</option>
-    </select>
+<a class="mobile-nav-link" data-i18n="t_8" href="index.html#manif">01. Manifiesto</a>
+<a class="mobile-nav-link" data-i18n="t_9" href="index.html#ia">02. Ecosistema IA</a>
+<a class="mobile-nav-link" data-i18n="t_10" href="index.html#broadcast">03. Broadcast &amp; Cert</a>
+<a class="mobile-nav-link" data-i18n="t_11" href="index.html#trayectoria">04. Trayectoria</a>
+<a class="mobile-nav-link" data-i18n="t_12" href="index.html#compliance">05. Compliance</a>
+<a class="mobile-nav-link" data-i18n="t_13" href="index.html#github">06. GitHub Pool</a>
+<a class="mobile-nav-link" data-i18n="t_125" href="blog.html">07. Blog</a>
+<span style="color:#ff0000; font-family:var(--font-mono); font-size:1rem; font-weight:bold; letter-spacing:1px; margin-top:20px; text-align:center;">IDIOMAS:</span>
+<select id="mobile-lang-select" style="background: transparent; color: rgba(255,255,255,0.7); border: none; font-family: var(--font-mono); font-size: 1.3rem; text-transform: uppercase; cursor: pointer; outline: none; margin-top: 10px; text-align: center;">
+<option style="background: #000;" value="es">🇪🇸 ESPAÑOL</option>
+<option style="background: #000;" value="ca">🚩 CATALÀ</option>
+<option style="background: #000;" value="en">🇬🇧 ENGLISH</option>
+<option style="background: #000;" value="it">🇮🇹 ITALIANO</option>
+<option style="background: #000;" value="de">🇩🇪 DEUTSCH</option>
+<option style="background: #000;" value="ru">🇷🇺 РУССКИЙ</option>
+<option style="background: #000;" value="ja">🇯🇵 日本語</option>
+<option style="background: #000;" value="uk">🇺🇦 УКРАЇНСЬКА</option>
+<option style="background: #000;" value="zh-CN">🇨🇳 中文</option>
+<option style="background: #000;" value="ar">🇸🇦 العربية</option>
+</select>
 </div>
-
 <div class="main-content">
-    <div style="font-family: var(--font-mono); color: var(--accent-color); font-size: 0.75rem; margin-bottom: 20px; letter-spacing: 0.18em; text-transform: uppercase;">
+<div style="font-family: var(--font-mono); color: var(--accent-color); font-size: 0.75rem; margin-bottom: 20px; letter-spacing: 0.18em; text-transform: uppercase;">
         // ARCHIVE_FEED
     </div>
-    <h1 data-i18n="t_126" class="text-3xl sm:text-5xl font-extrabold tracking-tight uppercase mb-8" style="background: linear-gradient(135deg, #ffffff 0%, #d0d0d0 50%, #a0a0a0 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+<h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight uppercase mb-8" data-i18n="t_126" style="background: linear-gradient(135deg, #ffffff 0%, #d0d0d0 50%, #a0a0a0 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
         Blog &amp; Novedades
     </h1>
-    <p data-i18n="t_127" class="text-base sm:text-lg mb-12 leading-relaxed max-w-2xl font-light text-secondary">
+<p class="text-base sm:text-lg mb-12 leading-relaxed max-w-2xl font-light text-secondary" data-i18n="t_127">
         Espacio dedicado a compartir avances técnicos, pruebas de laboratorio con Inteligencia Artificial, integraciones de sistemas audiovisuales y reflexiones sobre el ecosistema digital contemporáneo.
     </p>
-
-    <!-- Grid Container -->
-    <div class="blog-grid" id="blog-posts-container">
-        <!-- Loader / Fallback -->
-        <div class="col-span-full py-12 text-center text-sm font-mono text-secondary" id="blog-loader">
+<!-- Grid Container -->
+<div class="blog-grid" id="blog-posts-container">
+<!-- Loader / Fallback -->
+<div class="col-span-full py-12 text-center text-sm font-mono text-secondary" id="blog-loader">
             Cargando entradas desde Blogger...
         </div>
-    </div>
 </div>
-
+</div>
 <footer>
     [ TERMINAL ABIERTA ] // COPYRIGHT 2026 JESÚS FERRER GARCÍA // ALL SYSTEMS OPERATIONAL
 </footer>
-
 <script>
     // ── CONFIGURACIÓN DE BLOGGER ────────────────────────
     // Reemplaza con tus claves reales cuando estén listas.
@@ -663,10 +661,8 @@
 
     window.addEventListener('DOMContentLoaded', loadBlogData);
 </script>
-
 <!-- i18n Scripts -->
 <script src="js/translations.js"></script>
 <script src="js/i18n.js"></script>
-
 </body>
 </html>
