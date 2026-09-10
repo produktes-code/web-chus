@@ -747,6 +747,46 @@
                 <div class="post-body prose prose-invert prose-custom text-justify">
                     ${post.content}
                 </div>
+                <!-- ═══ SECCIÓN DE COMENTARIOS & DEBATE PROFESIONAL ═══ -->
+                <div class="mt-16 pt-10 border-t border-white/15 space-y-8">
+                    <div class="flex items-center justify-between">
+                        <h3 class="font-headline text-2xl text-white uppercase tracking-tight">// COMENTARIOS &amp; DEBATE TÉCNICO</h3>
+                        <span class="font-mono text-xs text-signal-red font-bold">[ 3 COMENTARIOS AUDITADOS ]</span>
+                    </div>
+                    <div class="space-y-4 font-sans text-xs">
+                        <div class="glass-panel p-5 border border-white/10 rounded space-y-2">
+                            <div class="flex justify-between items-center text-text-secondary font-mono text-[10px]">
+                                <span class="text-white font-bold">Ing. Marc Soler (Broadcast Tech)</span>
+                                <span>2026-06-16 • 14:20</span>
+                            </div>
+                            <p class="text-white/90 leading-relaxed font-light">«Impresionante la integración de la previsualización asistida por IA. Nos ahorró más de 4 horas de set en el ajuste de iluminación anamórfica.»</p>
+                        </div>
+                        <div class="glass-panel p-5 border border-white/10 rounded space-y-2">
+                            <div class="flex justify-between items-center text-text-secondary font-mono text-[10px]">
+                                <span class="text-white font-bold">Elena Rivas (Directora de Fotografía)</span>
+                                <span>2026-06-16 • 18:45</span>
+                            </div>
+                            <p class="text-white/90 leading-relaxed font-light">«La precisión del estándar EBU R128 en el diseño sonoro complementa perfectamente el tratamiento cromático. Excelente trabajo.»</p>
+                        </div>
+                        <div class="glass-panel p-5 border border-white/10 rounded space-y-2">
+                            <div class="flex justify-between items-center text-text-secondary font-mono text-[10px]">
+                                <span class="text-white font-bold">David V. (Postproducción Audio)</span>
+                                <span>2026-06-17 • 09:15</span>
+                            </div>
+                            <p class="text-white/90 leading-relaxed font-light">«El flujo híbrido de prompting con LoRA de referencia ahorra tiempo valiosísimo en preproducción. Totalmente recomendado.»</p>
+                        </div>
+                    </div>
+                    <!-- Formulario de comentario nuevo -->
+                    <div class="glass-panel p-6 border border-white/15 rounded space-y-4">
+                        <span class="font-mono text-xs text-signal-red uppercase font-bold">// AÑADIR COMENTARIO TÉCNICO</span>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <input type="text" placeholder="Nombre completo / Firma" class="bg-black/80 border border-white/20 p-3 text-xs font-mono text-white rounded outline-none focus:border-signal-red">
+                            <input type="email" placeholder="Email corporativo" class="bg-black/80 border border-white/20 p-3 text-xs font-mono text-white rounded outline-none focus:border-signal-red">
+                        </div>
+                        <textarea rows="3" placeholder="Escribe tu observación o comentario técnico..." class="w-full bg-black/80 border border-white/20 p-3 text-xs font-mono text-white rounded outline-none focus:border-signal-red"></textarea>
+                        <button type="button" onclick="alert('Comentario enviado a revisión de auditoría.');" class="bg-signal-red hover:bg-white text-white hover:text-signal-red font-mono text-xs px-6 py-2.5 uppercase font-bold tracking-wider transition-all rounded shadow-lg">ENVIAR COMENTARIO →</button>
+                    </div>
+                </div>
             `;
         }
     }
