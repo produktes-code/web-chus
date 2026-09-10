@@ -751,9 +751,9 @@
                 <div class="mt-16 pt-10 border-t border-white/15 space-y-8">
                     <div class="flex items-center justify-between">
                         <h3 class="font-headline text-2xl text-white uppercase tracking-tight">// COMENTARIOS &amp; DEBATE TÉCNICO</h3>
-                        <span class="font-mono text-xs text-signal-red font-bold">[ 3 COMENTARIOS AUDITADOS ]</span>
+                        <span class="font-mono text-xs text-signal-red font-bold" id="comments-count">[ 3 COMENTARIOS AUDITADOS ]</span>
                     </div>
-                    <div class="space-y-4 font-sans text-xs">
+                    <div class="space-y-4 font-sans text-xs" id="comments-list">
                         <div class="glass-panel p-5 border border-white/10 rounded space-y-2">
                             <div class="flex justify-between items-center text-text-secondary font-mono text-[10px]">
                                 <span class="text-white font-bold">Ing. Marc Soler (Broadcast Tech)</span>
@@ -775,17 +775,21 @@
                             </div>
                             <p class="text-white/90 leading-relaxed font-light">«El flujo híbrido de prompting con LoRA de referencia ahorra tiempo valiosísimo en preproducción. Totalmente recomendado.»</p>
                         </div>
+                        <div id="user-comments-block" class="space-y-4"></div>
                     </div>
                     <!-- Formulario de comentario nuevo -->
-                    <div class="glass-panel p-6 border border-white/15 rounded space-y-4">
-                        <span class="font-mono text-xs text-signal-red uppercase font-bold">// AÑADIR COMENTARIO TÉCNICO</span>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <input type="text" placeholder="Nombre completo / Firma" class="bg-black/80 border border-white/20 p-3 text-xs font-mono text-white rounded outline-none focus:border-signal-red">
-                            <input type="email" placeholder="Email corporativo" class="bg-black/80 border border-white/20 p-3 text-xs font-mono text-white rounded outline-none focus:border-signal-red">
+                    <form id="comment-form" class="glass-panel p-6 border border-white/15 rounded space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="font-mono text-xs text-signal-red uppercase font-bold">// AÑADIR COMENTARIO TÉCNICO</span>
+                            <span id="comment-success" class="hidden text-terminal-green font-mono text-xs font-bold animate-pulse">✓ Comentario registrado en el protocolo de auditoría.</span>
                         </div>
-                        <textarea rows="3" placeholder="Escribe tu observación o comentario técnico..." class="w-full bg-black/80 border border-white/20 p-3 text-xs font-mono text-white rounded outline-none focus:border-signal-red"></textarea>
-                        <button type="button" onclick="alert('Comentario enviado a revisión de auditoría.');" class="bg-signal-red hover:bg-white text-white hover:text-signal-red font-mono text-xs px-6 py-2.5 uppercase font-bold tracking-wider transition-all rounded shadow-lg">ENVIAR COMENTARIO →</button>
-                    </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <input type="text" id="c-name" required placeholder="Nombre completo / Firma" class="bg-black/80 border border-white/20 p-3 text-xs font-mono text-white rounded outline-none focus:border-signal-red">
+                            <input type="email" id="c-email" placeholder="Email corporativo (opcional)" class="bg-black/80 border border-white/20 p-3 text-xs font-mono text-white rounded outline-none focus:border-signal-red">
+                        </div>
+                        <textarea id="c-text" rows="3" required placeholder="Escribe tu observación o comentario técnico..." class="w-full bg-black/80 border border-white/20 p-3 text-xs font-mono text-white rounded outline-none focus:border-signal-red"></textarea>
+                        <button type="submit" class="bg-signal-red hover:bg-white text-white hover:text-signal-red font-mono text-xs px-6 py-2.5 uppercase font-bold tracking-wider transition-all rounded shadow-lg cursor-pointer">ENVIAR COMENTARIO →</button>
+                    </form>
                 </div>
             `;
         }
@@ -796,9 +800,18 @@
         const params = new URLSearchParams(window.location.search);
         const postId = params.get('id');
         
-        if (!postId) {
-            pageState.status = 'no-id';
+        const targetPostId = postId || 'mock-1';
+        
+        if (targetPostId.startsWith('mock-')) {
+            const post = mockPosts[targetPostId] || mockPosts['mock-1'];
+            if (post) {
+                pageState.status = 'loaded';
+                pageState.post = post;
+            } else {
+                pageState.status = 'not-found';
+            }
             renderState();
+            initCommentsSystem(targetPostId);
             return;
         }
 
@@ -852,6 +865,75 @@
         mobileLangSelect.addEventListener('change', () => {
             setTimeout(renderState, 50);
         });
+    }
+
+    
+    // Sistema dinámico de comentarios interactivos con persistencia localStorage
+    function initCommentsSystem(postId) {
+        setTimeout(() => {
+            const form = document.getElementById('comment-form');
+            if (!form) return;
+            
+            const storageKey = `post_comments_${postId}`;
+            const existingComments = JSON.parse(localStorage.getItem(storageKey) || '[]');
+            
+            const countEl = document.getElementById('comments-count');
+            const userBlock = document.getElementById('user-comments-block');
+            
+            function renderComments() {
+                const baseCount = 3 + existingComments.length;
+                if (countEl) countEl.textContent = `[ ${baseCount} COMENTARIOS AUDITADOS ]`;
+                
+                if (userBlock) {
+                    userBlock.innerHTML = existingComments.map(c => `
+                        <div class="glass-panel p-5 border border-terminal-green/30 rounded space-y-2 animate-fadeIn">
+                            <div class="flex justify-between items-center text-text-secondary font-mono text-[10px]">
+                                <span class="text-terminal-green font-bold">${escapeHtml(c.name)} (${escapeHtml(c.email || 'Verificado')})</span>
+                                <span>${c.date}</span>
+                            </div>
+                            <p class="text-white/90 leading-relaxed font-light">«${escapeHtml(c.text)}»</p>
+                        </div>
+                    `).join('');
+                }
+            }
+
+            renderComments();
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const nameInput = document.getElementById('c-name');
+                const emailInput = document.getElementById('c-email');
+                const textInput = document.getElementById('c-text');
+                const alertSuccess = document.getElementById('comment-success');
+
+                if (!nameInput.value.trim() || !textInput.value.trim()) return;
+
+                const newComment = {
+                    name: nameInput.value.trim(),
+                    email: emailInput.value.trim(),
+                    text: textInput.value.trim(),
+                    date: new Date().toISOString().replace('T', ' ').substring(0, 16)
+                };
+
+                existingComments.unshift(newComment);
+                localStorage.setItem(storageKey, JSON.stringify(existingComments));
+
+                nameInput.value = '';
+                emailInput.value = '';
+                textInput.value = '';
+
+                if (alertSuccess) {
+                    alertSuccess.classList.remove('hidden');
+                    setTimeout(() => alertSuccess.classList.add('hidden'), 5000);
+                }
+
+                renderComments();
+            });
+        }, 100);
+    }
+
+    function escapeHtml(str) {
+        return (str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     }
 
     window.addEventListener('DOMContentLoaded', loadPostData);
