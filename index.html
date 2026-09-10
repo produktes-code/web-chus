@@ -244,6 +244,26 @@
         100% { transform: translate3d(-50%, 0, 0); }
     }
 
+    
+    /* Mobile Reveal Fallback & GPU Acceleration */
+    @media (max-width: 1024px) {
+        .reveal {
+            opacity: 1 !important;
+            transform: none !important;
+            transition: none !important;
+        }
+        .organic-orb-1, .organic-orb-2 {
+            display: none !important;
+        }
+    }
+
+    /* Optimized Organic Orbs Keyframes without blur re-rasterization */
+    @keyframes organic-morph {
+        0% { transform: translate3d(0, 0, 0) scale(1); }
+        50% { transform: translate3d(30px, -20px, 0) scale(1.06); }
+        100% { transform: translate3d(-20px, 20px, 0) scale(0.95); }
+    }
+
     /* Scroll reveal */
     .reveal {
         opacity: 0;
@@ -1385,7 +1405,7 @@
     }
     if (typewriterEl) setTimeout(typeEffect, 1000);
 
-    // ═══ MATRIX DATA STREAM CANVAS (60FPS CONTINUO Y ESTABLE) ═══
+    // ═══ BULLETPROOF MATRIX DATA STREAM CANVAS (MOBILE & DESKTOP) ═══
     const mCanvas = document.getElementById('matrix-canvas');
     if (mCanvas) {
         const ctx = mCanvas.getContext('2d');
@@ -1395,27 +1415,44 @@
         let drops = [];
         let curW = 0, curH = 0;
 
-        function initMatrixSize() {
+        function updateCanvasDimensions() {
             const parent = mCanvas.parentElement;
-            const w = (parent && parent.clientWidth) ? parent.clientWidth : 360;
+            const w = (parent && parent.clientWidth) ? parent.clientWidth : (window.innerWidth < 480 ? 320 : 360);
             const h = (parent && parent.clientHeight) ? parent.clientHeight : 256;
             
-            if (curW !== w || curH !== h) {
+            if (curW !== w || curH !== h || mCanvas.width !== w || mCanvas.height !== h) {
                 curW = w;
                 curH = h;
                 mCanvas.width = w;
                 mCanvas.height = h;
                 columns = Math.max(10, Math.floor(w / fontSize));
-                drops = Array(columns).fill(0).map(() => Math.floor(Math.random() * -20));
+                drops = Array(columns).fill(0).map(() => Math.floor(Math.random() * -25));
             }
         }
 
-        initMatrixSize();
-        window.addEventListener('resize', initMatrixSize);
+        updateCanvasDimensions();
+        window.addEventListener('resize', updateCanvasDimensions);
+        window.addEventListener('orientationchange', () => setTimeout(updateCanvasDimensions, 200));
 
-        function drawMatrix() {
-            if (!curW || !curH) initMatrixSize();
-            
+        if (window.ResizeObserver && mCanvas.parentElement) {
+            try {
+                new ResizeObserver(() => updateCanvasDimensions()).observe(mCanvas.parentElement);
+            } catch (e) {}
+        }
+
+        let lastDrawTime = 0;
+        const fpsInterval = 35; // ~30 FPS throttle
+
+        function renderMatrix(timestamp) {
+            requestAnimationFrame(renderMatrix);
+
+            if (timestamp - lastDrawTime < fpsInterval) return;
+            lastDrawTime = timestamp;
+
+            if (!curW || !curH || mCanvas.width !== curW) {
+                updateCanvasDimensions();
+            }
+
             ctx.fillStyle = 'rgba(0, 0, 0, 0.12)';
             ctx.fillRect(0, 0, curW, curH);
 
@@ -1443,7 +1480,7 @@
             }
         }
 
-        setInterval(drawMatrix, 35);
+        requestAnimationFrame(renderMatrix);
     }
 
     // ═══ GARANTÍA DE MOVIMIENTO Y HOVER EN VÍDEOS DEL SHOWCASE ═══
@@ -1713,8 +1750,13 @@
         entries.forEach(entry => {
             if (entry.isIntersecting) entry.target.classList.add('active');
         });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.01, rootMargin: '0px 0px 100px 0px' });
     reveals.forEach(r => observer.observe(r));
+
+    // Force active class on mobile load
+    if (window.innerWidth <= 1024) {
+        reveals.forEach(r => r.classList.add('active'));
+    }
 
     // Form submit simulation
     const form = document.getElementById('order-form');
