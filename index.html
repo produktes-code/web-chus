@@ -1421,7 +1421,7 @@
 <h3 class="font-headline text-2xl sm:text-3xl text-white uppercase tracking-tight" id="vmodal-title">---</h3>
 </div>
 <!-- Contenedor donde se inyectará el reproductor dinámicamente -->
-<div class="relative w-full bg-black border border-white/20 rounded overflow-hidden shadow-2xl flex items-center justify-center transition-all duration-300" id="modal-content">
+<div class="relative w-full bg-black border border-white/20 rounded overflow-hidden shadow-2xl flex items-center justify-center transition-all duration-300 min-h-[220px]" id="modal-content">
 <!-- Inyección de iFrame o HTML5 Video -->
 </div>
 <!-- Descripción & Botón a la Fuente Oficial -->
@@ -1457,7 +1457,35 @@
         }
     };
 
-    // Typewriter effect in Hero sub-bar (Truncated crisp text without height shifts)
+    // Smooth Navigation for Sections (Fixes iOS Safari locked scrolling)
+    window.navigateToSection = function(targetId) {
+        if (!targetId || targetId === '#') return;
+        window.toggleMobileMenu(false);
+        setTimeout(() => {
+            if (targetId === '#top') {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                return;
+            }
+            const targetEl = document.querySelector(targetId);
+            if (targetEl) {
+                const headerOffset = 85;
+                const elementPosition = targetEl.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+            }
+        }, 50);
+    };
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const targetId = this.getAttribute('href');
+            if (!targetId || targetId === '#') return;
+            e.preventDefault();
+            window.navigateToSection(targetId);
+        });
+    });
+
+    // Typewriter effect in Hero sub-bar
     const typewriterEl = document.getElementById('typewriter-sub');
     const typewriterTexts = [
         "> CARGANDO NODO BROADCAST BARCELONA...",
@@ -1489,39 +1517,41 @@
     }
     if (typewriterEl) setTimeout(typeEffect, 800);
 
-    // ═══ BULLETPROOF MATRIX DATA STREAM CANVAS (iOS & DESKTOP SAFE) ═══
+    // ═══ BULLETPROOF MATRIX DATA STREAM CANVAS (iOS SAFARI & DESKTOP) ═══
     const mCanvas = document.getElementById('matrix-canvas');
     if (mCanvas) {
         const ctx = mCanvas.getContext('2d');
         const chars = 'CHUSBZN0123456789EBUR128AI@#$890';
-        const fontSize = 12;
+        const fontSize = 13;
         let columns = 0;
         let drops = [];
         let curW = 0, curH = 0;
 
         function updateCanvasDimensions() {
             const parent = mCanvas.parentElement;
-            if (!parent) return;
-            const rect = parent.getBoundingClientRect();
-            const w = Math.floor(rect.width || 340);
-            const h = Math.floor(rect.height || 256);
+            const w = Math.max(300, Math.floor((parent ? parent.clientWidth : 0) || window.innerWidth || 340));
+            const h = Math.max(220, Math.floor((parent ? parent.clientHeight : 0) || 256));
 
-            if (Math.abs(curW - w) > 4 || Math.abs(curH - h) > 4 || mCanvas.width !== w) {
+            if (curW !== w || curH !== h) {
                 curW = w;
                 curH = h;
                 mCanvas.width = w;
                 mCanvas.height = h;
-                columns = Math.max(10, Math.floor(w / fontSize));
+                mCanvas.style.width = w + 'px';
+                mCanvas.style.height = h + 'px';
+                columns = Math.max(12, Math.floor(w / fontSize));
                 drops = Array(columns).fill(0).map(() => Math.floor(Math.random() * -30));
             }
         }
 
         updateCanvasDimensions();
+        setTimeout(updateCanvasDimensions, 300);
+        setTimeout(updateCanvasDimensions, 1000);
         window.addEventListener('resize', updateCanvasDimensions);
         window.addEventListener('orientationchange', () => setTimeout(updateCanvasDimensions, 200));
 
         let lastDrawTime = 0;
-        const fpsInterval = 33; // ~30 FPS throttle
+        const fpsInterval = 40; // ~25 FPS throttle for smooth mobile rendering
 
         function renderMatrix(timestamp) {
             requestAnimationFrame(renderMatrix);
@@ -1529,15 +1559,14 @@
             if (timestamp - lastDrawTime < fpsInterval) return;
             lastDrawTime = timestamp;
 
-            if (curW <= 0 || curH <= 0) {
+            if (curW <= 0 || curH <= 0 || mCanvas.width === 0) {
                 updateCanvasDimensions();
-                return;
             }
 
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.15)';
-            ctx.fillRect(0, 0, curW, curH);
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.14)';
+            ctx.fillRect(0, 0, curW || 340, curH || 256);
 
-            ctx.font = '12px "JetBrains Mono", monospace';
+            ctx.font = 'bold 13px "JetBrains Mono", monospace';
 
             for (let i = 0; i < drops.length; i++) {
                 const text = chars.charAt(Math.floor(Math.random() * chars.length));
@@ -1550,12 +1579,10 @@
                     ctx.fillStyle = '#00FF41';
                 }
 
-                if (y > 0) {
-                    ctx.fillText(text, x, y);
-                }
+                ctx.fillText(text, x, Math.max(12, y));
 
-                if (y > curH && Math.random() > 0.975) {
-                    drops[i] = 0;
+                if (y > (curH || 256) && Math.random() > 0.975) {
+                    drops[i] = Math.floor(Math.random() * -10);
                 }
                 drops[i]++;
             }
@@ -1564,13 +1591,31 @@
         requestAnimationFrame(renderMatrix);
     }
 
-    // ═══ BULLETPROOF LIGHTBOX VIDEO PLAYER FOR IPHONE ═══
+    // ═══ BULLETPROOF LIGHTBOX VIDEO PLAYER WITH IPHONE OVERLAY ═══
     const videoModal = document.getElementById('video-modal');
     const modalContent = document.getElementById('modal-content');
     const vmodalTitle = document.getElementById('vmodal-title');
     const vmodalBadge = document.getElementById('vmodal-badge');
     const vmodalDesc = document.getElementById('vmodal-desc');
     const vmodalLink = document.getElementById('vmodal-link');
+
+    window.startModalVideoPlayback = function() {
+        const activeVideo = document.getElementById('active-modal-video');
+        const overlay = document.getElementById('modal-play-overlay');
+        if (activeVideo) {
+            activeVideo.muted = false;
+            const p = activeVideo.play();
+            if (p !== undefined) {
+                p.then(() => {
+                    if (overlay) overlay.style.display = 'none';
+                }).catch(() => {
+                    activeVideo.muted = true;
+                    activeVideo.play().catch(() => {});
+                    if (overlay) overlay.style.display = 'none';
+                });
+            }
+        }
+    };
 
     window.openVideoModal = function(platform, id, ratio, localVideo, title, badge, desc, link) {
         if (vmodalTitle) vmodalTitle.textContent = title || '---';
@@ -1596,9 +1641,17 @@
 
         let embedHTML = '';
         if (localVideo) {
-            embedHTML = `<video id="active-modal-video" src="${localVideo}" controls autoplay playsinline webkit-playsinline class="w-full h-full object-contain rounded shadow-2xl" type="video/mp4"></video>`;
+            embedHTML = `<div class="relative w-full h-full flex items-center justify-center bg-black group overflow-hidden rounded">
+                <video id="active-modal-video" src="${localVideo}" controls playsinline webkit-playsinline preload="auto" class="w-full h-full object-contain rounded shadow-2xl" type="video/mp4"></video>
+                <div id="modal-play-overlay" onclick="startModalVideoPlayback(); event.stopPropagation();" ontouchstart="startModalVideoPlayback(); event.stopPropagation();" class="absolute inset-0 bg-black/60 hover:bg-black/40 flex flex-col items-center justify-center cursor-pointer transition-all z-40 p-4 text-center">
+                    <div class="w-16 h-16 bg-signal-red text-white rounded-full flex items-center justify-center shadow-2xl transform group-hover:scale-110 mb-3 border-2 border-white/50">
+                        <svg class="w-8 h-8 translate-x-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
+                    </div>
+                    <span class="font-mono text-xs text-white font-bold tracking-widest uppercase bg-black/90 px-4 py-2 rounded border border-signal-red shadow-lg">▶ REPRODUCIR VÍDEO CON AUDIO</span>
+                </div>
+            </div>`;
         } else if (platform === 'youtube' && id) {
-            embedHTML = `<iframe class="w-full h-full rounded border-0" style="aspect-ratio: ${ratio || '16/9'};" src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>`;
+            embedHTML = `<iframe class="w-full h-full rounded border-0" style="aspect-ratio: ${ratio || '16/9'};" src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
         } else if (platform === 'instagram' && id) {
             embedHTML = `<iframe class="w-full h-full rounded border-0" style="aspect-ratio: ${ratio || '9/16'};" src="https://www.instagram.com/p/${id}/embed" allowfullscreen></iframe>`;
         }
@@ -1607,18 +1660,16 @@
         if (videoModal) videoModal.classList.add('open');
         document.body.style.overflow = 'hidden';
 
-        // Play local video immediately within touch context
-        const activeVideo = document.getElementById('active-modal-video');
-        if (activeVideo) {
-            activeVideo.muted = false;
-            const promise = activeVideo.play();
-            if (promise !== undefined) {
-                promise.catch(() => {
-                    activeVideo.muted = true;
-                    activeVideo.play().catch(() => {});
-                });
+        // Auto attempt play
+        setTimeout(() => {
+            const activeVideo = document.getElementById('active-modal-video');
+            if (activeVideo) {
+                activeVideo.play().then(() => {
+                    const overlay = document.getElementById('modal-play-overlay');
+                    if (overlay) overlay.style.display = 'none';
+                }).catch(() => {});
             }
-        }
+        }, 150);
     };
 
     window.handleVideoCardClick = function(card) {
@@ -1737,26 +1788,6 @@
     window.closeServiceModal = function(e) {
         document.getElementById('service-modal').classList.remove('open');
     };
-
-    // Smooth Scroll Links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            const targetId = this.getAttribute('href');
-            if (!targetId || targetId === '#') return;
-            if (targetId === '#top') {
-                e.preventDefault();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-                window.toggleMobileMenu(false);
-                return;
-            }
-            const targetEl = document.querySelector(targetId);
-            if (targetEl) {
-                e.preventDefault();
-                targetEl.scrollIntoView({ behavior: 'smooth' });
-                window.toggleMobileMenu(false);
-            }
-        });
-    });
 
     // Scroll reveal observer
     const reveals = document.querySelectorAll('.reveal');
