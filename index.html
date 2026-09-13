@@ -450,7 +450,7 @@
 <span>ENCARGO 24H</span>
 </a>
 <!-- Mobile Hamburger Button -->
-<button aria-label="Menú móvil" class="xl:hidden p-2 text-white hover:text-signal-red focus:outline-none" id="mobile-btn">
+<button aria-label="Menú móvil" class="xl:hidden p-2 text-white hover:text-signal-red focus:outline-none cursor-pointer" id="mobile-btn" onclick="toggleMobileMenu(); event.stopPropagation();" ontouchstart="toggleMobileMenu(); event.stopPropagation();">
 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
 </button>
 </div>
@@ -458,14 +458,14 @@
 </header>
 <!-- Mobile Navigation Overlay -->
 <div id="mobile-menu">
-<button id="close-mobile-menu" aria-label="Cerrar menú" class="absolute top-6 right-6 text-white text-3xl font-mono p-3 hover:text-signal-red focus:outline-none cursor-pointer z-50">✕</button>
-<a class="mobile-link text-xl font-headline uppercase tracking-widest text-white hover:text-signal-red" data-i18n="t_nav_services" href="#servicios">01. Servicios</a>
-<a class="mobile-link text-xl font-headline uppercase tracking-widest text-white hover:text-signal-red" data-i18n="t_129" href="#redes">02. Dónde Ver Trabajos</a>
-<a class="mobile-link text-xl font-headline uppercase tracking-widest text-white hover:text-signal-red" data-i18n="t_nav_ai" href="#ecosistema">03. Ecosistema IA</a>
-<a class="mobile-link text-xl font-headline uppercase tracking-widest text-white hover:text-signal-red" data-i18n="t_130" href="#showcase">04. Vídeos en Vivo</a>
-<a class="mobile-link text-xl font-headline uppercase tracking-widest text-white hover:text-signal-red" data-i18n="t_131" href="#metodologia">05. Perfil &amp; Trayectoria</a>
-<a class="mobile-link text-xl font-headline uppercase tracking-widest text-white hover:text-signal-red" data-i18n="t_132" href="blog.html">06. Blog</a>
-<a class="mobile-link text-xl font-headline uppercase tracking-widest text-signal-red" data-i18n="t_142" href="#presupuesto">07. Encargo 24h</a>
+<button id="close-mobile-menu" aria-label="Cerrar menú" class="absolute top-6 right-6 text-white text-3xl font-mono p-3 hover:text-signal-red focus:outline-none cursor-pointer z-50" onclick="toggleMobileMenu(false); event.stopPropagation();">✕</button>
+<a class="mobile-link text-xl font-headline uppercase tracking-widest text-white hover:text-signal-red" data-i18n="t_nav_services" href="#servicios" onclick="toggleMobileMenu(false);">01. Servicios</a>
+<a class="mobile-link text-xl font-headline uppercase tracking-widest text-white hover:text-signal-red" data-i18n="t_129" href="#redes" onclick="toggleMobileMenu(false);">02. Dónde Ver Trabajos</a>
+<a class="mobile-link text-xl font-headline uppercase tracking-widest text-white hover:text-signal-red" data-i18n="t_nav_ai" href="#ecosistema" onclick="toggleMobileMenu(false);">03. Ecosistema IA</a>
+<a class="mobile-link text-xl font-headline uppercase tracking-widest text-white hover:text-signal-red" data-i18n="t_130" href="#showcase" onclick="toggleMobileMenu(false);">04. Vídeos en Vivo</a>
+<a class="mobile-link text-xl font-headline uppercase tracking-widest text-white hover:text-signal-red" data-i18n="t_131" href="#metodologia" onclick="toggleMobileMenu(false);">05. Perfil &amp; Trayectoria</a>
+<a class="mobile-link text-xl font-headline uppercase tracking-widest text-white hover:text-signal-red" data-i18n="t_132" href="blog.html" onclick="toggleMobileMenu(false);">06. Blog</a>
+<a class="mobile-link text-xl font-headline uppercase tracking-widest text-signal-red" data-i18n="t_142" href="#presupuesto" onclick="toggleMobileMenu(false);">07. Encargo 24h</a>
 </div>
 <main class="relative z-10 pt-20">
 <!-- Dynamic Glow & Organic Orbs Background -->
@@ -476,9 +476,9 @@
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 w-full items-center">
 <!-- Left Hero Content -->
 <div class="lg:col-span-7 space-y-8 reveal active">
-<div class="inline-flex items-center gap-3 border border-signal-red/30 px-4 py-2 bg-surface-dim/90 backdrop-blur-md">
+<div class="inline-flex items-center gap-3 border border-signal-red/30 px-4 py-2 bg-surface-dim/90 backdrop-blur-md h-10 min-h-[40px] max-h-[40px] overflow-hidden w-full max-w-full flex-nowrap">
 <span class="status-pip"></span>
-<span class="font-mono text-[11px] text-terminal-green tracking-widest uppercase" data-i18n="t_143" id="typewriter-sub">
+<span class="font-mono text-[10px] sm:text-[11px] text-terminal-green tracking-widest uppercase whitespace-nowrap truncate overflow-hidden block w-full text-ellipsis" data-i18n="t_143" id="typewriter-sub">
                         &gt; CARGANDO NODO BROADCAST BARCELONA...
                     </span>
 </div>
@@ -828,7 +828,7 @@
 <!-- RETÍCULA DE VÍDEOS (4 Columnas x 2 Filas = 8 Producciones Únicas) -->
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5" id="showcase-grid">
 <!-- VÍDEO 01: Instagram Reel "America'n Job 🇺🇸" -->
-<div class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer" data-badge="// INSTAGRAM REEL (ACTING IA)" data-badge-key="t_212" data-desc="Acting I.A por @chus_bzn: Estética cinemática estilo 1967 y diseño sonoro con John Williams - Prologue (JFK) &amp; Walter Cronkite." data-desc-key="t_217" data-id="DQh86inDDTm" data-link="https://www.instagram.com/p/DQh86inDDTm/" data-local="assets/american_job.mp4" data-platform="instagram" data-ratio="9/16" data-title="America'n Job 🇺🇸" data-title-key="t_216">
+<div class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer" onclick="handleVideoCardClick(this); event.stopPropagation();" ontouchstart="handleVideoCardClick(this); event.stopPropagation();" data-badge="// INSTAGRAM REEL (ACTING IA)" data-badge-key="t_212" data-desc="Acting I.A por @chus_bzn: Estética cinemática estilo 1967 y diseño sonoro con John Williams - Prologue (JFK) &amp; Walter Cronkite." data-desc-key="t_217" data-id="DQh86inDDTm" data-link="https://www.instagram.com/p/DQh86inDDTm/" data-local="assets/american_job.mp4" data-platform="instagram" data-ratio="9/16" data-title="America'n Job 🇺🇸" data-title-key="t_216">
 <div class="space-y-2.5">
 <div class="flex justify-between items-center font-mono text-[9px]">
 <span class="text-signal-red font-bold uppercase tracking-wider" data-i18n="t_212">// INSTAGRAM REEL (ACTING IA)</span>
@@ -863,7 +863,7 @@
 </div>
 </div>
 <!-- VÍDEO 02: DORITOS A.C 🌋🧀 -->
-<div class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer" data-badge="// INSTAGRAM REEL (DORITOS IA)" data-badge-key="t_220" data-desc="@doritos A.C 🌋🧀: Spot publicitario e innovación generativa I.A por @chus_bzn." data-desc-key="t_222" data-id="DIFPAaMKcAJ" data-link="https://www.instagram.com/p/DIFPAaMKcAJ/" data-local="assets/doritos.mp4" data-platform="instagram" data-ratio="9/16" data-title="DORITOS A.C 🌋🧀" data-title-key="t_221">
+<div class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer" onclick="handleVideoCardClick(this); event.stopPropagation();" ontouchstart="handleVideoCardClick(this); event.stopPropagation();" data-badge="// INSTAGRAM REEL (DORITOS IA)" data-badge-key="t_220" data-desc="@doritos A.C 🌋🧀: Spot publicitario e innovación generativa I.A por @chus_bzn." data-desc-key="t_222" data-id="DIFPAaMKcAJ" data-link="https://www.instagram.com/p/DIFPAaMKcAJ/" data-local="assets/doritos.mp4" data-platform="instagram" data-ratio="9/16" data-title="DORITOS A.C 🌋🧀" data-title-key="t_221">
 <div class="space-y-2.5">
 <div class="flex justify-between items-center font-mono text-[9px]">
 <span class="text-signal-red font-bold uppercase tracking-wider" data-i18n="t_220">// INSTAGRAM REEL (DORITOS IA)</span>
@@ -898,7 +898,7 @@
 </div>
 </div>
 <!-- VÍDEO 03: COCA-COLA CREATIVITY 🥤🔥 -->
-<div class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer" data-badge="// INSTAGRAM REEL (COCA-COLA IA)" data-badge-key="t_223" data-desc="@cocacola Since 1118 Year: Spot publicitario y animación de concepto de fantasía medieval y guerreros por @chus_bzn." data-desc-key="t_225" data-id="DIB6gmPqn8E" data-link="https://www.instagram.com/p/DIB6gmPqn8E/" data-local="assets/cocacola.mp4" data-platform="instagram" data-ratio="9/16" data-title="COCA-COLA CREATIVITY 🥤🔥" data-title-key="t_224">
+<div class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer" onclick="handleVideoCardClick(this); event.stopPropagation();" ontouchstart="handleVideoCardClick(this); event.stopPropagation();" data-badge="// INSTAGRAM REEL (COCA-COLA IA)" data-badge-key="t_223" data-desc="@cocacola Since 1118 Year: Spot publicitario y animación de concepto de fantasía medieval y guerreros por @chus_bzn." data-desc-key="t_225" data-id="DIB6gmPqn8E" data-link="https://www.instagram.com/p/DIB6gmPqn8E/" data-local="assets/cocacola.mp4" data-platform="instagram" data-ratio="9/16" data-title="COCA-COLA CREATIVITY 🥤🔥" data-title-key="t_224">
 <div class="space-y-2.5">
 <div class="flex justify-between items-center font-mono text-[9px]">
 <span class="text-signal-red font-bold uppercase tracking-wider" data-i18n="t_223">// INSTAGRAM REEL (COCA-COLA IA)</span>
@@ -933,7 +933,7 @@
 </div>
 </div>
 <!-- VÍDEO 04: VENENO (BreakBeat Mix) -->
-<div class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer" data-badge="// SONIDO &amp; RAVE 90S" data-badge-key="t_226" data-desc="VENENO: Creación de @chus_bzn inspirada en ritmos BreakBeat, guitarras eléctricas, sonidos ácidos y el estilo Rave de los 90s." data-desc-key="t_229" data-id="sSIBsZEcKTk" data-link="https://www.youtube.com/shorts/sSIBsZEcKTk" data-local="assets/veneno.mp4" data-platform="youtube" data-ratio="9/16" data-title="VENENO (BreakBeat Mix)" data-title-key="t_228">
+<div class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer" onclick="handleVideoCardClick(this); event.stopPropagation();" ontouchstart="handleVideoCardClick(this); event.stopPropagation();" data-badge="// SONIDO &amp; RAVE 90S" data-badge-key="t_226" data-desc="VENENO: Creación de @chus_bzn inspirada en ritmos BreakBeat, guitarras eléctricas, sonidos ácidos y el estilo Rave de los 90s." data-desc-key="t_229" data-id="sSIBsZEcKTk" data-link="https://www.youtube.com/shorts/sSIBsZEcKTk" data-local="assets/veneno.mp4" data-platform="youtube" data-ratio="9/16" data-title="VENENO (BreakBeat Mix)" data-title-key="t_228">
 <div class="space-y-2.5">
 <div class="flex justify-between items-center font-mono text-[9px]">
 <span class="text-signal-red font-bold uppercase tracking-wider" data-i18n="t_226">// SONIDO &amp; RAVE 90S</span>
@@ -968,7 +968,7 @@
 </div>
 </div>
 <!-- VÍDEO 05: BIENVENIDOS A MI CIUDAD / Barcelona Dusty Clown -->
-<div class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer" data-badge="// CULTURA URBANA BARCELONA" data-badge-key="t_231" data-desc="The Random Dusty Clown of Barcelona 🤡: Esencia de calle, arte urbano y lienzo vivo sobre el asfalto de Barcelona." data-desc-key="t_233" data-id="xsjyo_bV5RA" data-link="https://www.youtube.com/shorts/xsjyo_bV5RA" data-local="assets/barcelona_clown.mp4" data-platform="youtube" data-ratio="9/16" data-title="BIENVENIDOS A MI CIUDAD 🎭" data-title-key="t_232">
+<div class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer" onclick="handleVideoCardClick(this); event.stopPropagation();" ontouchstart="handleVideoCardClick(this); event.stopPropagation();" data-badge="// CULTURA URBANA BARCELONA" data-badge-key="t_231" data-desc="The Random Dusty Clown of Barcelona 🤡: Esencia de calle, arte urbano y lienzo vivo sobre el asfalto de Barcelona." data-desc-key="t_233" data-id="xsjyo_bV5RA" data-link="https://www.youtube.com/shorts/xsjyo_bV5RA" data-local="assets/barcelona_clown.mp4" data-platform="youtube" data-ratio="9/16" data-title="BIENVENIDOS A MI CIUDAD 🎭" data-title-key="t_232">
 <div class="space-y-2.5">
 <div class="flex justify-between items-center font-mono text-[9px]">
 <span class="text-signal-red font-bold uppercase tracking-wider" data-i18n="t_231">// CULTURA URBANA BARCELONA</span>
@@ -1003,7 +1003,7 @@
 </div>
 </div>
 <!-- VÍDEO 06: BRONX 1980 — La Era Dorada -->
-<div class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer" data-badge="// CULTURA HIP HOP 1980" data-badge-key="t_235" data-desc="El Bronx, 1980: Homenaje a las raíces donde el asfalto se convirtió en leyenda, radiocassettes al hombro y ritmos de TR808." data-desc-key="t_237" data-id="l-_uE3Zg7do" data-link="https://www.youtube.com/shorts/l-_uE3Zg7do" data-local="assets/bronx_1980.mp4" data-platform="youtube" data-ratio="9/16" data-title="BRONX 1980" data-title-key="t_236">
+<div class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer" onclick="handleVideoCardClick(this); event.stopPropagation();" ontouchstart="handleVideoCardClick(this); event.stopPropagation();" data-badge="// CULTURA HIP HOP 1980" data-badge-key="t_235" data-desc="El Bronx, 1980: Homenaje a las raíces donde el asfalto se convirtió en leyenda, radiocassettes al hombro y ritmos de TR808." data-desc-key="t_237" data-id="l-_uE3Zg7do" data-link="https://www.youtube.com/shorts/l-_uE3Zg7do" data-local="assets/bronx_1980.mp4" data-platform="youtube" data-ratio="9/16" data-title="BRONX 1980" data-title-key="t_236">
 <div class="space-y-2.5">
 <div class="flex justify-between items-center font-mono text-[9px]">
 <span class="text-signal-red font-bold uppercase tracking-wider" data-i18n="t_235">// CULTURA HIP HOP 1980</span>
@@ -1038,7 +1038,7 @@
 </div>
 </div>
 <!-- VÍDEO 07: KILLA — Deus Ex Machina 🎶🔥 -->
-<div class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer" data-badge="// INSTAGRAM REEL (GORILLA &amp; DANCE)" data-badge-key="t_239" data-desc="KILLA Deus ex Machina por @alphaberracos: Producción generativa con chicas, gorilas y merchandising KILLA." data-desc-key="t_241" data-id="DH_X3ZrML1h" data-link="https://www.instagram.com/p/DH_X3ZrML1h/" data-local="assets/killa_ig.mp4" data-platform="instagram" data-ratio="9/16" data-title="KILLA — Deus Ex Machina 🎶🔥" data-title-key="t_240">
+<div class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer" onclick="handleVideoCardClick(this); event.stopPropagation();" ontouchstart="handleVideoCardClick(this); event.stopPropagation();" data-badge="// INSTAGRAM REEL (GORILLA &amp; DANCE)" data-badge-key="t_239" data-desc="KILLA Deus ex Machina por @alphaberracos: Producción generativa con chicas, gorilas y merchandising KILLA." data-desc-key="t_241" data-id="DH_X3ZrML1h" data-link="https://www.instagram.com/p/DH_X3ZrML1h/" data-local="assets/killa_ig.mp4" data-platform="instagram" data-ratio="9/16" data-title="KILLA — Deus Ex Machina 🎶🔥" data-title-key="t_240">
 <div class="space-y-2.5">
 <div class="flex justify-between items-center font-mono text-[9px]">
 <span class="text-signal-red font-bold uppercase tracking-wider" data-i18n="t_239">// INSTAGRAM REEL (GORILLA &amp; DANCE)</span>
@@ -1073,7 +1073,7 @@
 </div>
 </div>
 <!-- VÍDEO 08: NIKE WEREWOLF 🐺 -->
-<div class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer" data-badge="// INSTAGRAM REEL (NIKE IA)" data-badge-key="t_242" data-desc="@nike Werewolf 🐺: Spot publicitario y animación de concepto deportivo/fantasía generativo por @chus_bzn." data-desc-key="t_244" data-id="DIG3CvtqKWl" data-link="https://www.instagram.com/p/DIG3CvtqKWl/" data-local="assets/code_black_ig.mp4" data-platform="instagram" data-ratio="9/16" data-title="NIKE WEREWOLF 🐺" data-title-key="t_243">
+<div class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer" onclick="handleVideoCardClick(this); event.stopPropagation();" ontouchstart="handleVideoCardClick(this); event.stopPropagation();" data-badge="// INSTAGRAM REEL (NIKE IA)" data-badge-key="t_242" data-desc="@nike Werewolf 🐺: Spot publicitario y animación de concepto deportivo/fantasía generativo por @chus_bzn." data-desc-key="t_244" data-id="DIG3CvtqKWl" data-link="https://www.instagram.com/p/DIG3CvtqKWl/" data-local="assets/code_black_ig.mp4" data-platform="instagram" data-ratio="9/16" data-title="NIKE WEREWOLF 🐺" data-title-key="t_243">
 <div class="space-y-2.5">
 <div class="flex justify-between items-center font-mono text-[9px]">
 <span class="text-signal-red font-bold uppercase tracking-wider" data-i18n="t_242">// INSTAGRAM REEL (NIKE IA)</span>
@@ -1438,19 +1438,37 @@
 <span data-i18n="t_325" id="terminal-msg">[ SYS_LOG: VÍNCULO_BROADCAST_ESTABLECIDO ]</span>
 <span class="animate-pulse">_</span>
 </div>
-<!-- ═══ JAVASCRIPT LOGIC (TYPEWRITER & MATRIX RAIN) ═══ -->
+<!-- ═══ JAVASCRIPT LOGIC (TYPEWRITER & MATRIX RAIN & MOBILE FIXES) ═══ -->
 <script>
-    // Typewriter effect in Hero sub-bar
+    // Global Mobile Menu Toggle
+    window.toggleMobileMenu = function(forceState) {
+        const menu = document.getElementById('mobile-menu');
+        if (!menu) return;
+        if (typeof forceState === 'boolean') {
+            if (forceState) menu.classList.add('open');
+            else menu.classList.remove('open');
+        } else {
+            menu.classList.toggle('open');
+        }
+        if (menu.classList.contains('open')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+    };
+
+    // Typewriter effect in Hero sub-bar (Truncated crisp text without height shifts)
     const typewriterEl = document.getElementById('typewriter-sub');
     const typewriterTexts = [
         "> CARGANDO NODO BROADCAST BARCELONA...",
-        "> INICIALIZANDO PIPELINE DE CINE IA & PROMPT ENGINE...",
-        "> MEZCLA Y MASTERIZACIÓN EBU R128 CERTIFICADA...",
-        "> DESARROLLO DE SOFTWARE PROPIETARIO & WEB APPS..."
+        "> CINE IA & PROMPT ENGINE ACTIVO...",
+        "> MEZCLA & MASTERIZACIÓN EBU R128...",
+        "> DESARROLLO SOFTWARE & WEB APPS..."
     ];
     let tIdx = 0, charIdx = 0, isDeleting = false;
     
     function typeEffect() {
+        if (!typewriterEl) return;
         const currentText = typewriterTexts[tIdx];
         if (isDeleting) {
             typewriterEl.textContent = currentText.substring(0, charIdx--);
@@ -1458,20 +1476,20 @@
             typewriterEl.textContent = currentText.substring(0, charIdx++);
         }
 
-        let speed = isDeleting ? 30 : 60;
+        let speed = isDeleting ? 25 : 55;
         if (!isDeleting && charIdx === currentText.length + 1) {
-            speed = 2500;
+            speed = 2200;
             isDeleting = true;
         } else if (isDeleting && charIdx === 0) {
             isDeleting = false;
             tIdx = (tIdx + 1) % typewriterTexts.length;
-            speed = 500;
+            speed = 400;
         }
         setTimeout(typeEffect, speed);
     }
-    if (typewriterEl) setTimeout(typeEffect, 1000);
+    if (typewriterEl) setTimeout(typeEffect, 800);
 
-    // ═══ BULLETPROOF MATRIX DATA STREAM CANVAS (MOBILE & DESKTOP) ═══
+    // ═══ BULLETPROOF MATRIX DATA STREAM CANVAS (iOS & DESKTOP SAFE) ═══
     const mCanvas = document.getElementById('matrix-canvas');
     if (mCanvas) {
         const ctx = mCanvas.getContext('2d');
@@ -1483,16 +1501,18 @@
 
         function updateCanvasDimensions() {
             const parent = mCanvas.parentElement;
-            const w = (parent && parent.clientWidth) ? parent.clientWidth : (window.innerWidth < 480 ? 320 : 360);
-            const h = (parent && parent.clientHeight) ? parent.clientHeight : 256;
-            
-            if (curW !== w || curH !== h || mCanvas.width !== w || mCanvas.height !== h) {
+            if (!parent) return;
+            const rect = parent.getBoundingClientRect();
+            const w = Math.floor(rect.width || 340);
+            const h = Math.floor(rect.height || 256);
+
+            if (Math.abs(curW - w) > 4 || Math.abs(curH - h) > 4 || mCanvas.width !== w) {
                 curW = w;
                 curH = h;
                 mCanvas.width = w;
                 mCanvas.height = h;
                 columns = Math.max(10, Math.floor(w / fontSize));
-                drops = Array(columns).fill(0).map(() => Math.floor(Math.random() * -25));
+                drops = Array(columns).fill(0).map(() => Math.floor(Math.random() * -30));
             }
         }
 
@@ -1500,14 +1520,8 @@
         window.addEventListener('resize', updateCanvasDimensions);
         window.addEventListener('orientationchange', () => setTimeout(updateCanvasDimensions, 200));
 
-        if (window.ResizeObserver && mCanvas.parentElement) {
-            try {
-                new ResizeObserver(() => updateCanvasDimensions()).observe(mCanvas.parentElement);
-            } catch (e) {}
-        }
-
         let lastDrawTime = 0;
-        const fpsInterval = 35; // ~30 FPS throttle
+        const fpsInterval = 33; // ~30 FPS throttle
 
         function renderMatrix(timestamp) {
             requestAnimationFrame(renderMatrix);
@@ -1515,11 +1529,12 @@
             if (timestamp - lastDrawTime < fpsInterval) return;
             lastDrawTime = timestamp;
 
-            if (!curW || !curH || mCanvas.width !== curW) {
+            if (curW <= 0 || curH <= 0) {
                 updateCanvasDimensions();
+                return;
             }
 
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.12)';
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.15)';
             ctx.fillRect(0, 0, curW, curH);
 
             ctx.font = '12px "JetBrains Mono", monospace';
@@ -1549,50 +1564,106 @@
         requestAnimationFrame(renderMatrix);
     }
 
-    // ═══ GARANTÍA DE MOVIMIENTO Y HOVER EN VÍDEOS DEL SHOWCASE ═══
-    const initShowcaseVideos = () => {
-        const videos = document.querySelectorAll('#showcase-grid video');
-        videos.forEach(v => {
-            v.muted = true;
-            v.setAttribute('playsinline', '');
-            v.setAttribute('muted', '');
-            v.setAttribute('loop', '');
-            v.setAttribute('autoplay', '');
-            const p = v.play();
-            if (p !== undefined) {
-                p.catch(() => {});
-            }
-        });
-    };
-    initShowcaseVideos();
-    window.addEventListener('DOMContentLoaded', initShowcaseVideos);
+    // ═══ BULLETPROOF LIGHTBOX VIDEO PLAYER FOR IPHONE ═══
+    const videoModal = document.getElementById('video-modal');
+    const modalContent = document.getElementById('modal-content');
+    const vmodalTitle = document.getElementById('vmodal-title');
+    const vmodalBadge = document.getElementById('vmodal-badge');
+    const vmodalDesc = document.getElementById('vmodal-desc');
+    const vmodalLink = document.getElementById('vmodal-link');
 
-    document.querySelectorAll('.video-card').forEach(card => {
-        const v = card.querySelector('video');
-        if (!v) return;
-        const ensurePlay = () => {
-            v.muted = true;
-            v.play().catch(() => {});
-        };
-        card.addEventListener('mouseenter', ensurePlay);
-        card.addEventListener('pointerenter', ensurePlay);
-        card.addEventListener('touchstart', ensurePlay, { passive: true });
-    });
+    window.openVideoModal = function(platform, id, ratio, localVideo, title, badge, desc, link) {
+        if (vmodalTitle) vmodalTitle.textContent = title || '---';
+        if (vmodalBadge) vmodalBadge.textContent = badge || '// REPRODUCTOR VIVO CON AUDIO';
+        if (vmodalDesc) vmodalDesc.textContent = desc || '---';
+        if (vmodalLink) vmodalLink.href = link || '#';
 
-    // Toggle Desplegable OTROS
-    function toggleOtherServiceInput() {
-        const select = document.getElementById('service-select');
-        const wrap = document.getElementById('other-service-wrap');
-        const input = document.getElementById('other-service-input');
-        if (select && wrap && input) {
-            if (select.value === 'otros') {
-                wrap.classList.remove('hidden');
-                input.setAttribute('required', 'true');
+        if (modalContent) {
+            if (ratio === '9/16' || platform === 'instagram') {
+                modalContent.style.width = 'auto';
+                modalContent.style.maxWidth = '100%';
+                modalContent.style.aspectRatio = '9/16';
+                modalContent.style.maxHeight = '62vh';
+                modalContent.style.margin = '0 auto';
             } else {
-                wrap.classList.add('hidden');
-                input.removeAttribute('required');
+                modalContent.style.width = '100%';
+                modalContent.style.maxWidth = 'none';
+                modalContent.style.aspectRatio = '16/9';
+                modalContent.style.maxHeight = 'none';
+                modalContent.style.margin = '0';
             }
         }
+
+        let embedHTML = '';
+        if (localVideo) {
+            embedHTML = `<video id="active-modal-video" src="${localVideo}" controls autoplay playsinline webkit-playsinline class="w-full h-full object-contain rounded shadow-2xl" type="video/mp4"></video>`;
+        } else if (platform === 'youtube' && id) {
+            embedHTML = `<iframe class="w-full h-full rounded border-0" style="aspect-ratio: ${ratio || '16/9'};" src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>`;
+        } else if (platform === 'instagram' && id) {
+            embedHTML = `<iframe class="w-full h-full rounded border-0" style="aspect-ratio: ${ratio || '9/16'};" src="https://www.instagram.com/p/${id}/embed" allowfullscreen></iframe>`;
+        }
+
+        if (modalContent) modalContent.innerHTML = embedHTML;
+        if (videoModal) videoModal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+
+        // Play local video immediately within touch context
+        const activeVideo = document.getElementById('active-modal-video');
+        if (activeVideo) {
+            activeVideo.muted = false;
+            const promise = activeVideo.play();
+            if (promise !== undefined) {
+                promise.catch(() => {
+                    activeVideo.muted = true;
+                    activeVideo.play().catch(() => {});
+                });
+            }
+        }
+    };
+
+    window.handleVideoCardClick = function(card) {
+        if (!card) return;
+        const platform = card.dataset.platform;
+        const id = card.dataset.id;
+        const ratio = card.dataset.ratio;
+        const local = card.dataset.local;
+        const link = card.dataset.link;
+
+        const currentLang = localStorage.getItem('site_lang') || 'es';
+        const t = (typeof translations !== 'undefined' && translations[currentLang]) || {};
+
+        const title = t[card.dataset.titleKey] || card.dataset.title || '';
+        const badge = t[card.dataset.badgeKey] || card.dataset.badge || '';
+        const desc = t[card.dataset.descKey] || card.dataset.desc || '';
+
+        window.openVideoModal(platform, id, ratio, local, title, badge, desc, link);
+    };
+
+    window.closeVideoModal = function(e) {
+        if (e && e.preventDefault) e.preventDefault();
+        if (e && e.stopPropagation) e.stopPropagation();
+        if (videoModal) videoModal.classList.remove('open');
+        document.body.style.overflow = '';
+        if (modalContent) {
+            modalContent.innerHTML = '';
+            modalContent.style.width = '';
+            modalContent.style.maxWidth = '';
+            modalContent.style.aspectRatio = '';
+            modalContent.style.maxHeight = '';
+            modalContent.style.margin = '';
+        }
+    };
+
+    // Close button events
+    const closeBtn = document.getElementById('close-modal');
+    if (closeBtn) {
+        closeBtn.addEventListener('click', window.closeVideoModal);
+        closeBtn.addEventListener('touchstart', window.closeVideoModal, { passive: false });
+    }
+    if (videoModal) {
+        videoModal.addEventListener('click', (e) => {
+            if (e.target === videoModal) window.closeVideoModal(e);
+        });
     }
 
     // Modal Explicativo de Servicios
@@ -1647,7 +1718,7 @@
         }
     };
 
-    function openServiceModal(key) {
+    window.openServiceModal = function(key) {
         const currentLang = localStorage.getItem('site_lang') || 'es';
         const t = (typeof translations !== 'undefined' && translations[currentLang]) || (typeof translations !== 'undefined' && translations['es']) || {};
         
@@ -1661,136 +1732,13 @@
         document.getElementById('modal-desc').textContent = desc;
         document.getElementById('modal-specs').innerHTML = specs;
         document.getElementById('service-modal').classList.add('open');
-    }
+    };
 
-    function closeServiceModal(e) {
+    window.closeServiceModal = function(e) {
         document.getElementById('service-modal').classList.remove('open');
-    }
-
-    // ═══ LIGHTBOX REPRODUCTOR VÍDEO CON AUDIO ═══
-    const showcaseGrid = document.getElementById('showcase-grid');
-    const videoModal = document.getElementById('video-modal');
-    const modalContent = document.getElementById('modal-content');
-    const vmodalTitle = document.getElementById('vmodal-title');
-    const vmodalBadge = document.getElementById('vmodal-badge');
-    const vmodalDesc = document.getElementById('vmodal-desc');
-    const vmodalLink = document.getElementById('vmodal-link');
-
-    const openVideoModal = (platform, id, ratio, localVideo, title, badge, desc, link) => {
-        console.log(`[Analytics] Reproducido: ${platform}-${id} ("${title || 'Producción'}")`);
-
-        if (vmodalTitle) vmodalTitle.textContent = title || '---';
-        if (vmodalBadge) vmodalBadge.textContent = badge || '// REPRODUCTOR VIVO CON AUDIO';
-        if (vmodalDesc) vmodalDesc.textContent = desc || '---';
-        if (vmodalLink) vmodalLink.href = link || '#';
-
-        if (modalContent) {
-            if (ratio === '9/16' || platform === 'instagram') {
-                modalContent.style.width = 'auto';
-                modalContent.style.maxWidth = '100%';
-                modalContent.style.aspectRatio = '9/16';
-                modalContent.style.maxHeight = '62vh';
-                modalContent.style.margin = '0 auto';
-            } else {
-                modalContent.style.width = '100%';
-                modalContent.style.maxWidth = 'none';
-                modalContent.style.aspectRatio = '16/9';
-                modalContent.style.maxHeight = 'none';
-                modalContent.style.margin = '0';
-            }
-        }
-
-        let embedHTML = '';
-        if (localVideo) {
-            embedHTML = `<video src="${localVideo}" controls autoplay playsinline class="w-full h-full object-contain rounded shadow-2xl" type="video/mp4"></video>`;
-        } else if (platform === 'youtube' && id) {
-            embedHTML = `<iframe class="w-full h-full rounded border-0" style="aspect-ratio: ${ratio || '16/9'};" src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>`;
-        } else if (platform === 'instagram' && id) {
-            embedHTML = `<iframe class="w-full h-full rounded border-0" style="aspect-ratio: ${ratio || '9/16'};" src="https://www.instagram.com/p/${id}/embed" allowfullscreen></iframe>`;
-        }
-
-        if (modalContent) modalContent.innerHTML = embedHTML;
-        if (videoModal) videoModal.classList.add('open');
-        document.body.style.overflow = 'hidden';
     };
 
-    const closeVideoModal = (e) => {
-        if (e && e.preventDefault) e.preventDefault();
-        if (e && e.stopPropagation) e.stopPropagation();
-        if (videoModal) videoModal.classList.remove('open');
-        document.body.style.overflow = '';
-        if (modalContent) {
-            modalContent.innerHTML = '';
-            modalContent.style.width = '';
-            modalContent.style.maxWidth = '';
-            modalContent.style.aspectRatio = '';
-            modalContent.style.maxHeight = '';
-            modalContent.style.margin = '';
-        }
-    };
-
-    // Listeners instantáneos de cierre para Touch / Click
-    const closeBtn = document.getElementById('close-modal');
-    if (closeBtn) {
-        const handleClose = (e) => {
-            if (e) {
-                e.preventDefault();
-                e.stopPropagation();
-            }
-            closeVideoModal(e);
-        };
-        closeBtn.addEventListener('click', handleClose);
-        closeBtn.addEventListener('touchstart', handleClose, { passive: false });
-    }
-
-    if (videoModal) {
-        videoModal.addEventListener('click', (e) => {
-            if (e.target === videoModal) closeVideoModal(e);
-        });
-    }
-
-    if (showcaseGrid) {
-        showcaseGrid.addEventListener('click', (e) => {
-            const card = e.target.closest('.video-card');
-            if (!card) return;
-
-            const platform = card.dataset.platform;
-            const id = card.dataset.id;
-            const ratio = card.dataset.ratio;
-            const local = card.dataset.local;
-            const link = card.dataset.link;
-
-            const currentLang = localStorage.getItem('site_lang') || 'es';
-            const t = (typeof translations !== 'undefined' && translations[currentLang]) || {};
-
-            const title = t[card.dataset.titleKey] || card.dataset.title || '';
-            const badge = t[card.dataset.badgeKey] || card.dataset.badge || '';
-            const desc = t[card.dataset.descKey] || card.dataset.desc || '';
-
-            openVideoModal(platform, id, ratio, local, title, badge, desc, link);
-        });
-    }
-
-    // Teclas ESC / Space para control de cierre
-    document.addEventListener('keydown', (e) => {
-        if (!videoModal || !videoModal.classList.contains('open')) return;
-        if (e.key === 'Escape') {
-            closeVideoModal(e);
-        }
-    });
-
-    // Mobile Navigation Toggle & Smooth Scroll
-    const mobileBtn = document.getElementById('mobile-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const mobileLinks = document.querySelectorAll('.mobile-link');
-    if (mobileBtn && mobileMenu) {
-        mobileBtn.addEventListener('click', () => mobileMenu.classList.toggle('open'));
-    }
-    mobileLinks.forEach(link => link.addEventListener('click', () => {
-        if (mobileMenu) mobileMenu.classList.remove('open');
-    }));
-
-    // Navegación suave responsiva para enlaces de ancla
+    // Smooth Scroll Links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const targetId = this.getAttribute('href');
@@ -1798,14 +1746,14 @@
             if (targetId === '#top') {
                 e.preventDefault();
                 window.scrollTo({ top: 0, behavior: 'smooth' });
-                if (mobileMenu) mobileMenu.classList.remove('open');
+                window.toggleMobileMenu(false);
                 return;
             }
             const targetEl = document.querySelector(targetId);
             if (targetEl) {
                 e.preventDefault();
                 targetEl.scrollIntoView({ behavior: 'smooth' });
-                if (mobileMenu) mobileMenu.classList.remove('open');
+                window.toggleMobileMenu(false);
             }
         });
     });
@@ -1819,7 +1767,6 @@
     }, { threshold: 0.01, rootMargin: '0px 0px 100px 0px' });
     reveals.forEach(r => observer.observe(r));
 
-    // Force active class on mobile load
     if (window.innerWidth <= 1024) {
         reveals.forEach(r => r.classList.add('active'));
     }
@@ -1832,7 +1779,7 @@
             e.preventDefault();
             if (successMsg) successMsg.classList.remove('hidden');
             form.reset();
-            toggleOtherServiceInput();
+            if (typeof toggleOtherServiceInput === 'function') toggleOtherServiceInput();
             setTimeout(() => { if (successMsg) successMsg.classList.add('hidden'); }, 6000);
         });
     }
@@ -1851,44 +1798,6 @@
             termIdx = (termIdx + 1) % termLogs.length;
             termMsg.textContent = termLogs[termIdx];
         }, 4000);
-    }
-
-    // Mouse reactive background orbs with inertial Lerp
-    const orb1 = document.querySelector('.organic-orb-1');
-    const orb2 = document.querySelector('.organic-orb-2');
-
-    let mouseX = window.innerWidth / 2;
-    let mouseY = window.innerHeight / 2;
-    let orb1X = window.innerWidth / 4;
-    let orb1Y = window.innerHeight / 4;
-    let orb2X = window.innerWidth * 3 / 4;
-    let orb2Y = window.innerHeight * 3 / 4;
-
-    window.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-    });
-
-    function animateOrbs() {
-        if (orb1) {
-            orb1X += (mouseX - orb1X - 300) * 0.04;
-            orb1Y += (mouseY - orb1Y - 300) * 0.04;
-            orb1.style.transform = `translate3d(${orb1X}px, ${orb1Y}px, 0)`;
-        }
-        if (orb2) {
-            orb2X += (mouseX - orb2X - 250) * 0.025;
-            orb2Y += (mouseY - orb2Y - 250) * 0.025;
-            orb2.style.transform = `translate3d(${orb2X}px, ${orb2Y}px, 0)`;
-        }
-        requestAnimationFrame(animateOrbs);
-    }
-    
-    // Solo activar en pantallas grandes (ordenador) para rendimiento óptimo
-    if (window.innerWidth > 1024) {
-        animateOrbs();
-    } else {
-        if (orb1) orb1.style.transform = `translate3d(${orb1X}px, ${orb1Y}px, 0)`;
-        if (orb2) orb2.style.transform = `translate3d(${orb2X}px, ${orb2Y}px, 0)`;
     }
 </script>
 <script src="js/translations.js"></script>
