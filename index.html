@@ -380,6 +380,18 @@
         }
     }
 
+
+    /* Mobile Grayscale Override for Photos & Mobile Active Card Illumination */
+    @media (max-width: 1024px) {
+        .grayscale { filter: none !important; }
+        .service-card-enhanced.mobile-active,
+        .glass-panel.mobile-active,
+        .video-card.mobile-active {
+            border-color: rgba(255, 31, 31, 0.7) !important;
+            box-shadow: 0 10px 30px rgba(255, 31, 31, 0.25) !important;
+        }
+    }
+    
 </style>
 </head>
 <body class="bg-black text-white selection:bg-signal-red selection:text-white blueprint-grid" id="top">
@@ -523,10 +535,10 @@
 <span class="animate-pulse" data-i18n="t_154">ONLINE_60FPS</span>
 </div>
 <!-- Matrix Rain Canvas -->
-<div class="h-64 w-full bg-black/95 border border-white/10 relative overflow-hidden flex items-center justify-center">
-<canvas class="w-full h-full" id="matrix-canvas"></canvas>
-<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent pointer-events-none"></div>
-<div class="absolute bottom-4 left-4 right-4 font-mono text-[10px] text-terminal-green bg-black/80 p-2 border border-terminal-green/30">
+<div class="h-64 w-full bg-black border border-terminal-green/30 relative overflow-hidden rounded shadow-2xl" id="matrix-wrapper">
+<canvas id="matrix-canvas" style="position: absolute; top:0; left:0; width:100%; height:100%; display:block; z-index:1;"></canvas>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent pointer-events-none z-10"></div>
+<div class="absolute bottom-3 left-3 right-3 font-mono text-[10px] text-terminal-green bg-black/90 p-2 border border-terminal-green/40 z-20 pointer-events-none">
 <div>&gt; SYS_ARCH: CHUS BZN ENGINE</div>
 <div class="text-white/60">&gt; PIPELINE_STATE: OPTIMAL</div>
 </div>
@@ -828,7 +840,7 @@
 <!-- RETÍCULA DE VÍDEOS (4 Columnas x 2 Filas = 8 Producciones Únicas) -->
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5" id="showcase-grid">
 <!-- VÍDEO 01: Instagram Reel "America'n Job 🇺🇸" -->
-<div class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer" onclick="handleVideoCardClick(this); event.stopPropagation();" ontouchstart="handleVideoCardClick(this); event.stopPropagation();" data-badge="// INSTAGRAM REEL (ACTING IA)" data-badge-key="t_212" data-desc="Acting I.A por @chus_bzn: Estética cinemática estilo 1967 y diseño sonoro con John Williams - Prologue (JFK) &amp; Walter Cronkite." data-desc-key="t_217" data-id="DQh86inDDTm" data-link="https://www.instagram.com/p/DQh86inDDTm/" data-local="assets/american_job.mp4" data-platform="instagram" data-ratio="9/16" data-title="America'n Job 🇺🇸" data-title-key="t_216">
+<div class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer" onclick="handleVideoCardClick(event, this);" data-badge="// INSTAGRAM REEL (ACTING IA)" data-badge-key="t_212" data-desc="Acting I.A por @chus_bzn: Estética cinemática estilo 1967 y diseño sonoro con John Williams - Prologue (JFK) &amp; Walter Cronkite." data-desc-key="t_217" data-id="DQh86inDDTm" data-link="https://www.instagram.com/p/DQh86inDDTm/" data-local="assets/american_job.mp4" data-platform="instagram" data-ratio="9/16" data-title="America'n Job 🇺🇸" data-title-key="t_216">
 <div class="space-y-2.5">
 <div class="flex justify-between items-center font-mono text-[9px]">
 <span class="text-signal-red font-bold uppercase tracking-wider" data-i18n="t_212">// INSTAGRAM REEL (ACTING IA)</span>
@@ -863,7 +875,7 @@
 </div>
 </div>
 <!-- VÍDEO 02: DORITOS A.C 🌋🧀 -->
-<div class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer" onclick="handleVideoCardClick(this); event.stopPropagation();" ontouchstart="handleVideoCardClick(this); event.stopPropagation();" data-badge="// INSTAGRAM REEL (DORITOS IA)" data-badge-key="t_220" data-desc="@doritos A.C 🌋🧀: Spot publicitario e innovación generativa I.A por @chus_bzn." data-desc-key="t_222" data-id="DIFPAaMKcAJ" data-link="https://www.instagram.com/p/DIFPAaMKcAJ/" data-local="assets/doritos.mp4" data-platform="instagram" data-ratio="9/16" data-title="DORITOS A.C 🌋🧀" data-title-key="t_221">
+<div class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer" onclick="handleVideoCardClick(event, this);" data-badge="// INSTAGRAM REEL (DORITOS IA)" data-badge-key="t_220" data-desc="@doritos A.C 🌋🧀: Spot publicitario e innovación generativa I.A por @chus_bzn." data-desc-key="t_222" data-id="DIFPAaMKcAJ" data-link="https://www.instagram.com/p/DIFPAaMKcAJ/" data-local="assets/doritos.mp4" data-platform="instagram" data-ratio="9/16" data-title="DORITOS A.C 🌋🧀" data-title-key="t_221">
 <div class="space-y-2.5">
 <div class="flex justify-between items-center font-mono text-[9px]">
 <span class="text-signal-red font-bold uppercase tracking-wider" data-i18n="t_220">// INSTAGRAM REEL (DORITOS IA)</span>
@@ -898,7 +910,7 @@
 </div>
 </div>
 <!-- VÍDEO 03: COCA-COLA CREATIVITY 🥤🔥 -->
-<div class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer" onclick="handleVideoCardClick(this); event.stopPropagation();" ontouchstart="handleVideoCardClick(this); event.stopPropagation();" data-badge="// INSTAGRAM REEL (COCA-COLA IA)" data-badge-key="t_223" data-desc="@cocacola Since 1118 Year: Spot publicitario y animación de concepto de fantasía medieval y guerreros por @chus_bzn." data-desc-key="t_225" data-id="DIB6gmPqn8E" data-link="https://www.instagram.com/p/DIB6gmPqn8E/" data-local="assets/cocacola.mp4" data-platform="instagram" data-ratio="9/16" data-title="COCA-COLA CREATIVITY 🥤🔥" data-title-key="t_224">
+<div class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer" onclick="handleVideoCardClick(event, this);" data-badge="// INSTAGRAM REEL (COCA-COLA IA)" data-badge-key="t_223" data-desc="@cocacola Since 1118 Year: Spot publicitario y animación de concepto de fantasía medieval y guerreros por @chus_bzn." data-desc-key="t_225" data-id="DIB6gmPqn8E" data-link="https://www.instagram.com/p/DIB6gmPqn8E/" data-local="assets/cocacola.mp4" data-platform="instagram" data-ratio="9/16" data-title="COCA-COLA CREATIVITY 🥤🔥" data-title-key="t_224">
 <div class="space-y-2.5">
 <div class="flex justify-between items-center font-mono text-[9px]">
 <span class="text-signal-red font-bold uppercase tracking-wider" data-i18n="t_223">// INSTAGRAM REEL (COCA-COLA IA)</span>
@@ -933,7 +945,7 @@
 </div>
 </div>
 <!-- VÍDEO 04: VENENO (BreakBeat Mix) -->
-<div class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer" onclick="handleVideoCardClick(this); event.stopPropagation();" ontouchstart="handleVideoCardClick(this); event.stopPropagation();" data-badge="// SONIDO &amp; RAVE 90S" data-badge-key="t_226" data-desc="VENENO: Creación de @chus_bzn inspirada en ritmos BreakBeat, guitarras eléctricas, sonidos ácidos y el estilo Rave de los 90s." data-desc-key="t_229" data-id="sSIBsZEcKTk" data-link="https://www.youtube.com/shorts/sSIBsZEcKTk" data-local="assets/veneno.mp4" data-platform="youtube" data-ratio="9/16" data-title="VENENO (BreakBeat Mix)" data-title-key="t_228">
+<div class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer" onclick="handleVideoCardClick(event, this);" data-badge="// SONIDO &amp; RAVE 90S" data-badge-key="t_226" data-desc="VENENO: Creación de @chus_bzn inspirada en ritmos BreakBeat, guitarras eléctricas, sonidos ácidos y el estilo Rave de los 90s." data-desc-key="t_229" data-id="sSIBsZEcKTk" data-link="https://www.youtube.com/shorts/sSIBsZEcKTk" data-local="assets/veneno.mp4" data-platform="youtube" data-ratio="9/16" data-title="VENENO (BreakBeat Mix)" data-title-key="t_228">
 <div class="space-y-2.5">
 <div class="flex justify-between items-center font-mono text-[9px]">
 <span class="text-signal-red font-bold uppercase tracking-wider" data-i18n="t_226">// SONIDO &amp; RAVE 90S</span>
@@ -968,7 +980,7 @@
 </div>
 </div>
 <!-- VÍDEO 05: BIENVENIDOS A MI CIUDAD / Barcelona Dusty Clown -->
-<div class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer" onclick="handleVideoCardClick(this); event.stopPropagation();" ontouchstart="handleVideoCardClick(this); event.stopPropagation();" data-badge="// CULTURA URBANA BARCELONA" data-badge-key="t_231" data-desc="The Random Dusty Clown of Barcelona 🤡: Esencia de calle, arte urbano y lienzo vivo sobre el asfalto de Barcelona." data-desc-key="t_233" data-id="xsjyo_bV5RA" data-link="https://www.youtube.com/shorts/xsjyo_bV5RA" data-local="assets/barcelona_clown.mp4" data-platform="youtube" data-ratio="9/16" data-title="BIENVENIDOS A MI CIUDAD 🎭" data-title-key="t_232">
+<div class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer" onclick="handleVideoCardClick(event, this);" data-badge="// CULTURA URBANA BARCELONA" data-badge-key="t_231" data-desc="The Random Dusty Clown of Barcelona 🤡: Esencia de calle, arte urbano y lienzo vivo sobre el asfalto de Barcelona." data-desc-key="t_233" data-id="xsjyo_bV5RA" data-link="https://www.youtube.com/shorts/xsjyo_bV5RA" data-local="assets/barcelona_clown.mp4" data-platform="youtube" data-ratio="9/16" data-title="BIENVENIDOS A MI CIUDAD 🎭" data-title-key="t_232">
 <div class="space-y-2.5">
 <div class="flex justify-between items-center font-mono text-[9px]">
 <span class="text-signal-red font-bold uppercase tracking-wider" data-i18n="t_231">// CULTURA URBANA BARCELONA</span>
@@ -1003,7 +1015,7 @@
 </div>
 </div>
 <!-- VÍDEO 06: BRONX 1980 — La Era Dorada -->
-<div class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer" onclick="handleVideoCardClick(this); event.stopPropagation();" ontouchstart="handleVideoCardClick(this); event.stopPropagation();" data-badge="// CULTURA HIP HOP 1980" data-badge-key="t_235" data-desc="El Bronx, 1980: Homenaje a las raíces donde el asfalto se convirtió en leyenda, radiocassettes al hombro y ritmos de TR808." data-desc-key="t_237" data-id="l-_uE3Zg7do" data-link="https://www.youtube.com/shorts/l-_uE3Zg7do" data-local="assets/bronx_1980.mp4" data-platform="youtube" data-ratio="9/16" data-title="BRONX 1980" data-title-key="t_236">
+<div class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer" onclick="handleVideoCardClick(event, this);" data-badge="// CULTURA HIP HOP 1980" data-badge-key="t_235" data-desc="El Bronx, 1980: Homenaje a las raíces donde el asfalto se convirtió en leyenda, radiocassettes al hombro y ritmos de TR808." data-desc-key="t_237" data-id="l-_uE3Zg7do" data-link="https://www.youtube.com/shorts/l-_uE3Zg7do" data-local="assets/bronx_1980.mp4" data-platform="youtube" data-ratio="9/16" data-title="BRONX 1980" data-title-key="t_236">
 <div class="space-y-2.5">
 <div class="flex justify-between items-center font-mono text-[9px]">
 <span class="text-signal-red font-bold uppercase tracking-wider" data-i18n="t_235">// CULTURA HIP HOP 1980</span>
@@ -1038,7 +1050,7 @@
 </div>
 </div>
 <!-- VÍDEO 07: KILLA — Deus Ex Machina 🎶🔥 -->
-<div class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer" onclick="handleVideoCardClick(this); event.stopPropagation();" ontouchstart="handleVideoCardClick(this); event.stopPropagation();" data-badge="// INSTAGRAM REEL (GORILLA &amp; DANCE)" data-badge-key="t_239" data-desc="KILLA Deus ex Machina por @alphaberracos: Producción generativa con chicas, gorilas y merchandising KILLA." data-desc-key="t_241" data-id="DH_X3ZrML1h" data-link="https://www.instagram.com/p/DH_X3ZrML1h/" data-local="assets/killa_ig.mp4" data-platform="instagram" data-ratio="9/16" data-title="KILLA — Deus Ex Machina 🎶🔥" data-title-key="t_240">
+<div class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer" onclick="handleVideoCardClick(event, this);" data-badge="// INSTAGRAM REEL (GORILLA &amp; DANCE)" data-badge-key="t_239" data-desc="KILLA Deus ex Machina por @alphaberracos: Producción generativa con chicas, gorilas y merchandising KILLA." data-desc-key="t_241" data-id="DH_X3ZrML1h" data-link="https://www.instagram.com/p/DH_X3ZrML1h/" data-local="assets/killa_ig.mp4" data-platform="instagram" data-ratio="9/16" data-title="KILLA — Deus Ex Machina 🎶🔥" data-title-key="t_240">
 <div class="space-y-2.5">
 <div class="flex justify-between items-center font-mono text-[9px]">
 <span class="text-signal-red font-bold uppercase tracking-wider" data-i18n="t_239">// INSTAGRAM REEL (GORILLA &amp; DANCE)</span>
@@ -1073,7 +1085,7 @@
 </div>
 </div>
 <!-- VÍDEO 08: NIKE WEREWOLF 🐺 -->
-<div class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer" onclick="handleVideoCardClick(this); event.stopPropagation();" ontouchstart="handleVideoCardClick(this); event.stopPropagation();" data-badge="// INSTAGRAM REEL (NIKE IA)" data-badge-key="t_242" data-desc="@nike Werewolf 🐺: Spot publicitario y animación de concepto deportivo/fantasía generativo por @chus_bzn." data-desc-key="t_244" data-id="DIG3CvtqKWl" data-link="https://www.instagram.com/p/DIG3CvtqKWl/" data-local="assets/code_black_ig.mp4" data-platform="instagram" data-ratio="9/16" data-title="NIKE WEREWOLF 🐺" data-title-key="t_243">
+<div class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer" onclick="handleVideoCardClick(event, this);" data-badge="// INSTAGRAM REEL (NIKE IA)" data-badge-key="t_242" data-desc="@nike Werewolf 🐺: Spot publicitario y animación de concepto deportivo/fantasía generativo por @chus_bzn." data-desc-key="t_244" data-id="DIG3CvtqKWl" data-link="https://www.instagram.com/p/DIG3CvtqKWl/" data-local="assets/code_black_ig.mp4" data-platform="instagram" data-ratio="9/16" data-title="NIKE WEREWOLF 🐺" data-title-key="t_243">
 <div class="space-y-2.5">
 <div class="flex justify-between items-center font-mono text-[9px]">
 <span class="text-signal-red font-bold uppercase tracking-wider" data-i18n="t_242">// INSTAGRAM REEL (NIKE IA)</span>
@@ -1517,7 +1529,7 @@
     }
     if (typewriterEl) setTimeout(typeEffect, 800);
 
-    // ═══ BULLETPROOF MATRIX DATA STREAM CANVAS (iOS SAFARI & DESKTOP) ═══
+    // ═══ BULLETPROOF MATRIX DATA STREAM CANVAS FOR IPHONE 10 ═══
     const mCanvas = document.getElementById('matrix-canvas');
     if (mCanvas) {
         const ctx = mCanvas.getContext('2d');
@@ -1528,30 +1540,29 @@
         let curW = 0, curH = 0;
 
         function updateCanvasDimensions() {
-            const parent = mCanvas.parentElement;
-            const w = Math.max(300, Math.floor((parent ? parent.clientWidth : 0) || window.innerWidth || 340));
-            const h = Math.max(220, Math.floor((parent ? parent.clientHeight : 0) || 256));
+            const wrapper = document.getElementById('matrix-wrapper') || mCanvas.parentElement;
+            if (!wrapper) return;
+            const w = Math.max(280, Math.floor(wrapper.offsetWidth || wrapper.clientWidth || 320));
+            const h = Math.max(200, Math.floor(wrapper.offsetHeight || wrapper.clientHeight || 256));
 
-            if (curW !== w || curH !== h) {
+            if (curW !== w || curH !== h || mCanvas.width !== w || mCanvas.height !== h) {
                 curW = w;
                 curH = h;
                 mCanvas.width = w;
                 mCanvas.height = h;
-                mCanvas.style.width = w + 'px';
-                mCanvas.style.height = h + 'px';
                 columns = Math.max(12, Math.floor(w / fontSize));
                 drops = Array(columns).fill(0).map(() => Math.floor(Math.random() * -30));
             }
         }
 
         updateCanvasDimensions();
-        setTimeout(updateCanvasDimensions, 300);
-        setTimeout(updateCanvasDimensions, 1000);
+        setTimeout(updateCanvasDimensions, 200);
+        setTimeout(updateCanvasDimensions, 800);
         window.addEventListener('resize', updateCanvasDimensions);
-        window.addEventListener('orientationchange', () => setTimeout(updateCanvasDimensions, 200));
+        window.addEventListener('orientationchange', () => setTimeout(updateCanvasDimensions, 300));
 
         let lastDrawTime = 0;
-        const fpsInterval = 40; // ~25 FPS throttle for smooth mobile rendering
+        const fpsInterval = 35; // ~30 FPS throttle for smooth mobile rendering
 
         function renderMatrix(timestamp) {
             requestAnimationFrame(renderMatrix);
@@ -1559,14 +1570,13 @@
             if (timestamp - lastDrawTime < fpsInterval) return;
             lastDrawTime = timestamp;
 
-            if (curW <= 0 || curH <= 0 || mCanvas.width === 0) {
-                updateCanvasDimensions();
-            }
+            const drawW = curW || mCanvas.width || 320;
+            const drawH = curH || mCanvas.height || 256;
 
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.14)';
-            ctx.fillRect(0, 0, curW || 340, curH || 256);
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.15)';
+            ctx.fillRect(0, 0, drawW, drawH);
 
-            ctx.font = 'bold 13px "JetBrains Mono", monospace';
+            ctx.font = 'bold 13px monospace';
 
             for (let i = 0; i < drops.length; i++) {
                 const text = chars.charAt(Math.floor(Math.random() * chars.length));
@@ -1581,8 +1591,8 @@
 
                 ctx.fillText(text, x, Math.max(12, y));
 
-                if (y > (curH || 256) && Math.random() > 0.975) {
-                    drops[i] = Math.floor(Math.random() * -10);
+                if (y > drawH && Math.random() > 0.975) {
+                    drops[i] = Math.floor(Math.random() * -8);
                 }
                 drops[i]++;
             }
@@ -1591,7 +1601,7 @@
         requestAnimationFrame(renderMatrix);
     }
 
-    // ═══ BULLETPROOF LIGHTBOX VIDEO PLAYER WITH IPHONE OVERLAY ═══
+    // ═══ BULLETPROOF LIGHTBOX VIDEO PLAYER WITH IPHONE TOUCH PLAY OVERLAY ═══
     const videoModal = document.getElementById('video-modal');
     const modalContent = document.getElementById('modal-content');
     const vmodalTitle = document.getElementById('vmodal-title');
@@ -1599,7 +1609,11 @@
     const vmodalDesc = document.getElementById('vmodal-desc');
     const vmodalLink = document.getElementById('vmodal-link');
 
-    window.startModalVideoPlayback = function() {
+    window.startModalVideoPlayback = function(e) {
+        if (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
         const activeVideo = document.getElementById('active-modal-video');
         const overlay = document.getElementById('modal-play-overlay');
         if (activeVideo) {
@@ -1643,11 +1657,11 @@
         if (localVideo) {
             embedHTML = `<div class="relative w-full h-full flex items-center justify-center bg-black group overflow-hidden rounded">
                 <video id="active-modal-video" src="${localVideo}" controls playsinline webkit-playsinline preload="auto" class="w-full h-full object-contain rounded shadow-2xl" type="video/mp4"></video>
-                <div id="modal-play-overlay" onclick="startModalVideoPlayback(); event.stopPropagation();" ontouchstart="startModalVideoPlayback(); event.stopPropagation();" class="absolute inset-0 bg-black/60 hover:bg-black/40 flex flex-col items-center justify-center cursor-pointer transition-all z-40 p-4 text-center">
+                <div id="modal-play-overlay" onclick="startModalVideoPlayback(event)" class="absolute inset-0 bg-black/60 hover:bg-black/40 flex flex-col items-center justify-center cursor-pointer transition-all z-40 p-4 text-center">
                     <div class="w-16 h-16 bg-signal-red text-white rounded-full flex items-center justify-center shadow-2xl transform group-hover:scale-110 mb-3 border-2 border-white/50">
                         <svg class="w-8 h-8 translate-x-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
                     </div>
-                    <span class="font-mono text-xs text-white font-bold tracking-widest uppercase bg-black/90 px-4 py-2 rounded border border-signal-red shadow-lg">▶ REPRODUCIR VÍDEO CON AUDIO</span>
+                    <span class="font-mono text-xs text-white font-bold tracking-widest uppercase bg-black/90 px-4 py-2 rounded border border-signal-red shadow-lg">▶ TOCAR PARA REPRODUCIR CON AUDIO</span>
                 </div>
             </div>`;
         } else if (platform === 'youtube' && id) {
@@ -1660,7 +1674,6 @@
         if (videoModal) videoModal.classList.add('open');
         document.body.style.overflow = 'hidden';
 
-        // Auto attempt play
         setTimeout(() => {
             const activeVideo = document.getElementById('active-modal-video');
             if (activeVideo) {
@@ -1672,7 +1685,11 @@
         }, 150);
     };
 
-    window.handleVideoCardClick = function(card) {
+    window.handleVideoCardClick = function(e, card) {
+        if (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
         if (!card) return;
         const platform = card.dataset.platform;
         const id = card.dataset.id;
@@ -1705,11 +1722,9 @@
         }
     };
 
-    // Close button events
     const closeBtn = document.getElementById('close-modal');
     if (closeBtn) {
         closeBtn.addEventListener('click', window.closeVideoModal);
-        closeBtn.addEventListener('touchstart', window.closeVideoModal, { passive: false });
     }
     if (videoModal) {
         videoModal.addEventListener('click', (e) => {
@@ -1717,7 +1732,7 @@
         });
     }
 
-    // Modal Explicativo de Servicios
+    // Service Dossier Modal Handlers with Overflow Control
     const serviceData = {
         video: {
             code: "// DOSSIER 01 - VÍDEO & SPOTS CINEMÁTICOS",
@@ -1782,14 +1797,19 @@
         document.getElementById('modal-title').textContent = title;
         document.getElementById('modal-desc').textContent = desc;
         document.getElementById('modal-specs').innerHTML = specs;
-        document.getElementById('service-modal').classList.add('open');
+        const modal = document.getElementById('service-modal');
+        if (modal) modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
     };
 
     window.closeServiceModal = function(e) {
-        document.getElementById('service-modal').classList.remove('open');
+        if (e && e.stopPropagation) e.stopPropagation();
+        const modal = document.getElementById('service-modal');
+        if (modal) modal.classList.remove('open');
+        document.body.style.overflow = '';
     };
 
-    // Scroll reveal observer
+    // Scroll reveal observer & Mobile Active Scroll Illumination
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -1800,6 +1820,19 @@
 
     if (window.innerWidth <= 1024) {
         reveals.forEach(r => r.classList.add('active'));
+
+        // Auto illuminate cards when scrolled near center on mobile
+        const cardsToIlluminate = document.querySelectorAll('.service-card-enhanced, .video-card');
+        const cardObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('mobile-active');
+                } else {
+                    entry.target.classList.remove('mobile-active');
+                }
+            });
+        }, { threshold: 0.4, rootMargin: '-10% 0px -20% 0px' });
+        cardsToIlluminate.forEach(c => cardObserver.observe(c));
     }
 
     // Form submit simulation
