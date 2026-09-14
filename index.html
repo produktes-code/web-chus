@@ -487,7 +487,7 @@
 <section class="py-16 px-6 sm:px-10 max-w-[1440px] mx-auto flex flex-col justify-center relative min-h-[85vh]">
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 w-full items-center">
 <!-- Left Hero Content -->
-<div class="lg:col-span-7 space-y-8 reveal active">
+<div class="lg:col-span-7 space-y-8 reveal active order-first lg:order-first">
 <div class="inline-flex items-center gap-3 border border-signal-red/30 px-4 py-2 bg-surface-dim/90 backdrop-blur-md h-10 min-h-[40px] max-h-[40px] overflow-hidden w-full max-w-full flex-nowrap">
 <span class="status-pip"></span>
 <span class="font-mono text-[10px] sm:text-[11px] text-terminal-green tracking-widest uppercase whitespace-nowrap truncate overflow-hidden block w-full text-ellipsis" data-i18n="t_143" id="typewriter-sub">
@@ -528,7 +528,7 @@
 </div>
 </div>
 <!-- Right Hero Panel: Matrix Code Stream & Terminal Interactive -->
-<div class="lg:col-span-5 flex justify-center reveal active order-first lg:order-last mb-6 lg:mb-0">
+<div class="lg:col-span-5 flex justify-center reveal active order-last lg:order-last mt-6 lg:mt-0">
 <div class="glass-panel p-6 border border-terminal-green/40 relative w-full max-w-md space-y-4">
 <div class="flex justify-between items-center font-mono text-[10px] text-terminal-green uppercase border-b border-white/10 pb-3">
 <span data-i18n="t_153">// TERMINAL MATRIX DATA STREAM</span>
@@ -683,7 +683,7 @@
 <span class="font-mono text-[10px] text-signal-red uppercase font-bold block pt-2" data-i18n="t_178">
                     DOSSIER TÉCNICO →
                 </span>
-</div>
+</button>
 <!-- Service 02: Postproducción & Sonido EBU R128 -->
 <button type="button" class="service-card-enhanced p-6 cursor-pointer space-y-4 text-left w-full block transition-all duration-300" onclick="openServiceModal('sonido')" onkeydown="if(event.key==='Enter')openServiceModal('sonido')">
 <div class="flex justify-between items-center">
@@ -695,7 +695,7 @@
 <span class="font-mono text-[10px] text-signal-red uppercase font-bold block pt-2" data-i18n="t_178">
                     DOSSIER TÉCNICO →
                 </span>
-</div>
+</button>
 <!-- Service 03: Directos, Streaming & Cobertura 360° -->
 <button type="button" class="service-card-enhanced p-6 cursor-pointer space-y-4 text-left w-full block transition-all duration-300" onclick="openServiceModal('streaming')" onkeydown="if(event.key==='Enter')openServiceModal('streaming')">
 <div class="flex justify-between items-center">
@@ -707,7 +707,7 @@
 <span class="font-mono text-[10px] text-signal-red uppercase font-bold block pt-2" data-i18n="t_178">
                     DOSSIER TÉCNICO →
                 </span>
-</div>
+</button>
 <!-- Service 04: DJ Sessions, Live & Remezclas -->
 <button type="button" class="service-card-enhanced p-6 cursor-pointer space-y-4 text-left w-full block transition-all duration-300" onclick="openServiceModal('dj')" onkeydown="if(event.key==='Enter')openServiceModal('dj')">
 <div class="flex justify-between items-center">
@@ -719,7 +719,7 @@
 <span class="font-mono text-[10px] text-signal-red uppercase font-bold block pt-2" data-i18n="t_178">
                     DOSSIER TÉCNICO →
                 </span>
-</div>
+</button>
 <!-- Service 05: Desarrollo Web, Web Apps & APIs -->
 <button type="button" class="service-card-enhanced p-6 cursor-pointer space-y-4 text-left w-full block transition-all duration-300" onclick="openServiceModal('web')" onkeydown="if(event.key==='Enter')openServiceModal('web')">
 <div class="flex justify-between items-center">
@@ -731,7 +731,7 @@
 <span class="font-mono text-[10px] text-signal-red uppercase font-bold block pt-2" data-i18n="t_178">
                     DOSSIER TÉCNICO →
                 </span>
-</div>
+</button>
 <!-- Service 06: Motion Graphics & Diseño Gráfico -->
 <button type="button" class="service-card-enhanced p-6 cursor-pointer space-y-4 text-left w-full block transition-all duration-300" onclick="openServiceModal('design')" onkeydown="if(event.key==='Enter')openServiceModal('design')">
 <div class="flex justify-between items-center">
@@ -743,7 +743,7 @@
 <span class="font-mono text-[10px] text-signal-red uppercase font-bold block pt-2" data-i18n="t_178">
                     DOSSIER TÉCNICO →
                 </span>
-</div>
+</button>
 <!-- Service 07: Implantación & Automatización con IA -->
 <button type="button" class="service-card-enhanced p-6 cursor-pointer space-y-4 text-left w-full block transition-all duration-300" onclick="openServiceModal('ia')" onkeydown="if(event.key==='Enter')openServiceModal('ia')">
 <div class="flex justify-between items-center">
@@ -755,7 +755,7 @@
 <span class="font-mono text-[10px] text-signal-red uppercase font-bold block pt-2" data-i18n="t_178">
                     DOSSIER TÉCNICO →
                 </span>
-</div>
+</button>
 <!-- Service 08: Formación & Consultoría Tecnológica -->
 <button type="button" class="service-card-enhanced p-6 cursor-pointer space-y-4 text-left w-full block transition-all duration-300" onclick="openServiceModal('formacion')" onkeydown="if(event.key==='Enter')openServiceModal('formacion')">
 <div class="flex justify-between items-center">
@@ -873,7 +873,7 @@
                         REPRODUCIR CON AUDIO →
                     </span>
 </div>
-</div>
+</button>
 <!-- VÍDEO 02: DORITOS A.C 🌋🧀 -->
 <button type="button" class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer text-left w-full block transition-all duration-500" onclick="handleVideoCardClick(event, this);" data-badge="// INSTAGRAM REEL (DORITOS IA)" data-badge-key="t_220" data-desc="@doritos A.C 🌋🧀: Spot publicitario e innovación generativa I.A por @chus_bzn." data-desc-key="t_222" data-id="DIFPAaMKcAJ" data-link="https://www.instagram.com/p/DIFPAaMKcAJ/" data-local="assets/doritos.mp4" data-platform="instagram" data-ratio="9/16" data-title="DORITOS A.C 🌋🧀" data-title-key="t_221">
 <div class="space-y-2.5">
@@ -908,7 +908,7 @@
                         REPRODUCIR CON AUDIO →
                     </span>
 </div>
-</div>
+</button>
 <!-- VÍDEO 03: COCA-COLA CREATIVITY 🥤🔥 -->
 <button type="button" class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer text-left w-full block transition-all duration-500" onclick="handleVideoCardClick(event, this);" data-badge="// INSTAGRAM REEL (COCA-COLA IA)" data-badge-key="t_223" data-desc="@cocacola Since 1118 Year: Spot publicitario y animación de concepto de fantasía medieval y guerreros por @chus_bzn." data-desc-key="t_225" data-id="DIB6gmPqn8E" data-link="https://www.instagram.com/p/DIB6gmPqn8E/" data-local="assets/cocacola.mp4" data-platform="instagram" data-ratio="9/16" data-title="COCA-COLA CREATIVITY 🥤🔥" data-title-key="t_224">
 <div class="space-y-2.5">
@@ -943,7 +943,7 @@
                         REPRODUCIR CON AUDIO →
                     </span>
 </div>
-</div>
+</button>
 <!-- VÍDEO 04: VENENO (BreakBeat Mix) -->
 <button type="button" class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer text-left w-full block transition-all duration-500" onclick="handleVideoCardClick(event, this);" data-badge="// SONIDO &amp; RAVE 90S" data-badge-key="t_226" data-desc="VENENO: Creación de @chus_bzn inspirada en ritmos BreakBeat, guitarras eléctricas, sonidos ácidos y el estilo Rave de los 90s." data-desc-key="t_229" data-id="sSIBsZEcKTk" data-link="https://www.youtube.com/shorts/sSIBsZEcKTk" data-local="assets/veneno.mp4" data-platform="youtube" data-ratio="9/16" data-title="VENENO (BreakBeat Mix)" data-title-key="t_228">
 <div class="space-y-2.5">
@@ -978,7 +978,7 @@
                         REPRODUCIR CON AUDIO →
                     </span>
 </div>
-</div>
+</button>
 <!-- VÍDEO 05: BIENVENIDOS A MI CIUDAD / Barcelona Dusty Clown -->
 <button type="button" class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer text-left w-full block transition-all duration-500" onclick="handleVideoCardClick(event, this);" data-badge="// CULTURA URBANA BARCELONA" data-badge-key="t_231" data-desc="The Random Dusty Clown of Barcelona 🤡: Esencia de calle, arte urbano y lienzo vivo sobre el asfalto de Barcelona." data-desc-key="t_233" data-id="xsjyo_bV5RA" data-link="https://www.youtube.com/shorts/xsjyo_bV5RA" data-local="assets/barcelona_clown.mp4" data-platform="youtube" data-ratio="9/16" data-title="BIENVENIDOS A MI CIUDAD 🎭" data-title-key="t_232">
 <div class="space-y-2.5">
@@ -1013,7 +1013,7 @@
                         REPRODUCIR CON AUDIO →
                     </span>
 </div>
-</div>
+</button>
 <!-- VÍDEO 06: BRONX 1980 — La Era Dorada -->
 <button type="button" class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer text-left w-full block transition-all duration-500" onclick="handleVideoCardClick(event, this);" data-badge="// CULTURA HIP HOP 1980" data-badge-key="t_235" data-desc="El Bronx, 1980: Homenaje a las raíces donde el asfalto se convirtió en leyenda, radiocassettes al hombro y ritmos de TR808." data-desc-key="t_237" data-id="l-_uE3Zg7do" data-link="https://www.youtube.com/shorts/l-_uE3Zg7do" data-local="assets/bronx_1980.mp4" data-platform="youtube" data-ratio="9/16" data-title="BRONX 1980" data-title-key="t_236">
 <div class="space-y-2.5">
@@ -1048,7 +1048,7 @@
                         REPRODUCIR CON AUDIO →
                     </span>
 </div>
-</div>
+</button>
 <!-- VÍDEO 07: KILLA — Deus Ex Machina 🎶🔥 -->
 <button type="button" class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer text-left w-full block transition-all duration-500" onclick="handleVideoCardClick(event, this);" data-badge="// INSTAGRAM REEL (GORILLA &amp; DANCE)" data-badge-key="t_239" data-desc="KILLA Deus ex Machina por @alphaberracos: Producción generativa con chicas, gorilas y merchandising KILLA." data-desc-key="t_241" data-id="DH_X3ZrML1h" data-link="https://www.instagram.com/p/DH_X3ZrML1h/" data-local="assets/killa_ig.mp4" data-platform="instagram" data-ratio="9/16" data-title="KILLA — Deus Ex Machina 🎶🔥" data-title-key="t_240">
 <div class="space-y-2.5">
@@ -1083,7 +1083,7 @@
                         REPRODUCIR CON AUDIO →
                     </span>
 </div>
-</div>
+</button>
 <!-- VÍDEO 08: NIKE WEREWOLF 🐺 -->
 <button type="button" class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer text-left w-full block transition-all duration-500" onclick="handleVideoCardClick(event, this);" data-badge="// INSTAGRAM REEL (NIKE IA)" data-badge-key="t_242" data-desc="@nike Werewolf 🐺: Spot publicitario y animación de concepto deportivo/fantasía generativo por @chus_bzn." data-desc-key="t_244" data-id="DIG3CvtqKWl" data-link="https://www.instagram.com/p/DIG3CvtqKWl/" data-local="assets/code_black_ig.mp4" data-platform="instagram" data-ratio="9/16" data-title="NIKE WEREWOLF 🐺" data-title-key="t_243">
 <div class="space-y-2.5">
