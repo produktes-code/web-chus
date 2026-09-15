@@ -4,14 +4,57 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<link href="assets/logo.jpg" rel="icon" type="image/jpeg"/>
+<link href="assets/logo.jpg" rel="apple-touch-icon"/>
+<meta content="#000000" name="theme-color"/>
 <title>Perfil &amp; Trayectoria Auditada | CHUS BZN Studio</title>
 <meta content="Perfil auditado y trayectoria laboral histórica de CHUS BZN. Más de 33 años de experiencia en cine, televisión, audio broadcast e integración de Inteligencia Artificial en Barcelona." name="description"/>
+<meta content="index, follow" name="robots"/>
+<link href="https://chusbzn.com/perfil.html" rel="canonical"/>
+<!-- Open Graph -->
+<meta content="profile" property="og:type"/>
+<meta content="https://chusbzn.com/perfil.html" property="og:url"/>
+<meta content="Perfil &amp; Trayectoria Auditada | CHUS BZN Studio" property="og:title"/>
+<meta content="Perfil auditado y trayectoria laboral histórica de CHUS BZN. Más de 33 años de experiencia en cine, televisión, audio broadcast e integración de Inteligencia Artificial en Barcelona." property="og:description"/>
+<meta content="https://chusbzn.com/assets/retrato_formal.png" property="og:image"/>
+<meta content="es_ES" property="og:locale"/>
+<meta content="CHUS BZN" property="og:site_name"/>
+<!-- Twitter Cards -->
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="https://chusbzn.com/perfil.html" name="twitter:url"/>
+<meta content="Perfil &amp; Trayectoria Auditada | CHUS BZN Studio" name="twitter:title"/>
+<meta content="Perfil auditado y trayectoria laboral histórica de CHUS BZN." name="twitter:description"/>
+<meta content="https://chusbzn.com/assets/retrato_formal.png" name="twitter:image"/>
+<!-- Structured Data (JSON-LD) -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "@id": "https://chusbzn.com/perfil.html#page",
+    "mainEntityOfPage": "https://chusbzn.com/perfil.html",
+    "name": "Perfil & Trayectoria Auditada | CHUS BZN",
+    "about": {
+        "@type": "Person",
+        "name": "Jesús Ferrer García",
+        "alternateName": "CHUS BZN",
+        "jobTitle": "Productor Audiovisual Senior & Especialista IA",
+        "worksFor": { "@type": "Organization", "name": "Actuara12" },
+        "alumniOf": "FPCAT Nivel 3",
+        "knowsAbout": ["Sonido broadcast", "Doblaje", "Audiodescripción", "Inteligencia Artificial", "Postproducción audiovisual"],
+        "memberOf": [
+            { "@type": "Organization", "name": "SGAE" },
+            { "@type": "Organization", "name": "AISGE" },
+            { "@type": "Organization", "name": "AIE" }
+        ]
+    }
+}
+</script>
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Hanken+Grotesk:ital,wght@0,300;0,400;0,600;0,700;1,300&amp;family=JetBrains+Mono:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
-<!-- Tailwind CSS CDN -->
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind CSS compilado estáticamente -->
+<link href="css/tailwind.css" rel="stylesheet"/>
 <script>
     window.toggleMobileMenu = function(forceState) {
         const menu = document.getElementById('mobile-menu');
@@ -28,29 +71,6 @@
             document.body.style.overflow = '';
         }
     };
-    
-    tailwind.config = {
-        darkMode: "class",
-        theme: {
-            extend: {
-                colors: {
-                    "signal-red": "#FF1F1F",
-                    "signal-red-hover": "#D91616",
-                    "terminal-green": "#00FF41",
-                    "bg-black": "#000000",
-                    "surface-dim": "#121212",
-                    "surface-card": "#181818",
-                    "text-primary": "#FFFFFF",
-                    "text-secondary": "#A3A3A3"
-                },
-                fontFamily: {
-                    "headline": ["Anton", "sans-serif"],
-                    "sans": ["Hanken Grotesk", "sans-serif"],
-                    "mono": ["JetBrains Mono", "monospace"]
-                }
-            }
-        }
-    }
 </script>
 <style>
     :root {
@@ -69,6 +89,10 @@
         color: #fff;
         font-family: var(--font-sans);
         position: relative;
+    }
+    a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible, textarea:focus-visible {
+        outline: 2px solid var(--signal-red);
+        outline-offset: 2px;
     }
 
     /* Organic Cinematic Noise Texture (Filtro SVG Fractal de Alta Frecuencia) */
@@ -116,17 +140,179 @@
     }
 
     .glass-panel {
-        background: rgba(18, 18, 18, 0.85);
+        background: linear-gradient(180deg, rgba(30, 30, 30, 0.9), rgba(18, 18, 18, 0.85) 40%, rgba(11, 11, 11, 0.88));
         backdrop-filter: blur(20px);
         border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 10px 30px rgba(0, 0, 0, 0.4);
         transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
         will-change: transform;
         transform: translate3d(0, 0, 0);
     }
     .glass-panel:hover {
         border-color: rgba(255, 31, 31, 0.6);
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.85), 0 0 25px rgba(255, 31, 31, 0.18);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07), 0 15px 35px rgba(0, 0, 0, 0.85), 0 0 25px rgba(255, 31, 31, 0.18);
         transform: translateY(-4px);
+    }
+
+    .hero-title {
+        text-shadow: 0 6px 40px rgba(0, 0, 0, 0.6), 0 2px 8px rgba(0, 0, 0, 0.7);
+    }
+
+    /* Clean Editorial Section Headlines (Coherente con index.html) */
+    .section-headline-clean {
+        position: relative;
+        display: inline-block;
+        color: #ffffff;
+        text-shadow: 0 4px 30px rgba(0, 0, 0, 0.55), 0 1px 2px rgba(0, 0, 0, 0.8);
+        letter-spacing: -0.5px;
+        transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
+    }
+    .section-headline-clean::before {
+        content: '///';
+        position: absolute;
+        top: 50%;
+        right: calc(100% + 18px);
+        transform: translateY(-50%);
+        font-family: var(--font-mono);
+        font-size: 0.45em;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        color: rgba(255, 31, 31, 0.9);
+        text-shadow: 0 0 14px rgba(255, 31, 31, 0.45);
+    }
+    .section-headline-clean::after {
+        content: '';
+        position: absolute;
+        bottom: -6px; left: 50%;
+        transform: translateX(-50%);
+        width: 60px; height: 3px;
+        background: linear-gradient(90deg, transparent, #ff1f1f 20%, #ff1f1f 80%, transparent);
+        box-shadow: 0 0 12px rgba(255, 31, 31, 0.55);
+        transition: width 0.4s ease;
+    }
+    .section-headline-clean:hover {
+        color: #ffffff;
+        transform: translateY(-2px);
+        text-shadow: 0 4px 30px rgba(255, 31, 31, 0.25), 0 1px 2px rgba(0, 0, 0, 0.8);
+    }
+    .section-headline-clean:hover::after {
+        width: 140px;
+    }
+    @media (max-width: 640px) {
+        .section-headline-clean::before {
+            display: none;
+        }
+    }
+
+    /* ═══ CARTEL CINEMATOGRÁFICO — RETRATO (v2) ═══ */
+    .cine-frame {
+        position: relative;
+        overflow: hidden;
+        isolation: isolate;
+    }
+    .cine-frame > img {
+        position: relative;
+        z-index: 1;
+        display: block;
+        width: 100%; height: 100%;
+        object-fit: cover;
+        transform-origin: 50% 45%;
+        animation: cine-kenburns 22s ease-in-out infinite alternate;
+        will-change: transform;
+    }
+    @keyframes cine-kenburns {
+        0% { transform: scale(1) translate3d(0, 0, 0); }
+        100% { transform: scale(1.07) translate3d(0, -1%, 0); }
+    }
+    .cine-vignette {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        pointer-events: none;
+        background: radial-gradient(120% 95% at 50% 30%, transparent 55%, rgba(0, 0, 0, 0.5) 100%);
+    }
+    .cine-letterbox {
+        position: absolute;
+        left: 0; right: 0;
+        height: 10px;
+        background: rgba(0, 0, 0, 0.92);
+        pointer-events: none;
+        z-index: 3;
+        transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s ease;
+    }
+    .cine-letterbox.top { top: 0; transform: translateY(-100%); opacity: 0; }
+    .cine-letterbox.bottom { bottom: 0; transform: translateY(100%); opacity: 0; }
+    .cine-frame:hover .cine-letterbox.top { transform: translateY(0); opacity: 1; }
+    .cine-frame:hover .cine-letterbox.bottom { transform: translateY(0); opacity: 1; }
+
+    /* Cinta de créditos (técnica soft del marquee aprobado: sin glow ni máscara) */
+    .cine-marquee {
+        position: relative;
+        overflow: hidden;
+        white-space: nowrap;
+        max-width: 100%;
+        background: rgba(10, 10, 10, 0.95);
+        border-top: 1px solid rgba(255, 31, 31, 0.5);
+        border-bottom: 1px solid rgba(255, 31, 31, 0.5);
+    }
+    .cine-marquee__track {
+        display: inline-flex;
+        align-items: center;
+        font-family: var(--font-mono);
+        font-weight: 700;
+        animation: cine-ticker 26s linear infinite;
+        will-change: transform;
+        transform: translate3d(0, 0, 0);
+        backface-visibility: hidden;
+        perspective: 1000px;
+    }
+    .cine-marquee__repeat {
+        flex: none;
+        white-space: nowrap;
+        padding: 7px 0;
+        font-size: 0.68rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+    }
+    .cine-marquee__repeat .mark {
+        color: var(--signal-red);
+        font-style: normal;
+        font-weight: 700;
+        text-shadow: none !important;
+        filter: none !important;
+        padding: 0 9px;
+    }
+    .cine-marquee__repeat .txt-white {
+        color: #ffffff;
+        text-shadow: none !important;
+        filter: none !important;
+    }
+    @keyframes cine-ticker {
+        0% { transform: translate3d(0, 0, 0); }
+        100% { transform: translate3d(-50%, 0, 0); }
+    }
+
+    /* Placa de nombre (letras verdes estilo terminal — sin movimiento continuo) */
+    .cine-nameplate {
+        position: relative;
+        background: linear-gradient(180deg, #020202, #070707);
+        border: 1px solid rgba(0, 255, 65, 0.35);
+        border-left: 3px solid var(--terminal-green);
+        box-shadow: inset 0 0 14px rgba(0, 255, 65, 0.07), 0 8px 20px rgba(0, 0, 0, 0.55);
+        font-family: var(--font-mono);
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        color: var(--terminal-green);
+        text-shadow: 0 0 10px rgba(0, 255, 65, 0.85), 0 0 24px rgba(0, 255, 65, 0.35);
+        text-align: center;
+        padding: 9px 10px;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+    @media (prefers-reduced-motion: reduce) {
+        .cine-frame > img { animation: none; transform: none; }
+        .cine-marquee__track { animation: none; }
     }
 
     .reveal { opacity: 0; transform: translateY(24px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
@@ -227,7 +413,7 @@
 <span class="w-2 h-2 rounded-full bg-signal-red animate-ping"></span>
 <span data-i18n="t_327">AUDITORÍA PROFESIONAL DE SOLVENCIA</span>
 </div>
-<h1 class="font-headline text-4xl sm:text-6xl uppercase text-white tracking-tight" data-i18n="t_328">
+<h1 class="font-headline text-4xl sm:text-6xl uppercase text-white tracking-tight hero-title" data-i18n="t_328">
                     CHUS BZN // <br/>
 <span class="text-signal-red">AUDITORÍA &amp; TRAYECTORIA INDUSTRIAL</span>
 </h1>
@@ -240,10 +426,15 @@
 <span class="glass-panel px-3 py-2 border border-white/10" data-i18n="t_332">Socio SGAE / AISGE / AEDYP / AIE</span>
 </div>
 </div>
-<div class="lg:col-span-4 flex justify-center">
-<div class="glass-panel p-3 border border-white/15 w-64 h-80 overflow-hidden">
+<div class="lg:col-span-4 flex flex-col items-center gap-3">
+<div class="glass-panel p-3 border border-white/15 w-64 h-80 overflow-hidden cine-frame">
 <img alt="Dirección Técnica CHUS BZN" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" src="assets/retrato_formal.png"/>
+<div class="cine-vignette"></div>
+<div class="cine-letterbox top"></div>
+<div class="cine-letterbox bottom"></div>
 </div>
+<div class="cine-marquee w-64"><div class="cine-marquee__track"><span class="cine-marquee__repeat"><span class="txt-white">CHUS BZN STUDIO</span> <span class="mark">///</span> <span class="txt-white">CINE &amp; BROADCAST</span> <span class="mark">///</span> <span class="txt-white">DIRECTOS &amp; STREAMING</span> <span class="mark">///</span> <span class="txt-white">PRODUCCIÓN MUSICAL</span> <span class="mark">///</span> <span class="txt-white">VÍDEO CREATIVO</span> <span class="mark">///</span> <span class="txt-white">AUDIO · SONIDO</span> <span class="mark">///</span> </span><span class="cine-marquee__repeat"><span class="txt-white">CHUS BZN STUDIO</span> <span class="mark">///</span> <span class="txt-white">CINE &amp; BROADCAST</span> <span class="mark">///</span> <span class="txt-white">DIRECTOS &amp; STREAMING</span> <span class="mark">///</span> <span class="txt-white">PRODUCCIÓN MUSICAL</span> <span class="mark">///</span> <span class="txt-white">VÍDEO CREATIVO</span> <span class="mark">///</span> <span class="txt-white">AUDIO · SONIDO</span> <span class="mark">///</span> </span></div></div>
+<div class="cine-nameplate w-64" data-target="JESÚS FERRER GARCÍA" id="cineMatrixName">JESÚS FERRER GARCÍA</div>
 </div>
 </div>
 </section>
@@ -251,13 +442,13 @@
 <section class="py-16 px-6 sm:px-10 max-w-[1440px] mx-auto bg-surface-dim/40 border-y border-white/10 reveal" id="ia">
 <div class="text-center space-y-4 mb-14 max-w-4xl mx-auto">
 <span class="font-mono text-signal-red text-xs uppercase tracking-widest" data-i18n="t_333">// SOFTWARE PROPIETARIO &amp; CASOS DE ESTUDIO</span>
-<h2 class="font-headline text-4xl uppercase text-white" data-i18n="t_201">Ecosistema IA &amp; Prototipado</h2>
+<h2 class="font-headline text-4xl uppercase text-white section-headline-clean" data-i18n="t_201">Ecosistema IA &amp; Prototipado</h2>
 </div>
 <!-- Cards de Software Propietario -->
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
 <div class="glass-panel p-6 border border-white/10 space-y-3">
 <div class="flex items-center gap-3">
-<img alt="Studio Pro Suite" class="w-10 h-10 rounded" src="assets/icon_sps.png"/>
+<img alt="Studio Pro Suite" class="w-10 h-10 rounded" loading="lazy" src="assets/icon_sps.png"/>
 <div>
 <h3 class="font-headline text-xl text-white" data-i18n="t_34">Studio Pro Suite</h3>
 <span class="font-mono text-[10px] text-signal-red" data-i18n="t_203">v1.0.0 Stable // Electron + React</span>
@@ -267,7 +458,7 @@
 </div>
 <div class="glass-panel p-6 border border-white/10 space-y-3">
 <div class="flex items-center gap-3">
-<img alt="Cine Station Pro" class="w-10 h-10 rounded" src="assets/icon_csp.png"/>
+<img alt="Cine Station Pro" class="w-10 h-10 rounded" loading="lazy" src="assets/icon_csp.png"/>
 <div>
 <h3 class="font-headline text-xl text-white" data-i18n="t_38">Cine Station Pro</h3>
 <span class="font-mono text-[10px] text-signal-red" data-i18n="t_205">v1.0.0 Stable // FastAPI + FFmpeg</span>
@@ -277,7 +468,7 @@
 </div>
 <div class="glass-panel p-6 border border-white/10 space-y-3">
 <div class="flex items-center gap-3">
-<img alt="Brand Music Curator" class="w-10 h-10 rounded" src="assets/icon_bmc.png"/>
+<img alt="Brand Music Curator" class="w-10 h-10 rounded" loading="lazy" src="assets/icon_bmc.png"/>
 <div>
 <h3 class="font-headline text-xl text-white" data-i18n="t_42">Brand Music Curator</h3>
 <span class="font-mono text-[10px] text-signal-red" data-i18n="t_207">v1.0.0 Stable // LLM Multimodal</span>
@@ -305,7 +496,7 @@
 <section class="py-20 px-6 sm:px-10 max-w-[1440px] mx-auto reveal" id="broadcast">
 <div class="text-center space-y-4 mb-14 max-w-4xl mx-auto">
 <span class="font-mono text-signal-red text-xs uppercase tracking-widest" data-i18n="t_267">// ACREDITACIÓN OFICIAL GENERALITAT DE CATALUNYA</span>
-<h2 class="font-headline text-4xl uppercase text-white" data-i18n="t_268">Cualificaciones FPCAT (14 Unidades de Competencia)</h2>
+<h2 class="font-headline text-4xl uppercase text-white section-headline-clean" data-i18n="t_268">Cualificaciones FPCAT (14 Unidades de Competencia)</h2>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 font-sans text-xs">
 <!-- Nivel 3 -->
@@ -340,7 +531,7 @@
 <section class="py-20 px-6 sm:px-10 max-w-[1440px] mx-auto bg-surface-dim/30 border-y border-white/10 reveal" id="trayectoria">
 <div class="text-center space-y-4 mb-14 max-w-4xl mx-auto">
 <span class="font-mono text-signal-red text-xs uppercase tracking-widest" data-i18n="t_339">// HISTORIAL DE PROYECTOS &amp; PRODUCCIONES (1987 - PRESENTE)</span>
-<h2 class="font-headline text-4xl uppercase text-white" data-i18n="t_340">Trayectoria Industrial de 33 Años</h2>
+<h2 class="font-headline text-4xl uppercase text-white section-headline-clean" data-i18n="t_340">Trayectoria Industrial de 33 Años</h2>
 </div>
 <div class="timeline-container">
 <div class="timeline-item">
@@ -385,7 +576,7 @@
 <section class="py-16 px-6 sm:px-10 max-w-[1440px] mx-auto reveal" id="compliance">
 <div class="text-center space-y-4 mb-14 max-w-4xl mx-auto">
 <span class="font-mono text-signal-red text-xs uppercase tracking-widest" data-i18n="t_346">// MARCO ÉTICO Y SEGURIDAD JURÍDICA</span>
-<h2 class="font-headline text-4xl uppercase text-white" data-i18n="t_347">Compliance &amp; Gestión de Derechos</h2>
+<h2 class="font-headline text-4xl uppercase text-white section-headline-clean" data-i18n="t_347">Compliance &amp; Gestión de Derechos</h2>
 </div>
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 font-mono text-xs">
 <div class="glass-panel p-6 border border-white/10 text-center">
@@ -413,12 +604,20 @@
 </footer>
 <script>
     const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('active');
-        });
-    }, { threshold: 0.1 });
-    reveals.forEach(r => observer.observe(r));
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+        reveals.forEach(r => r.classList.add('active'));
+    } else {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        reveals.forEach(r => observer.observe(r));
+    }
 
     // Mobile navigation toggle
     const mobileBtn = document.getElementById('mobile-btn');
@@ -436,6 +635,14 @@
             });
         });
     }
+
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && mobileMenu && mobileMenu.classList.contains('open')) {
+            mobileMenu.classList.remove('open');
+            document.body.style.overflow = '';
+            if (mobileBtn) mobileBtn.focus();
+        }
+    });
 
     // Mouse reactive background orbs with inertial Lerp
     const orb1 = document.querySelector('.organic-orb-1');
@@ -477,5 +684,45 @@
 </script>
 <script src="js/translations.js"></script>
 <script src="js/i18n.js"></script>
+<script>
+(function () {
+    var el = document.getElementById('cineMatrixName');
+    if (!el) return;
+    var target = el.getAttribute('data-target') || 'JESÚS FERRER GARCÍA';
+    var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZÁÉÍÓÚÑ0123456789';
+    var revealed = -1;
+    var timer = null;
+    function render() {
+        var out = '';
+        for (var i = 0; i < target.length; i++) {
+            var c = target[i];
+            if (c === ' ') { out += ' '; continue; }
+            if (i <= revealed) { out += c; continue; }
+            out += chars[Math.floor(Math.random() * chars.length)];
+        }
+        el.textContent = out;
+    }
+    function step() {
+        if (revealed >= target.length - 1) {
+            el.textContent = target;
+            timer = setTimeout(cycle, 5000);
+            return;
+        }
+        render();
+        revealed += Math.random() < 0.55 ? 1 : 2;
+        timer = setTimeout(step, 105);
+    }
+    function cycle() {
+        revealed = -1;
+        render();
+        timer = setTimeout(step, 105);
+    }
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        el.textContent = target;
+    } else {
+        cycle();
+    }
+})();
+</script>
 </body>
 </html>
