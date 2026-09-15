@@ -693,27 +693,6 @@
     /* Iconos de servicio y grafismos con flotación + brillo orgánicos */
     .service-card-enhanced svg.animated-icon,
     .ecosistema-icon svg.animated-icon { animation-delay: calc(var(--i, 0) * 0.28s); }
-    /* Ken-burns lento del preview de vídeo (solo transform, imperceptible + 26s) */
-    .preview-wrap { transform-origin: center bottom; will-change: transform; backface-visibility: hidden; }
-    .video-card.in-view .preview-wrap { animation: preview-kenburns 26s cubic-bezier(0.16, 1, 0.3, 1) infinite alternate; }
-    @keyframes preview-kenburns {
-        from { transform: scale(1); }
-        to   { transform: scale(1.06); }
-    }
-    /* Barrido de luz ascendente en el preview (transform translateY, GPU) */
-    .preview-scan {
-        position: absolute; left: 0; right: 0; top: 0;
-        height: 46%;
-        pointer-events: none;
-        opacity: 0.5;
-        background: linear-gradient(to bottom, rgba(255,31,31,0), rgba(255,31,31,0.10), rgba(255,255,255,0.06), rgba(255,31,31,0));
-        mix-blend-mode: screen;
-    }
-    .video-card.in-view .preview-scan { animation: preview-scan-y 4.6s linear infinite; }
-    @keyframes preview-scan-y {
-        0%   { transform: translateY(-120%); }
-        100% { transform: translateY(340%); }
-    }
     /* Contracorriente de la marquesina inicial (segunda capa opuesta, sutil) */
     .marquee-track--back {
         position: absolute;
@@ -734,6 +713,22 @@
         55%  { text-shadow: 0 0 26px rgba(0,255,65,0.95), 0 0 60px rgba(0,255,65,0.4); }
         100% { text-shadow: 0 0 0 rgba(0,255,65,0); }
     }
+    /* V3: aparición escalonada de rejillas de contenido al revelar la sección */
+    .reveal-stagger > * {
+        opacity: 0;
+        transform: translateY(18px);
+        transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+                    transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+        transition-delay: calc(var(--st, 0) * 60ms);
+    }
+    .reveal.active .reveal-stagger > * {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    /* V3: elevación orgánica al hover (solo transform, una capa) */
+    .service-card-enhanced:hover { transform: translateY(-4px); }
+    #redes .glass-panel:hover,
+    #ecosistema .glass-panel:hover { transform: translateY(-3px); }
     
 </style>
 </head>
@@ -947,7 +942,7 @@
                 En nuestras plataformas y redes sociales oficiales podrá explorar una amplia muestra viva y actualizada de nuestros trabajos en <strong>imagen, sonido broadcast, vídeo cinematográfico asistido por Inteligencia Artificial, composiciones de música generativa y desarrollo tecnológico</strong>. Le invitamos a acceder a nuestros canales oficiales para comprobar la solvencia y calidad real de nuestros proyectos a medida.
             </p>
 </div>
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 reveal-stagger">
 <!-- YouTube Main Card -->
 <a class="glass-panel p-8 border border-white/10 hover:border-signal-red space-y-4 group transition-all" data-i18n="t_165" href="https://www.youtube.com/@chus_bzn" rel="noopener" target="_blank">
 <div class="flex items-center justify-between">
@@ -1044,7 +1039,7 @@
                 Haga clic en cualquier tarjeta de servicio para desplegar el dossier técnico explicativo con especificaciones y ejemplos.
             </p>
 </div>
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 reveal-stagger">
 <!-- Service 01: Vídeo & Spots Cinemáticos -->
 <button type="button" class="service-card-enhanced p-6 cursor-pointer space-y-4 text-left w-full block transition-all duration-300" onclick="openServiceModal('video')" onkeydown="if(event.key==='Enter')openServiceModal('video')">
 <div class="flex justify-between items-center">
@@ -1155,7 +1150,7 @@
                 Herramientas propietarias diseñadas en nuestro laboratorio interno para optimizar y automatizar la postproducción audiovisual y el diseño sonoro.
             </p>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 reveal-stagger">
 <!-- App 01: Studio Pro Suite (Con Imagotipo Propietario icon_sps.png) -->
 <div class="glass-panel p-8 border border-white/15 space-y-4">
 <div class="flex items-center gap-4">
@@ -1573,7 +1568,7 @@
 <span class="font-mono text-signal-red text-xs uppercase tracking-widest" data-i18n="t_253">// HISTORIAL DE PROYECTOS &amp; PRODUCCIONES</span>
 <h3 class="font-headline text-3xl uppercase text-white" data-i18n="t_254">Timeline Industrial de 33 Años</h3>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 font-sans text-xs">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 font-sans text-xs reveal-stagger">
 <div class="glass-panel p-6 border border-white/15 space-y-3 relative hover:border-signal-red transition-colors">
 <span class="font-mono text-xs text-signal-red font-bold" data-i18n="t_78">2020 - PRESENTE</span>
 <h4 class="font-headline text-xl text-white" data-i18n="t_255">Productor Senior &amp; IA Specialist</h4>
@@ -1987,6 +1982,7 @@
         let speeds = [];
         let brights = [];
         let counters = [];
+        let comets = [];
         let curW = 320, curH = 256;
         let running = true;
 
@@ -2001,6 +1997,7 @@
             });
             brights = Array(newCols).fill(0).map(() => 0.35 + Math.random() * 0.65);
             counters = Array(newCols).fill(0).map(() => Math.floor(Math.random() * 60));
+            comets = Array(newCols).fill(0);
         }
 
         function updateCanvasDimensions() {
@@ -2066,6 +2063,28 @@
             // Estela de 3 celdas por columna para dar densidad vertical
             const yHead = Math.round(drops[i]) * fontSize;
             const b = brights[i];
+
+            // Astro ocasional: rayo blanco brillante que cruza la columna (muy esporádico)
+            if (comets[i] > 0) {
+                for (let t = 0; t <= 9; t++) {
+                    const y = yHead - t * fontSize;
+                    if (y < 0) break;
+                    ctx.font = '700 ' + fontSize + 'px Menlo, Monaco, monospace';
+                    ctx.textBaseline = 'top';
+                    ctx.shadowBlur = t === 0 ? 14 : 6;
+                    ctx.shadowColor = 'rgba(255,255,255,0.9)';
+                    ctx.fillStyle = t === 0 ? '#FFFFFF' : 'rgba(150,255,170,' + (1 - t / 10).toFixed(2) + ')';
+                    ctx.fillText(chars.charAt(Math.floor(Math.random() * chars.length)), x, y);
+                }
+                ctx.shadowBlur = 0;
+                comets[i]--;
+                drops[i] += speeds[i];
+                counters[i]++;
+                return;
+            }
+            if (comets[i] === 0 && Math.random() < 0.002) {
+                comets[i] = 4 + Math.floor(Math.random() * 3);
+            }
 
             // 1) Cabeza brillante (blanca con halo) cada ~3 ciclos
             if (counters[i] % 3 === 0) {
@@ -2604,17 +2623,30 @@
             s.classList.add('animated-icon');
             s.style.setProperty('--i', String(i % 6));
         });
-        // Previews de vídeo: ken-burns muy lento solo cuando el preview está visible + barrido de luz
-        document.querySelectorAll('.video-card video').forEach(function (v) {
-            var wrap = v.parentElement;
-            while (wrap && !wrap.classList.contains('relative')) wrap = wrap.parentElement;
-            if (!wrap || wrap.classList.contains('preview-wrap')) return;
-            wrap.classList.add('preview-wrap');
-            var bar = document.createElement('span');
-            bar.className = 'preview-scan';
-            bar.setAttribute('aria-hidden', 'true');
-            wrap.appendChild(bar);
+        // Aparición escalonada de las rejillas (--st por hijo, solo CSS al revelar)
+        document.querySelectorAll('.reveal-stagger').forEach(function (g) {
+            Array.prototype.forEach.call(g.children, function (ch, i) {
+                ch.style.setProperty('--st', String(i));
+            });
         });
+        // Parallax sutil del hero (solo transform; escritorio; rAF-throttled + passive)
+        if (window.innerWidth > 1024) {
+            var heroTitleEl = document.querySelector('.hero-title');
+            var matrixWrapEl = document.getElementById('matrix-wrapper');
+            var pTick = false;
+            function parallaxHero() {
+                if (pTick) return;
+                pTick = true;
+                requestAnimationFrame(function () {
+                    var y = window.pageYOffset || 0;
+                    if (matrixWrapEl) matrixWrapEl.style.transform = 'translate3d(0,' + (-0.05 * y).toFixed(1) + 'px,0)';
+                    if (heroTitleEl) heroTitleEl.style.transform = 'translate3d(0,' + (0.04 * y).toFixed(1) + 'px,0)';
+                    pTick = false;
+                });
+            }
+            window.addEventListener('scroll', parallaxHero, { passive: true });
+            parallaxHero();
+        }
     })();
 </script>
 </body>
