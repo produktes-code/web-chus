@@ -312,7 +312,6 @@
     }
     @media (prefers-reduced-motion: reduce) {
         .cine-frame > img { animation: none; transform: none; }
-        .cine-marquee__track { animation: none; }
     }
 
     .reveal { opacity: 0; transform: translateY(24px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
@@ -717,11 +716,7 @@
         render();
         timer = setTimeout(step, 105);
     }
-    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        el.textContent = target;
-    } else {
-        cycle();
-    }
+    cycle();
 })();
 </script>
 </body>
