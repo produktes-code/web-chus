@@ -63,16 +63,15 @@
 <!-- Tailwind CSS compilado estáticamente -->
 <link href="css/tailwind.css" rel="stylesheet"/>
 <style>
-        :root {
-            --bg-color: #020202;
-            --surface-color: #080808;
-            --text-primary: #f5f5f5;
-            --text-secondary: #a3a3a3;
-            --accent-color: #00a3ff;
-            --accent-dim: #004a77;
-            --font-main: 'Libre Franklin', sans-serif;
-            --font-mono: 'JetBrains Mono', monospace;
-        }
+    :root {
+        --bg-black: #000000;
+        --surface-dim: #121212;
+        --signal-red: #FF1F1F;
+        --terminal-green: #00FF41;
+        --font-headline: 'Anton', sans-serif;
+        --font-sans: 'Hanken Grotesk', sans-serif;
+        --font-mono: 'JetBrains Mono', monospace;
+    }
 
     *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; scroll-padding-top: 85px; }
@@ -120,13 +119,27 @@
         position: relative;
     }
 
-        html { scroll-behavior: smooth; }
+    /* Organic Cinematic Noise Texture (Filtro SVG Fractal de Alta Frecuencia) */
+    body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        width: 100vw;
+        height: 100vh;
+        pointer-events: none;
+        z-index: 9999;
+        background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.012) 0%, transparent 80%);
+        opacity: 0.5;
+        transform: translate3d(0, 0, 0);
+    }
 
-        html, body {
-            overflow-x: hidden;
-            width: 100%;
-            -webkit-text-size-adjust: 100%;
-        }
+    /* Blueprint Grid Overlay */
+    .blueprint-grid {
+        background-image: 
+            linear-gradient(to right, rgba(255, 31, 31, 0.05) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255, 31, 31, 0.05) 1px, transparent 1px);
+        background-size: 48px 48px;
+    }
 
     /* Organic Background Orbs (GPU Acceleradas para Fluidez 60/120 FPS) */
     .organic-orb-1 {
@@ -168,18 +181,19 @@
         100% { transform: translateY(-6px); filter: drop-shadow(0 0 8px rgba(255, 31, 31, 0.9)); }
     }
 
-        /* ═══ GLOWS ═══ */
-        .bg-glow {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(180px);
-            opacity: 0.12;
-            z-index: -1;
-            pointer-events: none;
-        }
-        .glow-1 { top: -10%; left: -10%; width: 50vw; height: 50vw; background: radial-gradient(circle, #004a77, transparent); }
-        .glow-2 { top: 40%; right: -20%; width: 60vw; height: 60vw; background: radial-gradient(circle, #002022, transparent); }
-        .glow-3 { bottom: -10%; left: 20%; width: 40vw; height: 40vw; background: radial-gradient(circle, #001d33, transparent); }
+    /* Animated Motion Text (Kinetic Titulares con Shimmer Rojo y Blanco) */
+    .headline-animated {
+        background: linear-gradient(90deg, #ffffff 0%, #ff1f1f 40%, #ffffff 70%, #ff1f1f 100%);
+        background-size: 200% auto;
+        color: transparent;
+        -webkit-background-clip: text;
+        background-clip: text;
+        animation: headline-shimmer 6s linear infinite;
+    }
+    @keyframes headline-shimmer {
+        0% { background-position: 0% center; }
+        100% { background-position: 200% center; }
+    }
 
     /* Clean Editorial Section Headlines (Sin parpadeos ni deformación) */
     .section-headline-clean {
@@ -357,103 +371,13 @@
         100% { transform: translate3d(-50%, 0, 0); }
     }
 
-        /* ═══ STATUS BANNER ═══ */
-        .status-banner {
-            position: fixed;
-            bottom: 40px; right: 40px;
-            background-color: rgba(6,6,6,0.9);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255,255,255,0.04);
-            padding: 14px 20px;
-            font-family: var(--font-mono);
-            font-size: 0.7rem;
-            color: var(--text-secondary);
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            z-index: 900;
-            border-left: 2px solid var(--accent-color);
-            letter-spacing: 0.06em;
-        }
-        .status-active {
-            color: #2ed573;
-            font-weight: 700;
-            text-shadow: 0 0 8px rgba(46,213,115,0.4);
-        }
-
-        /* ═══ TYPOGRAPHY ═══ */
-        .section-number {
-            position: absolute;
-            top: 40px; left: -20px;
-            font-size: 14rem;
-            font-family: var(--font-mono);
-            font-weight: 700;
-            color: rgba(255,255,255,0.015);
-            line-height: 1;
-            z-index: 0;
-            pointer-events: none;
-            letter-spacing: -0.05em;
-            user-select: none;
-        }
-        .section-tag {
-            font-family: var(--font-mono);
-            color: var(--accent-color);
-            font-size: 0.75rem;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            font-weight: 500;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-        }
-        .section-tag::before {
-            content: '';
-            display: inline-block;
-            width: 36px; height: 1px;
-            background: linear-gradient(to right, transparent, var(--accent-color));
-            flex-shrink: 0;
-        }
-        h1 {
-            font-size: 5.5rem;
-            line-height: 1.04;
-            margin-bottom: 32px;
-            font-weight: 800;
-            letter-spacing: -0.03em;
-            text-transform: uppercase;
-            color: #fff;
-        }
-        h2 {
-            font-size: 3.5rem;
-            line-height: 1.35 !important;
-            margin-bottom: 40px;
-            font-weight: 800;
-            letter-spacing: -0.02em;
-            color: #fff;
-            max-width: 900px;
-        }
-        h3 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            color: #fff;
-            font-weight: 700;
-            letter-spacing: -0.01em;
-        }
-        p {
-            color: var(--text-secondary);
-            margin-bottom: 28px;
-            font-size: 1.15rem;
-            line-height: 1.85;
-            max-width: 800px;
-            font-weight: 300;
-        }
-
-        /* ═══ SCROLL REVEAL ═══ */
+    
+    /* Mobile Reveal Fallback & GPU Acceleration */
+    @media (max-width: 1024px) {
         .reveal {
-            opacity: 0;
-            transform: translateY(28px);
-            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
-                        transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity: 1 !important;
+            transform: none !important;
+            transition: none !important;
         }
         /* Orbes rojos orgánicos SIEMPRE visibles en móvil; blur ligero ahorra GPU en iPhone */
         .organic-orb-1, .organic-orb-2 {
@@ -694,17 +618,55 @@
     
 </style>
 </head>
-<body>
-<div class="bg-glow glow-1"></div>
-<div class="bg-glow glow-2"></div>
-<div class="bg-glow glow-3"></div>
-<!-- ═══ HEADER ═══ -->
-<header id="main-header">
-<div class="nav-container">
-<div class="logo">
-                JESÚS FERRER GARCÍA
-                <span class="logo-sep">/</span>
-<span class="logo-tagline">CHUS BZN</span>
+<body class="bg-black text-white selection:bg-signal-red selection:text-white blueprint-grid" id="top">
+<div class="bg-grain"></div>
+<!-- ═══ HEADER / NAVIGATION UNIFICADA (URLs de Redes Verificadas al 100%) ═══ -->
+<header class="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/10 h-20 transition-all duration-300">
+<div class="max-w-[1440px] mx-auto px-6 sm:px-10 h-full flex justify-between items-center">
+<!-- Brand Logo (Original Logo Image assets/logo.jpg) -->
+<a class="flex items-center gap-3 text-decoration-none group" data-i18n="t_128" href="#top" id="brand-logo">
+<img alt="CHUS BZN Logo Oficial" class="h-11 sm:h-12 w-auto object-contain border border-white/20 p-0.5 rounded group-hover:border-signal-red transition-all group-hover:scale-105" src="assets/logo.jpg"/>
+<span class="hidden sm:inline-block font-mono text-[10px] text-white/50 tracking-widest uppercase border-l border-white/20 pl-3">
+                SERVICIOS AUDIOVISUALES &amp; IA HUB
+            </span>
+</a>
+<!-- Desktop Navigation (6 enlaces limpios) -->
+<nav aria-label="Navegación principal" class="hidden xl:flex items-center gap-7 font-mono text-xs uppercase tracking-widest text-white/80">
+<a class="hover:text-signal-red transition-colors" data-i18n="t_nav_services" href="#servicios">01. Servicios</a>
+<a class="hover:text-signal-red transition-colors" data-i18n="t_129" href="#redes">02. Dónde Ver Trabajos</a>
+<a class="hover:text-signal-red transition-colors" data-i18n="t_nav_ai" href="#ecosistema">03. Ecosistema IA</a>
+<a class="hover:text-signal-red transition-colors" data-i18n="t_130" href="#showcase">04. Vídeos en Vivo</a>
+<a class="hover:text-signal-red transition-colors" data-i18n="t_131" href="#metodologia">05. Perfil &amp; Trayectoria</a>
+<a class="hover:text-signal-red transition-colors" data-i18n="t_132" href="blog.html">06. Blog</a>
+</nav>
+<!-- Right Action Block: Verified Social SVG Logos + i18n Selector + Single CTA Button -->
+<div class="flex items-center gap-4">
+<!-- Direct Social SVG Logos Bar (Sin textos entre paréntesis) -->
+<div class="hidden lg:flex items-center gap-3 pr-3 border-r border-white/10">
+<!-- YouTube Oficial -->
+<a class="p-2 bg-white/5 hover:bg-signal-red text-white transition-all rounded-full" href="https://www.youtube.com/@chus_bzn" rel="noopener" target="_blank" title="YouTube Canal Oficial">
+<svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+</a>
+<!-- Instagram Reels & Lab -->
+<a class="p-2 bg-white/5 hover:bg-signal-red text-white transition-all rounded-full" href="https://www.instagram.com/chus_bzn" rel="noopener" target="_blank" title="Instagram Reels &amp; Lab">
+<svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
+</a>
+<!-- Spotify Artista -->
+<a class="p-2 bg-white/5 hover:bg-signal-red text-white transition-all rounded-full" href="https://open.spotify.com/intl-es/artist/0n4agjgaicmPmX8xXXADHL?si=BT-gHD11TIGBOuNvRn8hkA" rel="noopener" target="_blank" title="Spotify Jesús Ferrer Baza Perfil Artista">
+<svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24"><path d="M12 0C5.376 0 0 5.376 0 12s5.376 12 12 12 12-5.376 12-12S18.624 0 12 0zm5.521 17.341c-.217.357-.681.469-1.038.252-2.846-1.74-6.429-2.133-10.65-1.167-.406.094-.813-.162-.906-.568-.094-.406.162-.813.568-.906 4.624-1.056 8.583-.604 11.774 1.348.357.217.469.681.252 1.041zm1.474-3.272c-.273.444-.852.585-1.296.313-3.257-2.002-8.223-2.584-12.077-1.414-.504.153-1.033-.133-1.186-.637-.153-.504.133-1.033.637-1.186 4.409-1.338 9.873-.692 13.609 1.628.444.273.585.852.313 1.296zm.127-3.411c-3.906-2.319-10.354-2.533-14.108-1.393-.6.182-1.237-.162-1.419-.762-.182-.6.162-1.237.762-1.419 4.312-1.309 11.433-1.055 15.93 1.614.54.32.718 1.02.398 1.56-.32.54-1.02.718-1.563.399z"></path></svg>
+</a>
+<!-- SoundCloud Oficial -->
+<a class="p-2 bg-white/5 hover:bg-signal-red text-white transition-all rounded-full" href="https://on.soundcloud.com/45pQf3AQv99X3JbCcj" rel="noopener" target="_blank" title="SoundCloud Oficial CHUS BZN">
+<svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24"><path d="M1.175 12.225c-.05 0-.096.038-.104.092L.008 18.72c-.008.06.034.112.094.112h1.177c.056 0 .103-.045.103-.103l.094-6.41c.008-.057-.038-.104-.094-.104H1.175zm2.095-1.472c-.056 0-.103.045-.103.103l-.297 7.76c-.008.057.038.104.094.104h1.186c.056 0 .103-.045.103-.103l.297-7.76c.008-.057-.038-.104-.094-.104H3.27zm2.112-1.074c-.056 0-.103.045-.103.103l-.224 8.835c-.008.057.038.104.094.104h1.186c.056 0 .103-.045.103-.103l.224-8.835c.008-.057-.038-.104-.094-.104H5.382zm2.112-1.127c-.056 0-.103.045-.103.103l-.15 9.96c-.008.057.038.104.094.104h1.186c.056 0 .103-.045.103-.103l.15-9.96c.008-.057-.038-.104-.094-.104H7.494zm2.112-.66c-.056 0-.103.045-.103.103l-.078 10.62c0 .057.046.103.103.103h1.186c.056 0 .103-.045.103-.103l.078-10.62c0-.057-.046-.103-.103-.103H9.606zm13.197 3.513c-.58 0-1.136.143-1.626.398C20.73 9.4 18.57 7.5 16.02 7.5c-.53 0-1.04.08-1.52.23-.27-2.14-2.1-3.8-4.32-3.8-.18 0-.35.01-.52.03-.06.01-.1.06-.1.12l.06 14.65c0 .06.05.1.1.1h13.17c1.7 0 3.09-1.38 3.09-3.09 0-1.7-1.38-3.09-3.09-3.09z"></path></svg>
+</a>
+<!-- LinkedIn Oficial -->
+<a class="p-2 bg-white/5 hover:bg-signal-red text-white transition-all rounded-full" href="https://www.linkedin.com/in/chusbzn" rel="noopener" target="_blank" title="LinkedIn Perfil Oficial">
+<svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.7a1.63 1.63 0 1 0 1.63 1.63A1.63 1.63 0 0 0 7.86 6.7z"></path></svg>
+</a>
+<!-- GitHub Pool -->
+<a class="p-2 bg-white/5 hover:bg-signal-red text-white transition-all rounded-full" href="https://github.com/produktes-code" rel="noopener" target="_blank" title="GitHub Pool Repositories">
+<svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"></path></svg>
+</a>
 </div>
 <!-- Selector de Idiomas i18n -->
 <select aria-label="Seleccionar idioma" class="bg-black/80 border border-white/20 text-white text-xs font-mono px-2 py-1 uppercase cursor-pointer outline-none hover:border-signal-red" id="lang-select">
@@ -727,6 +689,7 @@
 <button aria-label="Menú móvil" class="xl:hidden p-2 text-white hover:text-signal-red focus:outline-none cursor-pointer" id="mobile-btn" onclick="toggleMobileMenu(true); event.stopPropagation();">
 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
 </button>
+</div>
 </div>
 </header>
 <!-- Mobile Navigation Overlay -->
@@ -1595,10 +1558,6 @@
 <option data-i18n="t_299" value="otros">⚡ OTROS (Especificación personalizada)</option>
 </select>
 </div>
-<!-- Status Banner (Desktop only) -->
-<div class="status-banner hidden sm:flex">
-<div>SYS_STATUS: <span class="status-active" data-i18n="t_14">ACTIVE</span></div>
-<div data-i18n="t_15" style="opacity:0.5;">CERTIFIED_FPCAT_LVL3</div>
 </div>
 <!-- Campo Desplegable Dinámico cuando se elige OTROS -->
 <div class="hidden space-y-2 animate-fadeIn" id="other-service-wrap">
@@ -1609,6 +1568,13 @@
 <label class="text-[10px] text-white/70 uppercase tracking-widest" data-i18n="t_301" for="project-details">Detalles del Proyecto &amp; Plazos Estimados</label>
 <textarea class="w-full bg-black/90 border border-white/15 focus:border-signal-red text-white p-3 font-mono text-xs outline-none transition-colors" placeholder="&gt; Especifique el alcance, ubicación o requerimientos del encargo..." required="" rows="4" id="project-details"></textarea>
 </div>
+<button class="w-full bg-signal-red text-white font-headline text-xl sm:text-2xl py-4 uppercase tracking-widest hover:bg-signal-red-hover transition-all shadow-lg hover:shadow-signal-red/30" data-i18n="t_302" type="submit">
+                    ENVIAR PROTOCOLO DE ENCARGO
+                </button>
+<div class="hidden text-center text-terminal-green font-mono text-xs pt-2" id="form-success">
+                    ✓ ENCARGO RECIBIDO CORRECTAMENTE. EL EQUIPO TÉCNICO RESPONDERÁ EN &lt; 24 HORAS.
+                </div>
+</form>
 </div>
 </section>
 <!-- ═══ CINTA DE COMPLIANCE JURÍDICO ═══ -->
@@ -1632,403 +1598,92 @@
 <p class="font-sans text-xs text-text-secondary max-w-sm font-light" data-i18n="t_308">
                 CHUS BZN es una firma y colectivo de proyectos audiovisuales y tecnológicos a medida en Barcelona. Dirección técnica, sonido broadcast, desarrollo web e integración de Inteligencia Artificial para empresas.
             </p>
-<div class="badge-container">
-<span class="badge" data-i18n="t_20">Acreditación Oficial Grado Superior</span>
-<span class="badge" data-i18n="t_21">Desarrollador Web Apps API</span>
-<span class="badge" data-i18n="t_22">Operador de Continuidad &amp; CCU</span>
-<span class="badge" data-i18n="t_23">Socio Activo SGAE / AISGE / AEDYP / AIE</span>
 </div>
-<div class="btn-group">
-<a class="btn btn-primary" data-i18n="t_24" href="#ia">Ejecutar Entorno Técnico</a>
-<a class="btn btn-secondary" data-i18n="t_25" href="#trayectoria">Ver Trayectoria Auditada</a>
+<div class="md:col-span-4 font-mono text-xs space-y-3">
+<span class="text-signal-red uppercase tracking-widest font-bold block mb-2" data-i18n="t_309">// CANALES &amp; PLATAFORMAS OFICIALES</span>
+<div class="flex items-center gap-3">
+<svg class="w-4 h-4 text-signal-red" fill="currentColor" viewbox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"></path></svg>
+<a class="text-white/80 hover:text-signal-red transition-colors" data-i18n="t_310" href="mailto:info@chusbzn.com">info@chusbzn.com</a>
 </div>
-<span class="deco-line" style="margin-top:80px;"></span>
-</section>
-</div><!-- /main-content (hero) -->
-<!-- ═══════════════════════════════════════════════ -->
-<!-- CINEMATIC BANNER 1 — Server Room / Data Center  -->
-<!-- Exactamente como en code.html entre hero y manif -->
-<!-- ═══════════════════════════════════════════════ -->
-<div class="cinematic-banner">
-<div class="cinematic-banner-overlay"></div>
-<div class="cinematic-banner-fade"></div>
-<img alt="Centro de datos / Infraestructura tecnológica" src="assets/server_room.jpg" style="filter:grayscale(20%) contrast(1.2);"/>
+<div class="flex items-center gap-3">
+<svg class="w-4 h-4 text-signal-red" fill="currentColor" viewbox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+<a class="text-white/80 hover:text-signal-red transition-colors" data-i18n="t_311" href="https://www.youtube.com/@chus_bzn" rel="noopener" target="_blank">Canal Oficial YouTube</a>
 </div>
-<div class="main-content">
-<div class="section-separator"></div>
-<!-- ═══ 01. MANIFIESTO ═══ -->
-<section class="reveal" id="manif">
-<div class="section-number">01</div>
-<!-- IMG_5387 (plató de cine) como fondo sutil detrás del texto -->
-<div aria-hidden="true" class="section-bg">
-<img alt="" src="assets/chus_dj_festival.png"/>
+<div class="flex items-center gap-3">
+<svg class="w-4 h-4 text-signal-red" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
+<a class="text-white/80 hover:text-signal-red transition-colors" data-i18n="t_312" href="https://www.instagram.com/chus_bzn" rel="noopener" target="_blank">Instagram Reels &amp; Lab</a>
 </div>
-<div class="split-layout">
-<div>
-<span class="section-tag" data-i18n="t_26">El Origen de la Vanguardia</span>
-<h2 class="text-2xl sm:text-4xl lg:text-[3.5rem] mb-10 font-extrabold tracking-normal text-white" data-i18n="t_27">Sobre el Perfil Híbrido</h2>
+<div class="flex items-center gap-3">
+<svg class="w-4 h-4 text-signal-red" fill="currentColor" viewbox="0 0 24 24"><path d="M12 0C5.376 0 0 5.376 0 12s5.376 12 12 12 12-5.376 12-12S18.624 0 12 0zm5.521 17.341c-.217.357-.681.469-1.038.252-2.846-1.74-6.429-2.133-10.65-1.167-.406.094-.813-.162-.906-.568-.094-.406.162-.813.568-.906 4.624-1.056 8.583-.604 11.774 1.348.357.217.469.681.252 1.041zm1.474-3.272c-.273.444-.852.585-1.296.313-3.257-2.002-8.223-2.584-12.077-1.414-.504.153-1.033-.133-1.186-.637-.153-.504.133-1.033.637-1.186 4.409-1.338 9.873-.692 13.609 1.628.444.273.585.852.313 1.296zm.127-3.411c-3.906-2.319-10.354-2.533-14.108-1.393-.6.182-1.237-.162-1.419-.762-.182-.6.162-1.237.762-1.419 4.312-1.309 11.433-1.055 15.93 1.614.54.32.718 1.02.398 1.56-.32.54-1.02.718-1.563.399z"></path></svg>
+<a class="text-white/80 hover:text-signal-red transition-colors" data-i18n="t_313" href="https://open.spotify.com/intl-es/artist/0n4agjgaicmPmX8xXXADHL?si=BT-gHD11TIGBOuNvRn8hkA" rel="noopener" target="_blank">Spotify Perfil Artista</a>
 </div>
-<div>
-<p data-i18n="t_28">El liderazgo en la industria audiovisual contemporánea exige una simbiosis perfecta entre el oficio técnico tradicional y la maestría en el gobierno de algoritmos. El verdadero valor surge cuando la experiencia acumulada en entornos analógicos reales se transfiere al entrenamiento y dirección de redes neuronales de última generación.</p>
-<p data-i18n="t_29">Mi trayectoria une de forma orgánica ambos mundos. He formado parte de los cimientos mismos de la cultura urbana en España: desde registrar el primer LP de Rap editado íntegramente en el país con BZN MCs, hasta cofundar la escena de la música avanzada nacional participando activamente en el primer Festival Sónar en 1994. He operado en la máxima franja de audiencia televisiva diaria controlando el sonido directo y el montaje musical durante 16 años y 8 temporadas consecutivas en Gestmusic Endemol, y he auditado, restaurado y masterizado audio para las plataformas de streaming globales más exigentes del mundo, como Netflix, HBO, Amazon Prime y cadenas públicas como TV3 y TVE1.</p>
-<p data-i18n="t_30">No me limito a adoptar la tecnología emergente de manera superficial; diseño la arquitectura técnica subyacente que la domina, asegurando un estándar óptimo de emisión, estabilidad absoluta en entornos en vivo y un riguroso blindaje jurídico.</p>
+<div class="flex items-center gap-3">
+<svg class="w-5 h-4 text-signal-red" fill="currentColor" viewbox="0 0 24 24"><path d="M1.175 12.225c-.05 0-.096.038-.104.092L.008 18.72c-.008.06.034.112.094.112h1.177c.056 0 .103-.045.103-.103l.094-6.41c.008-.057-.038-.104-.094-.104H1.175zm2.095-1.472c-.056 0-.103.045-.103.103l-.297 7.76c-.008.057.038.104.094.104h1.186c.056 0 .103-.045.103-.103l.297-7.76c.008-.057-.038-.104-.094-.104H3.27zm2.112-1.074c-.056 0-.103.045-.103.103l-.224 8.835c-.008.057.038.104.094.104h1.186c.056 0 .103-.045.103-.103l.224-8.835c.008-.057-.038-.104-.094-.104H5.382zm2.112-1.127c-.056 0-.103.045-.103.103l-.15 9.96c-.008.057.038.104.094.104h1.186c.056 0 .103-.045.103-.103l.15-9.96c.008-.057-.038-.104-.094-.104H7.494zm2.112-.66c-.056 0-.103.045-.103.103l-.078 10.62c0 .057.046.103.103.103h1.186c.056 0 .103-.045.103-.103l.078-10.62c0-.057-.046-.103-.103-.103H9.606zm13.197 3.513c-.58 0-1.136.143-1.626.398C20.73 9.4 18.57 7.5 16.02 7.5c-.53 0-1.04.08-1.52.23-.27-2.14-2.1-3.8-4.32-3.8-.18 0-.35.01-.52.03-.06.01-.1.06-.1.12l.06 14.65c0 .06.05.1.1.1h13.17c1.7 0 3.09-1.38 3.09-3.09 0-1.7-1.38-3.09-3.09-3.09z"></path></svg>
+<a class="text-white/80 hover:text-signal-red transition-colors" data-i18n="t_314" href="https://on.soundcloud.com/45pQf3AQv99X3JbCcj" rel="noopener" target="_blank">SoundCloud Archive Oficial</a>
 </div>
+<div class="flex items-center gap-3">
+<svg class="w-4 h-4 text-signal-red" fill="currentColor" viewbox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.7a1.63 1.63 0 1 0 1.63 1.63A1.63 1.63 0 0 0 7.86 6.7z"></path></svg>
+<a class="text-white/80 hover:text-signal-red transition-colors" data-i18n="t_315" href="https://www.linkedin.com/in/chusbzn" rel="noopener" target="_blank">LinkedIn Perfil Oficial</a>
 </div>
-</section>
-<div class="section-separator"></div>
-<!-- ═══ 02. ECOSISTEMA IA ═══ -->
-<section class="reveal" id="ia">
-<div class="section-number">02</div>
-<!-- IMG_7032 (persona en consola de mezcla real) como fondo detrás del texto -->
-<div aria-hidden="true" class="section-bg">
-<img alt="" src="assets/IMG_7032.PNG"/>
+<div class="flex items-center gap-3">
+<svg class="w-4 h-4 text-signal-red" fill="currentColor" viewbox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"></path></svg>
+<a class="text-white/80 hover:text-signal-red transition-colors" data-i18n="t_316" href="https://github.com/produktes-code" rel="noopener" target="_blank">GitHub Pool Repositories</a>
 </div>
-<span class="section-tag" data-i18n="t_31">Lab Prototyping</span>
-<h2 class="text-2xl sm:text-4xl lg:text-[3.5rem] mb-10 font-extrabold tracking-normal text-white" data-i18n="t_32">Ecosistema de Desarrollo Propio y Automatización</h2>
-<p data-i18n="t_33">Diseño e integración de ecosistemas de software propietario mediante arquitecturas API y modelos avanzados de procesamiento multimedia. Tres años de I+D aplicados a la automatización de flujos complejos en productoras, sistemas de audio forense y entornos cinematográficos de alto rendimiento.</p>
-<div class="tech-card-grid">
-<div class="tech-card">
-<div class="tech-card-header">
-<h3 class="tech-card-title" data-i18n="t_34">Cinema Generator Pro Studio</h3>
-<span class="tech-card-version" data-i18n="t_35">v2.0 Beta (Dic 2024)</span>
 </div>
-<p class="tech-card-desc" data-i18n="t_36">Motor de generación cinemática masiva asistida por IA. Estructuración y renderizado secuencial de planos de alta fidelidad visual basados en prompts técnicos estructurados.</p>
-<div class="tech-card-impact" data-i18n="t_37">Reducción del 65% en tiempos de previsualización y desarrollo de layouts visuales para ficción.</div>
+<div class="md:col-span-3 font-mono text-xs space-y-3">
+<span class="text-signal-red uppercase tracking-widest font-bold block mb-2" data-i18n="t_317">// NAVEGACIÓN</span>
+<div><a class="text-white/80 hover:text-signal-red transition-colors" data-i18n="t_318" href="perfil.html">→ Perfil Auditado</a></div>
+<div><a class="text-white/80 hover:text-signal-red transition-colors" data-i18n="t_319" href="#ecosistema">→ Software Propietario IA</a></div>
+<div><a class="text-white/80 hover:text-signal-red transition-colors" data-i18n="t_320" href="blog.html">→ Blog de Novedades</a></div>
 </div>
-<div class="tech-card">
-<div class="tech-card-header">
-<h3 class="tech-card-title" data-i18n="t_38">Voznova Producer</h3>
-<span class="tech-card-version" data-i18n="t_39">v1.2 Stable (2025)</span>
 </div>
-<p class="tech-card-desc" data-i18n="t_40">Suite especializada en producción, procesamiento y optimización sonora avanzada mediante algoritmos neurales de aislamiento tímbrico.</p>
-<div class="tech-card-impact" data-i18n="t_41">Restauración automatizada de archivos de audio dañados con preservación estricta de armónicos.</div>
+<div class="max-w-[1440px] mx-auto pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center font-mono text-[10px] text-white/40 tracking-widest uppercase gap-4">
+<div>© 2026 CHUS BZN // TODOS LOS DERECHOS RESERVADOS</div>
+<div>BARCELONA // SYS_STATUS: OPERATIVO</div>
 </div>
-<div class="tech-card">
-<div class="tech-card-header">
-<h3 class="tech-card-title" data-i18n="t_42">Script Writer Pro</h3>
-<span class="tech-card-version" data-i18n="t_43">v1.5 Enterprise</span>
-</div>
-<p class="tech-card-desc" data-i18n="t_44">Entorno avanzado de guionización profesional y análisis de estructura dramática basado en modelos LLM con parámetros de restricción narrativa.</p>
-<div class="tech-card-impact" data-i18n="t_45">Automatización de escaletas, formatos estándar de guion cinematográfico y control de ritmo métrico.</div>
-</div>
-</div>
-<div class="split-layout mt-20">
-<div>
-<h3 class="text-xl sm:text-2xl font-bold text-white mb-4" data-i18n="t_46">Casos de Estudio Destacados</h3>
-</div>
-<div>
-<p><strong class="text-white">1. Dirección Técnica en Cine Asistido — Proyecto “Alpha Berracos”:</strong> Despliegue de un flujo de trabajo híbrido integral donde la IA actúa como vector de aceleración en la generación de entornos visuales dinámicos, diseño conceptual de personajes y continuidad estricta de guion, logrando un estándar cinematográfico de alta fidelidad optimizado para distribución digital masiva.</p>
-<p><strong class="text-white">2. Preservación Biométrica Neural — Proyecto LEGADO_JFB:</strong> Desarrollo de un flujo de trabajo forense de audio avanzado para el entrenamiento y clonación neural legítima de voz. A partir de cintas analógicas y masters históricos, se realiza un meticuloso proceso de limpieza, eliminación de ruido de fase y reconstrucción espectral. El clon resultante opera bajo los estrictos parámetros éticos y legales de la <em>EU AI Act</em> y bajo la soberanía de derechos gestionada por AISGE.</p>
-</div>
-</div>
-<div class="console-minimal">
-<div><span class="prompt" data-i18n="t_47">chus_bzn_lab$</span> run check_stack_tech</div>
-<div class="mt-4">[OK] <span class="highlight" data-i18n="t_48">Procesamiento, Escalado y Restauración AV:</span> Aiarty Image/Video Enhancer, Topaz Video AI, VideoProc Converter AI, HitPaw, Superwhisper, SpectraLayers 10, RX 11.3.</div>
-<div class="mt-2">[OK] <span class="highlight" data-i18n="t_49">Modelos de Audio, Voz y Video LLM:</span> Suno, Riffusion, Eleven Labs, Moises, Google AI Studio, Gemini, Qwen, Grok, Veo3, DeepSeek, Claude, Wan, ChatGPT.</div>
-</div>
-</section>
-<div class="section-separator"></div>
-<!-- ═══ 03. BROADCAST & CERT ═══ -->
-<section class="reveal" id="broadcast">
-<div aria-hidden="true" class="section-bg">
-<img alt="" src="assets/plato_cine.png"/>
-</div>
-<div class="section-number">03</div>
-<!-- Split: texto + camera rig (exactamente como code.html) -->
-<div class="split-layout mb-16">
-<div>
-<span class="section-tag" data-i18n="t_50">Solvencia Audiovisual</span>
-<h2 class="text-2xl sm:text-4xl lg:text-[3.5rem] mb-10 font-extrabold tracking-normal text-white" data-i18n="t_51">Ingeniería Audiovisual y Operaciones Broadcast 360°</h2>
-<p data-i18n="t_52">Capacidad de despliegue absoluto en cualquier eslabón de la cadena técnica audiovisual, con la solvencia técnica auditada que exigen las grandes cadenas de televisión y plataformas internacionales de distribución.</p>
-</div>
-<!-- Camera rig image panel — como en code.html -->
-<div class="section-image-panel">
-<img alt="Camera Rig — Producción cinematográfica" src="assets/camera_rig.jpg"/>
-</div>
-</div>
-<div class="lux-grid">
-<div class="lux-card">
-<h4 data-i18n="t_53">Realización y Dirección Técnica AV</h4>
-<p class="text-base leading-relaxed font-light" data-i18n="t_54" style="color:var(--text-secondary);">Arquitectura y supervisión de la continuidad de señales AV en tiempo real. Liderazgo en la toma de decisiones críticas para controles de realización complejos, emisiones en directo y ecosistemas de streaming corporativo de alta disponibilidad.</p>
-</div>
-<div class="lux-card">
-<h4 data-i18n="t_55">Postproducción de Sonido de Alta Gama</h4>
-<p class="text-base leading-relaxed font-light" data-i18n="t_56" style="color:var(--text-secondary);">Ingeniería de mezcla y diseño sonoro avanzado con enfoque en la excelencia técnica. Cumplimiento riguroso de estándares internacionales de sonoridad (EBU R128) para las plataformas OTT y cadenas de televisión más exigentes del mercado global.</p>
-</div>
-<div class="lux-card">
-<h4 data-i18n="t_57">Regiduría Multimedia y Automatización</h4>
-<p class="text-base leading-relaxed font-light" data-i18n="t_58" style="color:var(--text-secondary);">Gestión y sincronización de elementos escénicos, iluminación y vídeo. Dominio experto de sistemas de automatización (QLab/OBS) para garantizar una ejecución técnica milimétrica alineada con la escaleta de producción.</p>
-</div>
-<div class="lux-card">
-<h4 data-i18n="t_59">Operador de Cámara &amp; CCU</h4>
-<p class="text-base leading-relaxed font-light" data-i18n="t_60" style="color:var(--text-secondary);">Operación de alta precisión en sistemas de captación óptica. Control de colorimetría en tiempo real, gestión de exposición y balance de blancos crítico mediante unidades CCU en entornos de máxima exigencia broadcast.</p>
-</div>
-</div>
-<!-- DJ Highlight Panel — mixing_console_bg como en code.html (opacity 0.4 + mix-blend-mode screen) -->
-<div class="highlight-panel">
-<div class="highlight-panel-bg">
-<img alt="" src="assets/mixing_console_bg.jpg"/>
-</div>
-<h3 class="text-2xl font-bold text-white mb-4" data-i18n="t_61">DJ Profesional &amp; Live Performer</h3>
-<p class="mb-0 text-lg" data-i18n="t_62" style="color:var(--text-secondary);">Diseño, programación y ejecución de sesiones de música avanzada y eventos multimedia de corporación multinacional. Operación experta de hardware profesional de alta gama (Pioneer DDJ1000 / Rekordbox), adaptando la acústica de salas complejas y gestionando grandes librerías musicales en directo.</p>
-</div>
-<!-- ═══ CERTIFICACIONES ═══ -->
-<div class="mt-24" id="cert" style="position: relative;">
-<div aria-hidden="true" class="section-bg" style="opacity: 0.25;">
-<img alt="" src="assets/camera_rig.jpg"/>
-</div>
-<span class="section-tag" data-i18n="t_63">Auditoría de Competencias</span>
-<h3 class="text-2xl sm:text-3xl font-bold text-white mb-4" data-i18n="t_64">Cualificaciones Oficiales (Sistema FPCAT)</h3>
-<p class="text-base sm:text-lg leading-relaxed max-w-3xl font-light mb-2" data-i18n="t_65" style="color:var(--text-secondary);">
-                    Cualificación profesional oficialmente certificada y auditada por la Agència Pública de Formació i Qualificació Professionals de Catalunya. Acreditación íntegra de 14 unidades de competencia (UC) distribuidas en tres niveles:
-                </p>
-<!-- 14 Competencias FPCAT — primero -->
-<div class="lux-grid">
-<div class="lux-card">
-<span class="lux-code" data-i18n="t_66">NIVEL 3 (Grado Superior)</span>
-<h4 data-i18n="t_67">Sonido para Audiovisuales y Espectáculos</h4>
-<p class="mb-4 text-sm font-light leading-relaxed" data-i18n="t_68" style="color:var(--text-secondary);">Planificación, definición de presupuestos y supervisión técnica integral de proyectos de sonido para producciones de alto impacto y eventos en vivo.</p>
-<ul class="lux-list">
-<li><strong>UC1408_3:</strong> Definir y planificar proyectos de sonido complejos para producciones audiovisuales, de radiodifusión y eventos en directo.</li>
-<li><strong>UC1409_3:</strong> Supervisar los procesos de instalación y mantenimiento del sistema de sonido profesionales.</li>
-<li><strong>UC1410_3:</strong> Supervisar el ajuste de los equipos y la captación del sonido, según la calidad requerida en el proyecto, para su grabación o emisión.</li>
-<li><strong>UC1411_3:</strong> Realizar la postproducción de proyectos de sonido (edición, mezcla, diseño sonoro y masterización).</li>
-<li><strong>UC1412_3:</strong> Verificar y ajustar el sistema de sonorización y monitoraje en recintos.</li>
-<li><strong>UC1413_3:</strong> Controlar el sonido en artes escénicas, espectáculos musicales y eventos en vivo.</li>
-</ul>
-</div>
-<div class="lux-card">
-<span class="lux-code" data-i18n="t_69">NIVELES 2 Y 1</span>
-<h4 data-i18n="t_70">Animación Musical/Visual e Imagen</h4>
-<p class="mb-4 text-sm font-light leading-relaxed" data-i18n="t_71" style="color:var(--text-secondary);">Especialista en la instalación de hardware de sonido/iluminación, mezcla en directo y edición/tratamiento digital de imágenes.</p>
-<ul class="lux-list">
-<li><strong>UC1396_2:</strong> Preparar la infraestructura y colaborar en la programación y promoción de sesiones de animación musical y visual en vivo y en directo.</li>
-<li><strong>UC1397_2:</strong> Realizar sesiones de animación musical en vivo y en directo integrando elementos luminotécnicos, escénicos y visuales.</li>
-<li><strong>UC1398_2:</strong> Realizar sesiones de animación visual en vivo integrando elementos luminotécnicos, escénicos y musicales.</li>
-<li><strong>UC1402_2:</strong> Instalar, montar, desmontar y mantener el equipamiento en producciones de sonido e iluminación profesionales.</li>
-<li><strong>UC1403_2:</strong> Colaborar en operaciones de mezcla directa, edición ágil y grabación en producciones de sonido en entornos de directo.</li>
-<li><strong>UC1404_2:</strong> Ubicar y direccionar la microfonía en producciones de sonido.</li>
-<li><strong>UC0928_2:</strong> Digitalizar y realizar el tratamiento de imágenes mediante aplicaciones informáticas.</li>
-<li><strong>UC1401_1:</strong> Preparar y montar productos fotográficos para la entrega final.</li>
-</ul>
-</div>
-</div>
-<!-- Diplomas IA — DESPUÉS de las 14 competencias -->
-<div class="cert-divider-row" style="margin-top:64px;">
-<div class="cert-divider-line" style="background:linear-gradient(to right,transparent,rgba(0,163,255,0.25));"></div>
-<p class="text-sm font-mono" data-i18n="t_72" style="color:var(--accent-color);letter-spacing:0.1em;margin:0;text-align:center;"> // CERTIFICACIONES ADICIONALES EN INTELIGENCIA ARTIFICIAL </p>
-<div class="cert-divider-line" style="background:linear-gradient(to left,transparent,rgba(0,163,255,0.25));"></div>
-</div>
-<div class="text-center mb-8 mt-6">
-<button class="c-val" id="toggle-certs-btn" style="background: rgba(0,163,255,0.05); padding: 12px 24px; border-radius: 4px; border: 1px solid rgba(0,163,255,0.2); font-size: 0.85rem; font-family: var(--font-mono); letter-spacing: 1px; cursor: pointer; transition: all 0.3s; display: inline-flex; align-items: center; gap: 8px;">
-<svg fill="none" height="16" id="toggle-certs-icon" stroke="var(--accent-color)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M12 5v14M5 12h14"></path></svg>
-                            VER GALERÍA DE DIPLOMAS
-                        </button>
-</div>
-<div id="certs-container" style="display: none; opacity: 0; transition: opacity 0.4s ease-in-out;">
-<div class="cert-gallery">
-<a class="cert-thumb" href="assets/cert_agents.jpg" rel="noopener" target="_blank" title="Abrir diploma en tamaño completo">
-<img alt="Diploma: De 0 a Agentes con IA" src="assets/cert_agents.jpg"/>
-<div class="cert-thumb-caption" data-i18n="t_73">[ Diploma — De 0 a Agentes con IA ]</div>
-</a>
-<a class="cert-thumb" href="assets/cert_vibe_coding.jpeg" rel="noopener" target="_blank" title="Abrir diploma en tamaño completo">
-<img alt="Diploma: Vibe Coding con IA" src="assets/cert_vibe_coding.jpeg"/>
-<div class="cert-thumb-caption" data-i18n="t_74">[ Diploma — Vibe Coding con IA ]</div>
-</a>
-</div>
-</div>
-</div>
-</section></div>
-
-<div class="section-separator"></div>
-<!-- /main-content (hasta broadcast) -->
-<!-- ═══════════════════════════════════════════ -->
-<!-- CINEMATIC BANNER 2 — DJ Performance         -->
-<!-- Banner entre Broadcast y Trayectoria         -->
-<!-- ═══════════════════════════════════════════ -->
-<div class="cinematic-banner">
-<div class="cinematic-banner-overlay"></div>
-<div class="cinematic-banner-fade"></div>
-<img alt="Jesús Ferrer García — DJ &amp; Live Performance en Festival" src="assets/chus_dj_cap.png" style="filter:grayscale(10%) contrast(1.1) brightness(0.82);object-position:center 30%;"/>
-</div>
-<div class="main-content">
-<div class="section-separator"></div>
-<!-- ═══ 04. TRAYECTORIA ═══ -->
-<section class="reveal" id="trayectoria">
-<div class="section-number">04</div>
-<!-- IMG_5387 plató de cine como fondo sutil -->
-<div aria-hidden="true" class="section-bg">
-<img alt="" src="assets/vintage_mixing.png" style="object-position:top center;"/>
-</div>
-<div class="split-layout">
-<div>
-<span class="section-tag" data-i18n="t_75">Timeline Industrial</span>
-<h2 class="text-2xl sm:text-4xl lg:text-[3.5rem] mb-10 font-extrabold tracking-normal text-white" data-i18n="t_76">Trayectoria Laboral Histórica</h2>
-<p data-i18n="t_77">Más de 33 años de cotización efectiva auditada (12.410 días en alta en la Seguridad Social) avalan una carrera caracterizada por la estabilidad laboral, el liderazgo de equipos técnicos y la evolución tecnológica constante.</p>
-<div class="section-image-panel hidden lg:block" style="margin-top: 48px; height: 500px;">
-<img alt="Jesús Ferrer - Retrato Formal" src="assets/retrato_formal.png" style="object-position: center 20%;"/>
-</div>
-</div>
-<div>
-<div class="timeline-elegant">
-<div class="t-item">
-<div class="t-meta" data-i18n="t_78">2020 - PRESENTE</div>
-<div class="t-title" data-i18n="t_79">Productor Audiovisual Senior &amp; IA Specialist</div>
-<div class="t-company" data-i18n="t_80">Actuara12 (Freelance / Laboratorio Propietario)</div>
-<div class="t-desc" data-i18n="t_81">Liderazgo técnico en la dirección de eventos corporativos y producciones cinematográficas. Especialista en la implementación de flujos de trabajo disruptivos mediante IA, control CCU avanzado y diseño de arquitecturas de sonorización para grandes audiencias.</div>
-</div>
-<div class="t-item">
-<div class="t-meta">2019 - 2020</div>
-<div class="t-title" data-i18n="t_82">Especialista Tecnológico</div>
-<div class="t-company" data-i18n="t_83">Apple Computers</div>
-<div class="t-desc" data-i18n="t_84">Arquitectura de soluciones y consultoría tecnológica de alto nivel. Soporte especializado para el sector creativo y corporativo de Barcelona.</div>
-</div>
-<div class="t-item">
-<div class="t-meta">2014 - 2019</div>
-<div class="t-title" data-i18n="t_85">Diseñador de Sonido &amp; Montador Musical</div>
-<div class="t-company" data-i18n="t_86">Visiona TV / TV3 / TVE1</div>
-<div class="t-desc" data-i18n="t_87">Responsable del diseño del entorno sonoro, postproducción y mezclas para el programa “Dinàmiks” (TV3) y montador musical para formatos de entretenimiento nacional como “Juego de Niños” (TVE1) con Javier Sardà.</div>
-</div>
-<div class="t-item">
-<div class="t-meta">2008 - 2014</div>
-<div class="t-title" data-i18n="t_88">Técnico de Doblaje Senior</div>
-<div class="t-company" data-i18n="t_89">Digitsound S.L.</div>
-<div class="t-desc">Postproducción de audio, control de sincronía y doblaje de largometrajes cinematográficos (trilogía de <em>El Señor de los Anillos</em>) y series de televisión (<em>American Horror Story, Spartacus, CSI</em>) para Netflix, HBO, Amazon Prime y Sony Pictures.</div>
-</div>
-<div class="t-item">
-<div class="t-meta">2006 - 2008</div>
-<div class="t-title" data-i18n="t_90">Director Ejecutivo &amp; Productor General</div>
-<div class="t-company" data-i18n="t_91">Kombat Jam S.L.</div>
-<div class="t-desc" data-i18n="t_92">Dirección técnica general de las primeras batallas profesionales de freestyle organizadas en salas de referencia nacional como Razzmatazz. Coordinación de la filmación multimedia con equipos técnicos especializados.</div>
-</div>
-<div class="t-item">
-<div class="t-meta" data-i18n="t_93">1990 - 2006 (16 Años en Plantilla Titular)</div>
-<div class="t-title" data-i18n="t_94">Técnico Audiovisual &amp; Montador Musical Titular</div>
-<div class="t-company" data-i18n="t_95">Gestmusic (Endemol Shine Iberia)</div>
-<div class="t-desc" data-i18n="t_96">Pilar fundamental en el control de sonido directo y efectos sonoros durante las 8 temporadas de “Crónicas Marcianas”, el programa líder histórico de máxima audiencia diaria en España.</div>
-</div>
-<div class="t-item">
-<div class="t-meta">1987 - 1990</div>
-<div class="t-title" data-i18n="t_97">Técnico de Doblaje (Inicios de Oficio)</div>
-<div class="t-company" data-i18n="t_98">Tecni.3 (Badalona)</div>
-<div class="t-desc" data-i18n="t_99">Inicios operando con tecnología analógica industrial pura: sistemas de 35mm, grabadores multipista de cinta abierta y sincronía manual por código de tiempo.</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<div class="section-separator"></div>
-<!-- ═══ 05. COMPLIANCE ═══ -->
-<section class="reveal" id="compliance">
-<div class="section-number">05</div>
-<!-- Server room como fondo sutil en compliance -->
-<div aria-hidden="true" class="section-bg">
-<img alt="" src="assets/broadcast_control.png"/>
-</div>
-<span class="section-tag" data-i18n="t_100">Seguridad Jurídica</span>
-<h2 class="text-2xl sm:text-4xl lg:text-[3.5rem] mb-10 font-extrabold tracking-normal text-white" data-i18n="t_101">Compliance, Marco Ético y Garantía Legal</h2>
-<p>La implementación corporativa de la Inteligencia Artificial Generativa y la gestión multimedia exigen un conocimiento profundo del marco ético y regulatorio vigente. Cada desarrollo de software, proceso de clonación de voz o generación de contenido multimedia se ejecuta bajo el estricto cumplimiento de la normativa europea (<span data-i18n="t_102" style="color:var(--accent-color);font-family:var(--font-mono)">EU AI Act</span>).</p>
-<p class="mb-16" data-i18n="t_103">Esta seguridad jurídica se ve respaldada por mi condición de miembro socio y afiliado activo en las principales entidades de gestión de derechos de propiedad intelectual e industrial, garantizando un blindaje legal absoluto:</p>
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-<div class="org-card" id="compliance-sgae">
-<div class="org-name" data-i18n="t_104">SGAE</div>
-<p class="text-sm leading-relaxed mb-0" data-i18n="t_105" style="color:var(--text-secondary);">Sociedad General de Autores y Editores — Protección y gestión de derechos de autor y composiciones originales.</p>
-</div>
-<div class="org-card" id="compliance-aisge">
-<div class="org-name" data-i18n="t_106">AISGE</div>
-<p class="text-sm leading-relaxed mb-0" data-i18n="t_107" style="color:var(--text-secondary);">Artistas Intérpretes, Entidad de Gestión — Protección de interpretaciones, doblaje y soberanía biométrica neural legítima.</p>
-</div>
-<div class="org-card" id="compliance-aedyp">
-<div class="org-name" data-i18n="t_108">AEDYP</div>
-<p class="text-sm leading-relaxed mb-0" data-i18n="t_109" style="color:var(--text-secondary);">Asociación de DJs y Productores — Representación institucional en música electrónica y eventos en vivo.</p>
-</div>
-<div class="org-card" id="compliance-aie">
-<div class="org-name" data-i18n="t_110">AIE</div>
-<p class="text-sm leading-relaxed mb-0" data-i18n="t_111" style="color:var(--text-secondary);">Artistas Intérpretes o Ejecutantes — Gestión de derechos de propiedad industrial e intelectual de artistas musicales.</p>
-</div>
-</div>
-</section>
-<div class="section-separator"></div>
-<!-- ═══ 06. GITHUB POOL ═══ -->
-<section class="reveal" id="github">
-<div class="section-number">06</div>
-<div aria-hidden="true" class="section-bg" style="opacity: 0.12;">
-<img alt="" src="assets/mixing_console_bg.jpg" style="mix-blend-mode: luminosity;"/>
-</div>
-<span class="section-tag" data-i18n="t_112">Código Abierto</span>
-<h2 class="text-2xl sm:text-4xl lg:text-[3.5rem] mb-10 font-extrabold tracking-normal text-white" data-i18n="t_113">GitHub Pool // Repositorios</h2>
-<div class="split-layout">
-<div>
-<p data-i18n="t_114">Catálogo oficial de mis desarrollos, herramientas experimentales y aplicaciones open-source. Comparto de forma pública soluciones que abarcan desde utilidades de automatización para productoras audiovisuales y scripts de control de sonido, hasta integraciones avanzadas con motores de Inteligencia Artificial.</p>
-<p class="mb-0" data-i18n="t_115">Todo el material está disponible de manera libre para que profesionales, ingenieros y creadores de la industria puedan clonar, auditar y desplegar estos recursos en sus propios entornos de trabajo.</p>
-</div>
-<div class="flex flex-col justify-center items-start lg:pl-12">
-<div class="console-minimal w-full" style="margin: 0 0 24px 0; padding: 24px;">
-<div style="font-family: var(--font-mono); font-size: 0.82rem; color: var(--accent-color); word-break: break-all;">
-                            $ <span data-i18n="t_116" style="color: var(--text-primary);">git clone https://github.com/produktes-code</span>
-</div>
-</div>
-<a class="btn btn-primary" href="https://github.com/produktes-code" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px;" target="_blank">
-<svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                        EXPLORAR EN GITHUB
-                    </a>
-</div>
-</div>
-</section>
-<div class="section-separator"></div>
-</div><!-- /main-content -->
-<!-- ═══ FOOTER / CONTACTO ═══ -->
-<footer>
-<div class="section-tag justify-center" data-i18n="t_117" style="justify-content:center;margin-bottom:32px;">Conectar con el Entorno</div>
-<div class="footer-cta">¿Iniciamos<br/><span data-i18n="t_118" style="color:var(--accent-color);">un proyecto?</span></div>
-<p class="mx-auto text-center max-w-xl text-lg font-light leading-relaxed" data-i18n="t_119" style="color:var(--text-secondary);">
-            Establece contacto directo para consultorías avanzadas, ingeniería de flujos de trabajo con IA, regiduría multimedia o dirección técnica de proyectos audiovisuales complejos.
-        </p>
-<div class="contact-flex">
-<div class="contact-block">
-<span class="c-label" data-i18n="t_120">Ubicación Operativa</span>
-<span class="c-val c-val-static">
-<svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                    Barcelona, España — Disponibilidad global y remota
-                </span>
-</div>
-<div class="contact-block">
-<span class="c-label" data-i18n="t_121">Correo Profesional</span>
-<a class="c-val" href="mailto:info@chusbzn.com" id="contact-email">
-<svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><rect height="16" rx="2" width="20" x="2" y="4"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
-                    info@chusbzn.com
-                </a>
-</div>
-<div class="contact-block">
-<span class="c-label" data-i18n="t_122">Canal de Divulgación</span>
-<a class="c-val" href="https://youtube.com/@chus_bzn" id="contact-youtube" rel="noopener" target="_blank">
-<svg fill="#FF0000" height="16" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
-                    youtube.com/@chus_bzn
-                </a>
-</div>
-<div class="contact-block">
-<span class="c-label" data-i18n="t_123">Instagram</span>
-<a class="c-val" href="https://instagram.com/chus_bzn" id="contact-instagram" rel="noopener" target="_blank">
-<svg fill="url(#ig-grad)" height="16" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg">
-<defs>
-<lineargradient id="ig-grad" x1="0%" x2="100%" y1="100%" y2="0%">
-<stop offset="0%" stop-color="#f09433"></stop>
-<stop offset="25%" stop-color="#e6683c"></stop>
-<stop offset="50%" stop-color="#dc2743"></stop>
-<stop offset="75%" stop-color="#cc2366"></stop>
-<stop offset="100%" stop-color="#bc1888"></stop>
-</lineargradient>
-</defs>
-<path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
-                    @chus_bzn
-                </a>
-</div>
-</div>
-<div class="copyright" data-i18n="t_124">
-            [ TERMINAL ABIERTA ] // COPYRIGHT 2026 JESÚS FERRER GARCÍA // ALL SYSTEMS OPERATIONAL
-        </div>
 </footer>
-<!-- ═══ JAVASCRIPT ═══ -->
+<!-- ═══ MODALES EXPLICATIVOS DE SERVICIO ═══ -->
+<div class="modal-backdrop" id="service-modal" onclick="closeServiceModal(event)">
+<div class="glass-panel p-6 sm:p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto border border-signal-red/40 relative space-y-6" onclick="event.stopPropagation()">
+<button class="absolute top-4 right-4 text-white/60 hover:text-signal-red font-mono text-xl" onclick="closeServiceModal()">×</button>
+<span class="font-mono text-xs text-signal-red tracking-widest uppercase" data-i18n="t_321" id="modal-code">// DOSSIER TÉCNICO</span>
+<h3 class="font-headline text-3xl text-white uppercase" id="modal-title">---</h3>
+<p class="font-sans text-sm text-text-secondary font-light leading-relaxed" id="modal-desc">---</p>
+<div class="space-y-3 font-mono text-xs text-white/90 border-t border-white/10 pt-4" id="modal-specs">---</div>
+<div class="pt-4 flex justify-end">
+<a class="bg-signal-red text-white font-mono text-xs px-6 py-3 uppercase tracking-widest hover:bg-signal-red-hover" data-i18n="t_322" href="#presupuesto" onclick="closeServiceModal()">SOLICITAR ESTE SERVICIO</a>
+</div>
+</div>
+</div>
+<!-- ═══ REPRODUCTOR MODAL LIGHTBOX DE VÍDEO CON AUDIO COMPLETO (BASADO EN DATOS) ═══ -->
+<div class="modal-backdrop" id="video-modal">
+<div class="glass-panel p-4 sm:p-6 max-w-4xl w-full max-h-[92vh] overflow-y-auto border border-signal-red/50 relative space-y-4 shadow-2xl" onclick="event.stopPropagation()">
+<!-- Botón de Cerrar Modal -->
+<button type="button" class="absolute top-3 right-3 text-white hover:text-signal-red font-mono text-2xl z-50 w-12 h-12 bg-black/90 rounded-full flex items-center justify-center border border-white/40 transition-all cursor-pointer shadow-2xl" id="close-modal" aria-label="Cerrar modal">×</button>
+<!-- Cabecera de la Producción -->
+<div class="space-y-1">
+<span class="font-mono text-xs text-signal-red tracking-widest uppercase" data-i18n="t_323" id="vmodal-badge">// REPRODUCTOR VIVO CON AUDIO</span>
+<h3 class="font-headline text-2xl sm:text-3xl text-white uppercase tracking-tight" id="vmodal-title">---</h3>
+</div>
+<!-- Contenedor donde se inyectará el reproductor dinámicamente -->
+<div class="relative w-full bg-black border border-white/20 rounded overflow-hidden shadow-2xl flex items-center justify-center transition-all duration-300 min-h-[220px]" id="modal-content">
+<!-- Inyección de iFrame o HTML5 Video -->
+</div>
+<!-- Descripción & Botón a la Fuente Oficial -->
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pt-2 border-t border-white/10 font-mono text-xs">
+<p class="font-sans text-xs text-text-secondary font-light max-w-xl" id="vmodal-desc">---</p>
+<a class="bg-signal-red hover:bg-white text-white hover:text-signal-red font-mono text-xs px-5 py-2.5 uppercase tracking-wider font-bold transition-all whitespace-nowrap shadow-lg" data-i18n="t_324" href="#" id="vmodal-link" rel="noopener" target="_blank">
+                ABRIR EN FUENTE ORIGINAL →
+            </a>
+</div>
+</div>
+</div>
+<!-- ═══ INTERACTIVE LIVE TERMINAL FLOATING ═══ -->
+<div class="fixed bottom-6 right-6 bg-black/90 border border-white/15 p-3 font-mono text-[10px] text-terminal-green z-50 shadow-2xl hidden md:block" id="live-terminal">
+<span data-i18n="t_325" id="terminal-msg">[ SYS_LOG: VÍNCULO_BROADCAST_ESTABLECIDO ]</span>
+<span class="animate-pulse">_</span>
+</div>
+<!-- ═══ JAVASCRIPT LOGIC (TYPEWRITER & MATRIX RAIN & MOBILE FIXES) ═══ -->
 <script>
     
     // ═══ LAZY VIDEO INTERSECTION OBSERVER (REDUCES GPU DECODING LAG) ═══
@@ -2115,23 +1770,33 @@
         }, 50);
     };
 
-        function closeMenu() {
-            mobileNav.classList.remove('open');
-            hamburgerBtn.classList.remove('open');
-            hamburgerBtn.setAttribute('aria-expanded', 'false');
-            const scrollY = parseInt(document.body.dataset.scrollY || '0');
-            document.body.style.position = '';
-            document.body.style.top = '';
-            document.body.style.width = '';
-            window.scrollTo(0, scrollY);
-        }
-
-        hamburgerBtn.addEventListener('click', () => {
-            if (mobileNav.classList.contains('open')) closeMenu();
-            else openMenu();
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const targetId = this.getAttribute('href');
+            if (!targetId || targetId === '#') return;
+            e.preventDefault();
+            window.navigateToSection(targetId);
         });
+    });
 
-        mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
+    // Typewriter effect in Hero sub-bar
+    const typewriterEl = document.getElementById('typewriter-sub');
+    const typewriterTexts = [
+        "> CARGANDO NODO BROADCAST BARCELONA...",
+        "> CINE IA & PROMPT ENGINE ACTIVO...",
+        "> MEZCLA & MASTERIZACIÓN EBU R128...",
+        "> DESARROLLO SOFTWARE & WEB APPS..."
+    ];
+    let tIdx = 0, charIdx = 0, isDeleting = false;
+    
+    function typeEffect() {
+        if (!typewriterEl) return;
+        const currentText = typewriterTexts[tIdx];
+        if (isDeleting) {
+            typewriterEl.textContent = currentText.substring(0, charIdx--);
+        } else {
+            typewriterEl.textContent = currentText.substring(0, charIdx++);
+        }
 
         let speed = isDeleting ? 25 : 55;
         if (!isDeleting && charIdx === currentText.length + 1) {
