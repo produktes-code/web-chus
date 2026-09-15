@@ -161,35 +161,75 @@ document.addEventListener('DOMContentLoaded', () => {
     function applyTranslations(lang) {
         localStorage.setItem('site_lang', lang);
         document.documentElement.lang = lang; // update html lang attribute
+        document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr'; // RTL para árabe
+
+        ensureScriptStyles();
 
         // Update all custom dropdown buttons & items
         document.querySelectorAll('.lang-custom-dropdown').forEach(wrapper => {
             if (wrapper.syncState) wrapper.syncState(lang);
         });
 
+        const pick = (key) => {
+            if (translations[lang] && translations[lang][key]) return translations[lang][key];
+            if (translations[defaultLang] && translations[defaultLang][key]) return translations[defaultLang][key];
+            return null;
+        };
+
         const elements = document.querySelectorAll('[data-i18n]');
-        
         elements.forEach(el => {
             const key = el.getAttribute('data-i18n');
-            
-            if (translations[lang] && translations[lang][key]) {
-                const val = translations[lang][key];
-                if (val.includes('<') || val.includes('&')) {
-                    el.innerHTML = val;
-                } else {
-                    el.textContent = val;
-                }
-            } else if (translations[defaultLang] && translations[defaultLang][key]) {
-                const val = translations[defaultLang][key];
-                if (val.includes('<') || val.includes('&')) {
-                    el.innerHTML = val;
-                } else {
-                    el.textContent = val;
-                }
+            const val = pick(key);
+            if (val === null) return;
+            if (val.includes('<') || val.includes('&')) {
+                el.innerHTML = val;
+            } else {
+                el.textContent = val;
             }
+        });
+
+        // Placeholders de formulario
+        document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+            const val = pick(el.getAttribute('data-i18n-ph'));
+            if (val !== null) el.placeholder = val;
+        });
+
+        // aria-labels accesibles
+        document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+            const val = pick(el.getAttribute('data-i18n-aria'));
+            if (val !== null) el.setAttribute('aria-label', val);
+        });
+
+        // Meta description por idioma (SEO)
+        document.querySelectorAll('meta[data-i18n-desc]').forEach(el => {
+            const val = pick(el.getAttribute('data-i18n-desc'));
+            if (val !== null) el.setAttribute('content', val);
         });
 
         // Trigger custom event for dynamic components (modals, video cards)
         window.dispatchEvent(new CustomEvent('site_lang_changed', { detail: { lang } }));
+    }
+
+    function ensureScriptStyles() {
+        if (document.getElementById('i18n-dir-css')) return;
+        const s = document.createElement('style');
+        s.id = 'i18n-dir-css';
+        s.textContent = `
+            html[dir="rtl"] body { text-align: right; }
+            html[dir="rtl"] .marquee-track,
+            html[dir="rtl"] .marquee-track--back,
+            html[dir="rtl"] .cine-marquee__track { direction: ltr; }
+            html[dir="rtl"] .lang-custom-dropdown { text-align: left; }
+            html[lang|="ar"] :is(body, .font-sans, .font-headline, .font-mono, .glass-panel, input, textarea, select, button, a) {
+                font-family: "Noto Naskh Arabic", "Noto Sans Arabic", "Segoe UI", system-ui, sans-serif;
+            }
+            html[lang|="zh-CN"] :is(body, .font-sans, .font-headline, .font-mono, input, textarea, select, button, a) {
+                font-family: "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", system-ui, sans-serif;
+            }
+            html[lang|="ja"] :is(body, .font-sans, .font-headline, .font-mono, input, textarea, select, button, a) {
+                font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", system-ui, sans-serif;
+            }
+        `;
+        document.head.appendChild(s);
     }
 });
