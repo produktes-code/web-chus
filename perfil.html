@@ -347,6 +347,25 @@
     #mobile-menu.open {
         display: flex;
     }
+
+    /* VIVACIDAD AMBIENTAL (transform/opacity, sin re-rastreado de GPU) */
+    .section-headline-clean::after {
+        animation: sec-head-beat 5.2s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+    }
+    @keyframes sec-head-beat {
+        0%, 100% { transform: translateX(-50%) scaleX(1); opacity: 0.8; }
+        50%      { transform: translateX(-50%) scaleX(1.3); opacity: 1; }
+    }
+    .section-headline-clean::before {
+        animation: sec-head-blink 4.2s steps(1, end) infinite;
+    }
+    @keyframes sec-head-blink {
+        0%, 84% { opacity: 0.9; }
+        86%     { opacity: 0.25; }
+        90%     { opacity: 0.9; }
+        94%     { opacity: 0.3; }
+        100%    { opacity: 0.9; }
+    }
 </style>
 </head>
 <body class="bg-black text-white selection:bg-signal-red selection:text-white blueprint-grid">
@@ -603,8 +622,7 @@
 </footer>
 <script>
     const reveals = document.querySelectorAll('.reveal');
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+    if (!('IntersectionObserver' in window)) {
         reveals.forEach(r => r.classList.add('active'));
     } else {
         const observer = new IntersectionObserver((entries) => {
