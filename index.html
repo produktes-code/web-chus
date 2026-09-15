@@ -334,6 +334,7 @@
 
     /* Animated CSS Marquee (Textos de máquina de escribir nítidos sin iluminación que distorsione las letras) */
     .marquee-container {
+        position: relative;
         overflow: hidden;
         white-space: nowrap;
         background: rgba(10, 10, 10, 0.95);
@@ -677,6 +678,62 @@
         will-change: transform;
         pointer-events: none;
     }
+
+    /* ─── VIVACIDAD V2 (todo transform/opacity: solo compositor GPU, cero reflow) ─── */
+    /* Glitch de entrada de los titulares al revelar su sección (una vez por visita) */
+    .reveal.active .section-headline-clean {
+        animation: head-glitch-in 0.55s ease-out both;
+    }
+    @keyframes head-glitch-in {
+        0%   { opacity: 0; transform: translateY(-7px); text-shadow: -2px 0 rgba(255,31,31,0.85), 2px 0 rgba(0,255,65,0.85); }
+        40%  { opacity: 1; transform: translateY(2px); text-shadow: -1px 0 rgba(255,31,31,0.6), 1px 0 rgba(0,255,65,0.6); }
+        60%  { transform: translateY(-1px) skewX(-2deg); text-shadow: 0 0 0 transparent; }
+        100% { opacity: 1; transform: translateY(0) skewX(0); }
+    }
+    /* Iconos de servicio y grafismos con flotación + brillo orgánicos */
+    .service-card-enhanced svg.animated-icon,
+    .ecosistema-icon svg.animated-icon { animation-delay: calc(var(--i, 0) * 0.28s); }
+    /* Ken-burns lento del preview de vídeo (solo transform, imperceptible + 26s) */
+    .preview-wrap { transform-origin: center bottom; will-change: transform; backface-visibility: hidden; }
+    .video-card.in-view .preview-wrap { animation: preview-kenburns 26s cubic-bezier(0.16, 1, 0.3, 1) infinite alternate; }
+    @keyframes preview-kenburns {
+        from { transform: scale(1); }
+        to   { transform: scale(1.06); }
+    }
+    /* Barrido de luz ascendente en el preview (transform translateY, GPU) */
+    .preview-scan {
+        position: absolute; left: 0; right: 0; top: 0;
+        height: 46%;
+        pointer-events: none;
+        opacity: 0.5;
+        background: linear-gradient(to bottom, rgba(255,31,31,0), rgba(255,31,31,0.10), rgba(255,255,255,0.06), rgba(255,31,31,0));
+        mix-blend-mode: screen;
+    }
+    .video-card.in-view .preview-scan { animation: preview-scan-y 4.6s linear infinite; }
+    @keyframes preview-scan-y {
+        0%   { transform: translateY(-120%); }
+        100% { transform: translateY(340%); }
+    }
+    /* Contracorriente de la marquesina inicial (segunda capa opuesta, sutil) */
+    .marquee-track--back {
+        position: absolute;
+        top: 0; bottom: 0; right: 0;
+        height: min-content;
+        margin: auto 0;
+        opacity: 0.26;
+        pointer-events: none;
+        font-size: 0.68em;
+        animation: marquee-scroll 34s linear infinite reverse;
+        will-change: transform;
+        backface-visibility: hidden;
+    }
+    /* Destello del rótulo regenerado al completar cada ciclo */
+    .nameplate-shine { animation: nameplate-shine-a 0.9s ease-out; }
+    @keyframes nameplate-shine-a {
+        0%   { text-shadow: 0 0 0 rgba(0,255,65,0); }
+        55%  { text-shadow: 0 0 26px rgba(0,255,65,0.95), 0 0 60px rgba(0,255,65,0.4); }
+        100% { text-shadow: 0 0 0 rgba(0,255,65,0); }
+    }
     
 </style>
 </head>
@@ -859,6 +916,26 @@
 <span class="txt-white" data-i18n="t_160">IMPLANTACIÓN DE IA EN EMPRESAS</span> <span class="text-signal-red">//</span>
 <span class="txt-red" data-i18n="t_161">FORMACIÓN TECNOLÓGICA &amp; VIBE CODING</span> <span class="text-white font-bold">//</span>
 </span>
+</div>
+<!-- Capa en contracorriente (decorativa, misma cinta en dirección opuesta y semi-transparente) -->
+<div class="marquee-track marquee-track--back font-headline uppercase tracking-widest gap-8" aria-hidden="true">
+<span class="txt-red" data-i18n="t_155">VÍDEO CREATIVO &amp; SPOTS IA</span> <span class="text-white font-bold">//</span>
+<span class="txt-white" data-i18n="t_156">DISEÑO SONORO EBU R128</span> <span class="text-signal-red">//</span>
+<span class="txt-red" data-i18n="t_157">DIRECTOS BROADCAST &amp; STREAMING 360°</span> <span class="text-white font-bold">//</span>
+<span class="txt-white" data-i18n="t_158">DJ LIVE PERFORMANCE &amp; REMEZCLAS</span> <span class="text-signal-red">//</span>
+<span class="txt-red" data-i18n="t_159">DESARROLLO WEB &amp; WEB APPS</span> <span class="text-white font-bold">//</span>
+<span class="txt-white" data-i18n="t_160">IMPLANTACIÓN DE IA EN EMPRESAS</span> <span class="text-signal-red">//</span>
+<span class="txt-red" data-i18n="t_161">FORMACIÓN TECNOLÓGICA &amp; VIBE CODING</span> <span class="text-white font-bold">//</span>
+<span aria-hidden="true" style="display: contents;">
+<span class="txt-red" data-i18n="t_155">VÍDEO CREATIVO &amp; SPOTS IA</span> <span class="text-white font-bold">//</span>
+<span class="txt-white" data-i18n="t_156">DISEÑO SONORO EBU R128</span> <span class="text-signal-red">//</span>
+<span class="txt-red" data-i18n="t_157">DIRECTOS BROADCAST &amp; STREAMING 360°</span> <span class="text-white font-bold">//</span>
+<span class="txt-white" data-i18n="t_158">DJ LIVE PERFORMANCE &amp; REMEZCLAS</span> <span class="text-signal-red">//</span>
+<span class="txt-red" data-i18n="t_159">DESARROLLO WEB &amp; WEB APPS</span> <span class="text-white font-bold">//</span>
+<span class="txt-white" data-i18n="t_160">IMPLANTACIÓN DE IA EN EMPRESAS</span> <span class="text-signal-red">//</span>
+<span class="txt-red" data-i18n="t_161">FORMACIÓN TECNOLÓGICA &amp; VIBE CODING</span> <span class="text-white font-bold">//</span>
+</span>
+</div>
 </div>
 </div>
 <!-- ═══ MÓDULO POTENCIADO: CANALES & PLATAFORMAS (Limpio & Sin Explicaciones Secundarias) ═══ -->
@@ -1937,7 +2014,7 @@
             if (Math.abs(w - curW) > 1 || Math.abs(h - curH) > 1 || mCanvas.width === 0) {
                 curW = w;
                 curH = h;
-                const dpr = Math.min(window.devicePixelRatio || 1, 2);
+                const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
                 mCanvas.width = Math.round(w * dpr);
                 mCanvas.height = Math.round(h * dpr);
                 mCanvas.style.width = w + 'px';
@@ -2463,6 +2540,7 @@
     function step() {
         if (revealed >= target.length - 1) {
             el.textContent = target;
+            el.classList.add('nameplate-shine');
             timer = setTimeout(cycle, 5000);
             return;
         }
@@ -2471,6 +2549,7 @@
         timer = setTimeout(step, 105);
     }
     function cycle() {
+        el.classList.remove('nameplate-shine');
         revealed = -1;
         render();
         timer = setTimeout(step, 105);
@@ -2516,6 +2595,26 @@
             }, { threshold: 0.35 });
             cards.forEach(function (c) { io.observe(c); });
         }
+        // Iconos de servicio como grafismos animados (flotación + brillo, transform)
+        document.querySelectorAll('.service-card-enhanced svg').forEach(function (s, i) {
+            s.classList.add('animated-icon');
+            s.style.setProperty('--i', String(i % 6));
+        });
+        document.querySelectorAll('#ecosistema svg, #ecosistema .glass-panel img').forEach(function (s, i) {
+            s.classList.add('animated-icon');
+            s.style.setProperty('--i', String(i % 6));
+        });
+        // Previews de vídeo: ken-burns muy lento solo cuando el preview está visible + barrido de luz
+        document.querySelectorAll('.video-card video').forEach(function (v) {
+            var wrap = v.parentElement;
+            while (wrap && !wrap.classList.contains('relative')) wrap = wrap.parentElement;
+            if (!wrap || wrap.classList.contains('preview-wrap')) return;
+            wrap.classList.add('preview-wrap');
+            var bar = document.createElement('span');
+            bar.className = 'preview-scan';
+            bar.setAttribute('aria-hidden', 'true');
+            wrap.appendChild(bar);
+        });
     })();
 </script>
 </body>
