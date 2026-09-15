@@ -46,8 +46,12 @@ Vivacidad ambiental sin sobrecarga: se anima únicamente con **transform/opacity
 - **Reveal por scroll** en escritorio (los `.reveal` entran con desvanecido/desplazamiento al cruzar el viewport, una sola vez) y en móvil se muestran directos para mantener la fluidez.
 - **Titulares de sección**: subrayado rojo con latido y marcador `///` con parpadeo sutil, animados permanentemente, más un **glitch de entrada** (split RGB + skew) al revelarse su sección.
 - **Iconos y grafismos**: los iconos de servicio y los imagotipos del ecosistema flotan con brillo orgánico (`animated-icon`, transform).
-- **Previews de vídeo**: **ken-burns lentísimo** en el preview visible (26s, transform) + un **barrido de luz ascendente** sutil; siguen pausándose al salir de pantalla.
-- **Marquesina inicial**: ahora con una segunda capa en **contracorriente** (misma cinta al 26% de opacidad, dirección opuesta) para dar profundidad.
+- **Aparición escalonada por rejillas**: contenidos (redes, servicios, ecosistema, metodología) entran en cascada —'*stagger*'— al revelarse su sección (retraso de 60ms por tarjeta, solo CSS + transform/opacity).
+- **Parallax sutil del hero** (escritorio): titular y terminal/matrix se desplazan a velocidades distintas con el scroll (solo `transform`, throttled con `requestAnimationFrame`, listener `passive`).
+- **Elevación al hover**: las tarjetas de servicio y los paneles de cristal se elevan ligeramente (transform de una capa, transición existente).
+- **La matrix** gana vida con "astros" esporádicos: un rayo blanco brillante que cruza de vez en cuando una columna (muy ocasional, sin coste).
+- **Previews de vídeo**: intactos (acceso y visualización sin tocar). Siguen pausándose al salir de pantalla.
+- **Marquesina inicial**: con una segunda capa en **contracorriente** (misma cinta al 26% de opacidad, dirección opuesta) para dar profundidad.
 - **Rótulo regenerado** (JESÚS FERRER GARCÍA): destello verde al completar cada ciclo del scramble.
 - **Barra de progreso de scroll** (superior, `signal-red`): transform `scaleX`, escala en compositor.
 - **Indicador REC** pulsante en las tarjetas de vídeo al estar en pantalla, en hover o al tocarlas (IntersectionObserver ligero, 8 nodos).
