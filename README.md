@@ -16,7 +16,7 @@ Sitio oficial y portfolio interactivo de **Jesús Ferrer García (CHUS BZN)**, I
 | `js/translations.js` | Diccionarios i18n (10 idiomas) |
 | `js/i18n.js` | Motor de cambio de idioma (es/ca/en/it/de/ru/ja/uk/zh-CN/ar), persistencia en `localStorage` |
 | `css/tailwind.css` | Estilos (Tailwind compilado a fichero plano) |
-| `assets/` | Vídeos (previews y `*_final.mp4`), imágenes, favicon |
+| `assets/` | Vídeos: previews ligeros (bucle de tarjeta) en `assets/` y piezas íntegras (máxima calidad) en `assets/full/`, imágenes, favicon |
 | `srv.mjs` | Servidor local con soporte de rangos (Range/206) |
 | `CNAME` | `chusbzn.com` |
 | `.nojekyll` | Evita el preprocesado Jekyll de GitHub Pages |
@@ -26,7 +26,7 @@ Atributos de traducción (`data-i18n`): 203 únicos en `index.html`, 66 en `perf
 
 ## Tarjetas de vídeo (8)
 
-Cada tarjeta abre en el modal el **reel/short oficial embebido** (el mismo vídeo que enlaza `data-link`); solo si el embed fallara se usa como respaldo el vídeo local (`data-local`). Enlaces (formato "copiar enlace" de Instagram/YouTube, sin tokens de sesión `stkn`):
+Cada tarjeta abre en el modal un **reproductor HTML5 uniforme** con el vídeo real del reel/short (`data-local` → `assets/full/…`, máxima calidad que sirve la plataforma, H.264/AAC, reproducido en la propia web sin plantilla de la red social). Solo si fallara el vídeo local se recurre al **embed oficial** (`https://www.instagram.com/reel/{id}/embed` o `https://www.youtube.com/embed/{id}`) como respaldo. El botón "Abrir en fuente original" enlaza el post oficial (`data-link`). Enlaces (formato "copiar enlace" de Instagram/YouTube, sin tokens de sesión `stkn`):
 
 | Tarjeta | Plataforma | ID / URL |
 | --- | --- | --- |
