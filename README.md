@@ -44,10 +44,14 @@ Cada tarjeta abre en el modal un **reproductor HTML5 uniforme** con el vídeo re
 Vivacidad ambiental sin sobrecarga: se anima únicamente con **transform/opacity** (solo GPU, sin reflow ni re-rastreado) y no se añaden bucles extra de canvas.
 
 - **Reveal por scroll** en escritorio (los `.reveal` entran con desvanecido/desplazamiento al cruzar el viewport, una sola vez) y en móvil se muestran directos para mantener la fluidez.
-- **Titulares de sección**: subrayado rojo con latido y marcador `///` con parpadeo sutil, animados permanentemente.
+- **Titulares de sección**: subrayado rojo con latido y marcador `///` con parpadeo sutil, animados permanentemente, más un **glitch de entrada** (split RGB + skew) al revelarse su sección.
+- **Iconos y grafismos**: los iconos de servicio y los imagotipos del ecosistema flotan con brillo orgánico (`animated-icon`, transform).
+- **Previews de vídeo**: **ken-burns lentísimo** en el preview visible (26s, transform) + un **barrido de luz ascendente** sutil; siguen pausándose al salir de pantalla.
+- **Marquesina inicial**: ahora con una segunda capa en **contracorriente** (misma cinta al 26% de opacidad, dirección opuesta) para dar profundidad.
+- **Rótulo regenerado** (JESÚS FERRER GARCÍA): destello verde al completar cada ciclo del scramble.
 - **Barra de progreso de scroll** (superior, `signal-red`): transform `scaleX`, escala en compositor.
 - **Indicador REC** pulsante en las tarjetas de vídeo al estar en pantalla, en hover o al tocarlas (IntersectionObserver ligero, 8 nodos).
-- Movimientos preexistentes conservados: orbes orgánicos, shimmer de titulares, la lluvia de la matrix (canvas con pausa fuera de pantalla), cinta de créditos lateral y nombre que se regenera (scramble), rotación de logs del terminal.
+- Movimientos preexistentes conservados: orbes orgánicos, shimmer de titulares, la lluvia de la matrix (canvas con pausa fuera de pantalla y DPR limitado a 1.5 para aligerar retina), cinta de créditos lateral y nombre que se regenera (scramble), rotación de logs del terminal.
 - **Nota:** las animaciones corren también con "Reducir movimiento" activado en el sistema (ajuste deliberado para este proyecto).
 
 ## Blog (Blogger API)

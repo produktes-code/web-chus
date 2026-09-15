@@ -366,6 +366,16 @@
         94%     { opacity: 0.3; }
         100%    { opacity: 0.9; }
     }
+    /* Glitch de entrada de los titulares al revelar su sección (transform/shadow, GPU) */
+    .reveal.active .section-headline-clean {
+        animation: head-glitch-in 0.55s ease-out both;
+    }
+    @keyframes head-glitch-in {
+        0%   { opacity: 0; transform: translateY(-7px); text-shadow: -2px 0 rgba(255,31,31,0.85), 2px 0 rgba(0,255,65,0.85); }
+        40%  { opacity: 1; transform: translateY(2px); text-shadow: -1px 0 rgba(255,31,31,0.6), 1px 0 rgba(0,255,65,0.6); }
+        60%  { transform: translateY(-1px) skewX(-2deg); text-shadow: 0 0 0 transparent; }
+        100% { opacity: 1; transform: translateY(0) skewX(0); }
+    }
 </style>
 </head>
 <body class="bg-black text-white selection:bg-signal-red selection:text-white blueprint-grid">
