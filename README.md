@@ -26,7 +26,7 @@ Atributos de traducción (`data-i18n`): 203 únicos en `index.html`, 66 en `perf
 
 ## Tarjetas de vídeo (8)
 
-Cada tarjeta abre en el modal un **reproductor HTML5 uniforme** con el vídeo real del reel/short (`data-local` → `assets/full/…`, máxima calidad que sirve la plataforma, H.264/AAC, reproducido en la propia web sin plantilla de la red social). Solo si fallara el vídeo local se recurre al **embed oficial** (`https://www.instagram.com/reel/{id}/embed` o `https://www.youtube.com/embed/{id}`) como respaldo. El botón "Abrir en fuente original" enlaza el post oficial (`data-link`). Enlaces (formato "copiar enlace" de Instagram/YouTube, sin tokens de sesión `stkn`):
+Cada tarjeta abre en el modal un **reproductor HTML5 uniforme** con el vídeo real del reel (`data-local` → `assets/full/…`, reproducido en la propia web sin plantilla de la red social). Los vídeos se sirven en **H.264/AAC a la resolución máxima nativa** que publica cada post: **1440×2560** (VENENO, BRONX 1980 y MI CIUDAD) y **720×1280** (America'n Job, DORITOS, COCA-COLA, KILLA y NIKE, el techo del servidor de Instagram para esos reels). Solo si fallara el vídeo local se recurre al **embed oficial** (`https://www.instagram.com/reel/{id}/embed` o `https://www.youtube.com/embed/{id}`) como respaldo. El botón "Abrir en fuente original" enlaza el post oficial (`data-link`). Enlaces (formato "copiar enlace" de Instagram/YouTube, sin tokens de sesión `stkn`):
 
 | Tarjeta | Plataforma | ID / URL |
 | --- | --- | --- |
@@ -34,10 +34,21 @@ Cada tarjeta abre en el modal un **reproductor HTML5 uniforme** con el vídeo re
 | BRONX 1980 | Instagram | `https://www.instagram.com/reel/DZOoxthKQ7-/` |
 | DORITOS A.C 🌋🧀 | Instagram | `https://www.instagram.com/reel/DIFPAaMKcAJ/` |
 | COCA-COLA CREATIVITY 🥤🔥 | Instagram | `https://www.instagram.com/reel/DIB6gmPqn8E/` |
-| VENENO (BreakBeat Mix) | YouTube | `https://www.youtube.com/shorts/sSIBsZEcKTk` |
+| VENENO (BreakBeat Mix) | Instagram | `https://www.instagram.com/reel/Da8mEpyAddG/` |
 | BIENVENIDOS A MI CIUDAD 🎭 | YouTube | `https://www.youtube.com/shorts/xsjyo_bV5RA` |
 | KILLA — Deus Ex Machina 🎶🔥 | Instagram | `https://www.instagram.com/reel/DH_X3ZrML1h/` |
 | NIKE WEREWOLF 🐺 | Instagram | `https://www.instagram.com/reel/DIG3CvtqKWl/` |
+
+## Animación y rendimiento
+
+Vivacidad ambiental sin sobrecarga: se anima únicamente con **transform/opacity** (solo GPU, sin reflow ni re-rastreado) y no se añaden bucles extra de canvas.
+
+- **Reveal por scroll** en escritorio (los `.reveal` entran con desvanecido/desplazamiento al cruzar el viewport, una sola vez) y en móvil se muestran directos para mantener la fluidez.
+- **Titulares de sección**: subrayado rojo con latido y marcador `///` con parpadeo sutil, animados permanentemente.
+- **Barra de progreso de scroll** (superior, `signal-red`): transform `scaleX`, escala en compositor.
+- **Indicador REC** pulsante en las tarjetas de vídeo al estar en pantalla, en hover o al tocarlas (IntersectionObserver ligero, 8 nodos).
+- Movimientos preexistentes conservados: orbes orgánicos, shimmer de titulares, la lluvia de la matrix (canvas con pausa fuera de pantalla), cinta de créditos lateral y nombre que se regenera (scramble), rotación de logs del terminal.
+- **Nota:** las animaciones corren también con "Reducir movimiento" activado en el sistema (ajuste deliberado para este proyecto).
 
 ## Blog (Blogger API)
 
