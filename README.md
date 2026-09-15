@@ -26,7 +26,7 @@ Atributos de traducción (`data-i18n`): 203 únicos en `index.html`, 66 en `perf
 
 ## Tarjetas de vídeo (8)
 
-Cada tarjeta reproduce en el modal el vídeo local (`data-local`) y enlaza al original (`data-link`):
+Cada tarjeta abre en el modal el **reel/short oficial embebido** (el mismo vídeo que enlaza `data-link`); solo si el embed fallara se usa como respaldo el vídeo local (`data-local`). Enlaces (formato "copiar enlace" de Instagram/YouTube, sin tokens de sesión `stkn`):
 
 | Tarjeta | Plataforma | ID / URL |
 | --- | --- | --- |
