@@ -24,6 +24,16 @@ Sitio oficial y portfolio interactivo de **Jesús Ferrer García (CHUS BZN)**, I
 El sitio tiene **10 idiomas**: `es ca en it de ru ja uk zh-CN ar`.
 Atributos de traducción (`data-i18n`): 203 únicos en `index.html`, 66 en `perfil.html`, 13 en `post.html`, 9 en `blog.html`.
 
+### Internacionalización (2026-09 añadida)
+
+- **Módulo `js/i18n.js`** ampliado: además del texto (`data-i18n`) soporta **placeholders** (`data-i18n-ph`), **aria-labels** (`data-i18n-aria`) y **meta description** (`data-i18n-desc`).
+- **RTL para árabe**: `dir="rtl"` automático cuando el idioma es `ar`; las marquesinas (`cine-marquee` y marquee de scroll) mantienen `direction:ltr` para preservar la animación.
+- **Tipografías por script** (`#i18n-dir-css`): cliente de fuentes Noto/Naskh para árabe, Noto Sans SC/PingFang para chino y Noto Sans JP para japonés.
+- **Título y meta description por idioma** en las 4 páginas (`<title data-i18n="t_title_*">` + `<meta ... data-i18n-desc="t_desc_*">`) con valores localizados.
+- **Cobertura completa** del texto hardcodeado detectado en la auditoría: cita del manifiesto, métricas del "33+", marquesinas `CINE & BROADCAST / DIRECTOS & STREAMING / PRODUCCIÓN MUSICAL / VÍDEO CREATIVO / AUDIO · SONIDO` (index y perfil), copyright del footer, placeholders del formulario y aria-labels de navegación/idioma/menú/modal.
+- Diccionario: **447 claves por idioma** (416 + 31 nuevas). Las claves nuevas usan nombres semánticos (`t_mission`, `t_metric_*`, `t_marq_*`, `t_copyright`, `t_ph_*`, `t_aria_*`, `t_(title|desc)_*`) para no colisionar con la numeración existente de la sección Studio de `perfil.html` (`t_330..t_363`).
+- El contenido de los artículos del blog proviene de la Blogger API y está redactado originalmente en español (no forma parte de los diccionarios de UI).
+
 ## Tarjetas de vídeo (8)
 
 Cada tarjeta abre en el modal un **reproductor HTML5 uniforme** con el vídeo real del reel (`data-local` → `assets/full/…`, reproducido en la propia web sin plantilla de la red social). Todos los vídeos del modal se sirven en **H.264/AAC a 1080×1920 (calidad uniforme)**: las piezas cuyo post publica 1440×2560 nativo (VENENO, BRONX 1980 y MI CIUDAD) se sirven en 1080 para igualar la serie, y las publicadas en 720×1280 (America'n Job, DORITOS, COCA-COLA, KILLA y NIKE — el techo real del servidor de Instagram, verificado incluso con sesión iniciada) se suben a 1080 con escalado de alta calidad (lanczos + unsharp), de modo que las 8 piezas quedan a la misma resolución. Solo si fallara el vídeo local se recurre al **embed oficial** (`https://www.instagram.com/reel/{id}/embed` o `https://www.youtube.com/embed/{id}`) como respaldo. El botón "Abrir en fuente original" enlaza el post oficial (`data-link`). Enlaces (formato "copiar enlace" de Instagram/YouTube, sin tokens de sesión `stkn`):

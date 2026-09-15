@@ -7,8 +7,8 @@
 <link href="assets/logo.jpg" rel="icon" type="image/jpeg"/>
 <link href="assets/logo.jpg" rel="apple-touch-icon"/>
 <meta content="#000000" name="theme-color"/>
-<title>CHUS BZN | Agencia &amp; Estudio de Proyectos Audiovisuales &amp; Tecnológicos</title>
-<meta content="CHUS BZN es una firma y colectivo de ingeniería audiovisual, creación multimedia y desarrollo tecnológico en Barcelona. Vídeo IA, Sonido EBU R128, Streaming, DJ Live, Web Apps, e Implantación de IA en Empresas." name="description"/>
+<title data-i18n="t_title_index">CHUS BZN | Agencia &amp; Estudio de Proyectos Audiovisuales &amp; Tecnológicos</title>
+<meta content="CHUS BZN es una firma y colectivo de ingeniería audiovisual, creación multimedia y desarrollo tecnológico en Barcelona. Vídeo IA, Sonido EBU R128, Streaming, DJ Live, Web Apps, e Implantación de IA en Empresas." name="description" data-i18n-desc="t_desc_index"/>
 <meta content="CHUS BZN, proyectos audiovisuales, inteligencia artificial empresas, sonido ebu r128, video spots, dj live, desarrollo web, barcelona, streaming" name="keywords"/>
 <meta content="index, follow" name="robots"/>
 <link href="https://chusbzn.com/" rel="canonical"/>
@@ -746,7 +746,7 @@
             </span>
 </a>
 <!-- Desktop Navigation (6 enlaces limpios) -->
-<nav aria-label="Navegación principal" class="hidden xl:flex items-center gap-7 font-mono text-xs uppercase tracking-widest text-white/80">
+<nav aria-label="Navegación principal" data-i18n-aria="t_aria_nav" class="hidden xl:flex items-center gap-7 font-mono text-xs uppercase tracking-widest text-white/80">
 <a class="hover:text-signal-red transition-colors" data-i18n="t_nav_services" href="#servicios">01. Servicios</a>
 <a class="hover:text-signal-red transition-colors" data-i18n="t_129" href="#redes">02. Dónde Ver Trabajos</a>
 <a class="hover:text-signal-red transition-colors" data-i18n="t_nav_ai" href="#ecosistema">03. Ecosistema IA</a>
@@ -784,7 +784,7 @@
 </a>
 </div>
 <!-- Selector de Idiomas i18n -->
-<select aria-label="Seleccionar idioma" class="bg-black/80 border border-white/20 text-white text-xs font-mono px-2 py-1 uppercase cursor-pointer outline-none hover:border-signal-red" id="lang-select">
+<select aria-label="Seleccionar idioma" data-i18n-aria="t_aria_lang" class="bg-black/80 border border-white/20 text-white text-xs font-mono px-2 py-1 uppercase cursor-pointer outline-none hover:border-signal-red" id="lang-select">
 <option value="es">🇪🇸 ES</option>
 <option value="ca">CA - Català</option>
 <option value="en">🇬🇧 EN</option>
@@ -801,7 +801,7 @@
 <span>ENCARGO 24H</span>
 </a>
 <!-- Mobile Hamburger Button -->
-<button aria-label="Menú móvil" class="xl:hidden p-2 text-white hover:text-signal-red focus:outline-none cursor-pointer" id="mobile-btn" onclick="toggleMobileMenu(true); event.stopPropagation();">
+<button aria-label="Menú móvil" data-i18n-aria="t_aria_mmenu" class="xl:hidden p-2 text-white hover:text-signal-red focus:outline-none cursor-pointer" id="mobile-btn" onclick="toggleMobileMenu(true); event.stopPropagation();">
 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
 </button>
 </div>
@@ -809,7 +809,7 @@
 </header>
 <!-- Mobile Navigation Overlay -->
 <div id="mobile-menu">
-<button id="close-mobile-menu" aria-label="Cerrar menú" class="absolute top-6 right-6 text-white text-3xl font-mono p-3 hover:text-signal-red focus:outline-none cursor-pointer z-50" onclick="toggleMobileMenu(false); event.stopPropagation();">✕</button>
+<button id="close-mobile-menu" aria-label="Cerrar menú" data-i18n-aria="t_aria_close_menu" class="absolute top-6 right-6 text-white text-3xl font-mono p-3 hover:text-signal-red focus:outline-none cursor-pointer z-50" onclick="toggleMobileMenu(false); event.stopPropagation();">✕</button>
 <a class="mobile-link text-xl font-headline uppercase tracking-widest text-white hover:text-signal-red" data-i18n="t_nav_services" href="#servicios" onclick="toggleMobileMenu(false);">01. Servicios</a>
 <a class="mobile-link text-xl font-headline uppercase tracking-widest text-white hover:text-signal-red" data-i18n="t_129" href="#redes" onclick="toggleMobileMenu(false);">02. Dónde Ver Trabajos</a>
 <a class="mobile-link text-xl font-headline uppercase tracking-widest text-white hover:text-signal-red" data-i18n="t_nav_ai" href="#ecosistema" onclick="toggleMobileMenu(false);">03. Ecosistema IA</a>
@@ -892,7 +892,7 @@
 </div>
 </section>
 <!-- ═══ MARQUESINA ANIMADA DE TEXTO EN MOVIMIENTO (Combinación Rojo & Blanco) ═══ -->
-<div class="marquee-container my-8" role="presentation" aria-label="Servicios: vídeo creativo, diseño sonoro, broadcasting, desarrollo web e IA, formación">
+<div class="marquee-container my-8" role="presentation" aria-label="Servicios: vídeo creativo, diseño sonoro, broadcasting, desarrollo web e IA, formación" data-i18n-aria="t_aria_servicios">
 <div class="marquee-track font-headline text-2xl sm:text-4xl uppercase tracking-widest gap-8">
 <span class="txt-red" data-i18n="t_155">VÍDEO CREATIVO &amp; SPOTS IA</span> <span class="text-white font-bold">//</span>
 <span class="txt-white" data-i18n="t_156">DISEÑO SONORO EBU R128</span> <span class="text-signal-red">//</span>
@@ -1510,7 +1510,7 @@
 <div class="glass-panel p-8 border border-white/15 space-y-4 relative overflow-hidden">
 <div class="absolute top-0 left-0 w-1 h-full bg-signal-red"></div>
 <span class="font-mono text-xs text-signal-red uppercase tracking-widest font-bold" data-i18n="t_248">// MANIFIESTO INDUSTRIAL CHUS BZN</span>
-<blockquote class="font-sans text-base text-white font-normal leading-relaxed italic">
+<blockquote class="font-sans text-base text-white font-normal leading-relaxed italic" data-i18n="t_mission">
                         «Nuestra misión es proporcionar a marcas, productoras y empresas una dirección técnica integral donde la aceleración por Inteligencia Artificial y la precisión artesanal del sonido e imagen conviven bajo un estándar de emisión impecable.»
                     </blockquote>
 <div class="pt-4 border-t border-white/10 font-sans text-xs text-text-secondary space-y-3 font-light leading-relaxed">
@@ -1528,20 +1528,20 @@
 <!-- Métricas Rápidas -->
 <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 font-mono text-xs text-center">
 <div class="glass-panel p-4 border border-white/10">
-<div class="font-headline text-2xl text-signal-red">33+ AÑOS</div>
-<div class="text-[9px] text-white/60 uppercase mt-1">Trayectoria Auditada</div>
+<div class="font-headline text-2xl text-signal-red" data-i18n="t_metric_33">33+ AÑOS</div>
+<div class="text-[9px] text-white/60 uppercase mt-1" data-i18n="t_metric_track">Trayectoria Auditada</div>
 </div>
 <div class="glass-panel p-4 border border-white/10">
 <div class="font-headline text-2xl text-signal-red">EBU R128</div>
-<div class="text-[9px] text-white/60 uppercase mt-1">Sonido Broadcast</div>
+<div class="text-[9px] text-white/60 uppercase mt-1" data-i18n="t_metric_sound">Sonido Broadcast</div>
 </div>
 <div class="glass-panel p-4 border border-white/10">
 <div class="font-headline text-2xl text-signal-red">FPCAT NVL3</div>
-<div class="text-[9px] text-white/60 uppercase mt-1">Acreditación Oficial</div>
+<div class="text-[9px] text-white/60 uppercase mt-1" data-i18n="t_metric_accred">Acreditación Oficial</div>
 </div>
 <div class="glass-panel p-4 border border-white/10">
 <div class="font-headline text-2xl text-signal-red">EU AI ACT</div>
-<div class="text-[9px] text-white/60 uppercase mt-1">Compliance Legal</div>
+<div class="text-[9px] text-white/60 uppercase mt-1" data-i18n="t_metric_compliance">Compliance Legal</div>
 </div>
 </div>
 </div>
@@ -1554,7 +1554,7 @@
 <div class="cine-letterbox top"></div>
 <div class="cine-letterbox bottom"></div>
 </div>
-<div class="cine-marquee"><div class="cine-marquee__track"><span class="cine-marquee__repeat"><span class="txt-white">CHUS BZN STUDIO</span> <span class="mark">///</span> <span class="txt-white">CINE &amp; BROADCAST</span> <span class="mark">///</span> <span class="txt-white">DIRECTOS &amp; STREAMING</span> <span class="mark">///</span> <span class="txt-white">PRODUCCIÓN MUSICAL</span> <span class="mark">///</span> <span class="txt-white">VÍDEO CREATIVO</span> <span class="mark">///</span> <span class="txt-white">AUDIO · SONIDO</span> <span class="mark">///</span> </span><span class="cine-marquee__repeat"><span class="txt-white">CHUS BZN STUDIO</span> <span class="mark">///</span> <span class="txt-white">CINE &amp; BROADCAST</span> <span class="mark">///</span> <span class="txt-white">DIRECTOS &amp; STREAMING</span> <span class="mark">///</span> <span class="txt-white">PRODUCCIÓN MUSICAL</span> <span class="mark">///</span> <span class="txt-white">VÍDEO CREATIVO</span> <span class="mark">///</span> <span class="txt-white">AUDIO · SONIDO</span> <span class="mark">///</span> </span></div></div>
+<div class="cine-marquee"><div class="cine-marquee__track"><span class="cine-marquee__repeat"><span class="txt-white">CHUS BZN STUDIO</span> <span class="mark">///</span> <span class="txt-white" data-i18n="t_marq_cine">CINE &amp; BROADCAST</span> <span class="mark">///</span> <span class="txt-white" data-i18n="t_marq_directo">DIRECTOS &amp; STREAMING</span> <span class="mark">///</span> <span class="txt-white" data-i18n="t_marq_music">PRODUCCIÓN MUSICAL</span> <span class="mark">///</span> <span class="txt-white" data-i18n="t_marq_video">VÍDEO CREATIVO</span> <span class="mark">///</span> <span class="txt-white" data-i18n="t_marq_audio">AUDIO · SONIDO</span> <span class="mark">///</span> </span><span class="cine-marquee__repeat"><span class="txt-white">CHUS BZN STUDIO</span> <span class="mark">///</span> <span class="txt-white" data-i18n="t_marq_cine">CINE &amp; BROADCAST</span> <span class="mark">///</span> <span class="txt-white" data-i18n="t_marq_directo">DIRECTOS &amp; STREAMING</span> <span class="mark">///</span> <span class="txt-white" data-i18n="t_marq_music">PRODUCCIÓN MUSICAL</span> <span class="mark">///</span> <span class="txt-white" data-i18n="t_marq_video">VÍDEO CREATIVO</span> <span class="mark">///</span> <span class="txt-white" data-i18n="t_marq_audio">AUDIO · SONIDO</span> <span class="mark">///</span> </span></div></div>
 <div class="cine-nameplate" data-target="JESÚS FERRER GARCÍA" id="cineMatrixName">JESÚS FERRER GARCÍA</div>
 <span class="font-mono text-[10px] text-white/60 uppercase block" data-i18n="t_252">
                         DIRECCIÓN DE SISTEMAS AUDIOVISUALES &amp; INTEGRACIÓN IA
@@ -1665,17 +1665,17 @@
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
 <div class="space-y-2">
 <label class="text-[10px] text-white/70 uppercase tracking-widest" data-i18n="t_286" for="contact-name">Nombre y Apellidos / Contacto *</label>
-<input class="w-full bg-black/90 border border-white/15 focus:border-signal-red text-white p-3 font-mono text-xs outline-none transition-colors" placeholder="&gt; Nombre del solicitante..." required="" type="text" id="contact-name"/>
+<input class="w-full bg-black/90 border border-white/15 focus:border-signal-red text-white p-3 font-mono text-xs outline-none transition-colors" placeholder="&gt; Nombre del solicitante..." data-i18n-ph="t_ph_name" required="" type="text" id="contact-name"/>
 </div>
 <div class="space-y-2">
 <label class="text-[10px] text-white/70 uppercase tracking-widest" data-i18n="t_287" for="contact-email">Correo Electrónico Corporativo *</label>
-<input class="w-full bg-black/90 border border-white/15 focus:border-signal-red text-white p-3 font-mono text-xs outline-none transition-colors" placeholder="&gt; correo@empresa.com" required="" type="email" id="contact-email"/>
+<input class="w-full bg-black/90 border border-white/15 focus:border-signal-red text-white p-3 font-mono text-xs outline-none transition-colors" placeholder="&gt; correo@empresa.com" data-i18n-ph="t_ph_email" required="" type="email" id="contact-email"/>
 </div>
 </div>
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
 <div class="space-y-2">
 <label class="text-[10px] text-white/70 uppercase tracking-widest" data-i18n="t_288" for="company-name">Empresa / Organización</label>
-<input class="w-full bg-black/90 border border-white/15 focus:border-signal-red text-white p-3 font-mono text-xs outline-none transition-colors" placeholder="&gt; Nombre de la firma..." type="text" id="company-name"/>
+<input class="w-full bg-black/90 border border-white/15 focus:border-signal-red text-white p-3 font-mono text-xs outline-none transition-colors" placeholder="&gt; Nombre de la firma..." data-i18n-ph="t_ph_firma" type="text" id="company-name"/>
 </div>
 <!-- Desplegable Ampliado de Servicios -->
 <div class="space-y-2">
@@ -1697,11 +1697,11 @@
 <!-- Campo Desplegable Dinámico cuando se elige OTROS -->
 <div class="hidden space-y-2 animate-fadeIn" id="other-service-wrap">
 <label class="text-[10px] text-signal-red uppercase tracking-widest font-bold" data-i18n="t_300" for="other-service-input">// ESPECIFIQUE EL TRABAJO O NECESIDAD ESPECIAL *</label>
-<input class="w-full bg-black/90 border border-signal-red/60 focus:border-signal-red text-white p-3 font-mono text-xs outline-none" id="other-service-input" placeholder="&gt; Ejemplo: Masterización binaural para VR, instalación acústica, app móvil..." type="text"/>
+<input class="w-full bg-black/90 border border-signal-red/60 focus:border-signal-red text-white p-3 font-mono text-xs outline-none" id="other-service-input" placeholder="&gt; Ejemplo: Masterización binaural para VR, instalación acústica, app móvil..." data-i18n-ph="t_ph_ejemplo" type="text"/>
 </div>
 <div class="space-y-2">
 <label class="text-[10px] text-white/70 uppercase tracking-widest" data-i18n="t_301" for="project-details">Detalles del Proyecto &amp; Plazos Estimados</label>
-<textarea class="w-full bg-black/90 border border-white/15 focus:border-signal-red text-white p-3 font-mono text-xs outline-none transition-colors" placeholder="&gt; Especifique el alcance, ubicación o requerimientos del encargo..." required="" rows="4" id="project-details"></textarea>
+<textarea class="w-full bg-black/90 border border-white/15 focus:border-signal-red text-white p-3 font-mono text-xs outline-none transition-colors" placeholder="&gt; Especifique el alcance, ubicación o requerimientos del encargo..." data-i18n-ph="t_ph_alcance" required="" rows="4" id="project-details"></textarea>
 </div>
 <button class="w-full bg-signal-red text-white font-headline text-xl sm:text-2xl py-4 uppercase tracking-widest hover:bg-signal-red-hover transition-all shadow-lg hover:shadow-signal-red/30" data-i18n="t_302" type="submit">
                     ENVIAR PROTOCOLO DE ENCARGO
@@ -1773,7 +1773,7 @@
 </div>
 </div>
 <div class="max-w-[1440px] mx-auto pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center font-mono text-[10px] text-white/40 tracking-widest uppercase gap-4">
-<div>© 2026 CHUS BZN // TODOS LOS DERECHOS RESERVADOS</div>
+<div data-i18n="t_copyright">© 2026 CHUS BZN // TODOS LOS DERECHOS RESERVADOS</div>
 <div>BARCELONA // SYS_STATUS: OPERATIVO</div>
 </div>
 </footer>
@@ -1794,7 +1794,7 @@
 <div class="modal-backdrop" id="video-modal">
 <div class="glass-panel p-4 sm:p-6 max-w-4xl w-full max-h-[92vh] overflow-y-auto border border-signal-red/50 relative space-y-4 shadow-2xl" onclick="event.stopPropagation()">
 <!-- Botón de Cerrar Modal -->
-<button type="button" class="absolute top-3 right-3 text-white hover:text-signal-red font-mono text-2xl z-50 w-12 h-12 bg-black/90 rounded-full flex items-center justify-center border border-white/40 transition-all cursor-pointer shadow-2xl" id="close-modal" aria-label="Cerrar modal">×</button>
+<button type="button" class="absolute top-3 right-3 text-white hover:text-signal-red font-mono text-2xl z-50 w-12 h-12 bg-black/90 rounded-full flex items-center justify-center border border-white/40 transition-all cursor-pointer shadow-2xl" id="close-modal" aria-label="Cerrar modal" data-i18n-aria="t_aria_modal">×</button>
 <!-- Cabecera de la Producción -->
 <div class="space-y-1">
 <span class="font-mono text-xs text-signal-red tracking-widest uppercase" data-i18n="t_323" id="vmodal-badge">// REPRODUCTOR VIVO CON AUDIO</span>
