@@ -4,41 +4,64 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<link href="assets/logo.jpg" rel="icon" type="image/jpeg"/>
+<link href="assets/logo.jpg" rel="apple-touch-icon"/>
+<meta content="#000000" name="theme-color"/>
 <title>CHUS BZN | Agencia &amp; Estudio de Proyectos Audiovisuales &amp; Tecnológicos</title>
 <meta content="CHUS BZN es una firma y colectivo de ingeniería audiovisual, creación multimedia y desarrollo tecnológico en Barcelona. Vídeo IA, Sonido EBU R128, Streaming, DJ Live, Web Apps, e Implantación de IA en Empresas." name="description"/>
 <meta content="CHUS BZN, proyectos audiovisuales, inteligencia artificial empresas, sonido ebu r128, video spots, dj live, desarrollo web, barcelona, streaming" name="keywords"/>
+<meta content="index, follow" name="robots"/>
+<link href="https://chusbzn.com/" rel="canonical"/>
+<!-- Open Graph -->
+<meta content="website" property="og:type"/>
+<meta content="https://chusbzn.com/" property="og:url"/>
+<meta content="CHUS BZN | Agencia &amp; Estudio de Proyectos Audiovisuales &amp; Tecnológicos" property="og:title"/>
+<meta content="CHUS BZN es una firma y colectivo de ingeniería audiovisual, creación multimedia y desarrollo tecnológico en Barcelona. Vídeo IA, Sonido EBU R128, Streaming, DJ Live, Web Apps, e Implantación de IA en Empresas." property="og:description"/>
+<meta content="https://chusbzn.com/assets/artistic_portrait.png" property="og:image"/>
+<meta content="es_ES" property="og:locale"/>
+<meta content="CHUS BZN" property="og:site_name"/>
+<!-- Twitter Cards -->
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="https://chusbzn.com/" name="twitter:url"/>
+<meta content="CHUS BZN | Agencia &amp; Estudio de Proyectos Audiovisuales &amp; Tecnológicos" name="twitter:title"/>
+<meta content="CHUS BZN es una firma y colectivo de ingeniería audiovisual, creación multimedia y desarrollo tecnológico en Barcelona." name="twitter:description"/>
+<meta content="https://chusbzn.com/assets/artistic_portrait.png" name="twitter:image"/>
+<!-- Structured Data (JSON-LD) -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "@id": "https://chusbzn.com/#organization",
+    "name": "CHUS BZN",
+    "alternateName": "Jesús Ferrer García (CHUS BZN)",
+    "url": "https://chusbzn.com/",
+    "image": "https://chusbzn.com/assets/artistic_portrait.png",
+    "description": "Agencia y estudio de proyectos audiovisuales y tecnológicos: vídeo IA, sonido EBU R128, streaming, DJ live, web apps e implantación de IA en empresas.",
+    "sameAs": [
+        "https://www.youtube.com/@chus_bzn",
+        "https://www.instagram.com/chus_bzn"
+    ],
+    "founder": {
+        "@type": "Person",
+        "name": "Jesús Ferrer García",
+        "jobTitle": "Productor Audiovisual Senior & Especialista IA"
+    },
+    "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Barcelona",
+        "addressCountry": "ES"
+    },
+    "areaServed": "ES"
+}
+</script>
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Hanken+Grotesk:ital,wght@0,300;0,400;0,600;0,700;1,300&amp;family=JetBrains+Mono:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
 <!-- Instagram SDK Embed (Carga Diferida Ultrarrápida) -->
 <script async="" defer="" src="//www.instagram.com/embed.js"></script>
-<!-- Tailwind CSS CDN -->
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script>
-    tailwind.config = {
-        darkMode: "class",
-        theme: {
-            extend: {
-                colors: {
-                    "signal-red": "#FF1F1F",
-                    "signal-red-hover": "#D91616",
-                    "terminal-green": "#00FF41",
-                    "bg-black": "#000000",
-                    "surface-dim": "#121212",
-                    "surface-card": "#181818",
-                    "text-primary": "#FFFFFF",
-                    "text-secondary": "#A3A3A3"
-                },
-                fontFamily: {
-                    "headline": ["Anton", "sans-serif"],
-                    "sans": ["Hanken Grotesk", "sans-serif"],
-                    "mono": ["JetBrains Mono", "monospace"]
-                }
-            }
-        }
-    }
-</script>
+<!-- Tailwind CSS compilado estáticamente -->
+<link href="css/tailwind.css" rel="stylesheet"/>
 <style>
     :root {
         --bg-black: #000000;
@@ -51,7 +74,42 @@
     }
 
     *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; scroll-padding-top: 85px; }
+    a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible, textarea:focus-visible {
+        outline: 2px solid var(--signal-red);
+        outline-offset: 2px;
+    }
+
+    .btn-cta {
+        position: relative;
+        overflow: hidden;
+        isolation: isolate;
+    }
+    .btn-cta::after {
+        content: '';
+        position: absolute;
+        top: 0; left: -120%;
+        width: 60%; height: 100%;
+        background: linear-gradient(105deg, transparent, rgba(255, 255, 255, 0.28), transparent);
+        transform: skewX(-20deg);
+        transition: left 0.55s ease;
+        z-index: -1;
+    }
+    .btn-cta:hover::after {
+        left: 160%;
+    }
+
+    .text-gradient-red {
+        background: linear-gradient(105deg, #ff5c5c, #ff1f1f 45%, #b31212 75%, #ff4d4d);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: transparent;
+    }
+
+    .hero-title {
+        text-shadow: 0 6px 40px rgba(0, 0, 0, 0.6), 0 2px 8px rgba(0, 0, 0, 0.7);
+    }
     body {
         background-color: var(--bg-black);
         color: #FFFFFF;
@@ -108,12 +166,6 @@
         transform: translate3d(0, 0, 0);
         animation: organic-morph 22s ease-in-out infinite alternate-reverse;
     }
-    @keyframes organic-morph {
-        0% { transform: translate3d(0, 0, 0) scale(1); border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
-        50% { transform: translate3d(20px, -20px, 0) scale(1.05); border-radius: 60% 40% 30% 70% / 50% 30% 70% 40%; }
-        100% { transform: translate3d(-15px, 15px, 0) scale(0.95); border-radius: 30% 70% 50% 50% / 60% 40% 50% 60%; }
-    }
-
     /* Icon Illumination & Continuous Organic Float */
     .animated-icon {
         animation: icon-float-glow 4s ease-in-out infinite alternate;
@@ -148,7 +200,22 @@
         position: relative;
         display: inline-block;
         color: #ffffff;
-        transition: color 0.3s ease, transform 0.3s ease;
+        text-shadow: 0 4px 30px rgba(0, 0, 0, 0.55), 0 1px 2px rgba(0, 0, 0, 0.8);
+        letter-spacing: -0.5px;
+        transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
+    }
+    .section-headline-clean::before {
+        content: '///';
+        position: absolute;
+        top: 50%;
+        right: calc(100% + 18px);
+        transform: translateY(-50%);
+        font-family: var(--font-mono);
+        font-size: 0.45em;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        color: rgba(255, 31, 31, 0.9);
+        text-shadow: 0 0 14px rgba(255, 31, 31, 0.45);
     }
     .section-headline-clean::after {
         content: '';
@@ -156,12 +223,14 @@
         bottom: -6px; left: 50%;
         transform: translateX(-50%);
         width: 60px; height: 3px;
-        background: #ff1f1f;
+        background: linear-gradient(90deg, transparent, #ff1f1f 20%, #ff1f1f 80%, transparent);
+        box-shadow: 0 0 12px rgba(255, 31, 31, 0.55);
         transition: width 0.4s ease;
     }
     .section-headline-clean:hover {
         color: #ffffff;
         transform: translateY(-2px);
+        text-shadow: 0 4px 30px rgba(255, 31, 31, 0.25), 0 1px 2px rgba(0, 0, 0, 0.8);
     }
     .section-headline-clean:hover::after {
         width: 140px;
@@ -169,18 +238,49 @@
 
     /* Glass Panels */
     .glass-panel {
-        background: rgba(18, 18, 18, 0.88);
+        background: linear-gradient(180deg, rgba(32, 32, 32, 0.92), rgba(18, 18, 18, 0.88) 40%, rgba(12, 12, 12, 0.9));
         backdrop-filter: blur(24px);
         -webkit-backdrop-filter: blur(24px);
         border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 10px 30px rgba(0, 0, 0, 0.4);
         transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
         will-change: transform;
         transform: translate3d(0, 0, 0);
     }
     .glass-panel:hover {
         border-color: rgba(255, 31, 31, 0.6);
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.85), 0 0 25px rgba(255, 31, 31, 0.18);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07), 0 15px 35px rgba(0, 0, 0, 0.85), 0 0 25px rgba(255, 31, 31, 0.18);
         transform: translateY(-4px);
+    }
+
+    /* Terminal Matrix CRT overlay (scanlines + glow de esquinas) */
+    .matrix-terminal {
+        box-shadow: inset 0 0 70px rgba(0, 0, 0, 0.95), inset 0 0 30px rgba(0, 255, 65, 0.09), inset 0 0 8px rgba(0, 255, 65, 0.16), 0 12px 34px rgba(0, 0, 0, 0.65);
+    }
+    .matrix-scanlines {
+        background: repeating-linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0) 0px,
+            rgba(0, 0, 0, 0) 1px,
+            rgba(0, 0, 0, 0.16) 2px,
+            rgba(0, 0, 0, 0) 3px
+        );
+        mix-blend-mode: multiply;
+        opacity: 0.95;
+    }
+    .matrix-glow {
+        background: radial-gradient(ellipse at 50% 48%, rgba(0, 255, 65, 0.10) 0%, transparent 55%);
+    }
+    .matrix-vignette {
+        background: radial-gradient(ellipse at center, transparent 45%, rgba(0, 0, 0, 0.55) 100%);
+    }
+    .matrix-crt-corner {
+        background: linear-gradient(135deg, rgba(0, 255, 65, 0.32) 0%, transparent 65%);
+        filter: blur(1px);
+        opacity: 0.75;
+    }
+    .matrix-crt-corner-bl {
+        background: linear-gradient(315deg, rgba(0, 255, 65, 0.32) 0%, transparent 65%);
     }
 
     /* Service Cards */
@@ -189,6 +289,7 @@
         border: 1px solid rgba(255, 255, 255, 0.08);
         position: relative;
         overflow: hidden;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
         transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
         will-change: transform;
         transform: translate3d(0, 0, 0);
@@ -198,16 +299,37 @@
         position: absolute;
         top: 0; left: 0;
         width: 0%; height: 3px;
-        background: var(--signal-red);
+        background: linear-gradient(90deg, transparent, var(--signal-red), transparent);
+        box-shadow: 0 0 14px rgba(255, 31, 31, 0.65);
         transition: width 0.4s ease;
+        z-index: 2;
+    }
+    .service-card-enhanced::after {
+        content: '';
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        width: 140%; height: 140%;
+        background: radial-gradient(circle, rgba(255, 31, 31, 0.14) 0%, transparent 55%);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        pointer-events: none;
+        z-index: 1;
     }
     .service-card-enhanced:hover {
         border-color: rgba(255, 31, 31, 0.6);
         transform: translateY(-6px);
-        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.85), 0 0 25px rgba(255, 31, 31, 0.2);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 20px 45px rgba(0, 0, 0, 0.85), 0 0 25px rgba(255, 31, 31, 0.25);
     }
     .service-card-enhanced:hover::before {
         width: 100%;
+    }
+    .service-card-enhanced:hover::after {
+        opacity: 1;
+    }
+    .service-card-enhanced > * {
+        position: relative;
+        z-index: 2;
     }
 
     /* Animated CSS Marquee (Textos de máquina de escribir nítidos sin iluminación que distorsione las letras) */
@@ -215,7 +337,8 @@
         overflow: hidden;
         white-space: nowrap;
         background: rgba(10, 10, 10, 0.95);
-        border-y: 1px solid rgba(255, 31, 31, 0.5);
+        border-top: 1px solid rgba(255, 31, 31, 0.5);
+        border-bottom: 1px solid rgba(255, 31, 31, 0.5);
         padding: 16px 0;
     }
     .marquee-track {
@@ -228,6 +351,10 @@
         transform: translate3d(0, 0, 0);
         backface-visibility: hidden;
         perspective: 1000px;
+    }
+    .marquee-container:hover .marquee-track,
+    .marquee-container:focus-within .marquee-track {
+        animation-play-state: paused;
     }
     .marquee-track span.txt-red {
         color: #ff1f1f;
@@ -252,8 +379,12 @@
             transform: none !important;
             transition: none !important;
         }
+        /* Orbes rojos orgánicos SIEMPRE visibles en móvil; blur ligero ahorra GPU en iPhone */
         .organic-orb-1, .organic-orb-2 {
-            display: none !important;
+            display: block !important;
+            opacity: 0.75;
+            filter: blur(12px);
+            -webkit-filter: blur(12px);
         }
     }
 
@@ -302,20 +433,6 @@
         padding: 16px;
     }
     .modal-backdrop.open { display: flex; }
-
-    /* Mobile Nav Overlay */
-    #mobile-menu {
-        display: none;
-        position: fixed;
-        inset: 0;
-        background: rgba(0,0,0,0.98);
-        z-index: 1000;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 24px;
-    }
-    #mobile-menu.open { display: flex; }
 
     /* SVG Retro Noise / Film Grain Texture Overlay */
     .bg-grain {
@@ -371,16 +488,6 @@
     }
     #mobile-menu.open { display: flex !important; }
 
-    /* Mobile Reveal Fallback & Clean Transitions */
-    @media (max-width: 1024px) {
-        .reveal {
-            opacity: 1 !important;
-            transform: none !important;
-            transition: none !important;
-        }
-    }
-
-
     /* Mobile Grayscale Override for Photos & Mobile Active Card Illumination */
     @media (max-width: 1024px) {
         .grayscale { filter: none !important; }
@@ -390,6 +497,123 @@
             border-color: rgba(255, 31, 31, 0.7) !important;
             box-shadow: 0 10px 30px rgba(255, 31, 31, 0.25) !important;
         }
+    }
+
+    @media (max-width: 640px) {
+        .section-headline-clean::before {
+            display: none;
+        }
+    }
+
+    /* ═══ CARTEL CINEMATOGRÁFICO — RETRATO (v2) ═══ */
+    .cine-frame {
+        position: relative;
+        overflow: hidden;
+        isolation: isolate;
+    }
+    .cine-frame > img {
+        position: relative;
+        z-index: 1;
+        display: block;
+        width: 100%; height: 100%;
+        object-fit: cover;
+        transform-origin: 50% 45%;
+        animation: cine-kenburns 22s ease-in-out infinite alternate;
+        will-change: transform;
+    }
+    @keyframes cine-kenburns {
+        0% { transform: scale(1) translate3d(0, 0, 0); }
+        100% { transform: scale(1.07) translate3d(0, -1%, 0); }
+    }
+    .cine-vignette {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        pointer-events: none;
+        background: radial-gradient(120% 95% at 50% 30%, transparent 55%, rgba(0, 0, 0, 0.5) 100%);
+    }
+    .cine-letterbox {
+        position: absolute;
+        left: 0; right: 0;
+        height: 10px;
+        background: rgba(0, 0, 0, 0.92);
+        pointer-events: none;
+        z-index: 3;
+        transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s ease;
+    }
+    .cine-letterbox.top { top: 0; transform: translateY(-100%); opacity: 0; }
+    .cine-letterbox.bottom { bottom: 0; transform: translateY(100%); opacity: 0; }
+    .cine-frame:hover .cine-letterbox.top { transform: translateY(0); opacity: 1; }
+    .cine-frame:hover .cine-letterbox.bottom { transform: translateY(0); opacity: 1; }
+
+    /* Cinta de créditos (técnica soft del marquee aprobado: sin glow ni máscara) */
+    .cine-marquee {
+        position: relative;
+        overflow: hidden;
+        white-space: nowrap;
+        max-width: 100%;
+        background: rgba(10, 10, 10, 0.95);
+        border-top: 1px solid rgba(255, 31, 31, 0.5);
+        border-bottom: 1px solid rgba(255, 31, 31, 0.5);
+    }
+    .cine-marquee__track {
+        display: inline-flex;
+        align-items: center;
+        font-family: var(--font-mono);
+        font-weight: 700;
+        animation: cine-ticker 26s linear infinite;
+        will-change: transform;
+        transform: translate3d(0, 0, 0);
+        backface-visibility: hidden;
+        perspective: 1000px;
+    }
+    .cine-marquee__repeat {
+        flex: none;
+        white-space: nowrap;
+        padding: 7px 0;
+        font-size: 0.68rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+    }
+    .cine-marquee__repeat .mark {
+        color: var(--signal-red);
+        font-style: normal;
+        font-weight: 700;
+        text-shadow: none !important;
+        filter: none !important;
+        padding: 0 9px;
+    }
+    .cine-marquee__repeat .txt-white {
+        color: #ffffff;
+        text-shadow: none !important;
+        filter: none !important;
+    }
+    @keyframes cine-ticker {
+        0% { transform: translate3d(0, 0, 0); }
+        100% { transform: translate3d(-50%, 0, 0); }
+    }
+
+    /* Placa de nombre (letras verdes estilo terminal — sin movimiento continuo) */
+    .cine-nameplate {
+        position: relative;
+        background: linear-gradient(180deg, #020202, #070707);
+        border: 1px solid rgba(0, 255, 65, 0.35);
+        border-left: 3px solid var(--terminal-green);
+        box-shadow: inset 0 0 14px rgba(0, 255, 65, 0.07), 0 8px 20px rgba(0, 0, 0, 0.55);
+        font-family: var(--font-mono);
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        color: var(--terminal-green);
+        text-shadow: 0 0 10px rgba(0, 255, 65, 0.85), 0 0 24px rgba(0, 255, 65, 0.35);
+        text-align: center;
+        padding: 9px 10px;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+    @media (prefers-reduced-motion: reduce) {
+        .cine-frame > img { animation: none; transform: none; }
+        .cine-marquee__track { animation: none; }
     }
     
 </style>
@@ -490,12 +714,12 @@
 <div class="lg:col-span-7 space-y-8 reveal active order-first lg:order-first">
 <div class="inline-flex items-center gap-3 border border-signal-red/30 px-4 py-2 bg-surface-dim/90 backdrop-blur-md h-10 min-h-[40px] max-h-[40px] overflow-hidden w-full max-w-full flex-nowrap">
 <span class="status-pip"></span>
-<span class="font-mono text-[10px] sm:text-[11px] text-terminal-green tracking-widest uppercase whitespace-nowrap truncate overflow-hidden block w-full text-ellipsis" data-i18n="t_143" id="typewriter-sub">
+<span class="font-mono text-[10px] sm:text-[11px] text-terminal-green tracking-widest uppercase whitespace-nowrap truncate overflow-hidden block w-full text-ellipsis" id="typewriter-sub">
                         &gt; CARGANDO NODO BROADCAST BARCELONA...
                     </span>
 </div>
 <div class="space-y-4">
-<h1 class="font-headline text-5xl sm:text-7xl lg:text-8xl uppercase leading-[0.92] tracking-tight" data-i18n="t_144">
+<h1 class="font-headline text-5xl sm:text-7xl lg:text-8xl uppercase leading-[0.92] tracking-tight hero-title" data-i18n="t_144">
                         PROYECTOS AUDIOVISUALES <br/>
 <span class="text-signal-red">&amp; TECNOLÓGICOS A MEDIDA</span>
 </h1>
@@ -504,10 +728,10 @@
                     </p>
 </div>
 <div class="flex flex-wrap items-center gap-4 pt-2">
-<a class="bg-signal-red text-white font-mono text-xs font-bold px-8 py-4 uppercase tracking-widest hover:bg-signal-red-hover transition-all shadow-lg hover:shadow-signal-red/30" data-i18n="t_146" href="#presupuesto">
+<a class="bg-signal-red text-white font-mono text-xs font-bold px-8 py-4 uppercase tracking-widest hover:bg-signal-red-hover transition-all shadow-lg hover:shadow-signal-red/30 btn-cta" data-i18n="t_146" href="#presupuesto">
 <span>SOLICITAR ENCARGO A MEDIDA</span>
 </a>
-<a class="bg-transparent border border-white/20 text-white font-mono text-xs font-medium px-8 py-4 uppercase tracking-widest hover:border-signal-red hover:text-signal-red transition-all" data-i18n="t_147" href="#showcase">
+<a class="bg-transparent border border-white/20 text-white font-mono text-xs font-medium px-8 py-4 uppercase tracking-widest hover:border-signal-red hover:text-signal-red transition-all btn-cta" data-i18n="t_147" href="#showcase">
 <span>VER VÍDEOS EN VIVO EN LA WEB</span>
 </a>
 </div>
@@ -535,9 +759,14 @@
 <span class="animate-pulse" data-i18n="t_154">ONLINE_60FPS</span>
 </div>
 <!-- Matrix Rain Canvas -->
-<div class="h-64 w-full bg-black border border-terminal-green/30 relative overflow-hidden rounded shadow-2xl" id="matrix-wrapper">
+<div class="h-64 w-full bg-black border border-terminal-green/30 relative overflow-hidden rounded shadow-2xl matrix-terminal" id="matrix-wrapper">
 <canvas id="matrix-canvas" style="position: absolute; top:0; left:0; width:100%; height:100%; display:block; z-index:1;"></canvas>
+<div class="matrix-scanlines absolute inset-0 pointer-events-none z-[15]"></div>
+<div class="matrix-glow absolute inset-0 pointer-events-none z-[14]"></div>
+<div class="matrix-vignette absolute inset-0 pointer-events-none z-[12]"></div>
 <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent pointer-events-none z-10"></div>
+<div class="matrix-crt-corner absolute top-0 right-0 w-10 h-10 pointer-events-none z-[15]"></div>
+<div class="matrix-crt-corner matrix-crt-corner-bl absolute bottom-0 left-0 w-10 h-10 pointer-events-none z-[15]"></div>
 <div class="absolute bottom-3 left-3 right-3 font-mono text-[10px] text-terminal-green bg-black/90 p-2 border border-terminal-green/40 z-20 pointer-events-none">
 <div>&gt; SYS_ARCH: CHUS BZN ENGINE</div>
 <div class="text-white/60">&gt; PIPELINE_STATE: OPTIMAL</div>
@@ -548,7 +777,7 @@
 </div>
 </section>
 <!-- ═══ MARQUESINA ANIMADA DE TEXTO EN MOVIMIENTO (Combinación Rojo & Blanco) ═══ -->
-<div class="marquee-container my-8">
+<div class="marquee-container my-8" role="presentation" aria-label="Servicios: vídeo creativo, diseño sonoro, broadcasting, desarrollo web e IA, formación">
 <div class="marquee-track font-headline text-2xl sm:text-4xl uppercase tracking-widest gap-8">
 <span class="txt-red" data-i18n="t_155">VÍDEO CREATIVO &amp; SPOTS IA</span> <span class="text-white font-bold">//</span>
 <span class="txt-white" data-i18n="t_156">DISEÑO SONORO EBU R128</span> <span class="text-signal-red">//</span>
@@ -557,12 +786,16 @@
 <span class="txt-red" data-i18n="t_159">DESARROLLO WEB &amp; WEB APPS</span> <span class="text-white font-bold">//</span>
 <span class="txt-white" data-i18n="t_160">IMPLANTACIÓN DE IA EN EMPRESAS</span> <span class="text-signal-red">//</span>
 <span class="txt-red" data-i18n="t_161">FORMACIÓN TECNOLÓGICA &amp; VIBE CODING</span> <span class="text-white font-bold">//</span>
-<!-- Repetición continua para bucle fluido de marquesina -->
-<span class="txt-white" data-i18n="t_155">VÍDEO CREATIVO &amp; SPOTS IA</span> <span class="text-signal-red">//</span>
-<span class="txt-red" data-i18n="t_156">DISEÑO SONORO EBU R128</span> <span class="text-white font-bold">//</span>
-<span class="txt-white" data-i18n="t_157">DIRECTOS BROADCAST &amp; STREAMING 360°</span> <span class="text-signal-red">//</span>
-<span class="txt-red" data-i18n="t_158">DJ LIVE PERFORMANCE &amp; REMEZCLAS</span> <span class="text-white font-bold">//</span>
-<span class="txt-white" data-i18n="t_159">DESARROLLO WEB &amp; WEB APPS</span> <span class="text-signal-red">//</span>
+<!-- Repetición continua para bucle fluido de marquesina (aria-hidden: contenido decorativo duplicado idéntico) -->
+<span aria-hidden="true" style="display: contents;">
+<span class="txt-red" data-i18n="t_155">VÍDEO CREATIVO &amp; SPOTS IA</span> <span class="text-white font-bold">//</span>
+<span class="txt-white" data-i18n="t_156">DISEÑO SONORO EBU R128</span> <span class="text-signal-red">//</span>
+<span class="txt-red" data-i18n="t_157">DIRECTOS BROADCAST &amp; STREAMING 360°</span> <span class="text-white font-bold">//</span>
+<span class="txt-white" data-i18n="t_158">DJ LIVE PERFORMANCE &amp; REMEZCLAS</span> <span class="text-signal-red">//</span>
+<span class="txt-red" data-i18n="t_159">DESARROLLO WEB &amp; WEB APPS</span> <span class="text-white font-bold">//</span>
+<span class="txt-white" data-i18n="t_160">IMPLANTACIÓN DE IA EN EMPRESAS</span> <span class="text-signal-red">//</span>
+<span class="txt-red" data-i18n="t_161">FORMACIÓN TECNOLÓGICA &amp; VIBE CODING</span> <span class="text-white font-bold">//</span>
+</span>
 </div>
 </div>
 <!-- ═══ MÓDULO POTENCIADO: CANALES & PLATAFORMAS (Limpio & Sin Explicaciones Secundarias) ═══ -->
@@ -593,10 +826,10 @@
 <div class="p-3 bg-signal-red/20 text-signal-red rounded-lg group-hover:bg-signal-red group-hover:text-white transition-colors">
 <svg class="w-8 h-8" fill="currentColor" viewbox="0 0 24 24"><path d="M17.77 10.32l-1.2-.5L18 9.06c1.84-.96 2.53-3.23 1.56-5.07s-3.24-2.53-5.07-1.56L6.2 6.57C4.7 7.36 3.8 8.95 3.84 10.65c.04 1.7 1.01 3.23 2.54 3.96l1.17.53L6 15.94c-1.84.96-2.53 3.23-1.56 5.07.96 1.84 3.23 2.53 5.07 1.56l8.28-4.14c1.51-.79 2.48-2.38 2.44-4.08-.03-1.7-1.01-3.23-2.46-4.03zM9.5 15.5v-7l6 3.5-6 3.5z"></path></svg>
 </div>
-<span class="font-mono text-[10px] text-signal-red uppercase font-bold">VER SHORTS (IA) →</span>
+<span class="font-mono text-[10px] text-signal-red uppercase font-bold">VER SHORTS →</span>
 </div>
 <div>
-<h3 class="font-headline text-2xl text-white uppercase group-hover:text-signal-red transition-colors">YouTube Shorts IA</h3>
+<h3 class="font-headline text-2xl text-white uppercase group-hover:text-signal-red transition-colors">YouTube Shorts</h3>
 </div>
 </a>
 <!-- Instagram Card -->
@@ -691,7 +924,7 @@
 <svg class="w-8 h-8 stroke-signal-red" fill="none" viewbox="0 0 24 24"><path d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg>
 </div>
 <h3 class="font-headline text-2xl text-white uppercase" data-i18n="t_180">Postproducción &amp; Sonido EBU R128</h3>
-<p class="font-sans text-xs text-text-secondary font-light" data-i18n="t_181">Ingeniería de mezcla sonoras, masterización para cine y plataformas OTT (Netflix/HBO) y audio forense.</p>
+<p class="font-sans text-xs text-text-secondary font-light" data-i18n="t_181">Ingeniería de mezclas sonoras, masterización para cine y plataformas OTT (Netflix/HBO) y audio forense.</p>
 <span class="font-mono text-[10px] text-signal-red uppercase font-bold block pt-2" data-i18n="t_178">
                     DOSSIER TÉCNICO →
                 </span>
@@ -767,7 +1000,7 @@
 <span class="font-mono text-[10px] text-signal-red uppercase font-bold block pt-2" data-i18n="t_178">
                     DOSSIER TÉCNICO →
                 </span>
-</div>
+</button>
 </div>
 </div>
 </section>
@@ -786,20 +1019,20 @@
 <!-- App 01: Studio Pro Suite (Con Imagotipo Propietario icon_sps.png) -->
 <div class="glass-panel p-8 border border-white/15 space-y-4">
 <div class="flex items-center gap-4">
-<img alt="Studio Pro Suite Imagotipo" class="w-14 h-14 rounded shadow-lg" src="assets/icon_sps.png"/>
+<img alt="Studio Pro Suite Imagotipo" class="w-14 h-14 rounded shadow-lg" loading="lazy" src="assets/icon_sps.png"/>
 <div>
 <h3 class="font-headline text-2xl text-white" data-i18n="t_34">Studio Pro Suite</h3>
 <span class="font-mono text-[10px] text-signal-red" data-i18n="t_203">v1.0.0 Stable // Electron + React</span>
 </div>
 </div>
 <p class="font-sans text-xs text-text-secondary font-light leading-relaxed" data-i18n="t_204">
-<strong>Aplicación de Escritorio Modular:</strong> Unifica herramientas avanzadas de edición masiva de vídeo, procesado de imágenes y consola DAW para masterización sonoras EBU R128 en local.
+<strong>Aplicación de Escritorio Modular:</strong> Unifica herramientas avanzadas de edición masiva de vídeo, procesado de imágenes y consola DAW para masterización sonora EBU R128 en local.
                 </p>
 </div>
 <!-- App 02: Cine Station Pro (Con Imagotipo Propietario icon_csp.png) -->
 <div class="glass-panel p-8 border border-white/15 space-y-4">
 <div class="flex items-center gap-4">
-<img alt="Cine Station Pro Imagotipo" class="w-14 h-14 rounded shadow-lg" src="assets/icon_csp.png"/>
+<img alt="Cine Station Pro Imagotipo" class="w-14 h-14 rounded shadow-lg" loading="lazy" src="assets/icon_csp.png"/>
 <div>
 <h3 class="font-headline text-2xl text-white" data-i18n="t_38">Cine Station Pro</h3>
 <span class="font-mono text-[10px] text-signal-red" data-i18n="t_205">v1.0.0 Stable // FastAPI + FFmpeg</span>
@@ -812,7 +1045,7 @@
 <!-- App 03: Brand Music Curator (Con Imagotipo Propietario icon_bmc.png) -->
 <div class="glass-panel p-8 border border-white/15 space-y-4">
 <div class="flex items-center gap-4">
-<img alt="Brand Music Curator Imagotipo" class="w-14 h-14 rounded shadow-lg" src="assets/icon_bmc.png"/>
+<img alt="Brand Music Curator Imagotipo" class="w-14 h-14 rounded shadow-lg" loading="lazy" src="assets/icon_bmc.png"/>
 <div>
 <h3 class="font-headline text-2xl text-white" data-i18n="t_42">Brand Music Curator</h3>
 <span class="font-mono text-[10px] text-signal-red" data-i18n="t_207">v1.0.0 Stable // LLM Multimodal</span>
@@ -840,14 +1073,14 @@
 <!-- RETÍCULA DE VÍDEOS (4 Columnas x 2 Filas = 8 Producciones Únicas) -->
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5" id="showcase-grid">
 <!-- VÍDEO 01: Instagram Reel "America'n Job 🇺🇸" -->
-<button type="button" class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer text-left w-full block transition-all duration-500" onclick="handleVideoCardClick(event, this);" data-badge="// INSTAGRAM REEL (ACTING IA)" data-badge-key="t_212" data-desc="Acting I.A por @chus_bzn: Estética cinemática estilo 1967 y diseño sonoro con John Williams - Prologue (JFK) &amp; Walter Cronkite." data-desc-key="t_217" data-id="DQh86inDDTm" data-link="https://www.instagram.com/p/DQh86inDDTm/" data-local="assets/american_job.mp4" data-platform="instagram" data-ratio="9/16" data-title="America'n Job 🇺🇸" data-title-key="t_216">
+<button type="button" class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer text-left w-full block transition-all duration-500" onclick="handleVideoCardClick(event, this);" data-badge="// INSTAGRAM REEL (ACTING IA)" data-badge-key="t_212" data-desc="Acting I.A por @chus_bzn: Estética cinemática estilo 1967 y diseño sonoro con John Williams - Prologue (JFK) &amp; Walter Cronkite." data-desc-key="t_217" data-id="DXN_bbpjKfL" data-link="https://www.instagram.com/reel/DXN_bbpjKfL/" data-local="assets/american_job_final.mp4" data-platform="instagram" data-ratio="9/16" data-title="America'n Job 🇺🇸" data-title-key="t_216">
 <div class="space-y-2.5">
 <div class="flex justify-between items-center font-mono text-[9px]">
 <span class="text-signal-red font-bold uppercase tracking-wider" data-i18n="t_212">// INSTAGRAM REEL (ACTING IA)</span>
 <span class="text-terminal-green animate-pulse" data-i18n="t_213">[PLAY EN VIVO]</span>
 </div>
 <div class="relative w-full aspect-[4/3] bg-black border border-white/10 overflow-hidden rounded shadow-xl group block">
-<video autoplay loop muted playsinline class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" poster="assets/american_job.jpg" src="assets/american_job.mp4"></video>
+<video autoplay loop muted playsinline webkit-playsinline preload="auto" disableRemotePlayback="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" poster="assets/american_job.jpg" src="assets/american_job.mp4"></video>
 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-center justify-center pointer-events-none">
 <div class="w-10 h-10 bg-signal-red group-hover:bg-white text-white group-hover:text-signal-red rounded-full flex items-center justify-center shadow-lg shadow-signal-red/50 transition-all transform group-hover:scale-110">
 <svg class="w-5 h-5 translate-x-0.5" fill="currentColor" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
@@ -875,14 +1108,14 @@
 </div>
 </button>
 <!-- VÍDEO 02: DORITOS A.C 🌋🧀 -->
-<button type="button" class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer text-left w-full block transition-all duration-500" onclick="handleVideoCardClick(event, this);" data-badge="// INSTAGRAM REEL (DORITOS IA)" data-badge-key="t_220" data-desc="@doritos A.C 🌋🧀: Spot publicitario e innovación generativa I.A por @chus_bzn." data-desc-key="t_222" data-id="DIFPAaMKcAJ" data-link="https://www.instagram.com/p/DIFPAaMKcAJ/" data-local="assets/doritos.mp4" data-platform="instagram" data-ratio="9/16" data-title="DORITOS A.C 🌋🧀" data-title-key="t_221">
+<button type="button" class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer text-left w-full block transition-all duration-500" onclick="handleVideoCardClick(event, this);" data-badge="// INSTAGRAM REEL (DORITOS IA)" data-badge-key="t_220" data-desc="@doritos A.C 🌋🧀: Spot publicitario e innovación generativa I.A por @chus_bzn." data-desc-key="t_222" data-id="DIFPAaMKcAJ" data-link="https://www.instagram.com/p/DIFPAaMKcAJ/" data-local="assets/raw_doritos.mp4" data-platform="instagram" data-ratio="9/16" data-title="DORITOS A.C 🌋🧀" data-title-key="t_221">
 <div class="space-y-2.5">
 <div class="flex justify-between items-center font-mono text-[9px]">
 <span class="text-signal-red font-bold uppercase tracking-wider" data-i18n="t_220">// INSTAGRAM REEL (DORITOS IA)</span>
 <span class="text-terminal-green animate-pulse" data-i18n="t_213">[PLAY EN VIVO]</span>
 </div>
 <div class="relative w-full aspect-[4/3] bg-black border border-white/10 overflow-hidden rounded shadow-xl group block">
-<video autoplay loop muted playsinline class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" poster="assets/doritos.jpg" src="assets/doritos.mp4"></video>
+<video autoplay loop muted playsinline webkit-playsinline preload="auto" disableRemotePlayback="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" poster="assets/doritos.jpg" src="assets/doritos.mp4"></video>
 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-center justify-center pointer-events-none">
 <div class="w-10 h-10 bg-signal-red group-hover:bg-white text-white group-hover:text-signal-red rounded-full flex items-center justify-center shadow-lg shadow-signal-red/50 transition-all transform group-hover:scale-110">
 <svg class="w-5 h-5 translate-x-0.5" fill="currentColor" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
@@ -910,14 +1143,14 @@
 </div>
 </button>
 <!-- VÍDEO 03: COCA-COLA CREATIVITY 🥤🔥 -->
-<button type="button" class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer text-left w-full block transition-all duration-500" onclick="handleVideoCardClick(event, this);" data-badge="// INSTAGRAM REEL (COCA-COLA IA)" data-badge-key="t_223" data-desc="@cocacola Since 1118 Year: Spot publicitario y animación de concepto de fantasía medieval y guerreros por @chus_bzn." data-desc-key="t_225" data-id="DIB6gmPqn8E" data-link="https://www.instagram.com/p/DIB6gmPqn8E/" data-local="assets/cocacola.mp4" data-platform="instagram" data-ratio="9/16" data-title="COCA-COLA CREATIVITY 🥤🔥" data-title-key="t_224">
+<button type="button" class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer text-left w-full block transition-all duration-500" onclick="handleVideoCardClick(event, this);" data-badge="// INSTAGRAM REEL (COCA-COLA IA)" data-badge-key="t_223" data-desc="@cocacola Since 1118 Year: Spot publicitario y animación de concepto de fantasía medieval y guerreros por @chus_bzn." data-desc-key="t_225" data-id="DIB6gmPqn8E" data-link="https://www.instagram.com/p/DIB6gmPqn8E/" data-local="assets/raw_cocacola.mp4" data-platform="instagram" data-ratio="9/16" data-title="COCA-COLA CREATIVITY 🥤🔥" data-title-key="t_224">
 <div class="space-y-2.5">
 <div class="flex justify-between items-center font-mono text-[9px]">
 <span class="text-signal-red font-bold uppercase tracking-wider" data-i18n="t_223">// INSTAGRAM REEL (COCA-COLA IA)</span>
 <span class="text-terminal-green animate-pulse" data-i18n="t_213">[PLAY EN VIVO]</span>
 </div>
 <div class="relative w-full aspect-[4/3] bg-black border border-white/10 overflow-hidden rounded shadow-xl group block">
-<video autoplay loop muted playsinline class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" poster="assets/cocacola.jpg" src="assets/cocacola.mp4"></video>
+<video autoplay loop muted playsinline webkit-playsinline preload="auto" disableRemotePlayback="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" poster="assets/cocacola.jpg" src="assets/cocacola.mp4"></video>
 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-center justify-center pointer-events-none">
 <div class="w-10 h-10 bg-signal-red group-hover:bg-white text-white group-hover:text-signal-red rounded-full flex items-center justify-center shadow-lg shadow-signal-red/50 transition-all transform group-hover:scale-110">
 <svg class="w-5 h-5 translate-x-0.5" fill="currentColor" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
@@ -945,14 +1178,14 @@
 </div>
 </button>
 <!-- VÍDEO 04: VENENO (BreakBeat Mix) -->
-<button type="button" class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer text-left w-full block transition-all duration-500" onclick="handleVideoCardClick(event, this);" data-badge="// SONIDO &amp; RAVE 90S" data-badge-key="t_226" data-desc="VENENO: Creación de @chus_bzn inspirada en ritmos BreakBeat, guitarras eléctricas, sonidos ácidos y el estilo Rave de los 90s." data-desc-key="t_229" data-id="sSIBsZEcKTk" data-link="https://www.youtube.com/shorts/sSIBsZEcKTk" data-local="assets/veneno.mp4" data-platform="youtube" data-ratio="9/16" data-title="VENENO (BreakBeat Mix)" data-title-key="t_228">
+<button type="button" class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer text-left w-full block transition-all duration-500" onclick="handleVideoCardClick(event, this);" data-badge="// SONIDO &amp; RAVE 90S" data-badge-key="t_226" data-desc="VENENO: Creación de @chus_bzn inspirada en ritmos BreakBeat, guitarras eléctricas, sonidos ácidos y el estilo Rave de los 90s." data-desc-key="t_229" data-id="sSIBsZEcKTk" data-link="https://www.youtube.com/shorts/sSIBsZEcKTk" data-local="assets/real_raw_veneno.mp4" data-platform="youtube" data-ratio="9/16" data-title="VENENO (BreakBeat Mix)" data-title-key="t_228">
 <div class="space-y-2.5">
 <div class="flex justify-between items-center font-mono text-[9px]">
 <span class="text-signal-red font-bold uppercase tracking-wider" data-i18n="t_226">// SONIDO &amp; RAVE 90S</span>
 <span class="text-terminal-green animate-pulse" data-i18n="t_213">[PLAY EN VIVO]</span>
 </div>
 <div class="relative w-full aspect-[4/3] bg-black border border-white/10 overflow-hidden rounded shadow-xl group block">
-<video autoplay loop muted playsinline class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" poster="assets/veneno.jpg" src="assets/veneno.mp4"></video>
+<video autoplay loop muted playsinline webkit-playsinline preload="auto" disableRemotePlayback="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" poster="assets/veneno.jpg" src="assets/veneno.mp4"></video>
 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-center justify-center pointer-events-none">
 <div class="w-10 h-10 bg-signal-red group-hover:bg-white text-white group-hover:text-signal-red rounded-full flex items-center justify-center shadow-lg shadow-signal-red/50 transition-all transform group-hover:scale-110">
 <svg class="w-5 h-5 translate-x-0.5" fill="currentColor" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
@@ -980,14 +1213,14 @@
 </div>
 </button>
 <!-- VÍDEO 05: BIENVENIDOS A MI CIUDAD / Barcelona Dusty Clown -->
-<button type="button" class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer text-left w-full block transition-all duration-500" onclick="handleVideoCardClick(event, this);" data-badge="// CULTURA URBANA BARCELONA" data-badge-key="t_231" data-desc="The Random Dusty Clown of Barcelona 🤡: Esencia de calle, arte urbano y lienzo vivo sobre el asfalto de Barcelona." data-desc-key="t_233" data-id="xsjyo_bV5RA" data-link="https://www.youtube.com/shorts/xsjyo_bV5RA" data-local="assets/barcelona_clown.mp4" data-platform="youtube" data-ratio="9/16" data-title="BIENVENIDOS A MI CIUDAD 🎭" data-title-key="t_232">
+<button type="button" class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer text-left w-full block transition-all duration-500" onclick="handleVideoCardClick(event, this);" data-badge="// CULTURA URBANA BARCELONA" data-badge-key="t_231" data-desc="The Random Dusty Clown of Barcelona 🤡: Esencia de calle, arte urbano y lienzo vivo sobre el asfalto de Barcelona." data-desc-key="t_233" data-id="xsjyo_bV5RA" data-link="https://www.youtube.com/shorts/xsjyo_bV5RA" data-local="assets/barcelona_clown_final.mp4" data-platform="youtube" data-ratio="9/16" data-title="BIENVENIDOS A MI CIUDAD 🎭" data-title-key="t_232">
 <div class="space-y-2.5">
 <div class="flex justify-between items-center font-mono text-[9px]">
 <span class="text-signal-red font-bold uppercase tracking-wider" data-i18n="t_231">// CULTURA URBANA BARCELONA</span>
 <span class="text-terminal-green animate-pulse" data-i18n="t_213">[PLAY EN VIVO]</span>
 </div>
 <div class="relative w-full aspect-[4/3] bg-black border border-white/10 overflow-hidden rounded shadow-xl group block">
-<video autoplay loop muted playsinline class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" poster="assets/barcelona_clown.jpg" src="assets/barcelona_clown.mp4"></video>
+<video autoplay loop muted playsinline webkit-playsinline preload="auto" disableRemotePlayback="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" poster="assets/barcelona_clown.jpg" src="assets/barcelona_clown.mp4"></video>
 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-center justify-center pointer-events-none">
 <div class="w-10 h-10 bg-signal-red group-hover:bg-white text-white group-hover:text-signal-red rounded-full flex items-center justify-center shadow-lg shadow-signal-red/50 transition-all transform group-hover:scale-110">
 <svg class="w-5 h-5 translate-x-0.5" fill="currentColor" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
@@ -1015,14 +1248,14 @@
 </div>
 </button>
 <!-- VÍDEO 06: BRONX 1980 — La Era Dorada -->
-<button type="button" class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer text-left w-full block transition-all duration-500" onclick="handleVideoCardClick(event, this);" data-badge="// CULTURA HIP HOP 1980" data-badge-key="t_235" data-desc="El Bronx, 1980: Homenaje a las raíces donde el asfalto se convirtió en leyenda, radiocassettes al hombro y ritmos de TR808." data-desc-key="t_237" data-id="l-_uE3Zg7do" data-link="https://www.youtube.com/shorts/l-_uE3Zg7do" data-local="assets/bronx_1980.mp4" data-platform="youtube" data-ratio="9/16" data-title="BRONX 1980" data-title-key="t_236">
+<button type="button" class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer text-left w-full block transition-all duration-500" onclick="handleVideoCardClick(event, this);" data-badge="// CULTURA HIP HOP 1980" data-badge-key="t_235" data-desc="El Bronx, 1980: Homenaje a las raíces donde el asfalto se convirtió en leyenda, radiocassettes al hombro y ritmos de TR808." data-desc-key="t_237" data-id="l-_uE3Zg7do" data-link="https://www.youtube.com/shorts/l-_uE3Zg7do" data-local="assets/bronx_1980_final.mp4" data-platform="youtube" data-ratio="9/16" data-title="BRONX 1980" data-title-key="t_236">
 <div class="space-y-2.5">
 <div class="flex justify-between items-center font-mono text-[9px]">
 <span class="text-signal-red font-bold uppercase tracking-wider" data-i18n="t_235">// CULTURA HIP HOP 1980</span>
 <span class="text-terminal-green animate-pulse" data-i18n="t_213">[PLAY EN VIVO]</span>
 </div>
 <div class="relative w-full aspect-[4/3] bg-black border border-white/10 overflow-hidden rounded shadow-xl group block">
-<video autoplay loop muted playsinline class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" poster="assets/bronx_1980.jpg" src="assets/bronx_1980.mp4"></video>
+<video autoplay loop muted playsinline webkit-playsinline preload="auto" disableRemotePlayback="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" poster="assets/bronx_1980.jpg" src="assets/bronx_1980.mp4"></video>
 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-center justify-center pointer-events-none">
 <div class="w-10 h-10 bg-signal-red group-hover:bg-white text-white group-hover:text-signal-red rounded-full flex items-center justify-center shadow-lg shadow-signal-red/50 transition-all transform group-hover:scale-110">
 <svg class="w-5 h-5 translate-x-0.5" fill="currentColor" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
@@ -1050,14 +1283,14 @@
 </div>
 </button>
 <!-- VÍDEO 07: KILLA — Deus Ex Machina 🎶🔥 -->
-<button type="button" class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer text-left w-full block transition-all duration-500" onclick="handleVideoCardClick(event, this);" data-badge="// INSTAGRAM REEL (GORILLA &amp; DANCE)" data-badge-key="t_239" data-desc="KILLA Deus ex Machina por @alphaberracos: Producción generativa con chicas, gorilas y merchandising KILLA." data-desc-key="t_241" data-id="DH_X3ZrML1h" data-link="https://www.instagram.com/p/DH_X3ZrML1h/" data-local="assets/killa_ig.mp4" data-platform="instagram" data-ratio="9/16" data-title="KILLA — Deus Ex Machina 🎶🔥" data-title-key="t_240">
+<button type="button" class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer text-left w-full block transition-all duration-500" onclick="handleVideoCardClick(event, this);" data-badge="// INSTAGRAM REEL (GORILLA &amp; DANCE)" data-badge-key="t_239" data-desc="KILLA Deus ex Machina por @alphaberracos: Producción generativa con chicas, gorilas y merchandising KILLA." data-desc-key="t_241" data-id="DH_X3ZrML1h" data-link="https://www.instagram.com/p/DH_X3ZrML1h/" data-local="assets/raw_killa_hd.mp4" data-platform="instagram" data-ratio="9/16" data-title="KILLA — Deus Ex Machina 🎶🔥" data-title-key="t_240">
 <div class="space-y-2.5">
 <div class="flex justify-between items-center font-mono text-[9px]">
 <span class="text-signal-red font-bold uppercase tracking-wider" data-i18n="t_239">// INSTAGRAM REEL (GORILLA &amp; DANCE)</span>
 <span class="text-terminal-green animate-pulse" data-i18n="t_213">[PLAY EN VIVO]</span>
 </div>
 <div class="relative w-full aspect-[4/3] bg-black border border-white/10 overflow-hidden rounded shadow-xl group block">
-<video autoplay loop muted playsinline class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" poster="assets/killa_ig.jpg" src="assets/killa_ig.mp4"></video>
+<video autoplay loop muted playsinline webkit-playsinline preload="auto" disableRemotePlayback="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" poster="assets/killa_ig.jpg" src="assets/killa_ig.mp4"></video>
 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-center justify-center pointer-events-none">
 <div class="w-10 h-10 bg-signal-red group-hover:bg-white text-white group-hover:text-signal-red rounded-full flex items-center justify-center shadow-lg shadow-signal-red/50 transition-all transform group-hover:scale-110">
 <svg class="w-5 h-5 translate-x-0.5" fill="currentColor" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
@@ -1085,14 +1318,14 @@
 </div>
 </button>
 <!-- VÍDEO 08: NIKE WEREWOLF 🐺 -->
-<button type="button" class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer text-left w-full block transition-all duration-500" onclick="handleVideoCardClick(event, this);" data-badge="// INSTAGRAM REEL (NIKE IA)" data-badge-key="t_242" data-desc="@nike Werewolf 🐺: Spot publicitario y animación de concepto deportivo/fantasía generativo por @chus_bzn." data-desc-key="t_244" data-id="DIG3CvtqKWl" data-link="https://www.instagram.com/p/DIG3CvtqKWl/" data-local="assets/code_black_ig.mp4" data-platform="instagram" data-ratio="9/16" data-title="NIKE WEREWOLF 🐺" data-title-key="t_243">
+<button type="button" class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer text-left w-full block transition-all duration-500" onclick="handleVideoCardClick(event, this);" data-badge="// INSTAGRAM REEL (NIKE IA)" data-badge-key="t_242" data-desc="@nike Werewolf 🐺: Spot publicitario y animación de concepto deportivo/fantasía generativo por @chus_bzn." data-desc-key="t_244" data-id="DIG3CvtqKWl" data-link="https://www.instagram.com/p/DIG3CvtqKWl/" data-local="assets/raw_code_black_ig.mp4" data-platform="instagram" data-ratio="9/16" data-title="NIKE WEREWOLF 🐺" data-title-key="t_243">
 <div class="space-y-2.5">
 <div class="flex justify-between items-center font-mono text-[9px]">
 <span class="text-signal-red font-bold uppercase tracking-wider" data-i18n="t_242">// INSTAGRAM REEL (NIKE IA)</span>
 <span class="text-terminal-green animate-pulse" data-i18n="t_213">[PLAY EN VIVO]</span>
 </div>
 <div class="relative w-full aspect-[4/3] bg-black border border-white/10 overflow-hidden rounded shadow-xl group block">
-<video autoplay loop muted playsinline class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" poster="assets/code_black_ig.jpg" src="assets/code_black_ig.mp4"></video>
+<video autoplay loop muted playsinline webkit-playsinline preload="auto" disableRemotePlayback="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" poster="assets/code_black_ig.jpg" src="assets/code_black_ig.mp4"></video>
 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-center justify-center pointer-events-none">
 <div class="w-10 h-10 bg-signal-red group-hover:bg-white text-white group-hover:text-signal-red rounded-full flex items-center justify-center shadow-lg shadow-signal-red/50 transition-all transform group-hover:scale-110">
 <svg class="w-5 h-5 translate-x-0.5" fill="currentColor" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
@@ -1118,7 +1351,7 @@
                         REPRODUCIR CON AUDIO →
                     </span>
 </div>
-</div>
+</button>
 </div>
 </div>
 </section>
@@ -1180,14 +1413,14 @@
 <!-- Right Column: Retrato Formal en Traje Negro (assets/retrato_formal.png) -->
 <div class="lg:col-span-5 flex justify-center">
 <div class="glass-panel p-4 border border-white/20 relative group text-center space-y-3 max-w-sm">
-<div class="relative overflow-hidden rounded border border-white/10 aspect-[3/4] bg-black">
-<img alt="Dirección Técnica CHUS BZN Retrato Formal" class="w-full h-full object-cover  transition-all duration-700 group-hover:scale-105" src="assets/retrato_formal.png"/>
-<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none"></div>
-<div class="absolute bottom-3 left-3 right-3 text-left font-mono text-[10px] bg-black/75 backdrop-blur-md p-2 border border-white/15">
-<div class="text-signal-red font-bold uppercase">// DIRECCIÓN TÉCNICA AUDITADA</div>
-<div class="text-white">JESÚS FERRER (CHUS BZN)</div>
+<div class="relative overflow-hidden rounded border border-white/10 aspect-[3/4] bg-black cine-frame">
+<img alt="Dirección Técnica CHUS BZN Retrato Formal" class="w-full h-full object-cover transition-all duration-700" loading="lazy" src="assets/retrato_formal.png"/>
+<div class="cine-vignette"></div>
+<div class="cine-letterbox top"></div>
+<div class="cine-letterbox bottom"></div>
 </div>
-</div>
+<div class="cine-marquee"><div class="cine-marquee__track"><span class="cine-marquee__repeat"><span class="txt-white">CHUS BZN STUDIO</span> <span class="mark">///</span> <span class="txt-white">CINE &amp; BROADCAST</span> <span class="mark">///</span> <span class="txt-white">DIRECTOS &amp; STREAMING</span> <span class="mark">///</span> <span class="txt-white">PRODUCCIÓN MUSICAL</span> <span class="mark">///</span> <span class="txt-white">VÍDEO CREATIVO</span> <span class="mark">///</span> <span class="txt-white">AUDIO · SONIDO</span> <span class="mark">///</span> </span><span class="cine-marquee__repeat"><span class="txt-white">CHUS BZN STUDIO</span> <span class="mark">///</span> <span class="txt-white">CINE &amp; BROADCAST</span> <span class="mark">///</span> <span class="txt-white">DIRECTOS &amp; STREAMING</span> <span class="mark">///</span> <span class="txt-white">PRODUCCIÓN MUSICAL</span> <span class="mark">///</span> <span class="txt-white">VÍDEO CREATIVO</span> <span class="mark">///</span> <span class="txt-white">AUDIO · SONIDO</span> <span class="mark">///</span> </span></div></div>
+<div class="cine-nameplate" data-target="JESÚS FERRER GARCÍA" id="cineMatrixName">JESÚS FERRER GARCÍA</div>
 <span class="font-mono text-[10px] text-white/60 uppercase block" data-i18n="t_252">
                         DIRECCIÓN DE SISTEMAS AUDIOVISUALES &amp; INTEGRACIÓN IA
                     </span>
@@ -1296,22 +1529,22 @@
 <form class="space-y-6 font-mono text-xs" id="order-form">
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
 <div class="space-y-2">
-<label class="text-[10px] text-white/70 uppercase tracking-widest" data-i18n="t_286">Nombre y Apellidos / Contacto *</label>
-<input class="w-full bg-black/90 border border-white/15 focus:border-signal-red text-white p-3 font-mono text-xs outline-none transition-colors" placeholder="&gt; Nombre del solicitante..." required="" type="text"/>
+<label class="text-[10px] text-white/70 uppercase tracking-widest" data-i18n="t_286" for="contact-name">Nombre y Apellidos / Contacto *</label>
+<input class="w-full bg-black/90 border border-white/15 focus:border-signal-red text-white p-3 font-mono text-xs outline-none transition-colors" placeholder="&gt; Nombre del solicitante..." required="" type="text" id="contact-name"/>
 </div>
 <div class="space-y-2">
-<label class="text-[10px] text-white/70 uppercase tracking-widest" data-i18n="t_287">Correo Electrónico Corporativo *</label>
-<input class="w-full bg-black/90 border border-white/15 focus:border-signal-red text-white p-3 font-mono text-xs outline-none transition-colors" placeholder="&gt; correo@empresa.com" required="" type="email"/>
+<label class="text-[10px] text-white/70 uppercase tracking-widest" data-i18n="t_287" for="contact-email">Correo Electrónico Corporativo *</label>
+<input class="w-full bg-black/90 border border-white/15 focus:border-signal-red text-white p-3 font-mono text-xs outline-none transition-colors" placeholder="&gt; correo@empresa.com" required="" type="email" id="contact-email"/>
 </div>
 </div>
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
 <div class="space-y-2">
-<label class="text-[10px] text-white/70 uppercase tracking-widest" data-i18n="t_288">Empresa / Organización</label>
-<input class="w-full bg-black/90 border border-white/15 focus:border-signal-red text-white p-3 font-mono text-xs outline-none transition-colors" placeholder="&gt; Nombre de la firma..." type="text"/>
+<label class="text-[10px] text-white/70 uppercase tracking-widest" data-i18n="t_288" for="company-name">Empresa / Organización</label>
+<input class="w-full bg-black/90 border border-white/15 focus:border-signal-red text-white p-3 font-mono text-xs outline-none transition-colors" placeholder="&gt; Nombre de la firma..." type="text" id="company-name"/>
 </div>
 <!-- Desplegable Ampliado de Servicios -->
 <div class="space-y-2">
-<label class="text-[10px] text-white/70 uppercase tracking-widest" data-i18n="t_289">Servicio / Trabajo Requerido *</label>
+<label class="text-[10px] text-white/70 uppercase tracking-widest" data-i18n="t_289" for="service-select">Servicio / Trabajo Requerido *</label>
 <select class="w-full bg-black border border-white/15 focus:border-signal-red text-white p-3 font-mono text-xs outline-none cursor-pointer" id="service-select" onchange="toggleOtherServiceInput()" required="">
 <option data-i18n="t_290" value="">-- SELECCIONE SERVICIO DE INTERÉS --</option>
 <option data-i18n="t_291" value="video">Producción de Vídeo &amp; Spots Cinemáticos (IA)</option>
@@ -1328,12 +1561,12 @@
 </div>
 <!-- Campo Desplegable Dinámico cuando se elige OTROS -->
 <div class="hidden space-y-2 animate-fadeIn" id="other-service-wrap">
-<label class="text-[10px] text-signal-red uppercase tracking-widest font-bold" data-i18n="t_300">// ESPECIFIQUE EL TRABAJO O NECESIDAD ESPECIAL *</label>
+<label class="text-[10px] text-signal-red uppercase tracking-widest font-bold" data-i18n="t_300" for="other-service-input">// ESPECIFIQUE EL TRABAJO O NECESIDAD ESPECIAL *</label>
 <input class="w-full bg-black/90 border border-signal-red/60 focus:border-signal-red text-white p-3 font-mono text-xs outline-none" id="other-service-input" placeholder="&gt; Ejemplo: Masterización binaural para VR, instalación acústica, app móvil..." type="text"/>
 </div>
 <div class="space-y-2">
-<label class="text-[10px] text-white/70 uppercase tracking-widest" data-i18n="t_301">Detalles del Proyecto &amp; Plazos Estimados</label>
-<textarea class="w-full bg-black/90 border border-white/15 focus:border-signal-red text-white p-3 font-mono text-xs outline-none transition-colors" placeholder="&gt; Especifique el alcance, ubicación o requerimientos del encargo..." required="" rows="4"></textarea>
+<label class="text-[10px] text-white/70 uppercase tracking-widest" data-i18n="t_301" for="project-details">Detalles del Proyecto &amp; Plazos Estimados</label>
+<textarea class="w-full bg-black/90 border border-white/15 focus:border-signal-red text-white p-3 font-mono text-xs outline-none transition-colors" placeholder="&gt; Especifique el alcance, ubicación o requerimientos del encargo..." required="" rows="4" id="project-details"></textarea>
 </div>
 <button class="w-full bg-signal-red text-white font-headline text-xl sm:text-2xl py-4 uppercase tracking-widest hover:bg-signal-red-hover transition-all shadow-lg hover:shadow-signal-red/30" data-i18n="t_302" type="submit">
                     ENVIAR PROTOCOLO DE ENCARGO
@@ -1360,7 +1593,7 @@
 <div class="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 mb-12">
 <div class="md:col-span-5 space-y-4">
 <a class="inline-block group" href="#top">
-<img alt="CHUS BZN Logo Oficial" class="h-14 w-auto object-contain border border-white/20 p-1 rounded group-hover:border-signal-red transition-all" src="assets/logo.jpg"/>
+<img alt="CHUS BZN Logo Oficial" class="h-14 w-auto object-contain border border-white/20 p-1 rounded group-hover:border-signal-red transition-all" loading="lazy" src="assets/logo.jpg"/>
 </a>
 <p class="font-sans text-xs text-text-secondary max-w-sm font-light" data-i18n="t_308">
                 CHUS BZN es una firma y colectivo de proyectos audiovisuales y tecnológicos a medida en Barcelona. Dirección técnica, sonido broadcast, desarrollo web e integración de Inteligencia Artificial para empresas.
@@ -1454,19 +1687,37 @@
 <script>
     
     // ═══ LAZY VIDEO INTERSECTION OBSERVER (REDUCES GPU DECODING LAG) ═══
-    if ('IntersectionObserver' in window) {
+    // Se registra tras DOMContentLoaded porque los <video> se renderizan más abajo en el DOM.
+    const setupVideoObserver = function() {
+        if (!('IntersectionObserver' in window)) return;
+        const tryPlay = function(vid) {
+            vid.muted = true;
+            vid.loop = true;
+            vid.playsInline = true;
+            const p = vid.play();
+            if (p && p.catch) p.catch(function () {});
+        };
         const videoObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 const vid = entry.target;
+                if (!vid) return;
                 if (entry.isIntersecting) {
-                    vid.play().catch(() => {});
+                    if (vid.readyState < 2) {
+                        vid.addEventListener('canplay', function () { tryPlay(vid); }, { once: true });
+                    }
+                    tryPlay(vid);
                 } else {
-                    vid.pause();
+                    try { vid.pause(); } catch (err) {}
                 }
             });
-        }, { threshold: 0.15 });
+        }, { threshold: 0.15, rootMargin: '0px 0px 10% 0px' });
 
-        document.querySelectorAll('section video').forEach(v => videoObserver.observe(v));
+        document.querySelectorAll('#showcase-grid video').forEach(v => videoObserver.observe(v));
+    };
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', setupVideoObserver);
+    } else {
+        setupVideoObserver();
     }
 
     // Global Mobile Menu Toggle
@@ -1481,10 +1732,24 @@
         }
         if (menu.classList.contains('open')) {
             document.body.style.overflow = 'hidden';
+            const closeBtn = document.getElementById('close-mobile-menu');
+            if (closeBtn) setTimeout(() => closeBtn.focus(), 50);
         } else {
             document.body.style.overflow = '';
         }
     };
+
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+            const menu = document.getElementById('mobile-menu');
+            if (menu && menu.classList.contains('open')) {
+                menu.classList.remove('open');
+                document.body.style.overflow = '';
+                const btn = document.getElementById('mobile-btn');
+                if (btn) btn.focus();
+            }
+        }
+    });
 
     // Smooth Navigation for Sections (Fixes iOS Safari locked scrolling)
     window.navigateToSection = function(targetId) {
@@ -1546,80 +1811,178 @@
     }
     if (typewriterEl) setTimeout(typeEffect, 800);
 
-    // ═══ MASTER MATRIX DATA STREAM CANVAS (ROCK-SOLID 30FPS SETINTERVAL FOR IOS SAFARI & DESKTOP) ═══
-    const mCanvas = document.getElementById('matrix-canvas');
-    if (mCanvas) {
+    // ═══ MASTER MATRIX DATA STREAM CANVAS (ROCK-SOLID FOR IOS SAFARI & DESKTOP) ═══
+    (function matrixEngine() {
+        const mCanvas = document.getElementById('matrix-canvas');
+        if (!mCanvas || !mCanvas.getContext) return;
         const ctx = mCanvas.getContext('2d');
-        const chars = 'CHUSBZN0123456789EBUR128AI@#$890';
+        const chars = '01CHUSBZN@#$%&*+=<>/\\|;:!?';
         const fontSize = 13;
-        let columns = 0;
         let drops = [];
-        let curW = 320, curH = 260;
+        let speeds = [];
+        let brights = [];
+        let counters = [];
+        let curW = 320, curH = 256;
+        let running = true;
+
+        function refreshDrops() {
+            const rows = Math.max(16, Math.ceil(curH / fontSize) * 2);
+            const newCols = Math.max(14, Math.floor(curW / fontSize));
+            drops = Array(newCols).fill(0).map(() => Math.floor(Math.random() * rows));
+            // Velocidad variable por columna: más rápida en general
+            speeds = Array(newCols).fill(0).map(() => {
+                const r = Math.random();
+                return r < 0.25 ? 0.7 : r < 0.55 ? 1.1 : r < 0.85 ? 1.7 : 2.4;
+            });
+            brights = Array(newCols).fill(0).map(() => 0.35 + Math.random() * 0.65);
+            counters = Array(newCols).fill(0).map(() => Math.floor(Math.random() * 60));
+        }
 
         function updateCanvasDimensions() {
-            const wrapper = document.getElementById('matrix-wrapper') || mCanvas.parentElement;
+            const wrapper = document.getElementById('matrix-wrapper');
             if (!wrapper) return;
             const w = Math.max(280, Math.floor(wrapper.offsetWidth || wrapper.clientWidth || 320));
             const h = Math.max(200, Math.floor(wrapper.offsetHeight || wrapper.clientHeight || 256));
 
-            curW = w;
-            curH = h;
-            const dpr = Math.min(window.devicePixelRatio || 1, 2);
-            mCanvas.width = w * dpr;
-            mCanvas.height = h * dpr;
-            mCanvas.style.width = w + 'px';
-            mCanvas.style.height = h + 'px';
-
-            ctx.setTransform(1, 0, 0, 1, 0, 0);
-            ctx.scale(dpr, dpr);
-
-            const newCols = Math.max(10, Math.floor(w / fontSize));
-            const rows = Math.max(10, Math.floor(h / fontSize));
-            columns = newCols;
-            drops = Array(columns).fill(0).map(() => Math.floor(Math.random() * rows));
-
-            ctx.fillStyle = '#050505';
-            ctx.fillRect(0, 0, w, h);
+            // Solo re-alojamos el buffer cuando el tamaño REAL cambia (>1px):
+            // en iOS Safari la barra de dirección dispara resize constantes al hacer scroll.
+            if (Math.abs(w - curW) > 1 || Math.abs(h - curH) > 1 || mCanvas.width === 0) {
+                curW = w;
+                curH = h;
+                const dpr = Math.min(window.devicePixelRatio || 1, 2);
+                mCanvas.width = Math.round(w * dpr);
+                mCanvas.height = Math.round(h * dpr);
+                mCanvas.style.width = w + 'px';
+                mCanvas.style.height = h + 'px';
+                ctx.setTransform(1, 0, 0, 1, 0, 0);
+                ctx.scale(dpr, dpr);
+                refreshDrops();
+            }
+            ctx.fillStyle = '#020302';
+            ctx.fillRect(0, 0, curW, curH);
         }
 
-        updateCanvasDimensions();
-        setTimeout(updateCanvasDimensions, 100);
-        setTimeout(updateCanvasDimensions, 500);
+        // Pinta columna y devuelve la estela (head / bright / normal / accent / dim)
+        function paintCell(char, x, y, type) {
+            ctx.font = '700 ' + fontSize + 'px Menlo, Monaco, monospace';
+            ctx.textBaseline = 'top';
+            switch (type) {
+                case 'head':
+                    ctx.shadowBlur = 12;
+                    ctx.shadowColor = 'rgba(190,255,200,0.95)';
+                    ctx.fillStyle = '#F4FFF5';
+                    break;
+                case 'bright':
+                    ctx.shadowBlur = 7;
+                    ctx.shadowColor = 'rgba(0,255,65,0.55)';
+                    ctx.fillStyle = '#8FFF9A';
+                    break;
+                case 'accent':
+                    ctx.shadowBlur = 9;
+                    ctx.shadowColor = 'rgba(255,41,41,0.7)';
+                    ctx.fillStyle = '#FF5252';
+                    break;
+                case 'gold':
+                    ctx.shadowBlur = 7;
+                    ctx.shadowColor = 'rgba(255,196,0,0.55)';
+                    ctx.fillStyle = '#FFE08A';
+                    break;
+                default:
+                    ctx.shadowBlur = 3;
+                    ctx.shadowColor = 'rgba(0,255,65,0.30)';
+                    ctx.fillStyle = '#00C840';
+            }
+            ctx.fillText(char, x, y);
+            ctx.shadowBlur = 0;
+        }
+
+        function drawColumn(i) {
+            const x = i * fontSize;
+            // Estela de 3 celdas por columna para dar densidad vertical
+            const yHead = Math.round(drops[i]) * fontSize;
+            const b = brights[i];
+
+            // 1) Cabeza brillante (blanca con halo) cada ~3 ciclos
+            if (counters[i] % 3 === 0) {
+                const hc = Math.random() > 0.985 ? 'CHUSBZN0123456789' : chars;
+                paintCell(hc.charAt(Math.floor(Math.random() * hc.length)), x, yHead, 'head');
+            } else if (Math.random() > 0.97) {
+                paintCell(chars.charAt(Math.floor(Math.random() * chars.length)), x, yHead, 'accent');
+            } else if (Math.random() > 0.95) {
+                paintCell(chars.charAt(Math.floor(Math.random() * chars.length)), x, yHead, 'gold');
+            } else {
+                paintCell(chars.charAt(Math.floor(Math.random() * chars.length)), x, yHead, 'bright');
+            }
+
+            // 2) Cuerpo de la estela con degradado (más brillante arriba, se apaga abajo)
+            const tailLen = 5;
+            for (let t = 1; t <= tailLen; t++) {
+                const y = yHead - t * fontSize;
+                if (y < 0) break;
+                const fade = 1 - (t / (tailLen + 1));
+                ctx.font = '700 ' + fontSize + 'px Menlo, Monaco, monospace';
+                ctx.textBaseline = 'top';
+                ctx.fillStyle = Math.random() > 0.5
+                    ? 'rgba(0,255,65,' + (0.55 * fade * b).toFixed(3) + ')'
+                    : 'rgba(140,255,160,' + (0.35 * fade * b).toFixed(3) + ')';
+                ctx.fillText(chars.charAt(Math.floor(Math.random() * chars.length)), x, y);
+            }
+
+            // 3) Avance con velocidad propia de la columna
+            drops[i] += speeds[i];
+            if (drops[i] * fontSize > curH + tailLen * fontSize &&
+                Math.random() > 0.985) {
+                drops[i] = -tailLen - Math.floor(Math.random() * fontSize * 2);
+            }
+            counters[i]++;
+        }
+
+        function drawMatrix() {
+            if (!running) return;
+            if (curW <= 0 || curH <= 0) { updateCanvasDimensions(); return; }
+            // Fundido más lento → estelas largas persistentes
+            ctx.fillStyle = 'rgba(2, 3, 2, 0.13)';
+            ctx.fillRect(0, 0, curW, curH);
+
+            for (let i = 0; i < drops.length; i++) drawColumn(i);
+        }
+
+        function boot() {
+            updateCanvasDimensions();
+            // Pintamos el primer fotograma al instante para que nunca se vea en negro
+            requestAnimationFrame(function firstPaint() {
+                refreshDrops();
+                drawMatrix();
+                setInterval(drawMatrix, 26);
+            });
+        }
+
+        // Esperamos al layout completo antes de medir el contenedor
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', boot);
+        } else {
+            boot();
+        }
+        setTimeout(updateCanvasDimensions, 200);
+        setTimeout(updateCanvasDimensions, 900);
 
         if ('ResizeObserver' in window) {
-            const wrapperEl = document.getElementById('matrix-wrapper') || mCanvas.parentElement;
+            const wrapperEl = document.getElementById('matrix-wrapper');
             if (wrapperEl) new ResizeObserver(updateCanvasDimensions).observe(wrapperEl);
         } else {
             window.addEventListener('resize', updateCanvasDimensions);
         }
 
-        function drawMatrix() {
-            const drawW = curW || 320;
-            const drawH = curH || 256;
-
-            ctx.fillStyle = 'rgba(5, 5, 5, 0.16)';
-            ctx.fillRect(0, 0, drawW, drawH);
-
-            ctx.font = '700 13px monospace';
-            ctx.textBaseline = 'top';
-
-            for (let i = 0; i < drops.length; i++) {
-                const char = chars.charAt(Math.floor(Math.random() * chars.length));
-                const x = i * fontSize;
-                const y = drops[i] * fontSize;
-
-                ctx.fillStyle = (Math.random() > 0.88) ? '#FFFFFF' : '#00FF41';
-                ctx.fillText(char, x, y);
-
-                if (y > drawH && Math.random() > 0.95) {
-                    drops[i] = 0;
-                }
-                drops[i]++;
+        // Pausa el renderizado cuando la terminal sale de pantalla (ahorra CPU/GPU)
+        if ('IntersectionObserver' in window) {
+            const hero = document.getElementById('matrix-wrapper');
+            if (hero) {
+                new IntersectionObserver((entries) => {
+                    running = !!entries[0].isIntersecting;
+                }).observe(hero);
             }
         }
-
-        setInterval(drawMatrix, 33);
-    }
+    })();
 
     // ═══ BULLETPROOF LIGHTBOX VIDEO PLAYER WITH IPHONE TOUCH PLAY OVERLAY ═══
     const videoModal = document.getElementById('video-modal');
@@ -1677,7 +2040,7 @@
         if (localVideo) {
             embedHTML = `<div class="relative w-full h-full flex items-center justify-center bg-black group overflow-hidden rounded">
                 <video id="active-modal-video" src="${localVideo}" controls playsinline webkit-playsinline preload="auto" class="w-full h-full object-contain rounded shadow-2xl" type="video/mp4"></video>
-                <div id="modal-play-overlay" onclick="startModalVideoPlayback(event)" class="absolute inset-0 bg-black/60 hover:bg-black/40 flex flex-col items-center justify-center cursor-pointer transition-all z-40 p-4 text-center">
+                <div id="modal-play-overlay" onclick="startModalVideoPlayback(event)" ontouchstart="startModalVideoPlayback(event)" style="touch-action: manipulation;" class="absolute inset-0 bg-black/60 hover:bg-black/40 flex flex-col items-center justify-center cursor-pointer transition-all z-40 p-4 text-center">
                     <div class="w-16 h-16 bg-signal-red text-white rounded-full flex items-center justify-center shadow-2xl transform group-hover:scale-110 mb-3 border-2 border-white/50">
                         <svg class="w-8 h-8 translate-x-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
                     </div>
@@ -1695,12 +2058,23 @@
         document.body.style.overflow = 'hidden';
 
         setTimeout(() => {
+            // Intento de autoplay MUDO + playsinline: el único play aceptado sin gesto
+            // táctil en iOS. En desktop se oculta el overlay (los controles nativos
+            // permiten activar sonido con un clic); en táctil permanece el botón
+            // "REPRODUCIR CON AUDIO" hasta que el usuario lo pulse (desmutea el vídeo).
             const activeVideo = document.getElementById('active-modal-video');
             if (activeVideo) {
-                activeVideo.play().then(() => {
-                    const overlay = document.getElementById('modal-play-overlay');
-                    if (overlay) overlay.style.display = 'none';
-                }).catch(() => {});
+                activeVideo.muted = true;
+                const p = activeVideo.play();
+                if (p && p.then) {
+                    p.then(() => {
+                        const isTouch = (window.matchMedia && window.matchMedia('(hover: none)').matches) || 'ontouchstart' in window;
+                        if (!isTouch) {
+                            const overlay = document.getElementById('modal-play-overlay');
+                            if (overlay) overlay.style.display = 'none';
+                        }
+                    }).catch(() => {});
+                }
             }
         }, 150);
     };
@@ -1763,7 +2137,7 @@
         sonido: {
             code: "// DOSSIER 02 - POSTPRODUCCIÓN & SONIDO EBU R128",
             title: "Postproducción de Sonido & Masterización EBU R128",
-            desc: "Ingeniería de mezcla sonoras, sonoridad homologada para televisión pública/privada (TV3, TVE1) y plataformas OTT de streaming internacional (Netflix, HBO, Amazon Prime).",
+            desc: "Ingeniería de mezclas sonoras, sonoridad homologada para televisión pública/privada (TV3, TVE1) y plataformas OTT de streaming internacional (Netflix, HBO, Amazon Prime).",
             specs: "<strong>Solución Comercial & Entregables:</strong><br/>• Control de volumen (-23 LUFS) riguroso bajo la norma internacional EBU R128, evitando rechazos de emisión.<br/>• Limpieza y restauración espectral forense con iZotope RX11 y SpectraLayers Pro.<br/>• <strong>Aplicación para el cliente:</strong> Películas, series de doblaje, publicidad y podcasts premium."
         },
         streaming: {
@@ -1830,19 +2204,31 @@
     };
 
     // Scroll reveal observer & Mobile Active Scroll Illumination
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('active');
-        });
-    }, { threshold: 0.01, rootMargin: '0px 0px 100px 0px' });
-    reveals.forEach(r => observer.observe(r));
+    (function initReveal() {
+        const reveals = document.querySelectorAll('.reveal');
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const isMobile = window.innerWidth <= 1024;
+
+        if (prefersReducedMotion || !('IntersectionObserver' in window) || isMobile) {
+            reveals.forEach(r => r.classList.add('active'));
+        } else {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.05, rootMargin: '0px 0px 100px 0px' });
+            reveals.forEach(r => observer.observe(r));
+        }
+    })();
 
     if (window.innerWidth <= 1024) {
-        reveals.forEach(r => r.classList.add('active'));
 
-        // Auto illuminate cards when scrolled near center on mobile
-        const cardsToIlluminate = document.querySelectorAll('.service-card-enhanced, .video-card');
+        // Tarjetas de servicio, vídeos y foto se iluminan en rojo al pasar por
+        // la sección (sin necesidad de tocarlas en iPhone).
+        const cardsToIlluminate = document.querySelectorAll('.service-card-enhanced, .video-card, .glass-panel');
         const cardObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -1851,9 +2237,25 @@
                     entry.target.classList.remove('mobile-active');
                 }
             });
-        }, { threshold: 0.4, rootMargin: '-10% 0px -20% 0px' });
+        }, { threshold: 0.12, rootMargin: '0px 0px 0px 0px' });
         cardsToIlluminate.forEach(c => cardObserver.observe(c));
     }
+
+    // Toggle desplegable "OTROS" en el formulario de encargo
+    window.toggleOtherServiceInput = function toggleOtherServiceInput() {
+        const select = document.getElementById('service-select');
+        const wrap = document.getElementById('other-service-wrap');
+        const input = document.getElementById('other-service-input');
+        if (select && wrap && input) {
+            if (select.value === 'otros') {
+                wrap.classList.remove('hidden');
+                input.setAttribute('required', 'true');
+            } else {
+                wrap.classList.add('hidden');
+                input.removeAttribute('required');
+            }
+        }
+    };
 
     // Form submit simulation
     const form = document.getElementById('order-form');
@@ -1867,7 +2269,6 @@
             setTimeout(() => { if (successMsg) successMsg.classList.add('hidden'); }, 6000);
         });
     }
-
     // Terminal rotator
     const termMsg = document.getElementById('terminal-msg');
     const termLogs = [
@@ -1886,70 +2287,94 @@
 </script>
 <script src="js/translations.js"></script>
 <script src="js/i18n.js"></script>
-
-    // ═══ IOS SAFARI TOUCH DELEGATION & SMOOTH ANCHOR NAVIGATION FIX ═══
+<script>
+    // ═══ IOS SAFARI TOUCH DELEGATION (tarjetas) — guard de desplazamiento para no abrir modales al hacer scroll ═══
     document.addEventListener('DOMContentLoaded', function() {
-        // A. Smooth Anchor Link Scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(link => {
-            const href = link.getAttribute('href');
-            if (!href || href === '#') return;
-            link.addEventListener('click', function(e) {
-                const targetEl = document.querySelector(href);
-                if (targetEl) {
-                    e.preventDefault();
-                    if (typeof toggleMobileMenu === 'function') toggleMobileMenu(false);
-                    setTimeout(() => {
-                        targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }, 50);
-                }
-            });
-        });
+        const TAP_MOVEMENT_LIMIT = 12;
 
-        // B. Universal Touch Event Listeners for Service Cards on Mobile Safari
+        function wasTap(startX, startY, endX, endY) {
+            return Math.abs(endX - startX) <= TAP_MOVEMENT_LIMIT &&
+                   Math.abs(endY - startY) <= TAP_MOVEMENT_LIMIT;
+        }
+
+        // A. Universal Touch Event Listeners for Service Cards on Mobile Safari
         document.querySelectorAll('.service-card-enhanced').forEach(card => {
-            const handleTouch = function(e) {
-                const onclickAttr = card.getAttribute('onclick');
-                if (onclickAttr) {
-                    const match = onclickAttr.match(/openServiceModal\('([^']+)'\)/);
-                    if (match && match[1]) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        openServiceModal(match[1]);
-                    }
+            let startX = 0, startY = 0;
+            card.addEventListener('touchstart', function(e) {
+                const t = e.changedTouches[0];
+                startX = t.clientX;
+                startY = t.clientY;
+            }, { passive: true });
+            card.addEventListener('touchend', function(e) {
+                const t = e.changedTouches[0];
+                if (!wasTap(startX, startY, t.clientX, t.clientY)) return;
+                const onclickAttr = card.getAttribute('onclick') || '';
+                const match = onclickAttr.match(/openServiceModal\(['"]([^'"]+)['"]\)/);
+                if (match && match[1]) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    window.openServiceModal(match[1]);
                 }
-            };
-            card.addEventListener('touchend', handleTouch, { passive: false });
+            }, { passive: false });
         });
 
-        // C. Universal Touch Event Listeners for Video Cards on Mobile Safari
+        // B. Universal Touch Event Listeners for Video Cards on Mobile Safari
         document.querySelectorAll('.video-card').forEach(card => {
-            const handleVideoTouch = function(e) {
+            let startX = 0, startY = 0;
+            card.addEventListener('touchstart', function(e) {
+                const t = e.changedTouches[0];
+                startX = t.clientX;
+                startY = t.clientY;
+            }, { passive: true });
+            card.addEventListener('touchend', function(e) {
+                const t = e.changedTouches[0];
+                if (!wasTap(startX, startY, t.clientX, t.clientY)) return;
                 e.preventDefault();
                 e.stopPropagation();
-                handleVideoCardClick(e, card);
-            };
-            card.addEventListener('touchend', handleVideoTouch, { passive: false });
+                window.handleVideoCardClick(e, card);
+            }, { passive: false });
         });
     });
-
-
-    // ═══ NATIVE TOUCH & SMOOTH ANCHOR DELEGATION ═══
-    document.addEventListener('DOMContentLoaded', function() {
-        // Universal anchor scroll
-        document.querySelectorAll('a[href^="#"]').forEach(link => {
-            const href = link.getAttribute('href');
-            if (!href || href === '#') return;
-            link.addEventListener('click', function(e) {
-                const targetEl = document.querySelector(href);
-                if (targetEl) {
-                    e.preventDefault();
-                    if (typeof toggleMobileMenu === 'function') toggleMobileMenu(false);
-                    const top = targetEl.getBoundingClientRect().top + window.pageYOffset - 75;
-                    window.scrollTo({ top: top, behavior: 'smooth' });
-                }
-            });
-        });
-    });
-
+</script>
+<script>
+(function () {
+    var el = document.getElementById('cineMatrixName');
+    if (!el) return;
+    var target = el.getAttribute('data-target') || 'JESÚS FERRER GARCÍA';
+    var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZÁÉÍÓÚÑ0123456789';
+    var revealed = -1;
+    var timer = null;
+    function render() {
+        var out = '';
+        for (var i = 0; i < target.length; i++) {
+            var c = target[i];
+            if (c === ' ') { out += ' '; continue; }
+            if (i <= revealed) { out += c; continue; }
+            out += chars[Math.floor(Math.random() * chars.length)];
+        }
+        el.textContent = out;
+    }
+    function step() {
+        if (revealed >= target.length - 1) {
+            el.textContent = target;
+            timer = setTimeout(cycle, 5000);
+            return;
+        }
+        render();
+        revealed += Math.random() < 0.55 ? 1 : 2;
+        timer = setTimeout(step, 105);
+    }
+    function cycle() {
+        revealed = -1;
+        render();
+        timer = setTimeout(step, 105);
+    }
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        el.textContent = target;
+    } else {
+        cycle();
+    }
+})();
+</script>
 </body>
 </html>

@@ -6,43 +6,60 @@
 <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
 <title>Blog &amp; Novedades | Jesús Ferrer García (CHUS BZN)</title>
 <meta content="Blog profesional y canal de novedades de Jesús Ferrer García. Artículos sobre ingeniería audiovisual, integración de IA y tecnología broadcast." name="description"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script>
-    tailwind.config = {
-        darkMode: "class",
-        theme: {
-            extend: {
-                colors: {
-                    "accent-color": "#00a3ff",
-                    "accent-dim": "#004a77",
-                    "bg-color": "#020202",
-                    "surface-color": "#080808",
-                    "text-primary": "#f5f5f5",
-                    "text-secondary": "#a3a3a3"
-                },
-                fontFamily: {
-                    "sans": ["Libre Franklin", "sans-serif"],
-                    "mono": ["JetBrains Mono", "monospace"]
-                }
-            }
-        }
+<meta content="index, follow" name="robots"/>
+<link href="https://chusbzn.com/blog.html" rel="canonical"/>
+<!-- Open Graph -->
+<meta content="website" property="og:type"/>
+<meta content="https://chusbzn.com/blog.html" property="og:url"/>
+<meta content="Blog &amp; Novedades | Jesús Ferrer García (CHUS BZN)" property="og:title"/>
+<meta content="Blog profesional y canal de novedades de Jesús Ferrer García. Artículos sobre ingeniería audiovisual, integración de IA y tecnología broadcast." property="og:description"/>
+<meta content="https://chusbzn.com/assets/broadcast_control.png" property="og:image"/>
+<meta content="es_ES" property="og:locale"/>
+<meta content="CHUS BZN" property="og:site_name"/>
+<!-- Twitter Cards -->
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="https://chusbzn.com/blog.html" name="twitter:url"/>
+<meta content="Blog &amp; Novedades | Jesús Ferrer García (CHUS BZN)" name="twitter:title"/>
+<meta content="Blog profesional y canal de novedades de Jesús Ferrer García." name="twitter:description"/>
+<meta content="https://chusbzn.com/assets/broadcast_control.png" name="twitter:image"/>
+<!-- Structured Data (JSON-LD) -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "@id": "https://chusbzn.com/blog.html#blog",
+    "mainEntityOfPage": "https://chusbzn.com/blog.html",
+    "name": "Blog & Novedades | CHUS BZN",
+    "description": "Blog profesional y canal de novedades de Jesús Ferrer García. Artículos sobre ingeniería audiovisual, integración de IA y tecnología broadcast.",
+    "publisher": {
+        "@type": "ProfessionalService",
+        "@id": "https://chusbzn.com/#organization",
+        "name": "CHUS BZN"
     }
+}
 </script>
-<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,300;0,400;0,700;0,800;1,300&amp;family=JetBrains+Mono:wght@300;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="css/tailwind.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Hanken+Grotesk:ital,wght@0,300;0,400;0,600;0,700;1,300&amp;family=JetBrains+Mono:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
 <style>
     :root {
         --bg-color: #020202;
         --surface-color: #080808;
         --text-primary: #f5f5f5;
         --text-secondary: #a3a3a3;
-        --accent-color: #00a3ff;
-        --accent-dim: #004a77;
-        --font-main: 'Libre Franklin', sans-serif;
+        --accent-color: #FF1F1F;
+        --accent-dim: #571414;
+        --font-main: 'Hanken Grotesk', sans-serif;
         --font-mono: 'JetBrains Mono', monospace;
     }
 
     *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; scroll-padding-top: 85px; }
+    a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible, textarea:focus-visible {
+        outline: 2px solid var(--accent-color);
+        outline-offset: 2px;
+    }
     html, body {
         overflow-x: hidden;
         width: 100%;
@@ -87,8 +104,8 @@
         z-index: -1;
         pointer-events: none;
     }
-    .glow-1 { top: -10%; left: -10%; width: 50vw; height: 50vw; background: radial-gradient(circle, #004a77, transparent); }
-    .glow-2 { top: 40%; right: -20%; width: 60vw; height: 60vw; background: radial-gradient(circle, #002022, transparent); }
+    .glow-1 { top: -10%; left: -10%; width: 50vw; height: 50vw; background: radial-gradient(circle, #571414, transparent); }
+    .glow-2 { top: 40%; right: -20%; width: 60vw; height: 60vw; background: radial-gradient(circle, #1a0404, transparent); }
 
     /* ═══ HEADER ═══ */
     header {
@@ -270,9 +287,9 @@
         border-radius: 4px;
     }
     .blog-card:hover {
-        border-color: rgba(0,163,255,0.25);
+        border-color: rgba(255,31,31,0.5);
         transform: translateY(-4px);
-        box-shadow: 0 16px 36px rgba(0,0,0,0.5);
+        box-shadow: 0 16px 36px rgba(0,0,0,0.5), 0 0 20px rgba(255,31,31,0.15);
     }
     .blog-img-container {
         width: 100%;
@@ -369,7 +386,7 @@
 <div class="bg-glow glow-1"></div>
 <div class="bg-glow glow-2"></div>
 <!-- ═══ HEADER UNIFICADO (Simplificado: Solo botón de retorno) ═══ -->
-<header id="main-header" style="background: rgba(0,0,0,0.92); backdrop-filter: blur(16px); border-b: 1px solid rgba(255,255,255,0.1); position: fixed; top: 0; width: 100%; z-index: 1000; height: 80px;">
+<header id="main-header" style="background: rgba(0,0,0,0.92); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.1); position: fixed; top: 0; width: 100%; z-index: 1000; height: 80px;">
 <div class="nav-container" style="max-width: 1440px; margin: 0 auto; padding: 0 32px; height: 100%; display: flex; justify-content: space-between; align-items: center;">
 <a class="logo" href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 12px;">
 <img alt="CHUS BZN Logo Oficial" src="assets/logo.jpg" style="height: 44px; width: auto; object-fit: contain; border: 1px solid rgba(255,255,255,0.2); padding: 2px; border-radius: 4px;"/>
@@ -377,12 +394,20 @@
 </a>
 <!-- Botón único y claro de regreso a la Portada Principal -->
 <div style="display: flex; align-items: center; gap: 16px;">
+<button class="hamburger" id="hamburger-btn" aria-label="Abrir menú" aria-expanded="false" type="button">
+<span class="hamburger-bars" style="pointer-events: none;">
+<span></span>
+<span></span>
+<span></span>
+</span>
+<span class="font-mono text-[10px] tracking-widest uppercase" style="color: rgba(255,255,255,0.6); pointer-events: none;">MENÚ</span>
+</button>
 <a href="index.html" onmouseout="this.style.background='#FF1F1F'" onmouseover="this.style.background='#D91616'" style="background: #FF1F1F; color: #FFFFFF; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: bold; padding: 10px 20px; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; transition: background 0.3s;">
             ← VOLVER A PORTADA PRINCIPAL (CHUS BZN HUB)
         </a>
 <select id="lang-select" style="background: rgba(0,0,0,0.8); color: #fff; border: 1px solid rgba(255,255,255,0.2); font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; cursor: pointer; outline: none; padding: 6px 10px;">
 <option style="background: #000;" value="es">🇪🇸 ESPAÑOL</option>
-<option style="background: #000;" value="ca">🚩 CATALÀ</option>
+<option style="background: #000;" value="ca">CA - Català</option>
 <option style="background: #000;" value="en">🇬🇧 ENGLISH</option>
 <option style="background: #000;" value="it">🇮🇹 ITALIANO</option>
 <option style="background: #000;" value="de">🇩🇪 DEUTSCH</option>
@@ -407,7 +432,7 @@
 <span style="color:#ff0000; font-family:var(--font-mono); font-size:1rem; font-weight:bold; letter-spacing:1px; margin-top:20px; text-align:center;">IDIOMAS:</span>
 <select id="mobile-lang-select" style="background: transparent; color: rgba(255,255,255,0.7); border: none; font-family: var(--font-mono); font-size: 1.3rem; text-transform: uppercase; cursor: pointer; outline: none; margin-top: 10px; text-align: center;">
 <option style="background: #000;" value="es">🇪🇸 ESPAÑOL</option>
-<option style="background: #000;" value="ca">🚩 CATALÀ</option>
+<option style="background: #000;" value="ca">CA - Català</option>
 <option style="background: #000;" value="en">🇬🇧 ENGLISH</option>
 <option style="background: #000;" value="it">🇮🇹 ITALIANO</option>
 <option style="background: #000;" value="de">🇩🇪 DEUTSCH</option>
@@ -452,9 +477,17 @@
             readArticle: "Leer Artículo",
             loading: "Cargando entradas desde Blogger..."
         },
+        ca: {
+            readArticle: "Llegir Article",
+            loading: "Carregant entrades des de Blogger..."
+        },
         en: {
             readArticle: "Read Article",
             loading: "Loading posts from Blogger..."
+        },
+        it: {
+            readArticle: "Leggi Articolo",
+            loading: "Caricamento articoli da Blogger..."
         },
         de: {
             readArticle: "Artikel lesen",
@@ -507,33 +540,55 @@
         }
     ];
 
-    // ── Hamburger Menu ──────────────────────────────────
+    // ── Hamburger Menu (defensivo: un elemento ausente no aborta la carga del blog) ──
     const hamburgerBtn = document.getElementById('hamburger-btn');
     const mobileNav = document.getElementById('mobile-nav');
     const mobileLinks = document.querySelectorAll('.mobile-nav-link');
 
     function openMenu() {
-        mobileNav.classList.add('open');
-        hamburgerBtn.classList.add('open');
-        hamburgerBtn.setAttribute('aria-expanded', 'true');
+        if (mobileNav) mobileNav.classList.add('open');
+        if (hamburgerBtn) {
+            hamburgerBtn.classList.add('open');
+            hamburgerBtn.setAttribute('aria-expanded', 'true');
+        }
     }
     function closeMenu() {
-        mobileNav.classList.remove('open');
-        hamburgerBtn.classList.remove('open');
-        hamburgerBtn.setAttribute('aria-expanded', 'false');
+        if (mobileNav) mobileNav.classList.remove('open');
+        if (hamburgerBtn) {
+            hamburgerBtn.classList.remove('open');
+            hamburgerBtn.setAttribute('aria-expanded', 'false');
+        }
     }
-    hamburgerBtn.addEventListener('click', () => {
-        if (mobileNav.classList.contains('open')) closeMenu();
+    window.toggleMobileMenu = function(force) {
+        if (!mobileNav) return;
+        if (force === true) openMenu();
+        else if (force === false) closeMenu();
+        else if (mobileNav.classList.contains('open')) closeMenu();
         else openMenu();
-    });
+    };
+    if (hamburgerBtn) {
+        hamburgerBtn.addEventListener('click', () => {
+            if (mobileNav.classList.contains('open')) closeMenu();
+            else openMenu();
+        });
+    }
     mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
+
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && mobileNav && mobileNav.classList.contains('open')) {
+            closeMenu();
+            if (hamburgerBtn) hamburgerBtn.focus();
+        }
+    });
 
     // Helper: Formatear fecha localizada
     function formatDate(dateStr) {
         const currentLang = localStorage.getItem('site_lang') || 'es';
         const localeMap = {
             'es': 'es-ES',
+            'ca': 'ca-ES',
             'en': 'en-US',
+            'it': 'it-IT',
             'de': 'de-DE',
             'ru': 'ru-RU',
             'ja': 'ja-JP',
@@ -547,6 +602,10 @@
     }
 
     let loadedPosts = [];
+
+    function escapeHtml(str) {
+        return (str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+    }
 
     // Renderizar listado de posts
     function renderPosts(posts) {
@@ -566,13 +625,13 @@
             
             card.innerHTML = `
                 <div class="blog-img-container">
-                    <img src="${imageSrc}" alt="${post.title}" onerror="this.src='assets/mixing_console_bg.jpg'">
+                    <img src="${imageSrc}" alt="${escapeHtml(post.title)}" onerror="this.src='assets/mixing_console_bg.jpg'">
                 </div>
                 <div class="blog-content">
                     <div class="blog-date">${formatDate(post.published)}</div>
-                    <h3 class="blog-title">${post.title}</h3>
-                    <p class="blog-excerpt">${post.excerpt}</p>
-                    <a href="post.html?id=${post.id}" class="blog-link">
+                    <h3 class="blog-title">${escapeHtml(post.title)}</h3>
+                    <p class="blog-excerpt">${escapeHtml(post.excerpt)}</p>
+                    <a href="post.html?id=${encodeURIComponent(post.id)}" class="blog-link">
                         ${t.readArticle}
                         <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M4.5 2.5L8 6L4.5 9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>

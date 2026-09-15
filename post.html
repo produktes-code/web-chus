@@ -4,45 +4,68 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<link href="assets/logo.jpg" rel="icon" type="image/jpeg"/>
+<link href="assets/logo.jpg" rel="apple-touch-icon"/>
+<meta content="#000000" name="theme-color"/>
 <title>Artículo | Jesús Ferrer García (CHUS BZN)</title>
 <meta content="Artículo del blog profesional de Jesús Ferrer García. Ingeniería audiovisual, integración de IA y tecnología broadcast." name="description"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries,typography"></script>
-<script>
-    tailwind.config = {
-        darkMode: "class",
-        theme: {
-            extend: {
-                colors: {
-                    "accent-color": "#00a3ff",
-                    "accent-dim": "#004a77",
-                    "bg-color": "#020202",
-                    "surface-color": "#080808",
-                    "text-primary": "#f5f5f5",
-                    "text-secondary": "#a3a3a3"
-                },
-                fontFamily: {
-                    "sans": ["Libre Franklin", "sans-serif"],
-                    "mono": ["JetBrains Mono", "monospace"]
-                }
-            }
-        }
+<meta content="index, follow" name="robots"/>
+<link href="https://chusbzn.com/post.html" rel="canonical"/>
+<!-- Open Graph -->
+<meta content="article" property="og:type"/>
+<meta content="https://chusbzn.com/post.html" property="og:url"/>
+<meta content="Artículo | Jesús Ferrer García (CHUS BZN)" property="og:title"/>
+<meta content="Artículo del blog profesional de Jesús Ferrer García. Ingeniería audiovisual, integración de IA y tecnología broadcast." property="og:description"/>
+<meta content="https://chusbzn.com/assets/blog_acoustic.png" property="og:image"/>
+<meta content="es_ES" property="og:locale"/>
+<meta content="CHUS BZN" property="og:site_name"/>
+<!-- Twitter Cards -->
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="https://chusbzn.com/post.html" name="twitter:url"/>
+<meta content="Artículo | Jesús Ferrer García (CHUS BZN)" name="twitter:title"/>
+<meta content="Artículo del blog profesional de Jesús Ferrer García." name="twitter:description"/>
+<meta content="https://chusbzn.com/assets/blog_acoustic.png" name="twitter:image"/>
+<!-- Structured Data (JSON-LD) -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "@id": "https://chusbzn.com/post.html#article",
+    "mainEntityOfPage": "https://chusbzn.com/post.html",
+    "headline": "Artículo técnico CHUS BZN",
+    "publisher": {
+        "@type": "ProfessionalService",
+        "@id": "https://chusbzn.com/#organization",
+        "name": "CHUS BZN"
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Jesús Ferrer García"
     }
+}
 </script>
-<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,300;0,400;0,700;0,800;1,300&amp;family=JetBrains+Mono:wght@300;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="css/tailwind.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Hanken+Grotesk:ital,wght@0,300;0,400;0,600;0,700;1,300&amp;family=JetBrains+Mono:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
 <style>
     :root {
         --bg-color: #020202;
         --surface-color: #080808;
         --text-primary: #f5f5f5;
         --text-secondary: #a3a3a3;
-        --accent-color: #00a3ff;
-        --accent-dim: #004a77;
-        --font-main: 'Libre Franklin', sans-serif;
+        --accent-color: #FF1F1F;
+        --accent-dim: #571414;
+        --font-main: 'Hanken Grotesk', sans-serif;
         --font-mono: 'JetBrains Mono', monospace;
     }
 
     *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; scroll-padding-top: 85px; }
+    a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible, textarea:focus-visible {
+        outline: 2px solid var(--accent-color);
+        outline-offset: 2px;
+    }
     html, body {
         overflow-x: hidden;
         width: 100%;
@@ -82,8 +105,8 @@
         z-index: -1;
         pointer-events: none;
     }
-    .glow-1 { top: -10%; left: -10%; width: 50vw; height: 50vw; background: radial-gradient(circle, #004a77, transparent); }
-    .glow-2 { top: 40%; right: -20%; width: 60vw; height: 60vw; background: radial-gradient(circle, #002022, transparent); }
+    .glow-1 { top: -10%; left: -10%; width: 50vw; height: 50vw; background: radial-gradient(circle, #571414, transparent); }
+    .glow-2 { top: 40%; right: -20%; width: 60vw; height: 60vw; background: radial-gradient(circle, #1a0404, transparent); }
 
     /* ═══ HEADER ═══ */
     header {
@@ -269,6 +292,15 @@
         border-bottom: 1px solid rgba(255,255,255,0.06);
         padding-bottom: 32px;
         margin-bottom: 40px;
+        position: relative;
+    }
+    .post-header::after {
+        content: '';
+        position: absolute;
+        bottom: -1px; left: 0;
+        width: 80px; height: 2px;
+        background: linear-gradient(90deg, var(--accent-color), transparent);
+        box-shadow: 0 0 10px rgba(255, 31, 31, 0.5);
     }
     .post-date {
         font-family: var(--font-mono);
@@ -334,6 +366,99 @@
         margin: 32px 0;
     }
 
+    /* Glass Panels */
+    .glass-panel {
+        background: linear-gradient(180deg, rgba(30, 30, 30, 0.9), rgba(18, 18, 18, 0.85) 40%, rgba(11, 11, 11, 0.88));
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 10px 30px rgba(0, 0, 0, 0.4);
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+        will-change: transform;
+        transform: translate3d(0, 0, 0);
+    }
+    .glass-panel:hover {
+        border-color: rgba(255, 31, 31, 0.6);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07), 0 15px 35px rgba(0, 0, 0, 0.85), 0 0 25px rgba(255, 31, 31, 0.18);
+        transform: translateY(-4px);
+    }
+
+    /* Botón CTA con barrido de brillo (Coherente con index.html) */
+    .btn-cta {
+        position: relative;
+        overflow: hidden;
+        isolation: isolate;
+    }
+    .btn-cta::after {
+        content: '';
+        position: absolute;
+        top: 0; left: -120%;
+        width: 60%; height: 100%;
+        background: linear-gradient(105deg, transparent, rgba(255, 255, 255, 0.28), transparent);
+        transform: skewX(-20deg);
+        transition: left 0.55s ease;
+        z-index: -1;
+    }
+    .btn-cta:hover::after {
+        left: 160%;
+    }
+
+    /* Título con sombra cinematográfica */
+    .post-title {
+        text-shadow: 0 6px 40px rgba(0, 0, 0, 0.6), 0 2px 8px rgba(0, 0, 0, 0.7);
+    }
+
+    /* Clean Editorial Section Headlines (Coherente con index.html) */
+    .section-headline-clean {
+        position: relative;
+        display: inline-block;
+        color: #ffffff;
+        text-shadow: 0 4px 30px rgba(0, 0, 0, 0.55), 0 1px 2px rgba(0, 0, 0, 0.8);
+        letter-spacing: -0.5px;
+        transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
+    }
+    .section-headline-clean::before {
+        content: '///';
+        position: absolute;
+        top: 50%;
+        right: calc(100% + 18px);
+        transform: translateY(-50%);
+        font-family: var(--font-mono);
+        font-size: 0.45em;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        color: rgba(255, 31, 31, 0.9);
+        text-shadow: 0 0 14px rgba(255, 31, 31, 0.45);
+    }
+    .section-headline-clean::after {
+        content: '';
+        position: absolute;
+        bottom: -6px; left: 50%;
+        transform: translateX(-50%);
+        width: 60px; height: 3px;
+        background: linear-gradient(90deg, transparent, #ff1f1f 20%, #ff1f1f 80%, transparent);
+        box-shadow: 0 0 12px rgba(255, 31, 31, 0.55);
+        transition: width 0.4s ease;
+    }
+    .section-headline-clean:hover {
+        color: #ffffff;
+        transform: translateY(-2px);
+        text-shadow: 0 4px 30px rgba(255, 31, 31, 0.25), 0 1px 2px rgba(0, 0, 0, 0.8);
+    }
+    .section-headline-clean:hover::after {
+        width: 140px;
+    }
+    @media (max-width: 640px) {
+        .section-headline-clean::before {
+            display: none;
+        }
+    }
+
+    /* Fecha con glow sutil */
+    .post-date {
+        text-shadow: 0 0 14px rgba(255, 31, 31, 0.4);
+    }
+
     /* ═══ FOOTER ═══ */
     footer {
         padding: 60px 20px;
@@ -382,7 +507,7 @@
 <span style="color:#ff0000; font-family:var(--font-mono); font-size:0.75rem; font-weight:bold; letter-spacing:1px;">IDIOMAS:</span>
 <select id="lang-select" style="background: transparent; color: var(--text-secondary); border: none; font-family: var(--font-mono); font-size: 0.78rem; text-transform: uppercase; cursor: pointer; outline: none;">
 <option style="background: #000;" value="es">🇪🇸 ESPAÑOL</option>
-<option style="background: #000;" value="ca">🚩 CATALÀ</option>
+<option style="background: #000;" value="ca">CA - Català</option>
 <option style="background: #000;" value="en">🇬🇧 ENGLISH</option>
 <option style="background: #000;" value="it">🇮🇹 ITALIANO</option>
 <option style="background: #000;" value="de">🇩🇪 DEUTSCH</option>
@@ -413,7 +538,7 @@
 <span style="color:#ff0000; font-family:var(--font-mono); font-size:1rem; font-weight:bold; letter-spacing:1px; margin-top:20px; text-align:center;">IDIOMAS:</span>
 <select id="mobile-lang-select" style="background: transparent; color: rgba(255,255,255,0.7); border: none; font-family: var(--font-mono); font-size: 1.3rem; text-transform: uppercase; cursor: pointer; outline: none; margin-top: 10px; text-align: center;">
 <option style="background: #000;" value="es">🇪🇸 ESPAÑOL</option>
-<option style="background: #000;" value="ca">🚩 CATALÀ</option>
+<option style="background: #000;" value="ca">CA - Català</option>
 <option style="background: #000;" value="en">🇬🇧 ENGLISH</option>
 <option style="background: #000;" value="it">🇮🇹 ITALIANO</option>
 <option style="background: #000;" value="de">🇩🇪 DEUTSCH</option>
@@ -458,6 +583,15 @@
             backToBlog: "Volver al Blog",
             publishedOn: "PUBLICADO EL"
         },
+        ca: {
+            backToList: "Tornar al llistat",
+            loadingPost: "Carregant article...",
+            noId: "Error: ID d'article no especificat.",
+            notFound: "Article no trobat.",
+            errorLoading: "Error carregant l'article des de Blogger. Verifica la configuració de l'API i l'ID del post.",
+            backToBlog: "Tornar al Blog",
+            publishedOn: "PUBLICAT EL"
+        },
         en: {
             backToList: "Back to list",
             loadingPost: "Loading article...",
@@ -466,6 +600,15 @@
             errorLoading: "Error loading the article from Blogger. Please check the API settings and the post ID.",
             backToBlog: "Back to Blog",
             publishedOn: "PUBLISHED ON"
+        },
+        it: {
+            backToList: "Torna all'elenco",
+            loadingPost: "Caricamento articolo...",
+            noId: "Errore: ID articolo non specificato.",
+            notFound: "Articolo non trovato.",
+            errorLoading: "Errore durante il caricamento dell'articolo da Blogger. Controlla le impostazioni dell'API e l'ID del post.",
+            backToBlog: "Torna al Blog",
+            publishedOn: "PUBBLICATO IL"
         },
         de: {
             backToList: "Zurück zur Liste",
@@ -531,7 +674,7 @@
             content: `
                 <p>En el panorama audiovisual actual, la aceleración de flujos de trabajo en preproducción ya no es una opción de conveniencia, sino un imperativo de competitividad. Durante el desarrollo dramático del proyecto <strong>"Alpha Berracos"</strong>, nos enfrentamos a un reto clásico: cómo validar layouts de cámara e intenciones de iluminación con rapidez milimétrica antes de movilizar el hardware físico en plató. Este artículo documenta el proceso técnico completo que desplegamos para resolver esa ecuación.</p>
 
-                <img src="assets/blog_berracos.png" alt="Cámara Rig en set cinematográfico">
+                <img src="assets/blog_berracos.png" alt="Cámara Rig en set cinematográfico" loading="lazy">
 
                 <h2>Contexto del Proyecto: ¿Qué es "Alpha Berracos"?</h2>
                 <p>"Alpha Berracos" es un proyecto de ficción audiovisual de formato largo que combina narrativa dramática con estética documental de alto contraste. La dirección artística exigía un lenguaje visual muy concreto: planos sostenidos con ópticas anamórficas, iluminación contrastada de alto rango dinámico y una paleta cromática fría que evocara tensión sin recurrir a los clichés del thriller convencional. Desde la primera reunión de preproducción, el equipo técnico identificó que el mayor cuello de botella sería el tiempo de previsualización: validar encuadres, esquemas de luz y transiciones dramáticas antes de pagar el coste operativo de un rodaje real.</p>
@@ -570,7 +713,7 @@
             content: `
                 <p>La clonación neural de voz abre posibilidades asombrosas para la preservación del patrimonio de dobladores y locutores históricos, pero también abre un debate crítico sobre la propiedad de la biometría vocal. En un contexto donde la inteligencia artificial puede replicar con fidelidad asombrosa la voz de cualquier persona a partir de pocos minutos de audio de referencia, la pregunta fundamental ya no es "¿podemos hacerlo?", sino "¿bajo qué marco ético y jurídico debemos hacerlo?". En el marco del proyecto forense <strong>LEGADO_JFB</strong>, nos propusimos un reto doble: restaurar cintas analógicas históricas y generar un modelo neural legítimo bajo un estricto cumplimiento jurídico.</p>
 
-                <img src="assets/blog_biometric.png" alt="Consola de control y masterización">
+                <img src="assets/blog_biometric.png" alt="Consola de control y masterización" loading="lazy">
 
                 <h2>El Proyecto LEGADO_JFB: Contexto y Objetivos</h2>
                 <p>LEGADO_JFB nace de una necesidad real y urgente: preservar el legado vocal de artistas cuyo registro físico original se deteriora progresivamente en soportes magnéticos analógicos. Cintas de bobina abierta de 1/4 de pulgada almacenadas durante décadas en condiciones subóptimas (temperatura variable, humedad no controlada) que presentan problemas de <em>sticky-shed syndrome</em>, pérdida de óxido y distorsión de fase.</p>
@@ -609,7 +752,7 @@
             content: `
                 <p>Haber comenzado el oficio operando con sistemas analógicos puros de 35mm y cintas magnéticas de bobina abierta te da una perspectiva única sobre el comportamiento físico del sonido. Después de más de tres décadas trabajando con audio en entornos de emisión en directo, postproducción cinematográfica y masterización para plataformas globales, puedo afirmar que la evolución de las herramientas ha sido vertiginosa, pero los principios fundamentales de la acústica siguen siendo inmutables. Hoy en día, los procesadores de restauración basados en aprendizaje profundo nos permiten hacer cirugías espectrales que antes parecían pura ciencia ficción, pero solo si el ingeniero que los opera comprende la física subyacente.</p>
 
-                <img src="assets/blog_acoustic.png" alt="Sesión de mezcla en vivo de música avanzada">
+                <img src="assets/blog_acoustic.png" alt="Sesión de mezcla en vivo de música avanzada" loading="lazy">
 
                 <h2>Del Mundo Analógico al Digital: Una Transición que Viví en Primera Persona</h2>
                 <p>Mi primer contacto con la ingeniería de sonido fue en un estudio donde la mesa de mezclas era una Neve 8068 y la grabación se hacía en un Studer A800 multripista de 2 pulgadas. En aquel contexto, cada decisión era irreversible: la ecualización se imprimía en cinta, la compresión era definitiva y la edición consistía literalmente en cortar la cinta con una cuchilla y empalmarla con cinta adhesiva de óxido de hierro. Esta disciplina forzosa — que no admitía "Ctrl+Z" — moldeó una filosofía de trabajo que conservo hasta hoy: comprometer el sonido desde la fuente, con la mínima cadena de procesado posible.</p>
@@ -664,12 +807,21 @@
     });
     mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
 
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && mobileNav && mobileNav.classList.contains('open')) {
+            closeMenu();
+            if (hamburgerBtn) hamburgerBtn.focus();
+        }
+    });
+
     // Helper: Formatear fecha localizada
     function formatDate(dateStr) {
         const currentLang = localStorage.getItem('site_lang') || 'es';
         const localeMap = {
             'es': 'es-ES',
+            'ca': 'ca-ES',
             'en': 'en-US',
+            'it': 'it-IT',
             'de': 'de-DE',
             'ru': 'ru-RU',
             'ja': 'ja-JP',
@@ -743,7 +895,7 @@
             articleContainer.innerHTML = `
                 <div class="post-header">
                     <div class="post-date">// ${t.publishedOn} ${formatDate(post.published)}</div>
-                    <h1 class="post-title">${post.title}</h1>
+                    <h1 class="post-title">${escapeHtml(post.title)}</h1>
                 </div>
                 <div class="post-body prose prose-invert prose-custom text-justify">
                     ${post.content}
@@ -751,7 +903,7 @@
                 <!-- ═══ SECCIÓN DE COMENTARIOS & DEBATE PROFESIONAL ═══ -->
                 <div class="mt-16 pt-10 border-t border-white/15 space-y-8">
                     <div class="flex items-center justify-between">
-                        <h3 class="font-headline text-2xl text-white uppercase tracking-tight">// COMENTARIOS &amp; DEBATE TÉCNICO</h3>
+                        <h3 class="font-headline text-2xl text-white uppercase tracking-tight section-headline-clean">// COMENTARIOS &amp; DEBATE TÉCNICO</h3>
                         <span class="font-mono text-xs text-signal-red font-bold" id="comments-count">[ 3 COMENTARIOS AUDITADOS ]</span>
                     </div>
                     <div class="space-y-4 font-sans text-xs" id="comments-list">
@@ -789,7 +941,7 @@
                             <input type="email" id="c-email" placeholder="Email corporativo (opcional)" class="bg-black/80 border border-white/20 p-3 text-xs font-mono text-white rounded outline-none focus:border-signal-red">
                         </div>
                         <textarea id="c-text" rows="3" required placeholder="Escribe tu observación o comentario técnico..." class="w-full bg-black/80 border border-white/20 p-3 text-xs font-mono text-white rounded outline-none focus:border-signal-red"></textarea>
-                        <button type="submit" class="bg-signal-red hover:bg-white text-white hover:text-signal-red font-mono text-xs px-6 py-2.5 uppercase font-bold tracking-wider transition-all rounded shadow-lg cursor-pointer">ENVIAR COMENTARIO →</button>
+                        <button type="submit" class="bg-signal-red hover:bg-white text-white hover:text-signal-red font-mono text-xs px-6 py-2.5 uppercase font-bold tracking-wider transition-all rounded shadow-lg cursor-pointer btn-cta">ENVIAR COMENTARIO →</button>
                     </form>
                 </div>
             `;
@@ -813,19 +965,6 @@
             }
             renderState();
             initCommentsSystem(targetPostId);
-            return;
-        }
-
-        // Si es un post simulado (empieza por mock-)
-        if (postId.startsWith('mock-')) {
-            const post = mockPosts[postId];
-            if (post) {
-                pageState.status = 'loaded';
-                pageState.post = post;
-            } else {
-                pageState.status = 'not-found';
-            }
-            renderState();
             return;
         }
 
