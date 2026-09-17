@@ -11,17 +11,17 @@
 <!-- Open Graph -->
 <meta content="website" property="og:type"/>
 <meta content="https://chusbzn.com/blog.html" property="og:url"/>
-<meta content="Blog &amp; Novedades | Jesús Ferrer García (CHUS BZN)" property="og:title"/>
-<meta content="Blog profesional y canal de novedades de Jesús Ferrer García. Artículos sobre ingeniería audiovisual, integración de IA y tecnología broadcast." property="og:description"/>
-<meta content="https://chusbzn.com/assets/broadcast_control.png" property="og:image"/>
-<meta content="es_ES" property="og:locale"/>
+<meta content="Blog &amp; Novedades | Jesús Ferrer García (CHUS BZN)" property="og:title" data-i18n-content="t_title_blog"/>
+<meta content="Blog profesional y canal de novedades de Jesús Ferrer García. Artículos sobre ingeniería audiovisual, integración de IA y tecnología broadcast." property="og:description" data-i18n-content="t_desc_blog"/>
+<meta content="https://chusbzn.com/assets/vintage_mixing.webp" property="og:image"/>
+<meta content="es_ES" property="og:locale" data-i18n-og-locale/>
 <meta content="CHUS BZN" property="og:site_name"/>
 <!-- Twitter Cards -->
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="https://chusbzn.com/blog.html" name="twitter:url"/>
-<meta content="Blog &amp; Novedades | Jesús Ferrer García (CHUS BZN)" name="twitter:title"/>
-<meta content="Blog profesional y canal de novedades de Jesús Ferrer García." name="twitter:description"/>
-<meta content="https://chusbzn.com/assets/broadcast_control.png" name="twitter:image"/>
+<meta content="Blog &amp; Novedades | Jesús Ferrer García (CHUS BZN)" name="twitter:title" data-i18n-content="t_title_blog"/>
+<meta content="Blog profesional y canal de novedades de Jesús Ferrer García." name="twitter:description" data-i18n-content="t_desc_blog"/>
+<meta content="https://chusbzn.com/assets/vintage_mixing.webp" name="twitter:image"/>
 <!-- Structured Data (JSON-LD) -->
 <script type="application/ld+json">
 {
@@ -400,12 +400,12 @@
 <span></span>
 <span></span>
 </span>
-<span class="font-mono text-[10px] tracking-widest uppercase" style="color: rgba(255,255,255,0.6); pointer-events: none;">MENÚ</span>
+<span class="font-mono text-[10px] tracking-widest uppercase" style="color: rgba(255,255,255,0.6); pointer-events: none;" data-i18n="t_ui_menu">MENÚ</span>
 </button>
 <a href="index.html" onmouseout="this.style.background='#FF1F1F'" onmouseover="this.style.background='#D91616'" style="background: #FF1F1F; color: #FFFFFF; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: bold; padding: 10px 20px; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; transition: background 0.3s;">
             ← VOLVER A PORTADA PRINCIPAL (CHUS BZN HUB)
         </a>
-<select id="lang-select" style="background: rgba(0,0,0,0.8); color: #fff; border: 1px solid rgba(255,255,255,0.2); font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; cursor: pointer; outline: none; padding: 6px 10px;">
+<select aria-label="Seleccionar idioma" data-i18n-aria="t_aria_lang" id="lang-select" style="background: rgba(0,0,0,0.8); color: #fff; border: 1px solid rgba(255,255,255,0.2); font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; cursor: pointer; outline: none; padding: 6px 10px;">
 <option style="background: #000;" value="es">🇪🇸 ESPAÑOL</option>
 <option style="background: #000;" value="ca">CA - Català</option>
 <option style="background: #000;" value="en">🇬🇧 ENGLISH</option>
@@ -430,7 +430,7 @@
 <a class="mobile-nav-link" data-i18n="t_13" href="index.html#github">06. GitHub Pool</a>
 <a class="mobile-nav-link" data-i18n="t_125" href="blog.html">07. Blog</a>
 <span style="color:#ff0000; font-family:var(--font-mono); font-size:1rem; font-weight:bold; letter-spacing:1px; margin-top:20px; text-align:center;">IDIOMAS:</span>
-<select id="mobile-lang-select" style="background: transparent; color: rgba(255,255,255,0.7); border: none; font-family: var(--font-mono); font-size: 1.3rem; text-transform: uppercase; cursor: pointer; outline: none; margin-top: 10px; text-align: center;">
+<select aria-label="Seleccionar idioma" data-i18n-aria="t_aria_lang" id="mobile-lang-select" style="background: transparent; color: rgba(255,255,255,0.7); border: none; font-family: var(--font-mono); font-size: 1.3rem; text-transform: uppercase; cursor: pointer; outline: none; margin-top: 10px; text-align: center;">
 <option style="background: #000;" value="es">🇪🇸 ESPAÑOL</option>
 <option style="background: #000;" value="ca">CA - Català</option>
 <option style="background: #000;" value="en">🇬🇧 ENGLISH</option>
@@ -462,7 +462,7 @@
 </div>
 </div>
 <footer>
-    [ TERMINAL ABIERTA ] // COPYRIGHT 2026 JESÚS FERRER GARCÍA // ALL SYSTEMS OPERATIONAL
+    <span data-i18n="t_footer_terminal">[ TERMINAL ABIERTA ] // COPYRIGHT 2026 JESÚS FERRER GARCÍA // ALL SYSTEMS OPERATIONAL</span>
 </footer>
 <script>
     // ── CONFIGURACIÓN DE BLOGGER ────────────────────────
@@ -522,21 +522,21 @@
             title: "Dirección Técnica Asistida por IA en 'Alpha Berracos'",
             published: "2026-06-15T12:00:00Z",
             excerpt: "Documentamos el pipeline híbrido IA + cinematografía que redujo un 65% los tiempos de previsualización. Prompting técnico con parámetros de óptica Cooke Anamórficas, iluminación 3 puntos y renderizado controlado con ComfyUI sobre RTX 4090.",
-            imageUrl: "assets/blog_berracos.png"
+            imageUrl: "assets/blog_berracos.webp"
         },
         {
             id: "mock-2",
             title: "Soberanía Biométrica y la EU AI Act en la Clonación de Voz",
             published: "2026-05-28T09:30:00Z",
             excerpt: "Análisis exhaustivo del marco jurídico de la EU AI Act aplicado al proyecto forense LEGADO_JFB: restauración de cintas analógicas, entrenamiento TTS neural y blindaje ético con AISGE, AIE y SGAE para la preservación del patrimonio vocal.",
-            imageUrl: "assets/blog_biometric.png"
+            imageUrl: "assets/blog_biometric.webp"
         },
         {
             id: "mock-3",
             title: "Acústica y Masterización: de la Cinta Abierta a los Procesadores Neurales",
             published: "2026-04-12T16:45:00Z",
             excerpt: "Tres décadas de evolución técnica: desde la Neve 8068 y el Studer A800 hasta iZotope RX 11 y SpectraLayers Pro. Técnicas de separación de fuentes, de-reverb neural, y masterización EBU R128 para Netflix, HBO y emisión televisiva.",
-            imageUrl: "assets/blog_acoustic.png"
+            imageUrl: "assets/blog_acoustic.webp"
         }
     ];
 
@@ -621,11 +621,11 @@
             const card = document.createElement('div');
             card.className = 'blog-card';
             
-            const imageSrc = post.imageUrl || 'assets/mixing_console_bg.jpg';
+            const imageSrc = post.imageUrl || 'assets/mixing_console_bg.webp';
             
             card.innerHTML = `
                 <div class="blog-img-container">
-                    <img src="${imageSrc}" alt="${escapeHtml(post.title)}" onerror="this.src='assets/mixing_console_bg.jpg'">
+                    <img src="${imageSrc}" alt="${escapeHtml(post.title)}" onerror="this.src='assets/mixing_console_bg.webp'">
                 </div>
                 <div class="blog-content">
                     <div class="blog-date">${formatDate(post.published)}</div>
@@ -693,7 +693,7 @@
                 }
             } catch (err) {
                 // Si la API remota falla o tarda, mantenemos la carga instantánea local
-                console.error("API de Blogger falló o tardó demasiado, usando posts de fallback:", err);
+                console.warn("API de Blogger no disponible; usando posts de fallback:", err);
             }
         }
     }

@@ -15,16 +15,16 @@
 <!-- Open Graph -->
 <meta content="website" property="og:type"/>
 <meta content="https://chusbzn.com/" property="og:url"/>
-<meta content="CHUS BZN | Agencia &amp; Estudio de Proyectos Audiovisuales &amp; Tecnológicos" property="og:title"/>
-<meta content="CHUS BZN es una firma y colectivo de ingeniería audiovisual, creación multimedia y desarrollo tecnológico en Barcelona. Vídeo IA, Sonido EBU R128, Streaming, DJ Live, Web Apps, e Implantación de IA en Empresas." property="og:description"/>
+<meta content="CHUS BZN | Agencia &amp; Estudio de Proyectos Audiovisuales &amp; Tecnológicos" property="og:title" data-i18n-content="t_title_index"/>
+<meta content="CHUS BZN es una firma y colectivo de ingeniería audiovisual, creación multimedia y desarrollo tecnológico en Barcelona. Vídeo IA, Sonido EBU R128, Streaming, DJ Live, Web Apps, e Implantación de IA en Empresas." property="og:description" data-i18n-content="t_desc_index"/>
 <meta content="https://chusbzn.com/assets/artistic_portrait.png" property="og:image"/>
-<meta content="es_ES" property="og:locale"/>
+<meta content="es_ES" property="og:locale" data-i18n-og-locale/>
 <meta content="CHUS BZN" property="og:site_name"/>
 <!-- Twitter Cards -->
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="https://chusbzn.com/" name="twitter:url"/>
-<meta content="CHUS BZN | Agencia &amp; Estudio de Proyectos Audiovisuales &amp; Tecnológicos" name="twitter:title"/>
-<meta content="CHUS BZN es una firma y colectivo de ingeniería audiovisual, creación multimedia y desarrollo tecnológico en Barcelona." name="twitter:description"/>
+<meta content="CHUS BZN | Agencia &amp; Estudio de Proyectos Audiovisuales &amp; Tecnológicos" name="twitter:title" data-i18n-content="t_title_index"/>
+<meta content="CHUS BZN es una firma y colectivo de ingeniería audiovisual, creación multimedia y desarrollo tecnológico en Barcelona." name="twitter:description" data-i18n-content="t_desc_index"/>
 <meta content="https://chusbzn.com/assets/artistic_portrait.png" name="twitter:image"/>
 <!-- Structured Data (JSON-LD) -->
 <script type="application/ld+json">
@@ -109,6 +109,9 @@
 
     .hero-title {
         text-shadow: 0 6px 40px rgba(0, 0, 0, 0.6), 0 2px 8px rgba(0, 0, 0, 0.7);
+    }
+    html {
+        overflow-x: hidden;
     }
     body {
         background-color: var(--bg-black);
@@ -729,6 +732,32 @@
     .service-card-enhanced:hover { transform: translateY(-4px); }
     #redes .glass-panel:hover,
     #ecosistema .glass-panel:hover { transform: translateY(-3px); }
+    /* Photo banners: fondo fotográfico + scrim azul/negro para legibilidad */
+    .photo-banner {
+        position: relative;
+        background-color: #060b16;
+        background-size: cover !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+    }
+    .photo-banner::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        background: linear-gradient(180deg, rgba(4, 8, 18, 0.90) 0%, rgba(10, 20, 40, 0.78) 38%, rgba(8, 16, 34, 0.86) 72%, rgba(4, 8, 18, 0.94) 100%);
+    }
+    .photo-banner > * { position: relative; z-index: 1; }
+    .photo-banner .photo-accent {
+        display: block;
+        font-size: 10px;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.42);
+        font-family: var(--font-mono, monospace);
+        margin-bottom: 0.6rem;
+    }
     
 </style>
 </head>
@@ -798,7 +827,7 @@
 </select>
 <!-- CTA Presupuesto Button (Único botón CTA de encargo) -->
 <a class="hidden sm:inline-flex bg-white text-black font-mono text-xs font-bold px-4 py-2 uppercase tracking-wider hover:bg-signal-red hover:text-white transition-all" data-i18n="t_141" href="#presupuesto">
-<span>ENCARGO 24H</span>
+<span>PRESUPUESTO</span>
 </a>
 <!-- Mobile Hamburger Button -->
 <button aria-label="Menú móvil" data-i18n-aria="t_aria_mmenu" class="xl:hidden p-2 text-white hover:text-signal-red focus:outline-none cursor-pointer" id="mobile-btn" onclick="toggleMobileMenu(true); event.stopPropagation();">
@@ -816,53 +845,52 @@
 <a class="mobile-link text-xl font-headline uppercase tracking-widest text-white hover:text-signal-red" data-i18n="t_130" href="#showcase" onclick="toggleMobileMenu(false);">04. Vídeos en Vivo</a>
 <a class="mobile-link text-xl font-headline uppercase tracking-widest text-white hover:text-signal-red" data-i18n="t_131" href="#metodologia" onclick="toggleMobileMenu(false);">05. Perfil &amp; Trayectoria</a>
 <a class="mobile-link text-xl font-headline uppercase tracking-widest text-white hover:text-signal-red" data-i18n="t_132" href="blog.html" onclick="toggleMobileMenu(false);">06. Blog</a>
-<a class="mobile-link text-xl font-headline uppercase tracking-widest text-signal-red" data-i18n="t_142" href="#presupuesto" onclick="toggleMobileMenu(false);">07. Encargo 24h</a>
+<a class="mobile-link text-xl font-headline uppercase tracking-widest text-signal-red" data-i18n="t_142" href="#presupuesto" onclick="toggleMobileMenu(false);">07. Pedir Presupuesto</a>
 </div>
 <main class="relative z-10 pt-20">
 <!-- Dynamic Glow & Organic Orbs Background -->
 <div class="organic-orb-1"></div>
 <div class="organic-orb-2"></div>
 <!-- ═══ HERO PRINCIPAL CON EFECTO TYPEWRITER & MATRIX RAIN STREAM ═══ -->
-<section class="py-16 px-6 sm:px-10 max-w-[1440px] mx-auto flex flex-col justify-center relative min-h-[85vh]">
+<section class="photo-banner py-16 px-6 sm:px-10 max-w-[1440px] mx-auto flex flex-col justify-center relative min-h-[85vh]" style="background-image:url('assets/vintage_mixing.webp')">
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 w-full items-center">
 <!-- Left Hero Content -->
 <div class="lg:col-span-7 space-y-8 reveal active order-first lg:order-first">
 <div class="inline-flex items-center gap-3 border border-signal-red/30 px-4 py-2 bg-surface-dim/90 backdrop-blur-md h-10 min-h-[40px] max-h-[40px] overflow-hidden w-full max-w-full flex-nowrap">
 <span class="status-pip"></span>
-<span class="font-mono text-[10px] sm:text-[11px] text-terminal-green tracking-widest uppercase whitespace-nowrap truncate overflow-hidden block w-full text-ellipsis" id="typewriter-sub">
+<span class="font-mono text-[10px] sm:text-[11px] text-terminal-green tracking-widest uppercase whitespace-nowrap truncate overflow-hidden block w-full text-ellipsis" data-i18n="t_boot_1" id="typewriter-sub">
                         &gt; CARGANDO NODO BROADCAST BARCELONA...
                     </span>
 </div>
 <div class="space-y-4">
 <h1 class="font-headline text-5xl sm:text-7xl lg:text-8xl uppercase leading-[0.92] tracking-tight hero-title" data-i18n="t_144">
-                        PROYECTOS AUDIOVISUALES <br/>
-<span class="text-signal-red">&amp; TECNOLÓGICOS A MEDIDA</span>
+                        TU NEGOCIO TIENE HISTORIAS QUE CONTAR <br/> <span class="text-signal-red">Y NOSOTROS LAS HACEMOS SONAR</span>
 </h1>
 <p class="font-sans text-base sm:text-xl text-text-secondary max-w-2xl font-light leading-relaxed" data-i18n="t_145">
-<strong>CHUS BZN</strong> es una firma y colectivo de ingeniería audiovisual en Barcelona especializado en el diseño, desarrollo e implantación de soluciones multimedia complejas, cine asistido por Inteligencia Artificial y arquitecturas digitales para marcas y empresas.
+<strong>CHUS BZN</strong> es un estudio audiovisual en Barcelona. Sonido e imagen profesionales para que tu negocio comunique como las grandes: vídeo, música, streaming y contenidos con IA, con la experiencia de más de 30 años y la cercanía de un taller.
                     </p>
 </div>
 <div class="flex flex-wrap items-center gap-4 pt-2">
 <a class="bg-signal-red text-white font-mono text-xs font-bold px-8 py-4 uppercase tracking-widest hover:bg-signal-red-hover transition-all shadow-lg hover:shadow-signal-red/30 btn-cta" data-i18n="t_146" href="#presupuesto">
-<span>SOLICITAR ENCARGO A MEDIDA</span>
+<span>PEDIR PRESUPUESTO</span>
 </a>
 <a class="bg-transparent border border-white/20 text-white font-mono text-xs font-medium px-8 py-4 uppercase tracking-widest hover:border-signal-red hover:text-signal-red transition-all btn-cta" data-i18n="t_147" href="#showcase">
-<span>VER VÍDEOS EN VIVO EN LA WEB</span>
+<span>VER NUESTRO TRABAJO</span>
 </a>
 </div>
 <!-- Live Commercial Specs Strip -->
 <div class="pt-6 grid grid-cols-3 gap-4 border-t border-white/10 font-mono text-xs">
 <div>
 <span class="text-signal-red font-headline text-2xl block">100%</span>
-<span class="text-white/60 text-[10px] uppercase" data-i18n="t_148">Proyectos a Medida</span>
+<span class="text-white/60 text-[10px] uppercase" data-i18n="t_148">Proyectos a tu medida</span>
 </div>
 <div>
 <span class="text-signal-red font-headline text-2xl block" data-i18n="t_149">BROADCAST</span>
-<span class="text-white/60 text-[10px] uppercase" data-i18n="t_150">Estándar EBU R128</span>
+<span class="text-white/60 text-[10px] uppercase" data-i18n="t_150">Sonido e imagen profesionales</span>
 </div>
 <div>
-<span class="text-signal-red font-headline text-2xl block" data-i18n="t_151">EU AI ACT</span>
-<span class="text-white/60 text-[10px] uppercase" data-i18n="t_152">Garantía Legal</span>
+<span class="text-signal-red font-headline text-2xl block" data-i18n="t_151">24H</span>
+<span class="text-white/60 text-[10px] uppercase" data-i18n="t_152">Respuesta en &lt; 24h laborables · disponibles 365 días</span>
 </div>
 </div>
 </div>
@@ -894,260 +922,295 @@
 <!-- ═══ MARQUESINA ANIMADA DE TEXTO EN MOVIMIENTO (Combinación Rojo & Blanco) ═══ -->
 <div class="marquee-container my-8" role="presentation" aria-label="Servicios: vídeo creativo, diseño sonoro, broadcasting, desarrollo web e IA, formación" data-i18n-aria="t_aria_servicios">
 <div class="marquee-track font-headline text-2xl sm:text-4xl uppercase tracking-widest gap-8">
-<span class="txt-red" data-i18n="t_155">VÍDEO CREATIVO &amp; SPOTS IA</span> <span class="text-white font-bold">//</span>
-<span class="txt-white" data-i18n="t_156">DISEÑO SONORO EBU R128</span> <span class="text-signal-red">//</span>
-<span class="txt-red" data-i18n="t_157">DIRECTOS BROADCAST &amp; STREAMING 360°</span> <span class="text-white font-bold">//</span>
-<span class="txt-white" data-i18n="t_158">DJ LIVE PERFORMANCE &amp; REMEZCLAS</span> <span class="text-signal-red">//</span>
-<span class="txt-red" data-i18n="t_159">DESARROLLO WEB &amp; WEB APPS</span> <span class="text-white font-bold">//</span>
-<span class="txt-white" data-i18n="t_160">IMPLANTACIÓN DE IA EN EMPRESAS</span> <span class="text-signal-red">//</span>
-<span class="txt-red" data-i18n="t_161">FORMACIÓN TECNOLÓGICA &amp; VIBE CODING</span> <span class="text-white font-bold">//</span>
+<span class="txt-red" data-i18n="t_155">VÍDEO CORPORATIVO & DEMOS</span> <span class="text-white font-bold">//</span>
+<span class="txt-white" data-i18n="t_156">SPOTS PARA REDES SOCIALES</span> <span class="text-signal-red">//</span>
+<span class="txt-red" data-i18n="t_157">DIRECTOS & STREAMING</span> <span class="text-white font-bold">//</span>
+<span class="txt-white" data-i18n="t_158">PODCAST & VIDEOPODCAST</span> <span class="text-signal-red">//</span>
+<span class="txt-red" data-i18n="t_159">SONIDO & MÚSICA PARA TU MARCA</span> <span class="text-white font-bold">//</span>
+<span class="txt-white" data-i18n="t_160">CONTENIDOS CON INTELIGENCIA ARTIFICIAL</span> <span class="text-signal-red">//</span>
+<span class="txt-red" data-i18n="t_161">ESTUDIO AUDIOVISUAL EN BARCELONA</span> <span class="text-white font-bold">//</span>
 <!-- Repetición continua para bucle fluido de marquesina (aria-hidden: contenido decorativo duplicado idéntico) -->
 <span aria-hidden="true" style="display: contents;">
-<span class="txt-red" data-i18n="t_155">VÍDEO CREATIVO &amp; SPOTS IA</span> <span class="text-white font-bold">//</span>
-<span class="txt-white" data-i18n="t_156">DISEÑO SONORO EBU R128</span> <span class="text-signal-red">//</span>
-<span class="txt-red" data-i18n="t_157">DIRECTOS BROADCAST &amp; STREAMING 360°</span> <span class="text-white font-bold">//</span>
-<span class="txt-white" data-i18n="t_158">DJ LIVE PERFORMANCE &amp; REMEZCLAS</span> <span class="text-signal-red">//</span>
-<span class="txt-red" data-i18n="t_159">DESARROLLO WEB &amp; WEB APPS</span> <span class="text-white font-bold">//</span>
-<span class="txt-white" data-i18n="t_160">IMPLANTACIÓN DE IA EN EMPRESAS</span> <span class="text-signal-red">//</span>
-<span class="txt-red" data-i18n="t_161">FORMACIÓN TECNOLÓGICA &amp; VIBE CODING</span> <span class="text-white font-bold">//</span>
+<span class="txt-red" data-i18n="t_155">VÍDEO CORPORATIVO & DEMOS</span> <span class="text-white font-bold">//</span>
+<span class="txt-white" data-i18n="t_156">SPOTS PARA REDES SOCIALES</span> <span class="text-signal-red">//</span>
+<span class="txt-red" data-i18n="t_157">DIRECTOS & STREAMING</span> <span class="text-white font-bold">//</span>
+<span class="txt-white" data-i18n="t_158">PODCAST & VIDEOPODCAST</span> <span class="text-signal-red">//</span>
+<span class="txt-red" data-i18n="t_159">SONIDO & MÚSICA PARA TU MARCA</span> <span class="text-white font-bold">//</span>
+<span class="txt-white" data-i18n="t_160">CONTENIDOS CON INTELIGENCIA ARTIFICIAL</span> <span class="text-signal-red">//</span>
+<span class="txt-red" data-i18n="t_161">ESTUDIO AUDIOVISUAL EN BARCELONA</span> <span class="text-white font-bold">//</span>
 </span>
 </div>
 <!-- Capa en contracorriente (decorativa, misma cinta en dirección opuesta y semi-transparente) -->
 <div class="marquee-track marquee-track--back font-headline uppercase tracking-widest gap-8" aria-hidden="true">
-<span class="txt-red" data-i18n="t_155">VÍDEO CREATIVO &amp; SPOTS IA</span> <span class="text-white font-bold">//</span>
-<span class="txt-white" data-i18n="t_156">DISEÑO SONORO EBU R128</span> <span class="text-signal-red">//</span>
-<span class="txt-red" data-i18n="t_157">DIRECTOS BROADCAST &amp; STREAMING 360°</span> <span class="text-white font-bold">//</span>
-<span class="txt-white" data-i18n="t_158">DJ LIVE PERFORMANCE &amp; REMEZCLAS</span> <span class="text-signal-red">//</span>
-<span class="txt-red" data-i18n="t_159">DESARROLLO WEB &amp; WEB APPS</span> <span class="text-white font-bold">//</span>
-<span class="txt-white" data-i18n="t_160">IMPLANTACIÓN DE IA EN EMPRESAS</span> <span class="text-signal-red">//</span>
-<span class="txt-red" data-i18n="t_161">FORMACIÓN TECNOLÓGICA &amp; VIBE CODING</span> <span class="text-white font-bold">//</span>
+<span class="txt-red" data-i18n="t_155">VÍDEO CORPORATIVO & DEMOS</span> <span class="text-white font-bold">//</span>
+<span class="txt-white" data-i18n="t_156">SPOTS PARA REDES SOCIALES</span> <span class="text-signal-red">//</span>
+<span class="txt-red" data-i18n="t_157">DIRECTOS & STREAMING</span> <span class="text-white font-bold">//</span>
+<span class="txt-white" data-i18n="t_158">PODCAST & VIDEOPODCAST</span> <span class="text-signal-red">//</span>
+<span class="txt-red" data-i18n="t_159">SONIDO & MÚSICA PARA TU MARCA</span> <span class="text-white font-bold">//</span>
+<span class="txt-white" data-i18n="t_160">CONTENIDOS CON INTELIGENCIA ARTIFICIAL</span> <span class="text-signal-red">//</span>
+<span class="txt-red" data-i18n="t_161">ESTUDIO AUDIOVISUAL EN BARCELONA</span> <span class="text-white font-bold">//</span>
 <span aria-hidden="true" style="display: contents;">
-<span class="txt-red" data-i18n="t_155">VÍDEO CREATIVO &amp; SPOTS IA</span> <span class="text-white font-bold">//</span>
-<span class="txt-white" data-i18n="t_156">DISEÑO SONORO EBU R128</span> <span class="text-signal-red">//</span>
-<span class="txt-red" data-i18n="t_157">DIRECTOS BROADCAST &amp; STREAMING 360°</span> <span class="text-white font-bold">//</span>
-<span class="txt-white" data-i18n="t_158">DJ LIVE PERFORMANCE &amp; REMEZCLAS</span> <span class="text-signal-red">//</span>
-<span class="txt-red" data-i18n="t_159">DESARROLLO WEB &amp; WEB APPS</span> <span class="text-white font-bold">//</span>
-<span class="txt-white" data-i18n="t_160">IMPLANTACIÓN DE IA EN EMPRESAS</span> <span class="text-signal-red">//</span>
-<span class="txt-red" data-i18n="t_161">FORMACIÓN TECNOLÓGICA &amp; VIBE CODING</span> <span class="text-white font-bold">//</span>
+<span class="txt-red" data-i18n="t_155">VÍDEO CORPORATIVO & DEMOS</span> <span class="text-white font-bold">//</span>
+<span class="txt-white" data-i18n="t_156">SPOTS PARA REDES SOCIALES</span> <span class="text-signal-red">//</span>
+<span class="txt-red" data-i18n="t_157">DIRECTOS & STREAMING</span> <span class="text-white font-bold">//</span>
+<span class="txt-white" data-i18n="t_158">PODCAST & VIDEOPODCAST</span> <span class="text-signal-red">//</span>
+<span class="txt-red" data-i18n="t_159">SONIDO & MÚSICA PARA TU MARCA</span> <span class="text-white font-bold">//</span>
+<span class="txt-white" data-i18n="t_160">CONTENIDOS CON INTELIGENCIA ARTIFICIAL</span> <span class="text-signal-red">//</span>
+<span class="txt-red" data-i18n="t_161">ESTUDIO AUDIOVISUAL EN BARCELONA</span> <span class="text-white font-bold">//</span>
 </span>
 </div>
 </div>
 </div>
+
+<!-- ═══ REJILLA INTERACTIVA DE 10 SERVICIOS ═══ -->
+<section class="photo-banner py-24 border-t border-white/10 bg-white/[0.01] reveal" id="servicios" style="background-image:url('assets/mixing_console_bg.webp')">
+<div class="max-w-[1440px] mx-auto px-6 sm:px-10">
+<div class="text-center space-y-4 mb-16 max-w-3xl mx-auto">
+<span class="font-mono text-signal-red text-xs uppercase tracking-widest" data-i18n="t_172">// QUÉ PODEMOS HACER POR TU NEGOCIO</span>
+<h2 class="font-headline text-4xl sm:text-6xl uppercase text-white tracking-tight section-headline-clean" data-i18n="t_173">Servicios & Encargos a Medida</h2>
+<p class="font-sans text-sm text-text-secondary font-light" data-i18n="t_174">
+                Elige un servicio y verás qué incluye, en lenguaje claro. Cada proyecto es único y lo tratamos como tal.
+            </p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 reveal-stagger"><!-- Service cards -->
+    <!-- Service 01: Vídeo corporativo &amp; demo -->
+    <button type="button" class="service-card-enhanced p-6 cursor-pointer space-y-4 text-left w-full block transition-all duration-300" onclick="openServiceModal('video')" onkeydown="if(event.key==='Enter')openServiceModal('video')">
+    <div class="flex justify-between items-center">
+    <span class="font-mono text-[10px] text-signal-red tracking-widest uppercase" data-i18n="t_175">// SERVICIO 01</span>
+    <svg class="w-8 h-8 stroke-signal-red" fill="none" viewbox="0 0 24 24"><path d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
+    </div>
+    <h3 class="font-headline text-2xl text-white uppercase" data-i18n="t_176">Vídeo corporativo &amp; demo</h3>
+    <p class="font-sans text-xs text-text-secondary font-light" data-i18n="t_177">Presentamos tu empresa, tu producto o tu equipo en un vídeo claro y profesional que haga que te elijan.</p>
+    <span class="font-mono text-[10px] text-signal-red uppercase font-bold block pt-2" data-i18n="t_178">
+                    VER QUÉ INCLUYE →
+                </span>
+    </button>
+    <!-- Service 02: Spots para redes -->
+    <button type="button" class="service-card-enhanced p-6 cursor-pointer space-y-4 text-left w-full block transition-all duration-300" onclick="openServiceModal('spots')" onkeydown="if(event.key==='Enter')openServiceModal('spots')">
+    <div class="flex justify-between items-center">
+    <span class="font-mono text-[10px] text-signal-red tracking-widest uppercase" data-i18n="t_179">// SERVICIO 02</span>
+    <svg class="w-8 h-8 stroke-signal-red" fill="none" viewbox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
+    </div>
+    <h3 class="font-headline text-2xl text-white uppercase" data-i18n="t_180">Spots para redes</h3>
+    <p class="font-sans text-xs text-text-secondary font-light" data-i18n="t_181">Cortos verticales con gancho para Instagram, TikTok y LinkedIn. Tu mensaje y tu llamada a la acción en segundos.</p>
+    <span class="font-mono text-[10px] text-signal-red uppercase font-bold block pt-2" data-i18n="t_178">
+                    VER QUÉ INCLUYE →
+                </span>
+    </button>
+    <!-- Service 03: Directos &amp; streaming -->
+    <button type="button" class="service-card-enhanced p-6 cursor-pointer space-y-4 text-left w-full block transition-all duration-300" onclick="openServiceModal('streaming')" onkeydown="if(event.key==='Enter')openServiceModal('streaming')">
+    <div class="flex justify-between items-center">
+    <span class="font-mono text-[10px] text-signal-red tracking-widest uppercase" data-i18n="t_182">// SERVICIO 03</span>
+    <svg class="w-8 h-8 stroke-signal-red" fill="none" viewbox="0 0 24 24"><path d="M5.636 18.364a9 9 0 010-12.728m12.728 0a9 9 0 010 12.728m-9.9-2.828a5 5 0 010-7.07m7.072 0a5 5 0 010 7.07M13 12a1 1 0 11-2 0 1 1 0 012 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
+    </div>
+    <h3 class="font-headline text-2xl text-white uppercase" data-i18n="t_183">Directos &amp; streaming</h3>
+    <p class="font-sans text-xs text-text-secondary font-light" data-i18n="t_184">Eventos, lanzamientos, jornadas y congresos emitidos en directo y con calidad broadcast, en cualquier medio.</p>
+    <span class="font-mono text-[10px] text-signal-red uppercase font-bold block pt-2" data-i18n="t_178">
+                    VER QUÉ INCLUYE →
+                </span>
+    </button>
+    <!-- Service 04: Podcast &amp; videopodcast -->
+    <button type="button" class="service-card-enhanced p-6 cursor-pointer space-y-4 text-left w-full block transition-all duration-300" onclick="openServiceModal('podcast')" onkeydown="if(event.key==='Enter')openServiceModal('podcast')">
+    <div class="flex justify-between items-center">
+    <span class="font-mono text-[10px] text-signal-red tracking-widest uppercase" data-i18n="t_185">// SERVICIO 04</span>
+    <svg class="w-8 h-8 stroke-signal-red" fill="none" viewbox="0 0 24 24"><path d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
+    </div>
+    <h3 class="font-headline text-2xl text-white uppercase" data-i18n="t_186">Podcast &amp; videopodcast</h3>
+    <p class="font-sans text-xs text-text-secondary font-light" data-i18n="t_187">Tu programa en sonido o en vídeo, en tu oficina o en nuestro estudio. Contenido que genera autoridad y cercanía.</p>
+    <span class="font-mono text-[10px] text-signal-red uppercase font-bold block pt-2" data-i18n="t_178">
+                    VER QUÉ INCLUYE →
+                </span>
+    </button>
+    <!-- Service 05: Sonido &amp; música para tu marca -->
+    <button type="button" class="service-card-enhanced p-6 cursor-pointer space-y-4 text-left w-full block transition-all duration-300" onclick="openServiceModal('sonido')" onkeydown="if(event.key==='Enter')openServiceModal('sonido')">
+    <div class="flex justify-between items-center">
+    <span class="font-mono text-[10px] text-signal-red tracking-widest uppercase" data-i18n="t_188">// SERVICIO 05</span>
+    <svg class="w-8 h-8 stroke-signal-red" fill="none" viewbox="0 0 24 24"><path d="M9 18V5l12-2v13" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><circle cx="6" cy="18" r="3" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><circle cx="18" cy="16" r="3" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
+    </div>
+    <h3 class="font-headline text-2xl text-white uppercase" data-i18n="t_189">Sonido &amp; música para tu marca</h3>
+    <p class="font-sans text-xs text-text-secondary font-light" data-i18n="t_190">Identidad sonora, jingles, locución y mezclas con la calidad de las grandes producciones (incluye sesiones en directo).</p>
+    <span class="font-mono text-[10px] text-signal-red uppercase font-bold block pt-2" data-i18n="t_178">
+                    VER QUÉ INCLUYE →
+                </span>
+    </button>
+    <!-- Service 06: Postproducción &amp; contenido con IA -->
+    <button type="button" class="service-card-enhanced p-6 cursor-pointer space-y-4 text-left w-full block transition-all duration-300" onclick="openServiceModal('post')" onkeydown="if(event.key==='Enter')openServiceModal('post')">
+    <div class="flex justify-between items-center">
+    <span class="font-mono text-[10px] text-signal-red tracking-widest uppercase" data-i18n="t_191">// SERVICIO 06</span>
+    <svg class="w-8 h-8 stroke-signal-red" fill="none" viewbox="0 0 24 24"><path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
+    </div>
+    <h3 class="font-headline text-2xl text-white uppercase" data-i18n="t_192">Postproducción &amp; contenido con IA</h3>
+    <p class="font-sans text-xs text-text-secondary font-light" data-i18n="t_193">Color, montaje y piezas que nacen de un solo rodaje, potenciadas con IA segura y legal.</p>
+    <span class="font-mono text-[10px] text-signal-red uppercase font-bold block pt-2" data-i18n="t_178">
+                    VER QUÉ INCLUYE →
+                </span>
+    </button>
+    <!-- Service 07: Formación en vídeo -->
+    <button type="button" class="service-card-enhanced p-6 cursor-pointer space-y-4 text-left w-full block transition-all duration-300" onclick="openServiceModal('formacion')" onkeydown="if(event.key==='Enter')openServiceModal('formacion')">
+    <div class="flex justify-between items-center">
+    <span class="font-mono text-[10px] text-signal-red tracking-widest uppercase" data-i18n="t_194">// SERVICIO 07</span>
+    <svg class="w-8 h-8 stroke-signal-red" fill="none" viewbox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0112 20.055a11.952 11.952 0 01-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
+    </div>
+    <h3 class="font-headline text-2xl text-white uppercase" data-i18n="t_195">Formación en vídeo</h3>
+    <p class="font-sans text-xs text-text-secondary font-light" data-i18n="t_196">Cursos, tutoriales y onboarding en vídeo para que tu equipo aprenda y crezca.</p>
+    <span class="font-mono text-[10px] text-signal-red uppercase font-bold block pt-2" data-i18n="t_178">
+                    VER QUÉ INCLUYE →
+                </span>
+    </button>
+    <!-- Service 08: IA para tu comunicación -->
+    <button type="button" class="service-card-enhanced p-6 cursor-pointer space-y-4 text-left w-full block transition-all duration-300" onclick="openServiceModal('ia')" onkeydown="if(event.key==='Enter')openServiceModal('ia')">
+    <div class="flex justify-between items-center">
+    <span class="font-mono text-[10px] text-signal-red tracking-widest uppercase" data-i18n="t_197">// SERVICIO 08</span>
+    <svg class="w-8 h-8 stroke-signal-red" fill="none" viewbox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
+    </div>
+    <h3 class="font-headline text-2xl text-white uppercase" data-i18n="t_198">IA para tu comunicación</h3>
+    <p class="font-sans text-xs text-text-secondary font-light" data-i18n="t_199">Implantamos IA en tu empresa: catálogos, anuncios y flujos que multiplican tu producción de contenido.</p>
+    <span class="font-mono text-[10px] text-signal-red uppercase font-bold block pt-2" data-i18n="t_178">
+                    VER QUÉ INCLUYE →
+                </span>
+    </button>
+    <!-- Service 09: Apoyo a agencias &amp; productoras -->
+    <button type="button" class="service-card-enhanced p-6 cursor-pointer space-y-4 text-left w-full block transition-all duration-300" onclick="openServiceModal('agencias')" onkeydown="if(event.key==='Enter')openServiceModal('agencias')">
+    <div class="flex justify-between items-center">
+    <span class="font-mono text-[10px] text-signal-red tracking-widest uppercase" data-i18n="t_f09_label">// SERVICIO 09</span>
+    <svg class="w-8 h-8 stroke-signal-red" fill="none" viewbox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><circle cx="9" cy="7" r="4" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M23 21v-2a4 4 0 0 0-3-3.87" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M16 3.13a4 4 0 0 1 0 7.75" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
+    </div>
+    <h3 class="font-headline text-2xl text-white uppercase" data-i18n="t_f09_title">Apoyo a agencias &amp; productoras</h3>
+    <p class="font-sans text-xs text-text-secondary font-light" data-i18n="t_f09_desc">Agencias y productoras con un estudio de confianza: sonido, postproducción e IA, con la entrega garantizada.</p>
+    <span class="font-mono text-[10px] text-signal-red uppercase font-bold block pt-2" data-i18n="t_178">
+                    VER QUÉ INCLUYE →
+                </span>
+    </button>
+    <!-- Service 10: Web &amp; campaña -->
+    <button type="button" class="service-card-enhanced p-6 cursor-pointer space-y-4 text-left w-full block transition-all duration-300" onclick="openServiceModal('web')" onkeydown="if(event.key==='Enter')openServiceModal('web')">
+    <div class="flex justify-between items-center">
+    <span class="font-mono text-[10px] text-signal-red tracking-widest uppercase" data-i18n="t_f10_label">// SERVICIO 10</span>
+    <svg class="w-8 h-8 stroke-signal-red" fill="none" viewbox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><line x1="2" y1="12" x2="22" y2="12" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
+    </div>
+    <h3 class="font-headline text-2xl text-white uppercase" data-i18n="t_f10_title">Web &amp; campaña</h3>
+    <p class="font-sans text-xs text-text-secondary font-light" data-i18n="t_f10_desc">Tu web y tus vídeos trabajando juntos: landing clara, rápida y pensada para convertir visitas en clientes.</p>
+    <span class="font-mono text-[10px] text-signal-red uppercase font-bold block pt-2" data-i18n="t_178">
+                    VER QUÉ INCLUYE →
+                </span>
+    </button>
+
+</div>
+</section>
+<!-- ═══ BANDA DE OFERTA 15% ═══ -->
+<section class="py-16 px-6 sm:px-10 max-w-[1440px] mx-auto reveal" id="oferta">
+<div class="glass-panel p-8 sm:p-12 border border-signal-red/40 relative overflow-hidden text-center space-y-5">
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-56 h-[2px] bg-signal-red"></div>
+<span class="font-mono text-signal-red text-xs uppercase tracking-widest" data-i18n="t_offer_kicker">// OFERTA DE LANZAMIENTO</span>
+<h2 class="font-headline text-3xl sm:text-5xl uppercase text-white tracking-tight section-headline-clean" data-i18n="t_offer_title">TU 15% DE DESCUENTO TE ESPERA</h2>
+<p class="font-sans text-base sm:text-lg text-text-secondary font-light max-w-xl mx-auto" data-i18n="t_offer_txt">Pide presupuesto por el formulario web y aplícalo a tu proyecto. Sin letra pequeña.</p>
+<a class="inline-block bg-signal-red text-white font-mono text-xs font-bold px-8 py-4 uppercase tracking-widest hover:bg-signal-red-hover transition-all shadow-lg hover:shadow-signal-red/30 btn-cta" data-i18n="t_offer_cta" href="#presupuesto"><span>PEDIR PRESUPUESTO</span></a>
+</div>
+</section>
 <!-- ═══ MÓDULO POTENCIADO: CANALES & PLATAFORMAS (Limpio & Sin Explicaciones Secundarias) ═══ -->
 <section class="py-20 px-6 sm:px-10 max-w-[1440px] mx-auto reveal" id="redes">
 <div class="text-center space-y-4 mb-14 max-w-4xl mx-auto">
-<span class="font-mono text-signal-red text-xs uppercase tracking-widest" data-i18n="t_162">// DÓNDE VER Y ESCUCHAR NUESTRO TRABAJO EN VIVO</span>
-<h2 class="font-headline text-4xl sm:text-6xl uppercase text-white tracking-tight section-headline-clean" data-i18n="t_163">Canales &amp; Plataformas Oficiales</h2>
+<span class="font-mono text-signal-red text-xs uppercase tracking-widest" data-i18n="t_162">// NUESTRO TRABAJO EN VIVO</span>
+<h2 class="font-headline text-4xl sm:text-6xl uppercase text-white tracking-tight section-headline-clean" data-i18n="t_163">Proyectos & Reels</h2>
 <p class="font-sans text-base sm:text-lg text-text-secondary font-light leading-relaxed" data-i18n="t_164">
-                En nuestras plataformas y redes sociales oficiales podrá explorar una amplia muestra viva y actualizada de nuestros trabajos en <strong>imagen, sonido broadcast, vídeo cinematográfico asistido por Inteligencia Artificial, composiciones de música generativa y desarrollo tecnológico</strong>. Le invitamos a acceder a nuestros canales oficiales para comprobar la solvencia y calidad real de nuestros proyectos a medida.
+                Vídeo, música y directos para marcas de todos los tamaños. Entra y comprueba la calidad real del trabajo, con el respaldo de tres décadas de oficio.
             </p>
 </div>
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 reveal-stagger">
 <!-- YouTube Main Card -->
-<a class="glass-panel p-8 border border-white/10 hover:border-signal-red space-y-4 group transition-all" data-i18n="t_165" href="https://www.youtube.com/@chus_bzn" rel="noopener" target="_blank">
+<a class="glass-panel p-8 border border-white/10 hover:border-signal-red space-y-4 group transition-all" href="https://www.youtube.com/@chus_bzn" rel="noopener" target="_blank">
 <div class="flex items-center justify-between">
 <div class="p-3 bg-signal-red/20 text-signal-red rounded-lg group-hover:bg-signal-red group-hover:text-white transition-colors">
 <svg class="w-8 h-8" fill="currentColor" viewbox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
 </div>
-<span class="font-mono text-[10px] text-signal-red uppercase font-bold">VER VÍDEOS →</span>
+<span class="font-mono text-[10px] text-signal-red uppercase font-bold" data-i18n="t_redes_cta_yt">VER VÍDEOS →</span>
 </div>
 <div>
-<h3 class="font-headline text-2xl text-white uppercase group-hover:text-signal-red transition-colors">YouTube Canal Oficial</h3>
+<h3 class="font-headline text-2xl text-white uppercase group-hover:text-signal-red transition-colors" data-i18n="t_redes_card_yt">YouTube Canal Oficial</h3>
 </div>
 </a>
 <!-- YouTube Shorts Card -->
-<a class="glass-panel p-8 border border-white/10 hover:border-signal-red space-y-4 group transition-all" data-i18n="t_166" href="https://www.youtube.com/@chus_bzn/shorts" rel="noopener" target="_blank">
+<a class="glass-panel p-8 border border-white/10 hover:border-signal-red space-y-4 group transition-all" href="https://www.youtube.com/@chus_bzn/shorts" rel="noopener" target="_blank">
 <div class="flex items-center justify-between">
 <div class="p-3 bg-signal-red/20 text-signal-red rounded-lg group-hover:bg-signal-red group-hover:text-white transition-colors">
 <svg class="w-8 h-8" fill="currentColor" viewbox="0 0 24 24"><path d="M17.77 10.32l-1.2-.5L18 9.06c1.84-.96 2.53-3.23 1.56-5.07s-3.24-2.53-5.07-1.56L6.2 6.57C4.7 7.36 3.8 8.95 3.84 10.65c.04 1.7 1.01 3.23 2.54 3.96l1.17.53L6 15.94c-1.84.96-2.53 3.23-1.56 5.07.96 1.84 3.23 2.53 5.07 1.56l8.28-4.14c1.51-.79 2.48-2.38 2.44-4.08-.03-1.7-1.01-3.23-2.46-4.03zM9.5 15.5v-7l6 3.5-6 3.5z"></path></svg>
 </div>
-<span class="font-mono text-[10px] text-signal-red uppercase font-bold">VER SHORTS →</span>
+<span class="font-mono text-[10px] text-signal-red uppercase font-bold" data-i18n="t_redes_cta_shorts">VER SHORTS →</span>
 </div>
 <div>
-<h3 class="font-headline text-2xl text-white uppercase group-hover:text-signal-red transition-colors">YouTube Shorts</h3>
+<h3 class="font-headline text-2xl text-white uppercase group-hover:text-signal-red transition-colors" data-i18n="t_redes_card_shorts">YouTube Shorts</h3>
 </div>
 </a>
 <!-- Instagram Card -->
-<a class="glass-panel p-8 border border-white/10 hover:border-signal-red space-y-4 group transition-all" data-i18n="t_167" href="https://www.instagram.com/chus_bzn" rel="noopener" target="_blank">
+<a class="glass-panel p-8 border border-white/10 hover:border-signal-red space-y-4 group transition-all" href="https://www.instagram.com/chus_bzn" rel="noopener" target="_blank">
 <div class="flex items-center justify-between">
 <div class="p-3 bg-signal-red/20 text-signal-red rounded-lg group-hover:bg-signal-red group-hover:text-white transition-colors">
 <svg class="w-8 h-8" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
 </div>
-<span class="font-mono text-[10px] text-signal-red uppercase font-bold">VER REELS →</span>
+<span class="font-mono text-[10px] text-signal-red uppercase font-bold" data-i18n="t_redes_cta_reels">VER REELS →</span>
 </div>
 <div>
-<h3 class="font-headline text-2xl text-white uppercase group-hover:text-signal-red transition-colors">Instagram Reels &amp; Lab</h3>
+<h3 class="font-headline text-2xl text-white uppercase group-hover:text-signal-red transition-colors" data-i18n="t_redes_card_ig">Instagram Reels &amp; Lab</h3>
 </div>
 </a>
 <!-- Spotify Card -->
-<a class="glass-panel p-8 border border-white/10 hover:border-signal-red space-y-4 group transition-all" data-i18n="t_168" href="https://open.spotify.com/intl-es/artist/0n4agjgaicmPmX8xXXADHL?si=BT-gHD11TIGBOuNvRn8hkA" rel="noopener" target="_blank">
+<a class="glass-panel p-8 border border-white/10 hover:border-signal-red space-y-4 group transition-all" href="https://open.spotify.com/intl-es/artist/0n4agjgaicmPmX8xXXADHL?si=BT-gHD11TIGBOuNvRn8hkA" rel="noopener" target="_blank">
 <div class="flex items-center justify-between">
 <div class="p-3 bg-signal-red/20 text-signal-red rounded-lg group-hover:bg-signal-red group-hover:text-white transition-colors">
 <svg class="w-8 h-8" fill="currentColor" viewbox="0 0 24 24"><path d="M12 0C5.376 0 0 5.376 0 12s5.376 12 12 12 12-5.376 12-12S18.624 0 12 0zm5.521 17.341c-.217.357-.681.469-1.038.252-2.846-1.74-6.429-2.133-10.65-1.167-.406.094-.813-.162-.906-.568-.094-.406.162-.813.568-.906 4.624-1.056 8.583-.604 11.774 1.348.357.217.469.681.252 1.041zm1.474-3.272c-.273.444-.852.585-1.296.313-3.257-2.002-8.223-2.584-12.077-1.414-.504.153-1.033-.133-1.186-.637-.153-.504.133-1.033.637-1.186 4.409-1.338 9.873-.692 13.609 1.628.444.273.585.852.313 1.296zm.127-3.411c-3.906-2.319-10.354-2.533-14.108-1.393-.6.182-1.237-.162-1.419-.762-.182-.6.162-1.237.762-1.419 4.312-1.309 11.433-1.055 15.93 1.614.54.32.718 1.02.398 1.56-.32.54-1.02.718-1.563.399z"></path></svg>
 </div>
-<span class="font-mono text-[10px] text-signal-red uppercase font-bold">ESCUCHAR →</span>
+<span class="font-mono text-[10px] text-signal-red uppercase font-bold" data-i18n="t_redes_cta_play">ESCUCHAR →</span>
 </div>
 <div>
-<h3 class="font-headline text-2xl text-white uppercase group-hover:text-signal-red transition-colors">Spotify Perfil Artista</h3>
+<h3 class="font-headline text-2xl text-white uppercase group-hover:text-signal-red transition-colors" data-i18n="t_redes_card_spotify">Spotify Perfil Artista</h3>
 </div>
 </a>
 <!-- SoundCloud Card -->
-<a class="glass-panel p-8 border border-white/10 hover:border-signal-red space-y-4 group transition-all" data-i18n="t_169" href="https://on.soundcloud.com/45pQf3AQv99X3JbCcj" rel="noopener" target="_blank">
+<a class="glass-panel p-8 border border-white/10 hover:border-signal-red space-y-4 group transition-all" href="https://on.soundcloud.com/45pQf3AQv99X3JbCcj" rel="noopener" target="_blank">
 <div class="flex items-center justify-between">
 <div class="p-3 bg-signal-red/20 text-signal-red rounded-lg group-hover:bg-signal-red group-hover:text-white transition-colors">
 <svg class="w-8 h-8" fill="currentColor" viewbox="0 0 24 24"><path d="M1.175 12.225c-.05 0-.096.038-.104.092L.008 18.72c-.008.06.034.112.094.112h1.177c.056 0 .103-.045.103-.103l.094-6.41c.008-.057-.038-.104-.094-.104H1.175zm2.095-1.472c-.056 0-.103.045-.103.103l-.297 7.76c-.008.057.038.104.094.104h1.186c.056 0 .103-.045.103-.103l.297-7.76c.008-.057-.038-.104-.094-.104H3.27zm2.112-1.074c-.056 0-.103.045-.103.103l-.224 8.835c-.008.057.038.104.094.104h1.186c.056 0 .103-.045.103-.103l.224-8.835c.008-.057-.038-.104-.094-.104H5.382zm2.112-1.127c-.056 0-.103.045-.103.103l-.15 9.96c-.008.057.038.104.094.104h1.186c.056 0 .103-.045.103-.103l.15-9.96c.008-.057-.038-.104-.094-.104H7.494zm2.112-.66c-.056 0-.103.045-.103.103l-.078 10.62c0 .057.046.103.103.103h1.186c.056 0 .103-.045.103-.103l.078-10.62c0-.057-.046-.103-.103-.103H9.606zm13.197 3.513c-.58 0-1.136.143-1.626.398C20.73 9.4 18.57 7.5 16.02 7.5c-.53 0-1.04.08-1.52.23-.27-2.14-2.1-3.8-4.32-3.8-.18 0-.35.01-.52.03-.06.01-.1.06-.1.12l.06 14.65c0 .06.05.1.1.1h13.17c1.7 0 3.09-1.38 3.09-3.09 0-1.7-1.38-3.09-3.09-3.09z"></path></svg>
 </div>
-<span class="font-mono text-[10px] text-signal-red uppercase font-bold">ESCUCHAR →</span>
+<span class="font-mono text-[10px] text-signal-red uppercase font-bold" data-i18n="t_redes_cta_play">ESCUCHAR →</span>
 </div>
 <div>
-<h3 class="font-headline text-2xl text-white uppercase group-hover:text-signal-red transition-colors">SoundCloud Archive</h3>
+<h3 class="font-headline text-2xl text-white uppercase group-hover:text-signal-red transition-colors" data-i18n="t_redes_card_sc">SoundCloud Archive</h3>
 </div>
 </a>
 <!-- LinkedIn Card -->
-<a class="glass-panel p-8 border border-white/10 hover:border-signal-red space-y-4 group transition-all" data-i18n="t_170" href="https://www.linkedin.com/in/chusbzn" rel="noopener" target="_blank">
+<a class="glass-panel p-8 border border-white/10 hover:border-signal-red space-y-4 group transition-all" href="https://www.linkedin.com/in/chusbzn" rel="noopener" target="_blank">
 <div class="flex items-center justify-between">
 <div class="p-3 bg-signal-red/20 text-signal-red rounded-lg group-hover:bg-signal-red group-hover:text-white transition-colors">
 <svg class="w-8 h-8" fill="currentColor" viewbox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.7a1.63 1.63 0 1 0 1.63 1.63A1.63 1.63 0 0 0 7.86 6.7z"></path></svg>
 </div>
-<span class="font-mono text-[10px] text-signal-red uppercase font-bold">VER PERFIL →</span>
+<span class="font-mono text-[10px] text-signal-red uppercase font-bold" data-i18n="t_redes_cta_li">VER PERFIL →</span>
 </div>
 <div>
-<h3 class="font-headline text-2xl text-white uppercase group-hover:text-signal-red transition-colors">LinkedIn Perfil Oficial</h3>
+<h3 class="font-headline text-2xl text-white uppercase group-hover:text-signal-red transition-colors" data-i18n="t_redes_card_li">LinkedIn Perfil Oficial</h3>
 </div>
 </a>
 <!-- GitHub Card -->
-<a class="glass-panel p-8 border border-white/10 hover:border-signal-red space-y-4 group transition-all scroll-mt-24" data-i18n="t_171" href="https://github.com/produktes-code" id="github" rel="noopener" target="_blank">
+<a class="glass-panel p-8 border border-white/10 hover:border-signal-red space-y-4 group transition-all scroll-mt-24" href="https://github.com/produktes-code" id="github" rel="noopener" target="_blank">
 <div class="flex items-center justify-between">
 <div class="p-3 bg-signal-red/20 text-signal-red rounded-lg group-hover:bg-signal-red group-hover:text-white transition-colors">
 <svg class="w-8 h-8" fill="currentColor" viewbox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"></path></svg>
 </div>
-<span class="font-mono text-[10px] text-signal-red uppercase font-bold">AUDITAR CÓDIGO →</span>
+<span class="font-mono text-[10px] text-signal-red uppercase font-bold" data-i18n="t_redes_cta_gh">AUDITAR CÓDIGO →</span>
 </div>
 <div>
-<h3 class="font-headline text-2xl text-white uppercase group-hover:text-signal-red transition-colors">GitHub Repositories</h3>
+<h3 class="font-headline text-2xl text-white uppercase group-hover:text-signal-red transition-colors" data-i18n="t_redes_card_gh">GitHub Repositorios</h3>
 </div>
 </a>
 </div>
 </section>
-<!-- ═══ REJILLA INTERACTIVA DE 8 SERVICIOS A MEDIDA ═══ -->
-<section class="py-24 border-t border-white/10 bg-white/[0.01] reveal" id="servicios">
-<div class="max-w-[1440px] mx-auto px-6 sm:px-10">
-<div class="text-center space-y-4 mb-16 max-w-3xl mx-auto">
-<span class="font-mono text-signal-red text-xs uppercase tracking-widest" data-i18n="t_172">// CATÁLOGO DE SOLUCIONES TÉCNICAS</span>
-<h2 class="font-headline text-4xl sm:text-6xl uppercase text-white tracking-tight section-headline-clean" data-i18n="t_173">Servicios &amp; Trabajos a Medida</h2>
-<p class="font-sans text-sm text-text-secondary font-light" data-i18n="t_174">
-                Haga clic en cualquier tarjeta de servicio para desplegar el dossier técnico explicativo con especificaciones y ejemplos.
-            </p>
-</div>
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 reveal-stagger">
-<!-- Service 01: Vídeo & Spots Cinemáticos -->
-<button type="button" class="service-card-enhanced p-6 cursor-pointer space-y-4 text-left w-full block transition-all duration-300" onclick="openServiceModal('video')" onkeydown="if(event.key==='Enter')openServiceModal('video')">
-<div class="flex justify-between items-center">
-<span class="font-mono text-[10px] text-signal-red tracking-widest uppercase" data-i18n="t_175">// SERVICIO 01</span>
-<svg class="w-8 h-8 stroke-signal-red" fill="none" viewbox="0 0 24 24"><path d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg>
-</div>
-<h3 class="font-headline text-2xl text-white uppercase" data-i18n="t_176">Vídeo &amp; Spots Cinemáticos</h3>
-<p class="font-sans text-xs text-text-secondary font-light" data-i18n="t_177">Producción audiovisual de alta fidelidad, anuncios publicitarios, vídeo corporativo y cine asistido por IA.</p>
-<span class="font-mono text-[10px] text-signal-red uppercase font-bold block pt-2" data-i18n="t_178">
-                    DOSSIER TÉCNICO →
-                </span>
-</button>
-<!-- Service 02: Postproducción & Sonido EBU R128 -->
-<button type="button" class="service-card-enhanced p-6 cursor-pointer space-y-4 text-left w-full block transition-all duration-300" onclick="openServiceModal('sonido')" onkeydown="if(event.key==='Enter')openServiceModal('sonido')">
-<div class="flex justify-between items-center">
-<span class="font-mono text-[10px] text-signal-red tracking-widest uppercase" data-i18n="t_179">// SERVICIO 02</span>
-<svg class="w-8 h-8 stroke-signal-red" fill="none" viewbox="0 0 24 24"><path d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg>
-</div>
-<h3 class="font-headline text-2xl text-white uppercase" data-i18n="t_180">Postproducción &amp; Sonido EBU R128</h3>
-<p class="font-sans text-xs text-text-secondary font-light" data-i18n="t_181">Ingeniería de mezclas sonoras, masterización para cine y plataformas OTT (Netflix/HBO) y audio forense.</p>
-<span class="font-mono text-[10px] text-signal-red uppercase font-bold block pt-2" data-i18n="t_178">
-                    DOSSIER TÉCNICO →
-                </span>
-</button>
-<!-- Service 03: Directos, Streaming & Cobertura 360° -->
-<button type="button" class="service-card-enhanced p-6 cursor-pointer space-y-4 text-left w-full block transition-all duration-300" onclick="openServiceModal('streaming')" onkeydown="if(event.key==='Enter')openServiceModal('streaming')">
-<div class="flex justify-between items-center">
-<span class="font-mono text-[10px] text-signal-red tracking-widest uppercase" data-i18n="t_182">// SERVICIO 03</span>
-<svg class="w-8 h-8 stroke-signal-red" fill="none" viewbox="0 0 24 24"><path d="M5.636 18.364a9 9 0 010-12.728m12.728 0a9 9 0 010 12.728m-9.9-2.828a5 5 0 010-7.07m7.072 0a5 5 0 010 7.07M13 12a1 1 0 11-2 0 1 1 0 012 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg>
-</div>
-<h3 class="font-headline text-2xl text-white uppercase" data-i18n="t_183">Directos &amp; Streaming Pro</h3>
-<p class="font-sans text-xs text-text-secondary font-light" data-i18n="t_184">Regiduría multimedia, emisión broadcast en vivo, directos multicámara y automatización con OBS/QLab.</p>
-<span class="font-mono text-[10px] text-signal-red uppercase font-bold block pt-2" data-i18n="t_178">
-                    DOSSIER TÉCNICO →
-                </span>
-</button>
-<!-- Service 04: DJ Sessions, Live & Remezclas -->
-<button type="button" class="service-card-enhanced p-6 cursor-pointer space-y-4 text-left w-full block transition-all duration-300" onclick="openServiceModal('dj')" onkeydown="if(event.key==='Enter')openServiceModal('dj')">
-<div class="flex justify-between items-center">
-<span class="font-mono text-[10px] text-signal-red tracking-widest uppercase" data-i18n="t_185">// SERVICIO 04</span>
-<svg class="w-8 h-8 stroke-signal-red" fill="none" viewbox="0 0 24 24"><path d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 .895-2 3-2 3 .895 3 2zm12 0c0 1.105-1.343 2-3 2s-3-.895-3-2 .895-2 3-2 3 .895 3 2zM9 10l12-3" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg>
-</div>
-<h3 class="font-headline text-2xl text-white uppercase" data-i18n="t_186">DJ Live &amp; Remezclas</h3>
-<p class="font-sans text-xs text-text-secondary font-light" data-i18n="t_187">Sesiones de música avanzada en directo para gran formato, curación de identidad sonora y remezclas.</p>
-<span class="font-mono text-[10px] text-signal-red uppercase font-bold block pt-2" data-i18n="t_178">
-                    DOSSIER TÉCNICO →
-                </span>
-</button>
-<!-- Service 05: Desarrollo Web, Web Apps & APIs -->
-<button type="button" class="service-card-enhanced p-6 cursor-pointer space-y-4 text-left w-full block transition-all duration-300" onclick="openServiceModal('web')" onkeydown="if(event.key==='Enter')openServiceModal('web')">
-<div class="flex justify-between items-center">
-<span class="font-mono text-[10px] text-signal-red tracking-widest uppercase" data-i18n="t_188">// SERVICIO 05</span>
-<svg class="w-8 h-8 stroke-signal-red" fill="none" viewbox="0 0 24 24"><path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg>
-</div>
-<h3 class="font-headline text-2xl text-white uppercase" data-i18n="t_189">Desarrollo Web &amp; Web Apps</h3>
-<p class="font-sans text-xs text-text-secondary font-light" data-i18n="t_190">Desarrollo de aplicaciones web interactivas a medida, landing pages de alto rendimiento e integración de APIs.</p>
-<span class="font-mono text-[10px] text-signal-red uppercase font-bold block pt-2" data-i18n="t_178">
-                    DOSSIER TÉCNICO →
-                </span>
-</button>
-<!-- Service 06: Motion Graphics & Diseño Gráfico -->
-<button type="button" class="service-card-enhanced p-6 cursor-pointer space-y-4 text-left w-full block transition-all duration-300" onclick="openServiceModal('design')" onkeydown="if(event.key==='Enter')openServiceModal('design')">
-<div class="flex justify-between items-center">
-<span class="font-mono text-[10px] text-signal-red tracking-widest uppercase" data-i18n="t_191">// SERVICIO 06</span>
-<svg class="w-8 h-8 stroke-signal-red" fill="none" viewbox="0 0 24 24"><path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg>
-</div>
-<h3 class="font-headline text-2xl text-white uppercase" data-i18n="t_192">Motion Graphics &amp; Diseño</h3>
-<p class="font-sans text-xs text-text-secondary font-light" data-i18n="t_193">Animación 2D/3D, tratamiento digital de imagen, empaquetado gráfico para eventos y diseño de marca.</p>
-<span class="font-mono text-[10px] text-signal-red uppercase font-bold block pt-2" data-i18n="t_178">
-                    DOSSIER TÉCNICO →
-                </span>
-</button>
-<!-- Service 07: Implantación & Automatización con IA -->
-<button type="button" class="service-card-enhanced p-6 cursor-pointer space-y-4 text-left w-full block transition-all duration-300" onclick="openServiceModal('ia')" onkeydown="if(event.key==='Enter')openServiceModal('ia')">
-<div class="flex justify-between items-center">
-<span class="font-mono text-[10px] text-signal-red tracking-widest uppercase" data-i18n="t_194">// SERVICIO 07</span>
-<svg class="w-8 h-8 stroke-signal-red" fill="none" viewbox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg>
-</div>
-<h3 class="font-headline text-2xl text-white uppercase" data-i18n="t_195">Implantación de IA Empresarial</h3>
-<p class="font-sans text-xs text-text-secondary font-light" data-i18n="t_196">Automatización de flujos de trabajo con IA Generativa, agentes inteligentes y clonación biométrica vocal legal.</p>
-<span class="font-mono text-[10px] text-signal-red uppercase font-bold block pt-2" data-i18n="t_178">
-                    DOSSIER TÉCNICO →
-                </span>
-</button>
-<!-- Service 08: Formación & Consultoría Tecnológica -->
-<button type="button" class="service-card-enhanced p-6 cursor-pointer space-y-4 text-left w-full block transition-all duration-300" onclick="openServiceModal('formacion')" onkeydown="if(event.key==='Enter')openServiceModal('formacion')">
-<div class="flex justify-between items-center">
-<span class="font-mono text-[10px] text-signal-red tracking-widest uppercase" data-i18n="t_197">// SERVICIO 08</span>
-<svg class="w-8 h-8 stroke-signal-red" fill="none" viewbox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0112 20.055a11.952 11.952 0 01-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg>
-</div>
-<h3 class="font-headline text-2xl text-white uppercase" data-i18n="t_198">Formación &amp; Consultoría</h3>
-<p class="font-sans text-xs text-text-secondary font-light" data-i18n="t_199">Capacitación a medida para equipos en inteligencia artificial, software broadcast y dirección de proyectos.</p>
-<span class="font-mono text-[10px] text-signal-red uppercase font-bold block pt-2" data-i18n="t_178">
-                    DOSSIER TÉCNICO →
-                </span>
-</button>
-</div>
-</div>
-</section>
 <!-- ═══ ECOSISTEMA DE DESARROLLO PROPIO (Recuperación de Imagotipos Propietarios) ═══ -->
-<section class="py-24 bg-surface-dim/70 border-y border-white/10 reveal" id="ecosistema">
+<section class="photo-banner py-24 bg-surface-dim/70 border-y border-white/10 reveal" id="ecosistema" style="background-image:url('assets/server_room.webp')">
 <div class="scroll-mt-24" id="ia"></div>
 <div class="max-w-[1440px] mx-auto px-6 sm:px-10">
 <div class="text-center space-y-4 mb-14 max-w-4xl mx-auto">
-<span class="font-mono text-signal-red text-xs uppercase tracking-widest" data-i18n="t_200">// SOFTWARE PROPIETARIO AUDITADO DE LOS REPOSITORIOS</span>
-<h2 class="font-headline text-4xl sm:text-5xl uppercase text-white tracking-tight section-headline-clean" data-i18n="t_201">Ecosistema IA &amp; Prototipado</h2>
+<span class="font-mono text-signal-red text-xs uppercase tracking-widest" data-i18n="t_200">// NUESTRO MÉTODO: OFICIO + IA</span>
+<h2 class="font-headline text-4xl sm:text-5xl uppercase text-white tracking-tight section-headline-clean" data-i18n="t_201">El método detrás del resultado</h2>
 <p class="font-sans text-base text-text-secondary max-w-3xl mx-auto font-light leading-relaxed" data-i18n="t_202">
-                Herramientas propietarias diseñadas en nuestro laboratorio interno para optimizar y automatizar la postproducción audiovisual y el diseño sonoro.
+                Herramientas propias, desarrolladas en nuestro estudio, para que tus proyectos terminen antes, con calidad constante y coste controlado.
             </p>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 reveal-stagger">
@@ -1161,7 +1224,7 @@
 </div>
 </div>
 <p class="font-sans text-xs text-text-secondary font-light leading-relaxed" data-i18n="t_204">
-<strong>Aplicación de Escritorio Modular:</strong> Unifica herramientas avanzadas de edición masiva de vídeo, procesado de imágenes y consola DAW para masterización sonora EBU R128 en local.
+<strong>Tu postproducción en local:</strong> una única aplicación une edición de vídeo, procesado de imagen y masterización con nivel broadcast.
                 </p>
 </div>
 <!-- App 02: Cine Station Pro (Con Imagotipo Propietario icon_csp.png) -->
@@ -1174,7 +1237,7 @@
 </div>
 </div>
 <p class="font-sans text-xs text-text-secondary font-light leading-relaxed" data-i18n="t_206">
-<strong>Pipeline Cinematográfico Acelerado:</strong> Backend de renderizado acelerado para la inyección dinámica de LUTs profesionales (.cube), manipulación de colorimetría en tiempo real y transcodificación de alta concurrencia.
+<strong>Color y formatos profesionales al instante:</strong> LUTs de cine, colorimetría y entrega para cualquier plataforma, en tiempo récord.
                 </p>
 </div>
 <!-- App 03: Brand Music Curator (Con Imagotipo Propietario icon_bmc.png) -->
@@ -1187,7 +1250,7 @@
 </div>
 </div>
 <p class="font-sans text-xs text-text-secondary font-light leading-relaxed" data-i18n="t_208">
-<strong>Motor de Curación Musical Comercial:</strong> Genera estrategias de identidad sonora para retail, locuciones neuronales sintéticas y playlists comerciales personalizadas.
+<strong>La banda sonora de tu negocio:</strong> identidad sonora, locuciones y playlists comerciales a medida para tu tienda o marca.
                 </p>
 </div>
 </div>
@@ -1491,7 +1554,7 @@
 </div>
 </section>
 <!-- ═══ PERFIL & TRAYECTORIA AUDITADA (33 AÑOS + FOTO FORMAL + FPCAT) ═══ -->
-<section class="py-24 border-t border-white/10 bg-white/[0.01] reveal" id="metodologia">
+<section class="photo-banner py-24 border-t border-white/10 bg-white/[0.01] reveal" id="metodologia" style="background-image:url('assets/consola_mezcla.webp')">
 <div class="max-w-[1440px] mx-auto px-6 sm:px-10">
 <!-- Header Centrado de Sección -->
 <div class="text-center space-y-4 mb-16 max-w-4xl mx-auto">
@@ -1545,11 +1608,11 @@
 </div>
 </div>
 </div>
-<!-- Right Column: Retrato Formal en Traje Negro (assets/retrato_formal.png) -->
+<!-- Right Column: Retrato Formal en Traje Negro (assets/retrato_formal.webp) -->
 <div class="lg:col-span-5 flex justify-center">
 <div class="glass-panel p-4 border border-white/20 relative group text-center space-y-3 max-w-sm">
 <div class="relative overflow-hidden rounded border border-white/10 aspect-[3/4] bg-black cine-frame">
-<img alt="Dirección Técnica CHUS BZN Retrato Formal" class="w-full h-full object-cover transition-all duration-700" loading="lazy" src="assets/retrato_formal.png"/>
+<img alt="Dirección Técnica CHUS BZN Retrato Formal" class="w-full h-full object-cover transition-all duration-700" loading="lazy" src="assets/retrato_formal.webp"/>
 <div class="cine-vignette"></div>
 <div class="cine-letterbox top"></div>
 <div class="cine-letterbox bottom"></div>
@@ -1622,7 +1685,7 @@
 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 font-sans text-xs">
 <!-- Nivel 3 -->
 <div class="glass-panel p-6 border border-white/15 space-y-4">
-<div class="font-mono text-signal-red text-xs uppercase font-bold">// NIVEL 3 (GRADO SUPERIOR) — SONIDO PARA AUDIOVISUALES</div>
+<div class="font-mono text-signal-red text-xs uppercase font-bold" data-i18n="t_353">// NIVEL 3 (GRADO SUPERIOR) — SONIDO PARA AUDIOVISUALES</div>
 <ul class="space-y-2 text-text-secondary font-light">
 <li data-i18n="t_269"><strong class="text-white">UC1408_3:</strong> Definición y planificación de proyectos de sonido complejos para audiovisual y directo.</li>
 <li data-i18n="t_270"><strong class="text-white">UC1409_3:</strong> Supervisión de instalación y mantenimiento de sistemas de sonido profesionales.</li>
@@ -1634,7 +1697,7 @@
 </div>
 <!-- Niveles 2 y 1 -->
 <div class="glass-panel p-6 border border-white/15 space-y-4">
-<div class="font-mono text-signal-red text-xs uppercase font-bold">// NIVELES 2 Y 1 — ANIMACIÓN MUSICAL, VISUAL E IMAGEN</div>
+<div class="font-mono text-signal-red text-xs uppercase font-bold" data-i18n="t_354">// NIVELES 2 Y 1 — ANIMACIÓN MUSICAL, VISUAL E IMAGEN</div>
 <ul class="space-y-2 text-text-secondary font-light">
 <li data-i18n="t_275"><strong class="text-white">UC1396_2:</strong> Programación y montaje de sesiones de animación musical y visual en vivo.</li>
 <li data-i18n="t_276"><strong class="text-white">UC1397_2:</strong> Mezcla y animación musical en directo con iluminación y vídeo.</li>
@@ -1651,17 +1714,18 @@
 </div>
 </section>
 <!-- ═══ FORMULARIO DE ENCARGO AMPLIADO (+ Desplegable OTROS) ═══ -->
-<section class="py-24 px-6 sm:px-10 max-w-[1440px] mx-auto reveal" id="presupuesto">
+<section class="photo-banner py-24 px-6 sm:px-10 max-w-[1440px] mx-auto reveal" id="presupuesto" style="background-image:url('assets/camera_rig.webp')">
 <div class="max-w-4xl mx-auto glass-panel p-8 sm:p-16 border border-white/15 relative">
 <div class="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-[2px] bg-signal-red"></div>
 <div class="text-center space-y-3 mb-12">
-<span class="font-mono text-signal-red text-xs uppercase tracking-widest" data-i18n="t_283">// PROTOCOLO DE ENCARGO A MEDIDA</span>
-<h2 class="font-headline text-4xl sm:text-5xl uppercase text-white tracking-tight section-headline-clean" data-i18n="t_284">Solicitud de Servicio / Cotización 24h</h2>
+<span class="font-mono text-signal-red text-xs uppercase tracking-widest" data-i18n="t_283">// HABLEMOS DE TU PROYECTO</span>
+<h2 class="font-headline text-4xl sm:text-5xl uppercase text-white tracking-tight section-headline-clean" data-i18n="t_284">Presupuesto sin compromiso</h2>
 <p class="font-sans text-sm text-text-secondary max-w-md mx-auto font-light" data-i18n="t_285">
-                    Seleccione el tipo de proyecto o servicio requerido. Respuesta técnica garantizada en menos de 24 horas laborables.
+                    Cuéntanos qué necesitas: te respondemos en menos de 24h laborables, 365 días al año. Y si pides presupuesto por esta web, te llevas un 15% de descuento.
                 </p>
 </div>
-<form class="space-y-6 font-mono text-xs" id="order-form">
+<form class="space-y-6 font-mono text-xs" id="order-form" method="POST">
+<input type="text" name="_honey" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" aria-hidden="true"/>
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
 <div class="space-y-2">
 <label class="text-[10px] text-white/70 uppercase tracking-widest" data-i18n="t_286" for="contact-name">Nombre y Apellidos / Contacto *</label>
@@ -1681,33 +1745,38 @@
 <div class="space-y-2">
 <label class="text-[10px] text-white/70 uppercase tracking-widest" data-i18n="t_289" for="service-select">Servicio / Trabajo Requerido *</label>
 <select class="w-full bg-black border border-white/15 focus:border-signal-red text-white p-3 font-mono text-xs outline-none cursor-pointer" id="service-select" onchange="toggleOtherServiceInput()" required="">
-<option data-i18n="t_290" value="">-- SELECCIONE SERVICIO DE INTERÉS --</option>
-<option data-i18n="t_291" value="video">Producción de Vídeo &amp; Spots Cinemáticos (IA)</option>
-<option data-i18n="t_292" value="sonido">Postproducción de Sonido &amp; Mezcla EBU R128</option>
-<option data-i18n="t_293" value="streaming">Cobertura de Eventos, Directos &amp; Streaming Pro</option>
-<option data-i18n="t_294" value="dj">DJ Sessions, Live Performance &amp; Remezclas</option>
-<option data-i18n="t_295" value="web">Desarrollo Web &amp; Aplicaciones a Medida (Web Apps)</option>
-<option data-i18n="t_296" value="design">Motion Graphics, Diseño Gráfico &amp; Branding</option>
-<option data-i18n="t_297" value="ia">Implantación &amp; Automatización con IA Generativa</option>
-<option data-i18n="t_298" value="formacion">Formación &amp; Consultoría Tecnológica</option>
+<option value="" disabled selected data-i18n="t_290">-- ELIGE TU SERVICIO --</option>
+<option data-i18n="t_291" value="video">Vídeo corporativo &amp; demo</option>
+<option data-i18n="t_opt_spots" value="spots">Spots para redes</option>
+<option data-i18n="t_293" value="streaming">Directos, streaming &amp; eventos en vivo</option>
+<option data-i18n="t_opt_podcast" value="podcast">Podcast &amp; videopodcast</option>
+<option data-i18n="t_292" value="sonido">Sonido, música &amp; identidad para tu marca</option>
+<option data-i18n="t_296" value="post">Postproducción &amp; contenido con IA</option>
+<option data-i18n="t_298" value="formacion">Formación en vídeo</option>
+<option data-i18n="t_297" value="ia">Implantación de IA en tu comunicación</option>
+<option data-i18n="t_opt_agencias" value="agencias">Apoyo a agencias &amp; productoras</option>
+<option data-i18n="t_295" value="web">Web &amp; campaña</option>
 <option data-i18n="t_299" value="otros">⚡ OTROS (Especificación personalizada)</option>
 </select>
 </div>
 </div>
 <!-- Campo Desplegable Dinámico cuando se elige OTROS -->
 <div class="hidden space-y-2 animate-fadeIn" id="other-service-wrap">
-<label class="text-[10px] text-signal-red uppercase tracking-widest font-bold" data-i18n="t_300" for="other-service-input">// ESPECIFIQUE EL TRABAJO O NECESIDAD ESPECIAL *</label>
+<label class="text-[10px] text-signal-red uppercase tracking-widest font-bold" data-i18n="t_300" for="other-service-input">// CUÉNTANOS TU PROYECTO: OBJETIVOS Y PLAZOS</label>
 <input class="w-full bg-black/90 border border-signal-red/60 focus:border-signal-red text-white p-3 font-mono text-xs outline-none" id="other-service-input" placeholder="&gt; Ejemplo: Masterización binaural para VR, instalación acústica, app móvil..." data-i18n-ph="t_ph_ejemplo" type="text"/>
 </div>
 <div class="space-y-2">
-<label class="text-[10px] text-white/70 uppercase tracking-widest" data-i18n="t_301" for="project-details">Detalles del Proyecto &amp; Plazos Estimados</label>
+<label class="text-[10px] text-white/70 uppercase tracking-widest" data-i18n="t_301" for="project-details">Ideas, presupuesto orientativo y fechas</label>
 <textarea class="w-full bg-black/90 border border-white/15 focus:border-signal-red text-white p-3 font-mono text-xs outline-none transition-colors" placeholder="&gt; Especifique el alcance, ubicación o requerimientos del encargo..." data-i18n-ph="t_ph_alcance" required="" rows="4" id="project-details"></textarea>
 </div>
 <button class="w-full bg-signal-red text-white font-headline text-xl sm:text-2xl py-4 uppercase tracking-widest hover:bg-signal-red-hover transition-all shadow-lg hover:shadow-signal-red/30" data-i18n="t_302" type="submit">
-                    ENVIAR PROTOCOLO DE ENCARGO
+                    SOLICITAR PRESUPUESTO →
                 </button>
-<div class="hidden text-center text-terminal-green font-mono text-xs pt-2" id="form-success">
-                    ✓ ENCARGO RECIBIDO CORRECTAMENTE. EL EQUIPO TÉCNICO RESPONDERÁ EN &lt; 24 HORAS.
+<div class="hidden text-center text-terminal-green font-mono text-xs pt-2" data-i18n="t_form_ok" id="form-success">
+                    ✓ SOLICITUD RECIBIDA. TE RESPONDEREMOS EN MENOS DE 24 HORAS LABORABLES.
+                </div>
+<div class="hidden text-center text-signal-red font-mono text-xs pt-2 leading-relaxed" data-i18n="t_form_err" id="form-error">
+                    ✗ NO SE PUDO ENVIAR. ESCRÍBENOS A INFO@CHUSBZN.COM O REINTENTA.
                 </div>
 </form>
 </div>
@@ -1731,7 +1800,7 @@
 <img alt="CHUS BZN Logo Oficial" class="h-14 w-auto object-contain border border-white/20 p-1 rounded group-hover:border-signal-red transition-all" loading="lazy" src="assets/logo.jpg"/>
 </a>
 <p class="font-sans text-xs text-text-secondary max-w-sm font-light" data-i18n="t_308">
-                CHUS BZN es una firma y colectivo de proyectos audiovisuales y tecnológicos a medida en Barcelona. Dirección técnica, sonido broadcast, desarrollo web e integración de Inteligencia Artificial para empresas.
+                CHUS BZN es un estudio de proyectos audiovisuales en Barcelona: sonido, vídeo, streaming e inteligencia artificial para empresas que quieren comunicar como las grandes.
             </p>
 </div>
 <div class="md:col-span-4 font-mono text-xs space-y-3">
@@ -1774,7 +1843,7 @@
 </div>
 <div class="max-w-[1440px] mx-auto pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center font-mono text-[10px] text-white/40 tracking-widest uppercase gap-4">
 <div data-i18n="t_copyright">© 2026 CHUS BZN // TODOS LOS DERECHOS RESERVADOS</div>
-<div>BARCELONA // SYS_STATUS: OPERATIVO</div>
+<div>BARCELONA // SYS_STATUS: ONLINE</div>
 </div>
 </footer>
 <!-- ═══ MODALES EXPLICATIVOS DE SERVICIO ═══ -->
@@ -1939,14 +2008,17 @@
         });
     });
 
-    // Typewriter effect in Hero sub-bar
+    // Typewriter effect in Hero sub-bar (textos i18n por idioma).
+    // El script corre antes de cargar js/translations.js, por eso se protege el acceso
+    // a la variable global y el arranque se delega a DOMContentLoaded.
     const typewriterEl = document.getElementById('typewriter-sub');
-    const typewriterTexts = [
-        "> CARGANDO NODO BROADCAST BARCELONA...",
-        "> CINE IA & PROMPT ENGINE ACTIVO...",
-        "> MEZCLA & MASTERIZACIÓN EBU R128...",
-        "> DESARROLLO SOFTWARE & WEB APPS..."
-    ];
+    const getBootTexts = () => {
+        const L = localStorage.getItem('site_lang') || 'es';
+        const T = (typeof translations !== 'undefined') ? translations : null;
+        const src = (T && T[L]) ? T[L] : (T && T.es) ? T.es : null;
+        return ['t_boot_1','t_boot_2','t_boot_3','t_boot_4'].map(k => (src && src[k]) ? src[k] : ((T && T.es && T.es[k]) ? T.es[k] : k));
+    };
+    let typewriterTexts = [];
     let tIdx = 0, charIdx = 0, isDeleting = false;
     
     function typeEffect() {
@@ -1969,7 +2041,20 @@
         }
         setTimeout(typeEffect, speed);
     }
-    if (typewriterEl) setTimeout(typeEffect, 800);
+    if (typewriterEl) {
+        document.addEventListener('DOMContentLoaded', () => {
+            typewriterTexts = getBootTexts();
+            typewriterEl.textContent = typewriterTexts[tIdx] || '';
+            setTimeout(typeEffect, 400);
+        });
+    }
+    window.addEventListener('site_lang_changed', () => {
+        typewriterTexts = getBootTexts();
+        tIdx = 0;
+        charIdx = typewriterTexts[tIdx] ? typewriterTexts[tIdx].length : 0;
+        isDeleting = false;
+        if (typewriterEl && typewriterTexts[tIdx]) typewriterEl.textContent = typewriterTexts[tIdx];
+    });
 
     // ═══ MASTER MATRIX DATA STREAM CANVAS (ROCK-SOLID FOR IOS SAFARI & DESKTOP) ═══
     (function matrixEngine() {
@@ -2198,13 +2283,20 @@
         }
     };
 
+    // Traducción puntual para contenido generado en JS (modales)
+    const trModal = (key, fallback) => {
+        const L = localStorage.getItem('site_lang') || 'es';
+        const T = (typeof translations !== 'undefined') ? translations : null;
+        return (T && T[L] && T[L][key]) || (T && T.es && T.es[key]) || fallback;
+    };
+
     window.buildModalVideo = function(localVideo) {
         return '<div class="relative w-full h-full flex items-center justify-center bg-black group overflow-hidden rounded">' +
             '<video id="active-modal-video" src="' + localVideo + '" controls playsinline webkit-playsinline preload="auto" class="w-full h-full object-contain rounded shadow-2xl" type="video/mp4"></video>' +
             '<div id="modal-play-overlay" onclick="startModalVideoPlayback(event)" ontouchstart="startModalVideoPlayback(event)" style="touch-action: manipulation;" class="absolute inset-0 bg-black/60 hover:bg-black/40 flex flex-col items-center justify-center cursor-pointer transition-all z-40 p-4 text-center">' +
             '<div class="w-16 h-16 bg-signal-red text-white rounded-full flex items-center justify-center shadow-2xl transform group-hover:scale-110 mb-3 border-2 border-white/50">' +
             '<svg class="w-8 h-8 translate-x-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></div>' +
-            '<span class="font-mono text-xs text-white font-bold tracking-widest uppercase bg-black/90 px-4 py-2 rounded border border-signal-red shadow-lg">&#9654; TOCAR PARA REPRODUCIR CON AUDIO</span>' +
+            '<span class="font-mono text-xs text-white font-bold tracking-widest uppercase bg-black/90 px-4 py-2 rounded border border-signal-red shadow-lg">&#9654; ' + trModal('t_modal_play', 'TOCAR PARA REPRODUCIR CON AUDIO') + '</span>' +
             '</div></div>';
     };
 
@@ -2220,7 +2312,7 @@
 
     window.openVideoModal = function(platform, id, ratio, localVideo, title, badge, desc, link) {
         if (vmodalTitle) vmodalTitle.textContent = title || '---';
-        if (vmodalBadge) vmodalBadge.textContent = badge || '// REPRODUCTOR VIVO CON AUDIO';
+        if (vmodalBadge) vmodalBadge.textContent = badge || trModal('t_modal_badge', '// REPRODUCTOR VIVO CON AUDIO');
         if (vmodalDesc) vmodalDesc.textContent = desc || '---';
         if (vmodalLink) vmodalLink.href = link || '#';
 
@@ -2332,54 +2424,67 @@
     // Service Dossier Modal Handlers with Overflow Control
     const serviceData = {
         video: {
-            code: "// DOSSIER 01 - VÍDEO & SPOTS CINEMÁTICOS",
-            title: "Producción de Vídeo & Spots Cinemáticos",
-            desc: "CHUS BZN diseña y ejecuta producciones publicitarias de alto nivel, spots para televisión y marcas corporativas, filmación multicámara en plató y dirección técnica cinematográfica asistida por Inteligencia Artificial.",
-            specs: "<strong>Solución Comercial & Entregables:</strong><br/>• Masterización en resolución 4K/8K con espacio de color ACES y LUTs (.cube) propietarias de alta fidelidad.<br/>• Reducción de hasta un 60% en tiempos de previz y generación de planos complejos mediante ComfyUI & Wan 2.1.<br/>• <strong>Aplicación para el cliente:</strong> Campañas publicitarias masivas, videoclips y largometrajes con estándares de emisión cinematográfica internacional."
+            code: "// DOSSIER 01 – VÍDEO CORPORATIVO & DEMOS",
+            title: "Vídeo corporativo & demo",
+            desc: "Presentamos tu empresa, tu producto o tu equipo en un vídeo claro y profesional, con la calidad de imagen y sonido de las grandes producciones.",
+            specs: "<strong>Solución & Entregables:</strong><br/>• Rodaje multicámara en pláto o en tu local, en 4K/8K y color de cine.<br/>• Guion y dirección centrados en el cliente: un mensaje que se entiende en un minuto.<br/>• <strong>Aplicación:</strong> una demo que se ve y se escucha profesional en tu web, redes y reuniones de venta."
         },
-        sonido: {
-            code: "// DOSSIER 02 - POSTPRODUCCIÓN & SONIDO EBU R128",
-            title: "Postproducción de Sonido & Masterización EBU R128",
-            desc: "Ingeniería de mezclas sonoras, sonoridad homologada para televisión pública/privada (TV3, TVE1) y plataformas OTT de streaming internacional (Netflix, HBO, Amazon Prime).",
-            specs: "<strong>Solución Comercial & Entregables:</strong><br/>• Control de volumen (-23 LUFS) riguroso bajo la norma internacional EBU R128, evitando rechazos de emisión.<br/>• Limpieza y restauración espectral forense con iZotope RX11 y SpectraLayers Pro.<br/>• <strong>Aplicación para el cliente:</strong> Películas, series de doblaje, publicidad y podcasts premium."
+        spots: {
+            code: "// DOSSIER 02 – SPOTS PARA REDES SOCIALES",
+            title: "Spots para redes",
+            desc: "Cortos verticales con gancho para Instagram, TikTok y LinkedIn. Tu mensaje en segundos, con imagen y sonido que hacen parar el dedo.",
+            specs: "<strong>Solución & Entregables:</strong><br/>• Formatos 9:16 y 16:9 adaptados a cada plataforma, con subtítulos.<br/>• Hook de impacto y llamada a la acción clara: de la visualización a la consulta.<br/>• <strong>Aplicación:</strong> lanzamientos, ofertas y contenido constante sin saturar a tu equipo."
         },
         streaming: {
-            code: "// DOSSIER 03 - DIRECTOS, STREAMING & COBERTURA 360°",
-            title: "Directos, Streaming & Cobertura Broadcast 360°",
-            desc: "Arquitectura técnica de señal audiovisual en tiempo real para convenciones multinacionales, eventos deportivos, espectáculos y emisiones simultáneas en redes sociales.",
-            specs: "<strong>Solución Comercial & Entregables:</strong><br/>• Automatización de regiduría multimedia mediante OBS Studio, QLab y mezcladores físicos de video.<br/>• Control CCU de exposición y ajuste de color en tiempo real.<br/>• <strong>Aplicación para el cliente:</strong> Cobertura 360° sin latencia, streaming corporativo de alta disponibilidad y garantía de emisión ininterrumpida."
+            code: "// DOSSIER 03 – DIRECTOS & STREAMING",
+            title: "Directos & streaming",
+            desc: "Cubrimos en directo tus eventos, lanzamientos, jornadas y congresos con calidad broadcast y emisión simultánea en tus redes.",
+            specs: "<strong>Solución & Entregables:</strong><br/>• Multicámara, audio profesional y control de color en tiempo real.<br/>• Emisión simultánea a varias plataformas sin cortes.<br/>• <strong>Aplicación:</strong> tu evento visto por tu público en tiempo real, con la fiabilidad de la televisión."
         },
-        dj: {
-            code: "// DOSSIER 04 - DJ SESSIONS, LIVE PERFORMANCE & REMEZCLAS",
-            title: "DJ Live Performance & Producción Musical",
-            desc: "Dirección y ejecución de sesiones de música avanzada para festivales, macroeventos corporativos e identidad sonora de recintos comerciales.",
-            specs: "<strong>Solución Comercial & Entregables:</strong><br/>• Operación con hardware profesional Pioneer de alta gama (DDJ1000 / Rekordbox).<br/>• Estudio acústico de sala y remezclas exclusivas de estudio adaptadas al perfil del evento.<br/>• <strong>Aplicación para el cliente:</strong> Eventos de gran formato, convenciones de marca y producción discográfica."
+        podcast: {
+            code: "// DOSSIER 04 – PODCAST & VIDEOPODCAST",
+            title: "Podcast & videopodcast",
+            desc: "Tu programa en sonido o en vídeo, grabado en nuestro estudio o en tu oficina. Contenido que te da autoridad y cercanía.",
+            specs: "<strong>Solución & Entregables:</strong><br/>• Técnica lista (micrófonos, cámara e iluminación): tú hablas, nosotros grabamos.<br/>• Edición, mezcla y masterización sonora de nivel broadcast + clips cortos para redes.<br/>• <strong>Aplicación:</strong> un canal propio que te posiciona como referente de tu sector."
         },
-        web: {
-            code: "// DOSSIER 05 - DESARROLLO WEB & WEB APPS A MEDIDA",
-            title: "Desarrollo Web & Aplicaciones Interactivas",
-            desc: "Programación de aplicaciones web interactivas a medida, plataformas SaaS de alto rendimiento, landing pages comerciales e integración de pasarelas API de Inteligencia Artificial.",
-            specs: "<strong>Solución Comercial & Entregables:</strong><br/>• Código limpio en HTML5/JS/FastAPI/Electron optimizado para máxima velocidad de carga (FCP < 0.8s).<br/>• Diseño responsivo adaptado a todos los dispositivos móviles y escritorios.<br/>• <strong>Aplicación para el cliente:</strong> Punto de venta digital, automatización de procesos empresariales y presencia web corporativa de impacto."
+        sonido: {
+            code: "// DOSSIER 05 – SONIDO & MÚSICA PARA TU MARCA",
+            title: "Sonido & música para tu marca",
+            desc: "Identidad sonora, jingles, locución y mezclas con la calidad de las grandes producciones. También música en directo para tus eventos y recintos.",
+            specs: "<strong>Solución & Entregables:</strong><br/>• Mezcla y masterización EBU R128: tu contenido suena bien en todas las plataformas.<br/>• El «sonido de tu marca»: jingles, sintonías y locuciones consistentes en todo lo que publiques.<br/>• <strong>Aplicación:</strong> identidad sonora, música ambiente, DJ sessions y remezclas para eventos de gran formato."
         },
-        design: {
-            code: "// DOSSIER 06 - MOTION GRAPHICS & DISEÑO GRÁFICO",
-            title: "Motion Graphics & Identidad Visual",
-            desc: "Creación de elementos visuales animados 2D/3D, bumpers para canales de televisión, paquetes de continuidad gráfica para emisiones en vivo y diseño de marca.",
-            specs: "<strong>Solución Comercial & Entregables:</strong><br/>• Animaciones avanzadas en After Effects y Blender.<br/>• Composición fotográfica y gráfica de alta resolución.<br/>• <strong>Aplicación para el cliente:</strong> Imagen corporativa de alto impacto, promociones y gráficos para eventos."
-        },
-        ia: {
-            code: "// DOSSIER 07 - IMPLANTACIÓN DE IA EMPRESARIAL",
-            title: "Implantación & Automatización de IA en Empresas",
-            desc: "Integración estratégica de Inteligencia Artificial Generativa, agentes autónomos para empresas y clonación biométrica vocal legal bajo normativa europea.",
-            specs: "<strong>Solución Comercial & Entregables:</strong><br/>• Blindaje y cumplimiento del protocolo europeo EU AI Act y derechos de voz.<br/>• Conexión de modelos multimodales (Claude, ChatGPT, Qwen, DeepSeek) en la infraestructura de la empresa.<br/>• <strong>Aplicación para el cliente:</strong> Reducción masiva de costes operativos, atención automatizada y generación de contenidos en segundos."
+        post: {
+            code: "// DOSSIER 06 – POSTPRODUCCIÓN & CONTENIDO CON IA",
+            title: "Postproducción & contenido con IA",
+            desc: "Color, montaje, gráficos y piezas nuevas que nacen de un solo rodaje, potenciados con inteligencia artificial segura y legal.",
+            specs: "<strong>Solución & Entregables:</strong><br/>• Colorimetría de cine, montaje y motion graphics para TV, web y redes.<br/>• De un solo proyecto generamos versiones, recortes y piezas de campaña con IA auditable.<br/>• <strong>Aplicación:</strong> un rodaje multiplicado en contenidos para todo el año."
         },
         formacion: {
-            code: "// DOSSIER 08 - FORMACIÓN & CONSULTORÍA TECNOLÓGICA",
-            title: "Formación & Consultoría Tecnológica",
-            desc: "Capacitación a medida para equipos de producción, productoras de televisión y empresas en herramientas emergentes de IA y workflows audiovisuales.",
-            specs: "<strong>Solución Comercial & Entregables:</strong><br/>• Programas intensivos de Vibe Coding, Prompting para vídeo y herramientas de IA.<br/>• Auditoría tecnológica presencial o remota para optimizar flujos de trabajo.<br/>• <strong>Aplicación para el cliente:</strong> Transformación digital rápida de equipos humanos e incremento directo de la productividad."
+            code: "// DOSSIER 07 – FORMACIÓN EN VÍDEO",
+            title: "Formación en vídeo",
+            desc: "Cursos, tutoriales y onboarding en vídeo para que tu equipo aprenda y crezca, con un formato claro que se ve y se entiende.",
+            specs: "<strong>Solución & Entregables:</strong><br/>• Piezas formativas a demanda: onboarding, tutoriales de producto y formación interna.<br/>• Producción con apoyo de IA y adaptada al nivel de tu equipo.<br/>• <strong>Aplicación:</strong> formar sin parar la operación y consultar el contenido cuando haga falta."
+        },
+        ia: {
+            code: "// DOSSIER 08 – IA PARA TU COMUNICACIÓN",
+            title: "IA para tu comunicación",
+            desc: "Implantamos IA en tu empresa para producir más contenido en menos tiempo: catálogo, anuncios, avatares y flujos, con blindaje legal.",
+            specs: "<strong>Solución & Entregables:</strong><br/>• Cumplimiento del EU AI Act y derechos de voz: seguridad jurídica incluida.<br/>• De un material original sacamos catálogo, anuncios y piezas derivadas.<br/>• <strong>Aplicación:</strong> menos coste y contenido en segundos, sin perder la imagen de tu marca."
+        },
+        agencias: {
+            code: "// DOSSIER 09 – APOYO A AGENCIAS & PRODUCTORAS",
+            title: "Apoyo a agencias & productoras",
+            desc: "El estudio de confianza detrás de tus entregas: sonido, postproducción e IA, con garantía de calidad y de fecha.",
+            specs: "<strong>Solución & Entregables:</strong><br/>• Subcontratación técnica: sonido broadcast, mezcla, postproducción y generación con IA.<br/>• Trabajamos contigo como un miembro más del equipo, desde nuestro estudio en Barcelona.<br/>• <strong>Aplicación:</strong> amplía tu capacidad de producción sin contratar equipo fijo."
+        },
+        web: {
+            code: "// DOSSIER 10 – WEB & CAMPAÑA",
+            title: "Web & campaña",
+            desc: "Tu web y tus vídeos trabajando juntos: landing clara, rápida y pensada para convertir visitas en clientes.",
+            specs: "<strong>Solución & Entregables:</strong><br/>• Landings que cargan en menos de un segundo y están preparadas para vídeo y móvil.<br/>• Tus piezas integradas en la página que vende por ti.<br/>• <strong>Aplicación:</strong> de la visita al formulario en un solo clic."
         }
     };
+
 
     window.openServiceModal = function(key) {
         const currentLang = localStorage.getItem('site_lang') || 'es';
@@ -2459,16 +2564,58 @@
         }
     };
 
-    // Form submit simulation
+    // Form submit → FormSubmit.co (envío real a info@chusbzn.com)
     const form = document.getElementById('order-form');
     const successMsg = document.getElementById('form-success');
+    const errorMsg = document.getElementById('form-error');
     if (form) {
-        form.addEventListener('submit', (e) => {
+        const FORMSUBMIT_ENDPOINT = 'https://formsubmit.co/ajax/info@chusbzn.com';
+        form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            if (successMsg) successMsg.classList.remove('hidden');
-            form.reset();
-            if (typeof toggleOtherServiceInput === 'function') toggleOtherServiceInput();
-            setTimeout(() => { if (successMsg) successMsg.classList.add('hidden'); }, 6000);
+            if (form.querySelector('input[name="_honey"]') && form.querySelector('input[name="_honey"]').value) return;
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalBtn = submitBtn ? submitBtn.innerHTML : '';
+            if (successMsg) successMsg.classList.add('hidden');
+            if (errorMsg) errorMsg.classList.add('hidden');
+            if (submitBtn) { submitBtn.disabled = true; submitBtn.style.opacity = '0.6'; }
+
+            const val = (id) => { const el = document.getElementById(id); return el ? el.value.trim() : ''; };
+            const serviceSelect = document.getElementById('service-select');
+            const serviceText = (serviceSelect && serviceSelect.selectedIndex >= 0)
+                ? serviceSelect.options[serviceSelect.selectedIndex].text.trim()
+                : val('service-select');
+
+            const payload = {
+                "Nombre": val('contact-name'),
+                "Email": val('contact-email'),
+                "Empresa": val('company-name') || '—',
+                "Servicio": serviceText || '—',
+                "Otros": val('other-service-input') || '—',
+                "Proyecto": val('project-details') || '—',
+                "Idioma": (localStorage.getItem('site_lang') || 'es'),
+                "Pagina": location.origin + location.pathname,
+                "_subject": 'Solicitud de presupuesto web [' + (serviceText || 'general') + '] — ' + val('contact-name'),
+                "_template": 'basic',
+                "_captcha": 'false',
+                "_replyto": val('contact-email')
+            };
+
+            try {
+                const res = await fetch(FORMSUBMIT_ENDPOINT, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                if (!res.ok) throw new Error('HTTP ' + res.status);
+                if (successMsg) successMsg.classList.remove('hidden');
+                form.reset();
+                if (typeof toggleOtherServiceInput === 'function') toggleOtherServiceInput();
+                setTimeout(() => { if (successMsg) successMsg.classList.add('hidden'); }, 9000);
+            } catch (err) {
+                if (errorMsg) errorMsg.classList.remove('hidden');
+            } finally {
+                if (submitBtn) { submitBtn.disabled = false; submitBtn.style.opacity = ''; submitBtn.innerHTML = originalBtn; }
+            }
         });
     }
     // Terminal rotator
