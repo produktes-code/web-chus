@@ -71,6 +71,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Trigger Button
         const button = document.createElement('button');
         button.type = 'button';
+        button.setAttribute('aria-haspopup', 'listbox');
+        button.setAttribute('aria-expanded', 'false');
         button.className = 'bg-black/90 border border-white/20 text-white text-xs font-mono px-3 py-1.5 uppercase cursor-pointer outline-none hover:border-signal-red inline-flex items-center gap-2 transition-all rounded-sm shadow-md';
         button.innerHTML = `
             <span class="btn-flag inline-flex items-center"></span>
@@ -110,6 +112,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 applyTranslations(selectedLang);
                 if (langSelect && langSelect !== selectEl) langSelect.value = selectedLang;
                 if (mobileLangSelect && mobileLangSelect !== selectEl) mobileLangSelect.value = selectedLang;
+                // Notificar a los componentes dinámicos de cada página (blog/post)
+                [selectEl, langSelect, mobileLangSelect].forEach(sel => {
+                    if (sel) sel.dispatchEvent(new Event('change', { bubbles: true }));
+                });
                 closeAllMenus();
             });
 
@@ -123,6 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
             closeAllMenus();
             if (!isOpen) {
                 menu.classList.remove('hidden');
+                button.setAttribute('aria-expanded', 'true');
                 button.querySelector('.chevron-icon').style.transform = 'rotate(180deg)';
             }
         });
@@ -132,6 +139,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const info = LANG_LABELS[lang] || LANG_LABELS['es'];
             button.querySelector('.btn-flag').innerHTML = FLAG_SVGS[lang] || FLAG_SVGS['es'];
             button.querySelector('.btn-text').textContent = info.short;
+            const ariaLang = (translations[lang] && translations[lang].t_aria_lang) || 'Seleccionar idioma';
+            button.setAttribute('aria-label', ariaLang + ': ' + info.full);
 
             menu.querySelectorAll('button[data-value]').forEach(btn => {
                 const isSelected = btn.getAttribute('data-value') === lang;
@@ -151,8 +160,10 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.lang-custom-dropdown').forEach(wrapper => {
             const menu = wrapper.querySelector('div:not(.btn)');
             const chevron = wrapper.querySelector('.chevron-icon');
+            const btn = wrapper.querySelector('button');
             if (menu) menu.classList.add('hidden');
             if (chevron) chevron.style.transform = 'rotate(0deg)';
+            if (btn) btn.setAttribute('aria-expanded', 'false');
         });
     }
 
@@ -206,19 +217,38 @@ document.addEventListener('DOMContentLoaded', () => {
             if (val !== null) el.setAttribute('content', val);
         });
 
+        // Meta content genérico (og:title, og:description, twitter:*)
+        document.querySelectorAll('meta[data-i18n-content]').forEach(el => {
+            const val = pick(el.getAttribute('data-i18n-content'));
+            if (val !== null) el.setAttribute('content', val);
+        });
+
+        // og:locale dinámico
+        const OG_LOCALES = {
+            'es': 'es_ES', 'ca': 'ca_ES', 'en': 'en_US', 'it': 'it_IT', 'de': 'de_DE',
+            'ru': 'ru_RU', 'ja': 'ja_JP', 'uk': 'uk_UA', 'zh-CN': 'zh_CN', 'ar': 'ar_AR'
+        };
+        document.querySelectorAll('meta[data-i18n-og-locale]').forEach(el => {
+            el.setAttribute('content', OG_LOCALES[lang] || OG_LOCALES[defaultLang]);
+        });
+
         // Trigger custom event for dynamic components (modals, video cards)
         window.dispatchEvent(new CustomEvent('site_lang_changed', { detail: { lang } }));
     }
+
+    // Expuesto para que las páginas con contenido inyectado (blog/post) puedan
+    // re-aplicar las traducciones sobre HTML añadido después de la carga inicial.
+    window.applySiteTranslations = (lang) => applyTranslations(lang || localStorage.getItem('site_lang') || defaultLang);
 
     function ensureScriptStyles() {
         if (document.getElementById('i18n-dir-css')) return;
         const s = document.createElement('style');
         s.id = 'i18n-dir-css';
         s.textContent = `
-            html[dir="rtl"] body { text-align: right; }
-            html[dir="rtl"] .marquee-track,
-            html[dir="rtl"] .marquee-track--back,
-            html[dir="rtl"] .cine-marquee__track { direction: ltr; }
+            /* Árabe: mismo layout que el resto de idiomas (sin espejar). El texto árabe
+               se sigue mostrando correctamente por el algoritmo bidi, pero la estructura
+               (grid/flex, logo, hero) permanece alineada a la izquierda como en LTR. */
+            html[dir="rtl"] { direction: ltr; text-align: left; }
             html[dir="rtl"] .lang-custom-dropdown { text-align: left; }
             html[lang|="ar"] :is(body, .font-sans, .font-headline, .font-mono, .glass-panel, input, textarea, select, button, a) {
                 font-family: "Noto Naskh Arabic", "Noto Sans Arabic", "Segoe UI", system-ui, sans-serif;

@@ -14,17 +14,17 @@
 <!-- Open Graph -->
 <meta content="article" property="og:type"/>
 <meta content="https://chusbzn.com/post.html" property="og:url"/>
-<meta content="Artículo | Jesús Ferrer García (CHUS BZN)" property="og:title"/>
-<meta content="Artículo del blog profesional de Jesús Ferrer García. Ingeniería audiovisual, integración de IA y tecnología broadcast." property="og:description"/>
-<meta content="https://chusbzn.com/assets/blog_acoustic.png" property="og:image"/>
-<meta content="es_ES" property="og:locale"/>
+<meta content="Artículo | Jesús Ferrer García (CHUS BZN)" property="og:title" data-i18n-content="t_title_post"/>
+<meta content="Artículo del blog profesional de Jesús Ferrer García. Ingeniería audiovisual, integración de IA y tecnología broadcast." property="og:description" data-i18n-content="t_desc_post"/>
+<meta content="https://chusbzn.com/assets/blog_acoustic.webp" property="og:image"/>
+<meta content="es_ES" property="og:locale" data-i18n-og-locale/>
 <meta content="CHUS BZN" property="og:site_name"/>
 <!-- Twitter Cards -->
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="https://chusbzn.com/post.html" name="twitter:url"/>
-<meta content="Artículo | Jesús Ferrer García (CHUS BZN)" name="twitter:title"/>
-<meta content="Artículo del blog profesional de Jesús Ferrer García." name="twitter:description"/>
-<meta content="https://chusbzn.com/assets/blog_acoustic.png" name="twitter:image"/>
+<meta content="Artículo | Jesús Ferrer García (CHUS BZN)" name="twitter:title" data-i18n-content="t_title_post"/>
+<meta content="Artículo del blog profesional de Jesús Ferrer García." name="twitter:description" data-i18n-content="t_desc_post"/>
+<meta content="https://chusbzn.com/assets/blog_acoustic.webp" name="twitter:image"/>
 <!-- Structured Data (JSON-LD) -->
 <script type="application/ld+json">
 {
@@ -505,7 +505,7 @@
 </nav>
 <div class="desktop-lang" style="display:flex; align-items:center; gap:8px;">
 <span style="color:#ff0000; font-family:var(--font-mono); font-size:0.75rem; font-weight:bold; letter-spacing:1px;">IDIOMAS:</span>
-<select id="lang-select" style="background: transparent; color: var(--text-secondary); border: none; font-family: var(--font-mono); font-size: 0.78rem; text-transform: uppercase; cursor: pointer; outline: none;">
+<select aria-label="Seleccionar idioma" data-i18n-aria="t_aria_lang" id="lang-select" style="background: transparent; color: var(--text-secondary); border: none; font-family: var(--font-mono); font-size: 0.78rem; text-transform: uppercase; cursor: pointer; outline: none;">
 <option style="background: #000;" value="es">🇪🇸 ESPAÑOL</option>
 <option style="background: #000;" value="ca">CA - Català</option>
 <option style="background: #000;" value="en">🇬🇧 ENGLISH</option>
@@ -519,7 +519,7 @@
 </select>
 </div>
 <button aria-expanded="false" aria-label="Menú" class="hamburger" id="hamburger-btn">
-<div style="color: #ff3333; font-family: var(--font-mono); font-size: 0.9rem; font-weight: bold; letter-spacing: 1px;">MENÚ</div>
+<div style="color: #ff3333; font-family: var(--font-mono); font-size: 0.9rem; font-weight: bold; letter-spacing: 1px;" data-i18n="t_ui_menu">MENÚ</div>
 <div class="hamburger-bars">
 <span></span><span></span><span></span>
 </div>
@@ -536,7 +536,7 @@
 <a class="mobile-nav-link" data-i18n="t_13" href="index.html#github">06. GitHub Pool</a>
 <a class="mobile-nav-link" data-i18n="t_125" href="blog.html">07. Blog</a>
 <span style="color:#ff0000; font-family:var(--font-mono); font-size:1rem; font-weight:bold; letter-spacing:1px; margin-top:20px; text-align:center;">IDIOMAS:</span>
-<select id="mobile-lang-select" style="background: transparent; color: rgba(255,255,255,0.7); border: none; font-family: var(--font-mono); font-size: 1.3rem; text-transform: uppercase; cursor: pointer; outline: none; margin-top: 10px; text-align: center;">
+<select aria-label="Seleccionar idioma" data-i18n-aria="t_aria_lang" id="mobile-lang-select" style="background: transparent; color: rgba(255,255,255,0.7); border: none; font-family: var(--font-mono); font-size: 1.3rem; text-transform: uppercase; cursor: pointer; outline: none; margin-top: 10px; text-align: center;">
 <option style="background: #000;" value="es">🇪🇸 ESPAÑOL</option>
 <option style="background: #000;" value="ca">CA - Català</option>
 <option style="background: #000;" value="en">🇬🇧 ENGLISH</option>
@@ -565,7 +565,7 @@
 </article>
 </div>
 <footer>
-    [ TERMINAL ABIERTA ] // COPYRIGHT 2026 JESÚS FERRER GARCÍA // ALL SYSTEMS OPERATIONAL
+    <span data-i18n="t_footer_terminal">[ TERMINAL ABIERTA ] // COPYRIGHT 2026 JESÚS FERRER GARCÍA // ALL SYSTEMS OPERATIONAL</span>
 </footer>
 <script>
     // ── CONFIGURACIÓN DE BLOGGER ────────────────────────
@@ -674,7 +674,7 @@
             content: `
                 <p>En el panorama audiovisual actual, la aceleración de flujos de trabajo en preproducción ya no es una opción de conveniencia, sino un imperativo de competitividad. Durante el desarrollo dramático del proyecto <strong>"Alpha Berracos"</strong>, nos enfrentamos a un reto clásico: cómo validar layouts de cámara e intenciones de iluminación con rapidez milimétrica antes de movilizar el hardware físico en plató. Este artículo documenta el proceso técnico completo que desplegamos para resolver esa ecuación.</p>
 
-                <img src="assets/blog_berracos.png" alt="Cámara Rig en set cinematográfico" loading="lazy">
+                <img src="assets/blog_berracos.webp" alt="Cámara Rig en set cinematográfico" loading="lazy">
 
                 <h2>Contexto del Proyecto: ¿Qué es "Alpha Berracos"?</h2>
                 <p>"Alpha Berracos" es un proyecto de ficción audiovisual de formato largo que combina narrativa dramática con estética documental de alto contraste. La dirección artística exigía un lenguaje visual muy concreto: planos sostenidos con ópticas anamórficas, iluminación contrastada de alto rango dinámico y una paleta cromática fría que evocara tensión sin recurrir a los clichés del thriller convencional. Desde la primera reunión de preproducción, el equipo técnico identificó que el mayor cuello de botella sería el tiempo de previsualización: validar encuadres, esquemas de luz y transiciones dramáticas antes de pagar el coste operativo de un rodaje real.</p>
@@ -713,7 +713,7 @@
             content: `
                 <p>La clonación neural de voz abre posibilidades asombrosas para la preservación del patrimonio de dobladores y locutores históricos, pero también abre un debate crítico sobre la propiedad de la biometría vocal. En un contexto donde la inteligencia artificial puede replicar con fidelidad asombrosa la voz de cualquier persona a partir de pocos minutos de audio de referencia, la pregunta fundamental ya no es "¿podemos hacerlo?", sino "¿bajo qué marco ético y jurídico debemos hacerlo?". En el marco del proyecto forense <strong>LEGADO_JFB</strong>, nos propusimos un reto doble: restaurar cintas analógicas históricas y generar un modelo neural legítimo bajo un estricto cumplimiento jurídico.</p>
 
-                <img src="assets/blog_biometric.png" alt="Consola de control y masterización" loading="lazy">
+                <img src="assets/blog_biometric.webp" alt="Consola de control y masterización" loading="lazy">
 
                 <h2>El Proyecto LEGADO_JFB: Contexto y Objetivos</h2>
                 <p>LEGADO_JFB nace de una necesidad real y urgente: preservar el legado vocal de artistas cuyo registro físico original se deteriora progresivamente en soportes magnéticos analógicos. Cintas de bobina abierta de 1/4 de pulgada almacenadas durante décadas en condiciones subóptimas (temperatura variable, humedad no controlada) que presentan problemas de <em>sticky-shed syndrome</em>, pérdida de óxido y distorsión de fase.</p>
@@ -752,7 +752,7 @@
             content: `
                 <p>Haber comenzado el oficio operando con sistemas analógicos puros de 35mm y cintas magnéticas de bobina abierta te da una perspectiva única sobre el comportamiento físico del sonido. Después de más de tres décadas trabajando con audio en entornos de emisión en directo, postproducción cinematográfica y masterización para plataformas globales, puedo afirmar que la evolución de las herramientas ha sido vertiginosa, pero los principios fundamentales de la acústica siguen siendo inmutables. Hoy en día, los procesadores de restauración basados en aprendizaje profundo nos permiten hacer cirugías espectrales que antes parecían pura ciencia ficción, pero solo si el ingeniero que los opera comprende la física subyacente.</p>
 
-                <img src="assets/blog_acoustic.png" alt="Sesión de mezcla en vivo de música avanzada" loading="lazy">
+                <img src="assets/blog_acoustic.webp" alt="Sesión de mezcla en vivo de música avanzada" loading="lazy">
 
                 <h2>Del Mundo Analógico al Digital: Una Transición que Viví en Primera Persona</h2>
                 <p>Mi primer contacto con la ingeniería de sonido fue en un estudio donde la mesa de mezclas era una Neve 8068 y la grabación se hacía en un Studer A800 multripista de 2 pulgadas. En aquel contexto, cada decisión era irreversible: la ecualización se imprimía en cinta, la compresión era definitiva y la edición consistía literalmente en cortar la cinta con una cuchilla y empalmarla con cinta adhesiva de óxido de hierro. Esta disciplina forzosa — que no admitía "Ctrl+Z" — moldeó una filosofía de trabajo que conservo hasta hoy: comprometer el sonido desde la fuente, con la mínima cadena de procesado posible.</p>
@@ -903,7 +903,7 @@
                 <!-- ═══ SECCIÓN DE COMENTARIOS & DEBATE PROFESIONAL ═══ -->
                 <div class="mt-16 pt-10 border-t border-white/15 space-y-8">
                     <div class="flex items-center justify-between">
-                        <h3 class="font-headline text-2xl text-white uppercase tracking-tight section-headline-clean">// COMENTARIOS &amp; DEBATE TÉCNICO</h3>
+                        <h3 class="font-headline text-2xl text-white uppercase tracking-tight section-headline-clean" data-i18n="t_comments_title">// COMENTARIOS &amp; DEBATE TÉCNICO</h3>
                         <span class="font-mono text-xs text-signal-red font-bold" id="comments-count">[ 3 COMENTARIOS AUDITADOS ]</span>
                     </div>
                     <div class="space-y-4 font-sans text-xs" id="comments-list">
@@ -933,19 +933,21 @@
                     <!-- Formulario de comentario nuevo -->
                     <form id="comment-form" class="glass-panel p-6 border border-white/15 rounded space-y-4">
                         <div class="flex justify-between items-center">
-                            <span class="font-mono text-xs text-signal-red uppercase font-bold">// AÑADIR COMENTARIO TÉCNICO</span>
-                            <span id="comment-success" class="hidden text-terminal-green font-mono text-xs font-bold animate-pulse">✓ Comentario registrado en el protocolo de auditoría.</span>
+                            <span class="font-mono text-xs text-signal-red uppercase font-bold" data-i18n="t_comment_add">// AÑADIR COMENTARIO TÉCNICO</span>
+                            <span id="comment-success" class="hidden text-terminal-green font-mono text-xs font-bold animate-pulse" data-i18n="t_comment_ok">✓ Comentario registrado en el protocolo de auditoría.</span>
                         </div>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <input type="text" id="c-name" required placeholder="Nombre completo / Firma" class="bg-black/80 border border-white/20 p-3 text-xs font-mono text-white rounded outline-none focus:border-signal-red">
-                            <input type="email" id="c-email" placeholder="Email corporativo (opcional)" class="bg-black/80 border border-white/20 p-3 text-xs font-mono text-white rounded outline-none focus:border-signal-red">
+                            <input type="text" id="c-name" required placeholder="Nombre completo / Firma" data-i18n-ph="t_comment_ph_name" class="bg-black/80 border border-white/20 p-3 text-xs font-mono text-white rounded outline-none focus:border-signal-red">
+                            <input type="email" id="c-email" placeholder="Email corporativo (opcional)" data-i18n-ph="t_comment_ph_email" class="bg-black/80 border border-white/20 p-3 text-xs font-mono text-white rounded outline-none focus:border-signal-red">
                         </div>
-                        <textarea id="c-text" rows="3" required placeholder="Escribe tu observación o comentario técnico..." class="w-full bg-black/80 border border-white/20 p-3 text-xs font-mono text-white rounded outline-none focus:border-signal-red"></textarea>
-                        <button type="submit" class="bg-signal-red hover:bg-white text-white hover:text-signal-red font-mono text-xs px-6 py-2.5 uppercase font-bold tracking-wider transition-all rounded shadow-lg cursor-pointer btn-cta">ENVIAR COMENTARIO →</button>
+                        <textarea id="c-text" rows="3" required placeholder="Escribe tu observación o comentario técnico..." data-i18n-ph="t_comment_ph_text" class="w-full bg-black/80 border border-white/20 p-3 text-xs font-mono text-white rounded outline-none focus:border-signal-red"></textarea>
+                        <button type="submit" class="bg-signal-red hover:bg-white text-white hover:text-signal-red font-mono text-xs px-6 py-2.5 uppercase font-bold tracking-wider transition-all rounded shadow-lg cursor-pointer btn-cta" data-i18n="t_comment_send">ENVIAR COMENTARIO →</button>
                     </form>
                 </div>
             `;
         }
+
+        if (window.applySiteTranslations) window.applySiteTranslations(localStorage.getItem('site_lang') || 'es');
     }
 
     // Cargar artículo individual
@@ -984,7 +986,7 @@
                 renderState();
                 return;
             } catch (e) {
-                console.error("Error al cargar desde la API de Blogger:", e);
+                console.warn("API de Blogger no disponible; usando contenido de fallback:", e);
             }
         }
 
@@ -1007,69 +1009,78 @@
         });
     }
 
-    
-    // Sistema dinámico de comentarios interactivos con persistencia localStorage
+    // ── Sistema dinámico de comentarios (persistencia localStorage) ──
+    // Delegación de eventos + lookups frescos: sobrevive a los re-render del
+    // artículo al cambiar de idioma, y evita bucles con site_lang_changed.
+    let commentsStorageKey = null;
+
+    function renderComments() {
+        if (!commentsStorageKey) return;
+        const countEl = document.getElementById('comments-count');
+        const userBlock = document.getElementById('user-comments-block');
+        const existingComments = JSON.parse(localStorage.getItem(commentsStorageKey) || '[]');
+        const baseCount = 3 + existingComments.length;
+        const cw = i18nText('t_comments_count_word', 'COMENTARIOS AUDITADOS');
+        if (countEl) countEl.textContent = `[ ${baseCount} ${cw} ]`;
+        if (userBlock) {
+            userBlock.innerHTML = existingComments.map(c => `
+                <div class="glass-panel p-5 border border-terminal-green/30 rounded space-y-2 animate-fadeIn">
+                    <div class="flex justify-between items-center text-text-secondary font-mono text-[10px]">
+                        <span class="text-terminal-green font-bold">${escapeHtml(c.name)} (${escapeHtml(c.email || 'Verificado')})</span>
+                        <span>${c.date}</span>
+                    </div>
+                    <p class="text-white/90 leading-relaxed font-light">«${escapeHtml(c.text)}»</p>
+                </div>
+            `).join('');
+        }
+    }
+
     function initCommentsSystem(postId) {
-        setTimeout(() => {
-            const form = document.getElementById('comment-form');
-            if (!form) return;
-            
-            const storageKey = `post_comments_${postId}`;
-            const existingComments = JSON.parse(localStorage.getItem(storageKey) || '[]');
-            
-            const countEl = document.getElementById('comments-count');
-            const userBlock = document.getElementById('user-comments-block');
-            
-            function renderComments() {
-                const baseCount = 3 + existingComments.length;
-                if (countEl) countEl.textContent = `[ ${baseCount} COMENTARIOS AUDITADOS ]`;
-                
-                if (userBlock) {
-                    userBlock.innerHTML = existingComments.map(c => `
-                        <div class="glass-panel p-5 border border-terminal-green/30 rounded space-y-2 animate-fadeIn">
-                            <div class="flex justify-between items-center text-text-secondary font-mono text-[10px]">
-                                <span class="text-terminal-green font-bold">${escapeHtml(c.name)} (${escapeHtml(c.email || 'Verificado')})</span>
-                                <span>${c.date}</span>
-                            </div>
-                            <p class="text-white/90 leading-relaxed font-light">«${escapeHtml(c.text)}»</p>
-                        </div>
-                    `).join('');
-                }
-            }
+        commentsStorageKey = `post_comments_${postId}`;
+        renderComments();
+        if (window.__commentsBound) return;
+        window.__commentsBound = true;
 
-            renderComments();
+        window.addEventListener('site_lang_changed', renderComments);
 
-            form.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const nameInput = document.getElementById('c-name');
-                const emailInput = document.getElementById('c-email');
-                const textInput = document.getElementById('c-text');
-                const alertSuccess = document.getElementById('comment-success');
+        document.addEventListener('submit', (e) => {
+            const form = e.target;
+            if (!form || form.id !== 'comment-form') return;
+            e.preventDefault();
+            const nameInput = document.getElementById('c-name');
+            const emailInput = document.getElementById('c-email');
+            const textInput = document.getElementById('c-text');
+            const alertSuccess = document.getElementById('comment-success');
+            if (!nameInput || !textInput) return;
+            if (!nameInput.value.trim() || !textInput.value.trim()) return;
 
-                if (!nameInput.value.trim() || !textInput.value.trim()) return;
-
-                const newComment = {
-                    name: nameInput.value.trim(),
-                    email: emailInput.value.trim(),
-                    text: textInput.value.trim(),
-                    date: new Date().toISOString().replace('T', ' ').substring(0, 16)
-                };
-
-                existingComments.unshift(newComment);
-                localStorage.setItem(storageKey, JSON.stringify(existingComments));
-
-                nameInput.value = '';
-                emailInput.value = '';
-                textInput.value = '';
-
-                if (alertSuccess) {
-                    alertSuccess.classList.remove('hidden');
-                    setTimeout(() => alertSuccess.classList.add('hidden'), 5000);
-                }
-
-                renderComments();
+            const existingComments = JSON.parse(localStorage.getItem(commentsStorageKey) || '[]');
+            existingComments.unshift({
+                name: nameInput.value.trim(),
+                email: emailInput.value.trim(),
+                text: textInput.value.trim(),
+                date: new Date().toISOString().replace('T', ' ').substring(0, 16)
             });
-        }, 100);
+            localStorage.setItem(commentsStorageKey, JSON.stringify(existingComments));
+
+            nameInput.value = '';
+            emailInput.value = '';
+            textInput.value = '';
+
+            if (alertSuccess) {
+                alertSuccess.classList.remove('hidden');
+                setTimeout(() => alertSuccess.classList.add('hidden'), 5000);
+            }
+            renderComments();
+        });
+    }
+
+    function i18nText(key, fallback) {
+        try {
+            const l = localStorage.getItem('site_lang') || 'es';
+            const T = (typeof translations !== 'undefined') ? translations : {};
+            return (T[l] && T[l][key]) || (T.es && T.es[key]) || fallback;
+        } catch (e) { return fallback; }
     }
 
     function escapeHtml(str) {
