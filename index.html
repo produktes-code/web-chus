@@ -859,23 +859,23 @@
 <!-- ═══ HERO — DISTRIBUCIÓN HORIZONTAL (texto + spot panel, estilo goagency) ═══ -->
 <section class="py-16 sm:py-20 px-6 sm:px-10 mx-auto max-w-[1440px]" style="position:relative;background:linear-gradient(180deg,#0a0a10 0%,#0c0c14 55%,#06060b 100%)">
 <div style="position:absolute;inset:0;background-image:url('assets/vintage_mixing.webp');background-size:cover;background-position:center;opacity:0.30;pointer-events:none;z-index:0" aria-hidden="true"></div>
-<div class="relative z-10 grid lg:grid-cols-12 gap-10 lg:gap-14 items-center w-full mx-auto">
-<div class="lg:col-span-7 space-y-8">
-<div class="inline-flex items-center gap-3 border border-signal-red/30 px-4 py-2 bg-surface-dim/90">
-<span class="status-pip"></span>
-<span class="font-mono text-[10px] sm:text-[11px] text-terminal-green tracking-widest uppercase whitespace-nowrap" data-i18n="t_boot_1" id="typewriter-sub">
-                        &gt; CARGANDO NODO BROADCAST BARCELONA...
-                    </span>
-</div>
-<div class="space-y-4">
-<h1 class="font-headline text-5xl sm:text-6xl lg:text-7xl xl:text-8xl uppercase leading-[0.95] tracking-tight hero-title text-left" style="text-shadow:0 2px 24px rgba(0,0,0,0.85)" data-i18n="t_144">
+<div class="relative z-10 flex flex-col items-center text-center w-full mx-auto" style="max-width:1180px">
+<div class="space-y-6" style="max-width:900px">
+<h1 class="font-headline text-5xl sm:text-6xl uppercase tracking-tight hero-title" style="line-height:0.98;text-shadow:0 2px 24px rgba(0,0,0,0.85)" data-i18n="t_144">
                         TU NEGOCIO TIENE HISTORIAS QUE CONTAR <br/> <span class="text-signal-red">Y NOSOTROS LAS HACEMOS SONAR</span>
 </h1>
-<p class="font-sans text-lg sm:text-xl lg:text-2xl text-white/85 max-w-2xl text-left font-light leading-relaxed" style="text-shadow:0 1px 14px rgba(0,0,0,0.9)" data-i18n="t_145">
+<p class="font-sans text-lg sm:text-xl text-white/85 font-light" style="line-height:1.6;text-shadow:0 1px 14px rgba(0,0,0,0.9)" data-i18n="t_145">
 <strong>CHUS BZN</strong> es un estudio audiovisual en Barcelona. Sonido e imagen profesionales para que tu negocio comunique como las grandes: vídeo, música, streaming y contenidos con IA, con la experiencia de más de 30 años y la cercanía de un taller.
                     </p>
 </div>
-<div class="flex flex-wrap items-center gap-4 pt-2">
+<!-- Spot panorámico 16:9 a ancho completo, centrado bajo el claim -->
+<div class="relative w-full overflow-hidden border border-white/15 bg-black shadow-2xl" style="border-radius:14px;margin-top:40px">
+<video id="hero-spot" class="w-full block" style="aspect-ratio:16/9;object-fit:cover" poster="assets/promo_poster.jpg" autoplay muted loop playsinline preload="auto"></video>
+<button type="button" id="hero-spot-toggle" class="absolute top-3 right-3 inline-flex items-center gap-2 rounded-full bg-black/70 border border-white/20 text-white font-mono uppercase tracking-widest px-3.5 py-2 hover:border-signal-red hover:text-signal-red transition-all cursor-pointer" style="z-index:20;font-size:10px">
+<span aria-hidden="true">🔇</span><span id="hero-spot-toggle-label">ACTIVAR SONIDO</span>
+</button>
+</div>
+<div class="flex flex-wrap items-center justify-center gap-4" style="margin-top:36px">
 <a class="bg-signal-red text-white font-mono text-xs font-bold px-8 py-4 uppercase tracking-widest hover:bg-signal-red-hover transition-all shadow-lg hover:shadow-signal-red/30 btn-cta" data-i18n="t_146" href="#presupuesto">
 <span>PEDIR PRESUPUESTO</span>
 </a>
@@ -884,27 +884,18 @@
 </a>
 </div>
 <!-- Live Commercial Specs Strip -->
-<div class="pt-6 grid grid-cols-3 gap-4 border-t border-white/10 font-mono text-xs w-full max-w-2xl">
+<div class="pt-6 grid grid-cols-3 gap-4 border-t border-white/10 font-mono text-xs w-full" style="max-width:860px;margin-top:32px">
 <div>
 <span class="text-signal-red font-headline text-2xl block">100%</span>
-<span class="text-white/60 text-[10px] uppercase" data-i18n="t_148">Proyectos a tu medida</span>
+<span class="text-white/60 uppercase" style="font-size:10px" data-i18n="t_148">Proyectos a tu medida</span>
 </div>
 <div>
 <span class="text-signal-red font-headline text-2xl block" data-i18n="t_149">BROADCAST</span>
-<span class="text-white/60 text-[10px] uppercase" data-i18n="t_150">Sonido e imagen profesionales</span>
+<span class="text-white/60 uppercase" style="font-size:10px" data-i18n="t_150">Sonido e imagen profesionales</span>
 </div>
 <div>
 <span class="text-signal-red font-headline text-2xl block" data-i18n="t_151">24H</span>
-<span class="text-white/60 text-[10px] uppercase" data-i18n="t_152">Respuesta en menos de 24 h · 24/365 todos los días</span>
-</div>
-</div>
-</div>
-<div class="lg:col-span-5">
-<div class="relative rounded-2xl overflow-hidden border border-white/15 shadow-2xl bg-black">
-<video id="hero-spot" class="w-full block" style="aspect-ratio:16/9;object-fit:cover" poster="assets/promo_poster.jpg" autoplay muted loop playsinline preload="auto"></video>
-<button type="button" id="hero-spot-toggle" class="absolute top-3 right-3 inline-flex items-center gap-2 rounded-full bg-black/70 border border-white/20 text-white text-[10px] font-mono uppercase tracking-widest px-3.5 py-2 hover:border-signal-red hover:text-signal-red transition-all cursor-pointer" style="z-index:20">
-<span aria-hidden="true">🔇</span><span id="hero-spot-toggle-label">ACTIVAR SONIDO</span>
-</button>
+<span class="text-white/60 uppercase" style="font-size:10px" data-i18n="t_152">Respuesta en menos de 24 h · 24/365 todos los días</span>
 </div>
 </div>
 </div>
@@ -1355,7 +1346,7 @@
 <span class="text-terminal-green animate-pulse" data-i18n="t_213">[PLAY EN VIVO]</span>
 </div>
 <div class="relative w-full aspect-[4/3] bg-black border border-white/10 overflow-hidden rounded shadow-xl group block">
-<video autoplay loop muted playsinline webkit-playsinline preload="metadata" disableRemotePlayback="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" poster="assets/american_job.jpg" src="assets/american_job.mp4"></video>
+<video loop muted playsinline webkit-playsinline preload="metadata" disableRemotePlayback="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" poster="assets/american_job.jpg" src="assets/american_job.mp4"></video>
 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-center justify-center pointer-events-none">
 <div class="w-10 h-10 bg-signal-red group-hover:bg-white text-white group-hover:text-signal-red rounded-full flex items-center justify-center shadow-lg shadow-signal-red/50 transition-all transform group-hover:scale-110">
 <svg class="w-5 h-5 translate-x-0.5" fill="currentColor" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
@@ -1390,7 +1381,7 @@
 <span class="text-terminal-green animate-pulse" data-i18n="t_213">[PLAY EN VIVO]</span>
 </div>
 <div class="relative w-full aspect-[4/3] bg-black border border-white/10 overflow-hidden rounded shadow-xl group block">
-<video autoplay loop muted playsinline webkit-playsinline preload="metadata" disableRemotePlayback="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" poster="assets/doritos.jpg" src="assets/doritos.mp4"></video>
+<video loop muted playsinline webkit-playsinline preload="metadata" disableRemotePlayback="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" poster="assets/doritos.jpg" src="assets/doritos.mp4"></video>
 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-center justify-center pointer-events-none">
 <div class="w-10 h-10 bg-signal-red group-hover:bg-white text-white group-hover:text-signal-red rounded-full flex items-center justify-center shadow-lg shadow-signal-red/50 transition-all transform group-hover:scale-110">
 <svg class="w-5 h-5 translate-x-0.5" fill="currentColor" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
@@ -1425,7 +1416,7 @@
 <span class="text-terminal-green animate-pulse" data-i18n="t_213">[PLAY EN VIVO]</span>
 </div>
 <div class="relative w-full aspect-[4/3] bg-black border border-white/10 overflow-hidden rounded shadow-xl group block">
-<video autoplay loop muted playsinline webkit-playsinline preload="metadata" disableRemotePlayback="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" poster="assets/cocacola.jpg" src="assets/cocacola.mp4"></video>
+<video loop muted playsinline webkit-playsinline preload="metadata" disableRemotePlayback="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" poster="assets/cocacola.jpg" src="assets/cocacola.mp4"></video>
 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-center justify-center pointer-events-none">
 <div class="w-10 h-10 bg-signal-red group-hover:bg-white text-white group-hover:text-signal-red rounded-full flex items-center justify-center shadow-lg shadow-signal-red/50 transition-all transform group-hover:scale-110">
 <svg class="w-5 h-5 translate-x-0.5" fill="currentColor" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
@@ -1460,7 +1451,7 @@
 <span class="text-terminal-green animate-pulse" data-i18n="t_213">[PLAY EN VIVO]</span>
 </div>
 <div class="relative w-full aspect-[4/3] bg-black border border-white/10 overflow-hidden rounded shadow-xl group block">
-<video autoplay loop muted playsinline webkit-playsinline preload="metadata" disableRemotePlayback="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" poster="assets/veneno.jpg" src="assets/veneno.mp4"></video>
+<video loop muted playsinline webkit-playsinline preload="metadata" disableRemotePlayback="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" poster="assets/veneno.jpg" src="assets/veneno.mp4"></video>
 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-center justify-center pointer-events-none">
 <div class="w-10 h-10 bg-signal-red group-hover:bg-white text-white group-hover:text-signal-red rounded-full flex items-center justify-center shadow-lg shadow-signal-red/50 transition-all transform group-hover:scale-110">
 <svg class="w-5 h-5 translate-x-0.5" fill="currentColor" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
@@ -1495,7 +1486,7 @@
 <span class="text-terminal-green animate-pulse" data-i18n="t_213">[PLAY EN VIVO]</span>
 </div>
 <div class="relative w-full aspect-[4/3] bg-black border border-white/10 overflow-hidden rounded shadow-xl group block">
-<video autoplay loop muted playsinline webkit-playsinline preload="metadata" disableRemotePlayback="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" poster="assets/barcelona_clown.jpg" src="assets/barcelona_clown.mp4"></video>
+<video loop muted playsinline webkit-playsinline preload="metadata" disableRemotePlayback="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" poster="assets/barcelona_clown.jpg" src="assets/barcelona_clown.mp4"></video>
 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-center justify-center pointer-events-none">
 <div class="w-10 h-10 bg-signal-red group-hover:bg-white text-white group-hover:text-signal-red rounded-full flex items-center justify-center shadow-lg shadow-signal-red/50 transition-all transform group-hover:scale-110">
 <svg class="w-5 h-5 translate-x-0.5" fill="currentColor" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
@@ -1530,7 +1521,7 @@
 <span class="text-terminal-green animate-pulse" data-i18n="t_213">[PLAY EN VIVO]</span>
 </div>
 <div class="relative w-full aspect-[4/3] bg-black border border-white/10 overflow-hidden rounded shadow-xl group block">
-<video autoplay loop muted playsinline webkit-playsinline preload="metadata" disableRemotePlayback="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" poster="assets/bronx_1980.jpg" src="assets/bronx_1980.mp4"></video>
+<video loop muted playsinline webkit-playsinline preload="metadata" disableRemotePlayback="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" poster="assets/bronx_1980.jpg" src="assets/bronx_1980.mp4"></video>
 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-center justify-center pointer-events-none">
 <div class="w-10 h-10 bg-signal-red group-hover:bg-white text-white group-hover:text-signal-red rounded-full flex items-center justify-center shadow-lg shadow-signal-red/50 transition-all transform group-hover:scale-110">
 <svg class="w-5 h-5 translate-x-0.5" fill="currentColor" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
@@ -1565,7 +1556,7 @@
 <span class="text-terminal-green animate-pulse" data-i18n="t_213">[PLAY EN VIVO]</span>
 </div>
 <div class="relative w-full aspect-[4/3] bg-black border border-white/10 overflow-hidden rounded shadow-xl group block">
-<video autoplay loop muted playsinline webkit-playsinline preload="metadata" disableRemotePlayback="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" poster="assets/killa_ig.jpg" src="assets/killa_ig.mp4"></video>
+<video loop muted playsinline webkit-playsinline preload="metadata" disableRemotePlayback="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" poster="assets/killa_ig.jpg" src="assets/killa_ig.mp4"></video>
 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-center justify-center pointer-events-none">
 <div class="w-10 h-10 bg-signal-red group-hover:bg-white text-white group-hover:text-signal-red rounded-full flex items-center justify-center shadow-lg shadow-signal-red/50 transition-all transform group-hover:scale-110">
 <svg class="w-5 h-5 translate-x-0.5" fill="currentColor" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
@@ -1600,7 +1591,7 @@
 <span class="text-terminal-green animate-pulse" data-i18n="t_213">[PLAY EN VIVO]</span>
 </div>
 <div class="relative w-full aspect-[4/3] bg-black border border-white/10 overflow-hidden rounded shadow-xl group block">
-<video autoplay loop muted playsinline webkit-playsinline preload="metadata" disableRemotePlayback="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" poster="assets/code_black_ig.jpg" src="assets/code_black_ig.mp4"></video>
+<video loop muted playsinline webkit-playsinline preload="metadata" disableRemotePlayback="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" poster="assets/code_black_ig.jpg" src="assets/code_black_ig.mp4"></video>
 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-center justify-center pointer-events-none">
 <div class="w-10 h-10 bg-signal-red group-hover:bg-white text-white group-hover:text-signal-red rounded-full flex items-center justify-center shadow-lg shadow-signal-red/50 transition-all transform group-hover:scale-110">
 <svg class="w-5 h-5 translate-x-0.5" fill="currentColor" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
@@ -1671,7 +1662,7 @@
 <div class="absolute inset-0 matrix-rain" aria-hidden="true"><canvas></canvas></div>
 <div class="absolute inset-0 bg-black/55"></div>
 <div class="absolute top-0 right-0 w-1 h-full bg-signal-red z-10"></div>
-<blockquote class="relative z-10 font-sans text-xl text-white font-normal leading-relaxed italic" data-i18n="t_slogan_quote">
+<blockquote class="relative z-10 font-headline text-white font-normal text-center" style="font-size:clamp(26px,3.4vw,44px);line-height:1.18;max-width:640px;margin:0 auto 24px" data-i18n="t_slogan_quote">
                     «Creatividad + Lógica = Resultados. Tu comunicación merece verse y escucharse bien.»
                 </blockquote>
 <p class="relative z-10 font-sans text-base sm:text-lg text-white/90 font-normal leading-relaxed" data-i18n="t_slogan_pyme">
@@ -1945,8 +1936,14 @@
     // iOS Safari limita los recursos de descarga simultáneos: con muchos <video> a
     // preload="auto" agota el presupuesto y los fuera de pantalla jamás cargan (se
     // quedan en el póster). Cargamos bajo demanda y reforzamos con el primer gesto.
+    //
+    // Además, reproduced varios clips a la vez (hasta 6 en el grid de escritorio)
+    // saturaba el decodificador y provocaba DROPS y falta de agilidad. Ahora solo
+    // se reproduce el preview más cercano al centro del viewport; el resto se pausa
+    // y baja a preload="metadata" para no gastar red.
     const setupVideoObserver = function() {
         if (!('IntersectionObserver' in window)) return;
+        const MAX_ACTIVE = 1;
         const forceIOSInline = function(vid) {
             vid.muted = true;
             vid.setAttribute('muted', '');
@@ -1970,29 +1967,57 @@
         };
         const deactivate = function(vid) {
             try { vid.pause(); } catch (err) {}
+            // baja a metadata: deja de consumir descarga, el póster se mantiene
+            if (vid.readyState >= 1) { try { vid.preload = 'metadata'; } catch (err) {} }
         };
+
+        const previews = Array.prototype.slice.call(document.querySelectorAll('#showcase-grid video'));
+        if (!previews.length) return;
+        const visible = new Set();
+        const active = new Set();
+
+        // Reproduce solo el/los previews más centrados; pausa el resto.
+        const update = function() {
+            const mid = window.innerHeight / 2;
+            const ranked = Array.from(visible).map(function (vid) {
+                const r = vid.getBoundingClientRect();
+                return { vid: vid, d: Math.abs((r.top + r.bottom) / 2 - mid) };
+            }).sort(function (a, b) { return a.d - b.d; });
+
+            const keep = new Set(ranked.slice(0, MAX_ACTIVE).map(function (x) { return x.vid; }));
+            keep.forEach(function (vid) {
+                if (!active.has(vid)) { active.add(vid); activate(vid); }
+            });
+            // Pausar TODO lo visible que no se reproduce (incluye los que el
+            // navegador hubiera arrancado por su cuenta).
+            visible.forEach(function (vid) {
+                if (!keep.has(vid)) { active.delete(vid); deactivate(vid); }
+            });
+        };
+
         const videoObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 const vid = entry.target;
                 if (!vid) return;
-                if (entry.isIntersecting) activate(vid);
-                else deactivate(vid);
+                if (entry.isIntersecting) visible.add(vid);
+                else visible.delete(vid);
             });
+            update();
         }, { threshold: 0.15, rootMargin: '0px 0px 10% 0px' });
-
-        const previews = document.querySelectorAll('#showcase-grid video');
         previews.forEach(v => videoObserver.observe(v));
 
-        // Refuerzo iOS: cualquier gesto/scroll del usuario fuerza el play de los visibles
-        const gesturePlay = function() {
-            previews.forEach(vid => {
-                const r = vid.getBoundingClientRect();
-                if (r.top < window.innerHeight && r.bottom > 0) tryPlay(vid);
-            });
+        // Recalcular el CENTRO al hacer scroll (rAF-throttled): así el preview
+        // agilidad pasa a ser el que el usuario tiene delante.
+        var ticking = false;
+        const onScroll = function() {
+            if (ticking) return;
+            ticking = true;
+            requestAnimationFrame(function () { ticking = false; update(); });
         };
-        ['touchstart', 'touchend', 'click', 'scroll'].forEach(evt => {
-            document.addEventListener(evt, gesturePlay, { passive: true });
+        ['scroll', 'resize', 'touchstart', 'touchend', 'click'].forEach(evt => {
+            document.addEventListener(evt, onScroll, { passive: true });
         });
+        update();
     };
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', setupVideoObserver);
@@ -2059,53 +2084,8 @@
         });
     });
 
-    // Typewriter effect in Hero sub-bar (textos i18n por idioma).
-    // El script corre antes de cargar js/translations.js, por eso se protege el acceso
-    // a la variable global y el arranque se delega a DOMContentLoaded.
-    const typewriterEl = document.getElementById('typewriter-sub');
-    const getBootTexts = () => {
-        const L = localStorage.getItem('site_lang') || 'es';
-        const T = (typeof translations !== 'undefined') ? translations : null;
-        const src = (T && T[L]) ? T[L] : (T && T.es) ? T.es : null;
-        return ['t_boot_1','t_boot_2','t_boot_3','t_boot_4'].map(k => (src && src[k]) ? src[k] : ((T && T.es && T.es[k]) ? T.es[k] : k));
-    };
-    let typewriterTexts = [];
-    let tIdx = 0, charIdx = 0, isDeleting = false;
-    
-    function typeEffect() {
-        if (!typewriterEl) return;
-        const currentText = typewriterTexts[tIdx];
-        if (isDeleting) {
-            typewriterEl.textContent = currentText.substring(0, charIdx--);
-        } else {
-            typewriterEl.textContent = currentText.substring(0, charIdx++);
-        }
-
-        let speed = isDeleting ? 25 : 55;
-        if (!isDeleting && charIdx === currentText.length + 1) {
-            speed = 2200;
-            isDeleting = true;
-        } else if (isDeleting && charIdx === 0) {
-            isDeleting = false;
-            tIdx = (tIdx + 1) % typewriterTexts.length;
-            speed = 400;
-        }
-        setTimeout(typeEffect, speed);
-    }
-    if (typewriterEl) {
-        document.addEventListener('DOMContentLoaded', () => {
-            typewriterTexts = getBootTexts();
-            typewriterEl.textContent = typewriterTexts[tIdx] || '';
-            setTimeout(typeEffect, 400);
-        });
-    }
-    window.addEventListener('site_lang_changed', () => {
-        typewriterTexts = getBootTexts();
-        tIdx = 0;
-        charIdx = typewriterTexts[tIdx] ? typewriterTexts[tIdx].length : 0;
-        isDeleting = false;
-        if (typewriterEl && typewriterTexts[tIdx]) typewriterEl.textContent = typewriterTexts[tIdx];
-    });
+    // La barra verde de typewriter del hero se eliminó por petición del cliente
+    // (generaba saltos de layout al teclear). No hay código asociado.
 
     // ═══ MASTER MATRIX DATA STREAM CANVAS (ROCK-SOLID FOR IOS SAFARI & DESKTOP) ═══
     (function matrixEngine() {
@@ -2825,9 +2805,9 @@
                 ch.style.setProperty('--st', String(i));
             });
         });
-        // Parallax sutil del hero (solo transform; escritorio; rAF-throttled + passive)
+        // Parallax del fondo matrix (solo la capa de fondo; el TITULAR NO se mueve
+        // para evitar el temblor del hero al hacer scroll — petición del cliente).
         if (window.innerWidth > 1024) {
-            var heroTitleEl = document.querySelector('.hero-title');
             var matrixWrapEl = document.getElementById('matrix-wrapper');
             var pTick = false;
             function parallaxHero() {
@@ -2836,7 +2816,6 @@
                 requestAnimationFrame(function () {
                     var y = window.pageYOffset || 0;
                     if (matrixWrapEl) matrixWrapEl.style.transform = 'translate3d(0,' + (-0.05 * y).toFixed(1) + 'px,0)';
-                    if (heroTitleEl) heroTitleEl.style.transform = 'translate3d(0,' + (0.04 * y).toFixed(1) + 'px,0)';
                     pTick = false;
                 });
             }
