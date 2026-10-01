@@ -1978,37 +1978,38 @@
 
         const previews = Array.prototype.slice.call(document.querySelectorAll('#showcase-grid video'));
         if (!previews.length) return;
-        const visible = new Set();
         const active = activeSet;
 
         // Reproduce solo el/los previews más centrados; pausa el resto.
+        // La visibilidad se calcula con getBoundingClientRect (fuente de verdad) en
+        // lugar de fiarse del IntersectionObserver: al hacer scroll largo sus
+        // entradas llegan tarde y se acumulaban reproducciones.
         const update = function() {
             const mid = window.innerHeight / 2;
-            const ranked = Array.from(visible).map(function (vid) {
+            const inView = [];
+            previews.forEach(function (vid) {
                 const r = vid.getBoundingClientRect();
-                return { vid: vid, d: Math.abs((r.top + r.bottom) / 2 - mid) };
-            }).sort(function (a, b) { return a.d - b.d; });
-
-            const keep = new Set(ranked.slice(0, MAX_ACTIVE).map(function (x) { return x.vid; }));
-            keep.forEach(function (vid) {
-                if (!active.has(vid)) { active.add(vid); activate(vid); }
+                const shown = Math.min(r.bottom, window.innerHeight) - Math.max(r.top, 0);
+                if (shown > Math.min(r.height, window.innerHeight) * 0.15) {
+                    inView.push({ vid: vid, d: Math.abs((r.top + r.bottom) / 2 - mid) });
+                }
             });
-            // Pausar TODO lo visible que no se reproduce (incluye los que el
-            // navegador hubiera arrancado por su cuenta).
-            visible.forEach(function (vid) {
-                if (!keep.has(vid)) { active.delete(vid); deactivate(vid); }
+            inView.sort(function (a, b) { return a.d - b.d; });
+            const keep = new Set(inView.slice(0, MAX_ACTIVE).map(function (x) { return x.vid; }));
+
+            previews.forEach(function (vid) {
+                if (keep.has(vid)) {
+                    if (!active.has(vid)) { active.add(vid); activate(vid); }
+                } else if (active.has(vid) || !vid.paused) {
+                    // incluye los que el navegador hubiera arrancado por su cuenta
+                    active.delete(vid);
+                    deactivate(vid);
+                }
             });
         };
 
-        const videoObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                const vid = entry.target;
-                if (!vid) return;
-                if (entry.isIntersecting) visible.add(vid);
-                else visible.delete(vid);
-            });
-            update();
-        }, { threshold: 0.15, rootMargin: '0px 0px 10% 0px' });
+        const videoObserver = new IntersectionObserver(function () { update(); },
+            { threshold: [0, 0.15, 0.5, 1], rootMargin: '0px 0px 10% 0px' });
         previews.forEach(v => videoObserver.observe(v));
 
         // Recalcular el CENTRO al hacer scroll (rAF-throttled): así el preview
