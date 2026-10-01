@@ -8,6 +8,8 @@
 <meta content="Blog profesional y canal de novedades de Jesús Ferrer García. Artículos sobre ingeniería audiovisual, integración de IA y tecnología broadcast." name="description" data-i18n-desc="t_desc_blog"/>
 <meta content="index, follow" name="robots"/>
 <link href="https://chusbzn.com/blog.html" rel="canonical"/>
+<link href="assets/logo.jpg" rel="icon" type="image/jpeg"/>
+<link href="assets/logo.jpg" rel="apple-touch-icon"/>
 <!-- Open Graph -->
 <meta content="website" property="og:type"/>
 <meta content="https://chusbzn.com/blog.html" property="og:url"/>
@@ -394,7 +396,7 @@
 </a>
 <!-- Botón único y claro de regreso a la Portada Principal -->
 <div style="display: flex; align-items: center; gap: 16px;">
-<button class="hamburger" id="hamburger-btn" aria-label="Abrir menú" aria-expanded="false" type="button">
+<button class="hamburger" id="hamburger-btn" aria-label="Abrir menú" data-i18n-aria="t_aria_open_menu" aria-expanded="false" type="button">
 <span class="hamburger-bars" style="pointer-events: none;">
 <span></span>
 <span></span>
@@ -421,14 +423,13 @@
 </div>
 </header>
 <!-- Mobile Nav Overlay -->
-<div aria-label="Menú móvil" id="mobile-nav" role="navigation">
+<div aria-label="Menú móvil" data-i18n-aria="t_aria_mmenu" id="mobile-nav" role="navigation">
 <a class="mobile-nav-link" data-i18n="t_8" href="index.html#manif">01. Manifiesto</a>
 <a class="mobile-nav-link" data-i18n="t_9" href="index.html#ia">02. Ecosistema IA</a>
-<a class="mobile-nav-link" data-i18n="t_10" href="index.html#broadcast">03. Broadcast &amp; Cert</a>
-<a class="mobile-nav-link" data-i18n="t_11" href="index.html#trayectoria">04. Trayectoria</a>
-<a class="mobile-nav-link" data-i18n="t_12" href="index.html#compliance">05. Compliance</a>
-<a class="mobile-nav-link" data-i18n="t_13" href="index.html#github">06. GitHub Pool</a>
-<a class="mobile-nav-link" data-i18n="t_125" href="blog.html">07. Blog</a>
+<a class="mobile-nav-link" data-i18n="t_10" href="index.html#metodologia">03. Currículum</a>
+<a class="mobile-nav-link" data-i18n="t_11" href="index.html#compliance">04. Compliance</a>
+<a class="mobile-nav-link" data-i18n="t_13" href="index.html#github">05. GitHub Pool</a>
+<a class="mobile-nav-link" data-i18n="t_125" href="blog.html">06. Blog</a>
 <span style="color:#ff0000; font-family:var(--font-mono); font-size:1rem; font-weight:bold; letter-spacing:1px; margin-top:20px; text-align:center;">IDIOMAS:</span>
 <select aria-label="Seleccionar idioma" data-i18n-aria="t_aria_lang" id="mobile-lang-select" style="background: transparent; color: rgba(255,255,255,0.7); border: none; font-family: var(--font-mono); font-size: 1.3rem; text-transform: uppercase; cursor: pointer; outline: none; margin-top: 10px; text-align: center;">
 <option style="background: #000;" value="es">🇪🇸 ESPAÑOL</option>

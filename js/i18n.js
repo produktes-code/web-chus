@@ -205,10 +205,22 @@ document.addEventListener('DOMContentLoaded', () => {
             if (val !== null) el.placeholder = val;
         });
 
+        // Textos alternativos (alt) por idioma
+        document.querySelectorAll('[data-i18n-alt]').forEach(el => {
+            const val = pick(el.getAttribute('data-i18n-alt'));
+            if (val !== null) el.setAttribute('alt', val);
+        });
+
         // aria-labels accesibles
         document.querySelectorAll('[data-i18n-aria]').forEach(el => {
             const val = pick(el.getAttribute('data-i18n-aria'));
             if (val !== null) el.setAttribute('aria-label', val);
+        });
+
+        // Tooltips (title) por idioma
+        document.querySelectorAll('[data-i18n-title]').forEach(el => {
+            const val = pick(el.getAttribute('data-i18n-title'));
+            if (val !== null) el.setAttribute('title', val);
         });
 
         // Meta description por idioma (SEO)
@@ -231,6 +243,20 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('meta[data-i18n-og-locale]').forEach(el => {
             el.setAttribute('content', OG_LOCALES[lang] || OG_LOCALES[defaultLang]);
         });
+
+        // Spot promocional localizado por idioma (solo index)
+        const heroSpot = document.getElementById('hero-spot');
+        if (heroSpot) {
+            const target = 'assets/proxy/promo.' + lang + '.mp4';
+            const cur = heroSpot.currentSrc || heroSpot.src;
+            if (cur.indexOf('promo.' + lang + '.mp4') === -1) {
+                const wasMuted = heroSpot.muted;
+                heroSpot.src = target;
+                heroSpot.muted = wasMuted;
+                heroSpot.load();
+                heroSpot.play().catch(() => {});
+            }
+        }
 
         // Trigger custom event for dynamic components (modals, video cards)
         window.dispatchEvent(new CustomEvent('site_lang_changed', { detail: { lang } }));
@@ -263,3 +289,89 @@ document.addEventListener('DOMContentLoaded', () => {
         document.head.appendChild(s);
     }
 });
+
+// ═══ MATRIX RAIN STREAM + FONDO GOVERNABLE (compensación visual de vacíos) ═══
+(function () {
+    if (window.__matrixRainInit) return;
+    window.__matrixRainInit = true;
+
+    var css = [
+        '.matrix-rain{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}',
+        '.matrix-rain canvas{display:block;width:100%;height:100%}',
+        '.perfil-photo-bg{position:absolute;inset:0;z-index:0;pointer-events:none;background-size:cover;background-position:center top;opacity:.14}',
+        '.perfil-photo-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,.92) 0%,rgba(0,0,0,.35) 42%,rgba(0,0,0,0) 100%),linear-gradient(to bottom,rgba(0,0,0,.85) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,.9) 100%);}'
+    ].join('\n');
+    var st = document.createElement('style');
+    st.textContent = css;
+    document.head.appendChild(st);
+
+    var glyphs = '0 1 アイ ウエオ カキクケコ サシスセソ タチツテト ナニヌネノ ハヒフヘホ マミムメモ ラリルレロ ワ ABC XYZ @ > : /';
+    var CELL = 16;
+
+    function start(canvas) {
+        var ctx = canvas.getContext('2d');
+        var W = 0, H = 0, cols = 0, drops = [];
+
+        function resize() {
+            var parent = canvas.parentElement;
+            if (!parent) return;
+            var w = parent.clientWidth;
+            var h = parent.clientHeight;
+            if (w === W && h === H) return;
+            W = canvas.width = w;
+            H = canvas.height = h;
+            cols = Math.max(1, Math.floor(W / CELL));
+            drops = [];
+            for (var i = 0; i < cols; i++) drops.push(Math.random() * -40);
+        }
+
+        resize();
+        if (window.addEventListener) {
+            window.addEventListener('resize', resize);
+            window.addEventListener('orientationchange', resize);
+        }
+        if ('ResizeObserver' in window && canvas.parentElement) {
+            new ResizeObserver(resize).observe(canvas.parentElement);
+        }
+
+        var raf = null;
+        var observer = null;
+        function tick(ms) {
+            raf = requestAnimationFrame(tick);
+            if (!vis) return;
+            if (ms - last < 41) return; // ~24 fps
+            last = ms;
+            ctx.fillStyle = 'rgba(0,0,0,0.07)';
+            ctx.fillRect(0, 0, W, H);
+            ctx.font = 'bold ' + (CELL - 2) + 'px Menlo, "JetBrains Mono", monospace';
+            for (var i = 0; i < cols; i++) {
+                var ch = glyphs.charAt(Math.floor(Math.random() * glyphs.length));
+                var x = i * CELL;
+                var y = drops[i] * CELL;
+                ctx.fillStyle = Math.random() > 0.975 ? '#bfffd0' : 'rgba(0,255,65,0.82)';
+                ctx.fillText(ch, x, y);
+                if (y > H && Math.random() > 0.965) drops[i] = Math.random() * -8;
+                drops[i]++;
+            }
+        }
+
+        var vis = true, last = 0;
+        if ('IntersectionObserver' in window) {
+            observer = new IntersectionObserver(function (entries) {
+                vis = entries[0].isIntersecting;
+            }, { rootMargin: '120px' });
+            observer.observe(canvas);
+        }
+        raf = requestAnimationFrame(tick);
+    }
+
+    function boot() {
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        document.querySelectorAll('.matrix-rain canvas').forEach(start);
+    }
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', boot);
+    } else {
+        boot();
+    }
+})();
