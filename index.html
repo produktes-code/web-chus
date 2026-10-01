@@ -4,6 +4,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<!-- Seguridad: CSP + Referrer-Policy (GitHub Pages no permite headers HTTP custom) -->
+<meta content="strict-origin-when-cross-origin" name="referrer"/>
+<meta content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googleapis.com https://www.instagram.com https://formsubmit.co; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.instagram.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; media-src 'self' blob: https:; frame-src https://www.instagram.com https://www.youtube.com https://www.youtube-nocookie.com; connect-src 'self' https://www.googleapis.com https://formsubmit.co https://www.instagram.com; object-src 'none'; base-uri 'self'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests" http-equiv="Content-Security-Policy"/>
+<script>if(window.top!==window.self){try{window.top.location=window.self.location;}catch(e){}}</script>
 <link href="assets/logo.jpg" rel="icon" type="image/jpeg"/>
 <link href="assets/logo.jpg" rel="apple-touch-icon"/>
 <meta content="#000000" name="theme-color"/>
@@ -852,29 +856,26 @@
 <div class="organic-orb-1"></div>
 <div class="organic-orb-2"></div>
 <!-- ═══ HERO PRINCIPAL CON EFECTO TYPEWRITER & MATRIX RAIN STREAM ═══ -->
-<!-- ═══ HERO — SPOT FULL-BLEED (estilo agencia) ═══ -->
-<section class="photo-banner flex flex-col justify-center overflow-hidden py-16 px-6 sm:px-10 max-w-[1440px] mx-auto" style="background-image:url('assets/vintage_mixing.webp');position:relative;min-height:94vh">
-<div style="position:absolute;inset:0;z-index:0" aria-hidden="true">
-<video id="hero-spot" class="w-full h-full" style="object-fit:cover" src="assets/proxy/promo.mp4" poster="assets/promo_poster.jpg" autoplay muted loop playsinline preload="auto"></video>
-<div style="position:absolute;inset:0;background:radial-gradient(78% 95% at 50% 32%, rgba(10,10,15,0.28) 0%, rgba(10,10,15,0.58) 58%, rgba(10,10,15,0.82) 100%)"></div>
-</div>
-<div class="relative z-10 grid grid-cols-1 w-full items-start">
-<div class="space-y-8 reveal active">
-<div class="inline-flex items-center gap-3 border border-signal-red/30 px-4 py-2 bg-surface-dim/90 backdrop-blur-md h-10 min-h-[40px] max-h-[40px] overflow-hidden w-full max-w-full flex-nowrap justify-center mx-auto">
+<!-- ═══ HERO — DISTRIBUCIÓN HORIZONTAL (texto + spot panel, estilo goagency) ═══ -->
+<section class="py-16 sm:py-20 px-6 sm:px-10 mx-auto max-w-[1440px]" style="position:relative;background:linear-gradient(180deg,#0a0a10 0%,#0c0c14 55%,#06060b 100%)">
+<div style="position:absolute;inset:0;background-image:url('assets/vintage_mixing.webp');background-size:cover;background-position:center;opacity:0.30;pointer-events:none;z-index:0" aria-hidden="true"></div>
+<div class="relative z-10 grid lg:grid-cols-12 gap-10 lg:gap-14 items-center w-full mx-auto">
+<div class="lg:col-span-7 space-y-8">
+<div class="inline-flex items-center gap-3 border border-signal-red/30 px-4 py-2 bg-surface-dim/90">
 <span class="status-pip"></span>
-<span class="font-mono text-[10px] sm:text-[11px] text-terminal-green tracking-widest uppercase whitespace-nowrap truncate overflow-hidden block w-full text-ellipsis" data-i18n="t_boot_1" id="typewriter-sub">
+<span class="font-mono text-[10px] sm:text-[11px] text-terminal-green tracking-widest uppercase whitespace-nowrap" data-i18n="t_boot_1" id="typewriter-sub">
                         &gt; CARGANDO NODO BROADCAST BARCELONA...
                     </span>
 </div>
 <div class="space-y-4">
-<h1 class="font-headline text-5xl sm:text-7xl lg:text-8xl uppercase leading-[0.95] tracking-tight hero-title text-center" style="text-shadow:0 2px 20px rgba(0,0,0,0.6)" data-i18n="t_144">
+<h1 class="font-headline text-5xl sm:text-6xl lg:text-7xl xl:text-8xl uppercase leading-[0.95] tracking-tight hero-title text-left" style="text-shadow:0 2px 24px rgba(0,0,0,0.85)" data-i18n="t_144">
                         TU NEGOCIO TIENE HISTORIAS QUE CONTAR <br/> <span class="text-signal-red">Y NOSOTROS LAS HACEMOS SONAR</span>
 </h1>
-<p class="font-sans text-lg sm:text-xl lg:text-2xl text-white/85 max-w-3xl mx-auto text-center font-light leading-relaxed" style="text-shadow:0 1px 12px rgba(0,0,0,0.7)" data-i18n="t_145">
+<p class="font-sans text-lg sm:text-xl lg:text-2xl text-white/85 max-w-2xl text-left font-light leading-relaxed" style="text-shadow:0 1px 14px rgba(0,0,0,0.9)" data-i18n="t_145">
 <strong>CHUS BZN</strong> es un estudio audiovisual en Barcelona. Sonido e imagen profesionales para que tu negocio comunique como las grandes: vídeo, música, streaming y contenidos con IA, con la experiencia de más de 30 años y la cercanía de un taller.
                     </p>
 </div>
-<div class="flex flex-wrap items-center justify-center gap-4 pt-2">
+<div class="flex flex-wrap items-center gap-4 pt-2">
 <a class="bg-signal-red text-white font-mono text-xs font-bold px-8 py-4 uppercase tracking-widest hover:bg-signal-red-hover transition-all shadow-lg hover:shadow-signal-red/30 btn-cta" data-i18n="t_146" href="#presupuesto">
 <span>PEDIR PRESUPUESTO</span>
 </a>
@@ -883,7 +884,7 @@
 </a>
 </div>
 <!-- Live Commercial Specs Strip -->
-<div class="pt-6 grid grid-cols-3 gap-4 border-t border-white/10 font-mono text-xs max-w-4xl mx-auto w-full">
+<div class="pt-6 grid grid-cols-3 gap-4 border-t border-white/10 font-mono text-xs w-full max-w-2xl">
 <div>
 <span class="text-signal-red font-headline text-2xl block">100%</span>
 <span class="text-white/60 text-[10px] uppercase" data-i18n="t_148">Proyectos a tu medida</span>
@@ -898,10 +899,15 @@
 </div>
 </div>
 </div>
-</div>
-<button type="button" id="hero-spot-toggle" class="absolute top-6 right-6 hidden sm:inline-flex items-center gap-2 rounded-full bg-black/60 border border-white/20 text-white text-[10px] font-mono uppercase tracking-widest px-4 py-2.5 hover:border-signal-red hover:text-signal-red transition-all cursor-pointer" style="z-index:20">
-<span aria-hidden="true">🔊</span><span id="hero-spot-toggle-label">SILENCIAR</span>
+<div class="lg:col-span-5">
+<div class="relative rounded-2xl overflow-hidden border border-white/15 shadow-2xl bg-black">
+<video id="hero-spot" class="w-full block" style="aspect-ratio:16/9;object-fit:cover" poster="assets/promo_poster.jpg" autoplay muted loop playsinline preload="auto"></video>
+<button type="button" id="hero-spot-toggle" class="absolute top-3 right-3 inline-flex items-center gap-2 rounded-full bg-black/70 border border-white/20 text-white text-[10px] font-mono uppercase tracking-widest px-3.5 py-2 hover:border-signal-red hover:text-signal-red transition-all cursor-pointer" style="z-index:20">
+<span aria-hidden="true">🔇</span><span id="hero-spot-toggle-label">ACTIVAR SONIDO</span>
 </button>
+</div>
+</div>
+</div>
 </section>
 <!-- ═══ MARQUESINA ANIMADA DE TEXTO EN MOVIMIENTO (Combinación Rojo & Blanco) ═══ -->
 <div class="marquee-container my-8" role="presentation" aria-label="Servicios: vídeo creativo, diseño sonoro, broadcasting, desarrollo web e IA, formación" data-i18n-aria="t_aria_servicios">
@@ -1684,7 +1690,8 @@
 </div>
 </div>
 </div>
-</section>
+        </div>
+    </section>
 <!-- ═══ METODOLOGÍA: MÉTODO DE TRABAJO 01-08 ═══ -->
 <section class="py-24 px-6 sm:px-10 max-w-[1600px] mx-auto reveal relative" id="metodo">
 <div class="matrix-rain" aria-hidden="true"><canvas></canvas></div>
@@ -2838,24 +2845,28 @@
         }
     })();
 
-    // Spot promocional: silenciar / activar audio
+    // Spot promocional: silenciar / activar audio (etiqueta+icono derivados del estado real)
     (function() {
         const v = document.getElementById('hero-spot');
         const s = document.getElementById('hero-spot-toggle');
         const sl = document.getElementById('hero-spot-toggle-label');
         const ic = s ? s.querySelector('span[aria-hidden="true"]') : null;
         if (v && s) {
+            const paint = function() {
+                if (sl) sl.textContent = v.muted ? 'ACTIVAR SONIDO' : 'SILENCIAR';
+                if (ic) ic.textContent = v.muted ? '\uD83D\uDD07' : '\uD83D\uDD0A';
+                s.setAttribute('aria-pressed', v.muted ? 'false' : 'true');
+            };
+            paint();
             s.addEventListener('click', function() {
-                v.muted = !v.muted;
-                if (!v.muted) {
-                    v.play().then(() => {
-                        if (sl) sl.textContent = 'SILENCIAR';
-                        if (ic) ic.textContent = '\uD83D\uDD0A';
-                    }).catch(() => { v.muted = true; });
+                if (v.muted) {
+                    v.muted = false;
+                    const pr = v.play();
+                    if (pr && pr.catch) pr.catch(function() { v.muted = true; });
                 } else {
-                    if (sl) sl.textContent = 'ACTIVAR SONIDO';
-                    if (ic) ic.textContent = '\uD83D\uDD07';
+                    v.muted = true;
                 }
+                paint();
             });
         }
     })();
