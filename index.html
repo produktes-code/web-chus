@@ -1956,12 +1956,17 @@
             const p = vid.play();
             if (p && p.catch) p.catch(function () {});
         };
+        // Reproduce SOLO si el vídeo sigue siendo el elegido: con red lenta el
+        // 'canplay' puede llegar después de haberlo pausado y lo relanzaba.
+        const activeSet = new Set();
         const activate = function(vid) {
             forceIOSInline(vid);
             vid.preload = 'auto';
             if (vid.readyState === 0) { try { vid.load(); } catch (err) {} }
             if (vid.readyState < 2) {
-                vid.addEventListener('canplay', function () { tryPlay(vid); }, { once: true });
+                vid.addEventListener('canplay', function () {
+                    if (activeSet.has(vid)) tryPlay(vid);
+                }, { once: true });
             }
             tryPlay(vid);
         };
@@ -1974,7 +1979,7 @@
         const previews = Array.prototype.slice.call(document.querySelectorAll('#showcase-grid video'));
         if (!previews.length) return;
         const visible = new Set();
-        const active = new Set();
+        const active = activeSet;
 
         // Reproduce solo el/los previews más centrados; pausa el resto.
         const update = function() {
