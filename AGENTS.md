@@ -14,7 +14,7 @@ Web de **CHUS BZN** (`www.chusbzn.com`), una sola fuente con 4 páginas estátic
 
 - Previsualización local: `http://localhost:8971` (servida por `srv.mjs`, root con caché no cacheante — hay que recargar con force para ver cambios de vídeo).
 - CDP/cabezas experimentales: `http://localhost:9223` (perfil Chrome dedicado, `localStorage.site_lang` persiste entre tests; un visitante real va a `en` por defecto).
-- Origen Git: repo `a3e792a` en `/Users/jesusferrer/.gemini/antigravity-ide/scratch/web-chus`. **NO hay commits de este trabajo** (7 ficheros modificados + vídeos sin trackear, ver abajo). Pendiente decisión del usuario sobre commit.
+- Origen Git: repo `a3e792a` en `/Users/jesusferrer/workspace/web-chus-v2`. **NO hay commits de este trabajo** (7 ficheros modificados + vídeos sin trackear, ver abajo). Pendiente decisión del usuario sobre commit.
 
 ## Mecánica i18n (JS)
 - `js/translations.js` (cargado antes): objeto `translations[lang]`, **580 claves × 10 idiomas** (es, ca, en, it, de, ru, ja, uk, zh-CN, ar).
@@ -92,12 +92,12 @@ Barrido con regex (`<` inicio de tag + `>` fin, sufijos reales `data-i18n-aria/-
 
 ## Comandos útiles
 ```bash
-cd "/Users/jesusferrer/.gemini/antigravity-ide/scratch/web-chus"
+cd "/Users/jesusferrer/workspace/web-chus-v2"
 node srv.mjs &                              # preview en :8971 (ya en marcha)
 python3 tools/update_i18n.py                # regenera js/translations.js desde CATALOG
 node --check js/translations.js js/i18n.js
-# Build vídeo (si se vuelve a tocar el vídeo):
-/var/folders/n6/xwxnzz_54vv7rbz2qnl5zndw0000gn/T/opencode/promo2/build_localized.sh <lan> <seg|all>
+# Build de los promos localizados (si se vuelve a tocar el vídeo):
+# ver promo2/README.md — extract_titles -> make_cards -> build_promos <lang>
 # Harneses CDP ya listos:
 cd /var/folders/n6/xwxnzz_54vv7rbz2qnl5zndw0000gn/T/opencode
 node cdp_audit.mjs   # verifica aria/alt/title/marquee/specs cross-lang (es/ar/zh)
@@ -108,10 +108,32 @@ ffmpeg -ss <t> -i <mp4> -frames:v 1 /tmp/f.png && swift ocr.swift /tmp/f.png ...
 ```
 
 ## Rutas clave
-- Web: `/Users/jesusferrer/.gemini/antigravity-ide/scratch/web-chus`
-- Build vídeo + assets temp (`promo2/`, `seg_*`, `web_beat.png`, `bed_faster.wav`): `/var/folders/n6/xwxnzz_54vv7rbz2qnl5zndw0000gn/T/opencode/promo2`
+- Web: `/Users/jesusferrer/workspace/web-chus-v2`
+- Pipeline de promos: `promo2/` DENTRO del repo (versionado). Assets temporales en `/tmp/promoV2` (`PROMO_TMP`)
 - Harneses CDP + `faces.swift` + OCR en `/tmp/ocr`: `/var/folders/n6/xwxnzz_54vv7rbz2qnl5zndw0000gn/T/opencode`
-- Previews: `http://localhost:8971` · CDP `http://localhost:9223`
+- Previews: `http://127.0.0.1:8971` (ojo: en Chrome headless `localhost` a veces no resuelve; usar `127.0.0.1`) · CDP `http://127.0.0.1:9223`
+- Ojo con `srv.mjs`: muere ante peticiones malformadas (`ERR_OUT_OF_RANGE`); si devuelve 000, relanzarlo.
+
+## Estado actual (2026-10-01)
+- `main` = `b601e5a`. Producción `https://chusbzn.com` verificada.
+- Hero: claim + CTAs + specs centrados, spot panorámico 16:9 debajo. **Sin** barra verde de
+  typewriter ni parallax del titular (el fondo matrix sigue). CDP: `transform:none` en
+  `.hero-title` al hacer scroll.
+- Cita `t_slogan_quote`: `font-headline`, `clamp(26px,3.4vw,44px)`, centrada, con `<br/>`
+  tras la primera frase en los 10 idiomas. Ojo: las traducciones se aplican con
+  `innerHTML` cuando contienen `<`.
+- Promos: 26,77 s, ~5,5 MB, **8 tarjetas de servicio** (una por proyecto, texto de
+  `js/translations.js`), sin el tramo raro previo a la oferta, y el metraje 9:16 centrado
+  sobre fondo desenfocado (no se recorta, para no descentrar las caras). El audio y los
+  frames de apertura/cierre salen del promo nativo de cada idioma.
+- Previews del showcase: **solo se reproduce el más cercano al centro** (`MAX_ACTIVE=1`).
+  Se quitó el `autoplay` de los 8 `<video>`; era la causa de los drops (hasta 6 decodificando
+  a la vez). La visibilidad se calcula con `getBoundingClientRect`, no con el set del
+  IntersectionObserver (llegaba desfasado en scroll largo). En producción: 1 preview en
+  desktop y móvil, `readyState 4`, avanzando a tiempo real.
+- `ocr.swift` solo reconoce es/en: para árabe, CJK y cirílico hay que comprobar los
+  glifos con `glyphcheck.swift` (CoreText) y no el OCR. Las tarjetas se generan con
+  CoreText porque **no hay libraqm**: PIL no hace shaping ni RTL.
 
 ## Notas de entorno
 - Plataforma macOS, zsh; uso OCR `swift ocr.swift <img>` visiones, no lectura de imágenes "nativas" del modelo.
