@@ -11,7 +11,7 @@
 <link href="assets/logo.jpg" rel="icon" type="image/jpeg"/>
 <link href="assets/logo.jpg" rel="apple-touch-icon"/>
 <meta content="#000000" name="theme-color"/>
-<title data-i18n="t_title_index">CHUS BZN | Agencia &amp; Estudio de Proyectos Audiovisuales &amp; Tecnológicos</title>
+<title data-i18n="t_title_index">CHUS BZN | Agencia & Estudio de Proyectos Audiovisuales & Tecnológicos</title>
 <meta content="Productora audiovisual y tecnológica en Barcelona para PYMES y marcas. Vídeo corporativo, spots, streaming, sonido, web y implantación de IA. 15% de descuento de lanzamiento en tu presupuesto." name="description" data-i18n-desc="t_desc_index"/>
 <meta content="CHUS BZN, productora audiovisual barcelona, video corporativo, spots publicitarios, streaming, sonido, web para pymes, inteligencia artificial empresas, proyectos audiovisuales" name="keywords"/>
 <meta content="index, follow" name="robots"/>
@@ -19,7 +19,7 @@
 <!-- Open Graph -->
 <meta content="website" property="og:type"/>
 <meta content="https://chusbzn.com/" property="og:url"/>
-<meta content="CHUS BZN | Agencia &amp; Estudio de Proyectos Audiovisuales &amp; Tecnológicos" property="og:title" data-i18n-content="t_title_index"/>
+<meta content="CHUS BZN | Agencia & Estudio de Proyectos Audiovisuales & Tecnológicos" property="og:title" data-i18n-content="t_title_index"/>
 <meta content="Productora audiovisual y tecnológica en Barcelona para PYMES y marcas. Vídeo corporativo, spots, streaming, sonido, web e implantación de IA. 15% de descuento de lanzamiento." property="og:description" data-i18n-content="t_desc_index"/>
 <meta content="https://chusbzn.com/assets/artistic_portrait.png" property="og:image"/>
 <meta content="es_ES" property="og:locale" data-i18n-og-locale/>
@@ -27,7 +27,7 @@
 <!-- Twitter Cards -->
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="https://chusbzn.com/" name="twitter:url"/>
-<meta content="CHUS BZN | Agencia &amp; Estudio de Proyectos Audiovisuales &amp; Tecnológicos" name="twitter:title" data-i18n-content="t_title_index"/>
+<meta content="CHUS BZN | Agencia & Estudio de Proyectos Audiovisuales & Tecnológicos" name="twitter:title" data-i18n-content="t_title_index"/>
 <meta content="Productora audiovisual y tecnológica en Barcelona para PYMES y marcas." name="twitter:description" data-i18n-content="t_desc_index"/>
 <meta content="https://chusbzn.com/assets/artistic_portrait.png" name="twitter:image"/>
 <!-- Structured Data (JSON-LD) -->
@@ -61,7 +61,7 @@
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Hanken+Grotesk:ital,wght@0,300;0,400;0,600;0,700;1,300&amp;family=JetBrains+Mono:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Hanken+Grotesk:ital,wght@0,300;0,400;0,600;0,700;1,300&family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet"/>
 <!-- Instagram SDK Embed (Carga Diferida Ultrarrápida) -->
 <script async="" defer="" src="//www.instagram.com/embed.js"></script>
 <!-- Tailwind CSS compilado estáticamente -->
@@ -173,19 +173,25 @@
         transform: translate3d(0, 0, 0);
         animation: organic-morph 22s ease-in-out infinite alternate-reverse;
     }
-    /* Icon Illumination & Continuous Organic Float */
+    /* Icon Illumination & Continuous Organic Float
+       El brillo se hace con transform + opacity, compuestos en la GPU. Antes
+       animábamos `filter: drop-shadow`, que repintaba el icono entero en cada
+       frame: con 19 iconos a la vez eso era la mayor causa de tirón. El halo se
+       mantiene como filtro FIJO (no animado), así que ya no se recalcula. */
     .animated-icon {
         animation: icon-float-glow 4s ease-in-out infinite alternate;
         transition: transform 0.3s ease, filter 0.3s ease;
+        will-change: transform;
+        filter: drop-shadow(0 0 7px rgba(255, 31, 31, 0.55));
     }
     .animated-icon:hover {
         transform: scale(1.18) rotate(4deg);
         filter: drop-shadow(0 0 15px #ff1f1f) drop-shadow(0 0 25px #ffffff);
     }
     @keyframes icon-float-glow {
-        0% { transform: translateY(0px); filter: drop-shadow(0 0 4px rgba(255, 31, 31, 0.6)); }
-        50% { filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 18px rgba(255, 31, 31, 0.8)); }
-        100% { transform: translateY(-6px); filter: drop-shadow(0 0 8px rgba(255, 31, 31, 0.9)); }
+        0%   { transform: translateY(0) scale(1); opacity: 0.75; }
+        50%  { transform: translateY(-3px) scale(1.04); opacity: 1; }
+        100% { transform: translateY(-6px) scale(1); opacity: 0.88; }
     }
 
     /* Animated Motion Text (Kinetic Titulares con Shimmer Rojo y Blanco) */
@@ -202,7 +208,7 @@
         100% { background-position: 200% center; }
     }
 
-    /* Clean Editorial Section Headlines (Sin parpadeos ni deformación) */
+        /* Clean Editorial Section Headlines (Sin parpadeos ni deformación) */
     .section-headline-clean {
         position: relative;
         display: inline-block;
@@ -214,8 +220,8 @@
     .section-headline-clean::before {
         content: '///';
         position: absolute;
-        top: 50%;
-        right: calc(100% + 18px);
+        top: 0.5em;
+        right: calc(100% + 10px);
         transform: translateY(-50%);
         font-family: var(--font-mono);
         font-size: 0.45em;
@@ -223,27 +229,9 @@
         letter-spacing: 0.1em;
         color: rgba(255, 31, 31, 0.9);
         text-shadow: 0 0 14px rgba(255, 31, 31, 0.45);
+        white-space: nowrap;
     }
-    .section-headline-clean::after {
-        content: '';
-        position: absolute;
-        bottom: -6px; left: 50%;
-        transform: translateX(-50%);
-        width: 60px; height: 3px;
-        background: linear-gradient(90deg, transparent, #ff1f1f 20%, #ff1f1f 80%, transparent);
-        box-shadow: 0 0 12px rgba(255, 31, 31, 0.55);
-        transition: width 0.4s ease;
-    }
-    .section-headline-clean:hover {
-        color: #ffffff;
-        transform: translateY(-2px);
-        text-shadow: 0 4px 30px rgba(255, 31, 31, 0.25), 0 1px 2px rgba(0, 0, 0, 0.8);
-    }
-    .section-headline-clean:hover::after {
-        width: 140px;
-    }
-
-    /* Glass Panels */
+/* Glass Panels */
     .glass-panel {
         background: linear-gradient(180deg, rgba(32, 32, 32, 0.92), rgba(18, 18, 18, 0.88) 40%, rgba(12, 12, 12, 0.9));
         backdrop-filter: blur(24px);
@@ -304,7 +292,7 @@
     .service-card-enhanced::before {
         content: '';
         position: absolute;
-        top: 0; left: 0;
+        top: 0.14em; transform: translateY(-50%); left: -14px;
         width: 0%; height: 3px;
         background: linear-gradient(90deg, transparent, var(--signal-red), transparent);
         box-shadow: 0 0 14px rgba(255, 31, 31, 0.65);
@@ -358,8 +346,9 @@
         will-change: transform;
         transform: translate3d(0, 0, 0);
         backface-visibility: hidden;
-        perspective: 1000px;
     }
+    /* El desplazamiento es estrictamente lineal y horizontal: sin oscilación
+       vertical ni giro, para que el texto se lea estable y no dé tirones. */
     .marquee-container:hover .marquee-track,
     .marquee-container:focus-within .marquee-track {
         animation-play-state: paused;
@@ -401,6 +390,22 @@
         0% { transform: translate3d(0, 0, 0) scale(1); }
         50% { transform: translate3d(30px, -20px, 0) scale(1.06); }
         100% { transform: translate3d(-20px, 20px, 0) scale(0.95); }
+    }
+
+    /* Etiquetas de las specs del hero: antes en text-white/60 a 10px (muy
+       bajas de contraste). Blancas, mas grandes y con peso para que se lean. */
+    .spec-label {
+        display: block;
+        color: #ffffff;
+        font-size: 15px;
+        line-height: 1.35;
+        font-weight: 600;
+        letter-spacing: .04em;
+        text-transform: uppercase;
+        text-shadow: 0 1px 12px rgba(0, 0, 0, .85);
+    }
+    @media (min-width: 640px) {
+        .spec-label { font-size: 16px; }
     }
 
     /* Scroll reveal */
@@ -463,9 +468,10 @@
         background: radial-gradient(circle, rgba(255, 31, 31, 0.22) 0%, rgba(255, 0, 0, 0.05) 50%, transparent 75%);
         pointer-events: none;
         z-index: 0;
-        filter: blur(18px); transform: translateZ(0);
-        will-change: transform;
+        filter: blur(18px);
+        will-change: transform, translate;
         transform: translate3d(0, 0, 0);
+        animation: organic-drift-a 27s cubic-bezier(.45,.05,.55,.95) infinite alternate;
     }
     .organic-orb-2 {
         position: fixed;
@@ -475,9 +481,31 @@
         background: radial-gradient(circle, rgba(255, 31, 31, 0.16) 0%, rgba(255, 255, 255, 0.04) 45%, transparent 70%);
         pointer-events: none;
         z-index: 0;
-        filter: blur(18px); transform: translateZ(0);
-        will-change: transform;
+        filter: blur(18px);
+        will-change: transform, translate;
         transform: translate3d(0, 0, 0);
+        animation: organic-drift-b 34s cubic-bezier(.45,.05,.55,.95) infinite alternate;
+    }
+    /* Deriva orgánica: cada orbe recorre un camino propio, lento y sin patrón
+       repetitivo evidente. Slow en los extremos -> aspecto "respirado". */
+    @keyframes organic-drift-a {
+        0%   { transform: translate3d(0, 0, 0) scale(1); }
+        22%  { transform: translate3d(46px, 26px, 0) scale(1.07); }
+        48%  { transform: translate3d(18px, 74px, 0) scale(0.94); }
+        71%  { transform: translate3d(-38px, 34px, 0) scale(1.04); }
+        100% { transform: translate3d(12px, -30px, 0) scale(1.1); }
+    }
+    @keyframes organic-drift-b {
+        0%   { transform: translate3d(0, 0, 0) scale(1.02); }
+        26%  { transform: translate3d(-52px, -34px, 0) scale(0.93); }
+        53%  { transform: translate3d(-16px, -82px, 0) scale(1.09); }
+        78%  { transform: translate3d(44px, -26px, 0) scale(0.97); }
+        100% { transform: translate3d(-8px, 36px, 0) scale(1.05); }
+    }
+    /* Sin movimiento para quien lo prefiera así: los orbes siguen siendo
+       color, pero no derivan ni reaccionan al cursor. */
+    @media (prefers-reduced-motion: reduce) {
+        .organic-orb-1, .organic-orb-2 { animation: none !important; }
     }
 
     /* Mobile Nav Overlay */
@@ -504,6 +532,12 @@
         .video-card.mobile-active {
             border-color: rgba(255, 31, 31, 0.7) !important;
             box-shadow: 0 10px 30px rgba(255, 31, 31, 0.25) !important;
+        }
+    }
+
+    @media (min-width: 640px) {
+        h2.text-4xl.sm\:text-6xl.section-headline-clean::before {
+            font-size: 0.42em;
         }
     }
 
@@ -542,14 +576,14 @@
     }
     .cine-letterbox {
         position: absolute;
-        left: 0; right: 0;
+        left: -14px; right: 0;
         height: 10px;
         background: rgba(0, 0, 0, 0.92);
         pointer-events: none;
         z-index: 3;
         transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s ease;
     }
-    .cine-letterbox.top { top: 0; transform: translateY(-100%); opacity: 0; }
+    .cine-letterbox.top { top: 0.14em; transform: translateY(-50%); transform: translateY(-100%); opacity: 0; }
     .cine-letterbox.bottom { bottom: 0; transform: translateY(100%); opacity: 0; }
     .cine-frame:hover .cine-letterbox.top { transform: translateY(0); opacity: 1; }
     .cine-frame:hover .cine-letterbox.bottom { transform: translateY(0); opacity: 1; }
@@ -676,7 +710,7 @@
     /* Barra de progreso de scroll (solo transform, cero reflow) */
     .scroll-progress {
         position: fixed;
-        top: 0; left: 0; right: 0;
+        top: 0.14em; transform: translateY(-50%); left: -14px; right: 0;
         height: 2px;
         z-index: 9999;
         background: linear-gradient(90deg, var(--signal-red), #ff7a3c);
@@ -703,7 +737,7 @@
     /* Contracorriente de la marquesina inicial (segunda capa opuesta, sutil) */
     .marquee-track--back {
         position: absolute;
-        top: 0; bottom: 0; right: 0;
+        top: 0.14em; transform: translateY(-50%); bottom: 0; right: 0;
         height: min-content;
         margin: auto 0;
         opacity: 0.26;
@@ -775,17 +809,17 @@
 <a class="flex items-center gap-3 text-decoration-none group" data-i18n="t_128" href="#top" id="brand-logo">
 <img alt="CHUS BZN Logo Oficial" class="h-11 sm:h-12 w-auto object-contain border border-white/20 p-0.5 rounded group-hover:border-signal-red transition-all group-hover:scale-105" src="assets/logo.jpg"/>
 <span class="hidden sm:inline-block font-mono text-[10px] text-white/50 tracking-widest uppercase border-l border-white/20 pl-3">
-                SERVICIOS AUDIOVISUALES &amp; IA HUB
+                SERVICIOS AUDIOVISUALES & IA HUB
             </span>
 </a>
 <!-- Desktop Navigation (6 enlaces limpios) -->
 <nav aria-label="Navegación principal" data-i18n-aria="t_aria_nav" class="hidden xl:flex items-center gap-7 font-mono text-xs uppercase tracking-widest text-white/80">
-<a class="hover:text-signal-red transition-colors" data-i18n="t_nav_services" href="#servicios">01. Servicios</a>
-<a class="hover:text-signal-red transition-colors" data-i18n="t_129" href="#redes">02. Dónde Ver Trabajos</a>
-<a class="hover:text-signal-red transition-colors" data-i18n="t_nav_ai" href="#ecosistema">03. Ecosistema IA</a>
-<a class="hover:text-signal-red transition-colors" data-i18n="t_130" href="#showcase">04. Vídeos en Vivo</a>
-<a class="hover:text-signal-red transition-colors" data-i18n="t_131" href="#metodologia">05. Currículum</a>
-<a class="hover:text-signal-red transition-colors" data-i18n="t_132" href="blog.html">06. Blog</a>
+<a class="hover:text-signal-red transition-colors text-sm sm:text-base" data-i18n="t_nav_services" href="#servicios">01. Servicios</a>
+<a class="hover:text-signal-red transition-colors text-sm sm:text-base" data-i18n="t_129" href="#redes">02. Dónde Ver Trabajos</a>
+<a class="hover:text-signal-red transition-colors text-sm sm:text-base" data-i18n="t_nav_ai" href="#ecosistema">03. Ecosistema IA</a>
+<a class="hover:text-signal-red transition-colors text-sm sm:text-base" data-i18n="t_130" href="#showcase">04. Vídeos en Vivo</a>
+<a class="hover:text-signal-red transition-colors text-sm sm:text-base" data-i18n="t_131" href="#metodologia">05. Currículum</a>
+<a class="hover:text-signal-red transition-colors text-sm sm:text-base" data-i18n="t_132" href="blog.html">06. Blog</a>
 </nav>
 <!-- Right Action Block: Verified Social SVG Logos + i18n Selector + Single CTA Button -->
 <div class="flex items-center gap-4">
@@ -843,13 +877,13 @@
 <!-- Mobile Navigation Overlay -->
 <div id="mobile-menu">
 <button id="close-mobile-menu" aria-label="Cerrar menú" data-i18n-aria="t_aria_close_menu" class="absolute top-6 right-6 text-white text-3xl font-mono p-3 hover:text-signal-red focus:outline-none cursor-pointer z-50" onclick="toggleMobileMenu(false); event.stopPropagation();">✕</button>
-<a class="mobile-link text-xl font-headline uppercase tracking-widest text-white hover:text-signal-red" data-i18n="t_nav_services" href="#servicios" onclick="toggleMobileMenu(false);">01. Servicios</a>
-<a class="mobile-link text-xl font-headline uppercase tracking-widest text-white hover:text-signal-red" data-i18n="t_129" href="#redes" onclick="toggleMobileMenu(false);">02. Dónde Ver Trabajos</a>
-<a class="mobile-link text-xl font-headline uppercase tracking-widest text-white hover:text-signal-red" data-i18n="t_nav_ai" href="#ecosistema" onclick="toggleMobileMenu(false);">03. Ecosistema IA</a>
-<a class="mobile-link text-xl font-headline uppercase tracking-widest text-white hover:text-signal-red" data-i18n="t_130" href="#showcase" onclick="toggleMobileMenu(false);">04. Vídeos en Vivo</a>
-<a class="mobile-link text-xl font-headline uppercase tracking-widest text-white hover:text-signal-red" data-i18n="t_131" href="#metodologia" onclick="toggleMobileMenu(false);">05. Currículum</a>
-<a class="mobile-link text-xl font-headline uppercase tracking-widest text-white hover:text-signal-red" data-i18n="t_132" href="blog.html" onclick="toggleMobileMenu(false);">06. Blog</a>
-<a class="mobile-link text-xl font-headline uppercase tracking-widest text-signal-red" data-i18n="t_142" href="#presupuesto" onclick="toggleMobileMenu(false);">07. Pedir Presupuesto</a>
+<a class="mobile-link text-lg font-headline uppercase tracking-widest text-white hover:text-signal-red" data-i18n="t_nav_services" href="#servicios" onclick="toggleMobileMenu(false);">01. Servicios</a>
+<a class="mobile-link text-lg font-headline uppercase tracking-widest text-white hover:text-signal-red" data-i18n="t_129" href="#redes" onclick="toggleMobileMenu(false);">02. Dónde Ver Trabajos</a>
+<a class="mobile-link text-lg font-headline uppercase tracking-widest text-white hover:text-signal-red" data-i18n="t_nav_ai" href="#ecosistema" onclick="toggleMobileMenu(false);">03. Ecosistema IA</a>
+<a class="mobile-link text-lg font-headline uppercase tracking-widest text-white hover:text-signal-red" data-i18n="t_130" href="#showcase" onclick="toggleMobileMenu(false);">04. Vídeos en Vivo</a>
+<a class="mobile-link text-lg font-headline uppercase tracking-widest text-white hover:text-signal-red" data-i18n="t_131" href="#metodologia" onclick="toggleMobileMenu(false);">05. Currículum</a>
+<a class="mobile-link text-lg font-headline uppercase tracking-widest text-white hover:text-signal-red" data-i18n="t_132" href="blog.html" onclick="toggleMobileMenu(false);">06. Blog</a>
+<a class="mobile-link text-lg font-headline uppercase tracking-widest text-signal-red" data-i18n="t_142" href="#presupuesto" onclick="toggleMobileMenu(false);">07. Pedir Presupuesto</a>
 </div>
 <main class="relative z-10 pt-20">
 <!-- Dynamic Glow & Organic Orbs Background -->
@@ -870,7 +904,7 @@
 </div>
 <!-- Spot panorámico 16:9 a ancho completo, centrado bajo el claim -->
 <div class="relative w-full overflow-hidden border border-white/15 bg-black shadow-2xl" style="border-radius:14px;margin-top:40px">
-<video id="hero-spot" class="w-full block" style="aspect-ratio:16/9;object-fit:cover" poster="assets/promo_poster.jpg" autoplay muted loop playsinline preload="auto"></video>
+<video id="hero-spot" class="w-full block" style="aspect-ratio:16/9;object-fit:cover" poster="assets/promo_poster.jpg" autoplay muted loop playsinline preload="metadata"></video>
 <button type="button" id="hero-spot-toggle" class="absolute top-3 right-3 inline-flex items-center gap-2 rounded-full bg-black/70 border border-white/20 text-white font-mono uppercase tracking-widest px-3.5 py-2 hover:border-signal-red hover:text-signal-red transition-all cursor-pointer" style="z-index:20;font-size:10px">
 <span aria-hidden="true">🔇</span><span id="hero-spot-toggle-label">ACTIVAR SONIDO</span>
 </button>
@@ -887,15 +921,15 @@
 <div class="pt-6 grid grid-cols-3 gap-4 border-t border-white/10 font-mono text-xs w-full" style="max-width:860px;margin-top:32px">
 <div>
 <span class="text-signal-red font-headline text-2xl block">100%</span>
-<span class="text-white/60 uppercase" style="font-size:10px" data-i18n="t_148">Proyectos a tu medida</span>
+<span class="spec-label" data-i18n="t_148">Proyectos a tu medida</span>
 </div>
 <div>
 <span class="text-signal-red font-headline text-2xl block" data-i18n="t_149">BROADCAST</span>
-<span class="text-white/60 uppercase" style="font-size:10px" data-i18n="t_150">Sonido e imagen profesionales</span>
+<span class="spec-label" data-i18n="t_150">Sonido e imagen profesionales</span>
 </div>
 <div>
 <span class="text-signal-red font-headline text-2xl block" data-i18n="t_151">24H</span>
-<span class="text-white/60 uppercase" style="font-size:10px" data-i18n="t_152">Respuesta en menos de 24 h · 24/365 todos los días</span>
+<span class="spec-label" data-i18n="t_152">Respuesta en menos de 24 h · 24/365 todos los días</span>
 </div>
 </div>
 </div>
@@ -958,325 +992,64 @@
 </div>
 
 <!-- ═══ REJILLA INTERACTIVA DE 16 SERVICIOS ═══ -->
-<section class="photo-banner py-24 border-t border-white/10 bg-white/[0.01] reveal" id="servicios" style="background-image:url('assets/mixing_console_bg.webp')">
-<div class="max-w-[1600px] mx-auto px-6 sm:px-10">
-<div class="text-center space-y-4 mb-16 max-w-3xl mx-auto">
-<span class="font-mono text-signal-red text-xs uppercase tracking-widest" data-i18n="t_172">// QUÉ PODEMOS HACER POR TU NEGOCIO</span>
-<h2 class="font-headline text-5xl sm:text-7xl uppercase text-white tracking-tight section-headline-clean" data-i18n="t_173">Servicios & Encargos a Medida</h2>
-<p class="font-sans text-base text-white/85 font-normal" data-i18n="t_174">
-                Elige un servicio y verás qué incluye, en lenguaje claro. Cada proyecto es único y lo tratamos como tal.
-            </p>
+<section class="py-20 px-6 sm:px-10 max-w-[1600px] mx-auto reveal" id="servicios">
+<div class="text-center space-y-3 mb-14">
+<span class="font-mono text-signal-red text-sm uppercase tracking-widest">// SERVICIOS</span>
+<h2 class="font-headline text-4xl sm:text-6xl uppercase text-white tracking-tight section-headline-clean">Servicios y Creatividad a Medida</h2>
+<p class="font-sans text-lg sm:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">Soluciones audiovisuales integradas para dar forma, sonido e imagen a tus proyectos con precisión técnica y enfoque estratégico.</p>
 </div>
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 reveal-stagger"><!-- Service cards -->
-    <!-- Service 01: Vídeo corporativo &amp; demo -->
-    <button type="button" class="service-card-enhanced p-6 cursor-pointer space-y-4 text-left w-full block transition-all duration-300" onclick="openServiceModal('video')" onkeydown="if(event.key==='Enter')openServiceModal('video')">
-    <div class="flex justify-between items-center">
-    <span class="font-mono text-[10px] text-signal-red tracking-widest uppercase" data-i18n="t_175">// SERVICIO 01</span>
-    <svg class="w-8 h-8 stroke-signal-red" fill="none" viewbox="0 0 24 24"><path d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
-    </div>
-    <h3 class="font-headline text-2xl text-white uppercase" data-i18n="t_176">Vídeo corporativo &amp; demo</h3>
-    <p class="font-sans text-sm text-white/85 font-normal" data-i18n="t_177">Presentamos tu empresa, tu producto o tu equipo en un vídeo claro y profesional que haga que te elijan.</p>
-    <span class="font-mono text-[10px] text-signal-red uppercase font-bold block pt-2" data-i18n="t_178">
-                    VER QUÉ INCLUYE →
-                </span>
-    </button>
-    <!-- Service 02: Spots para redes -->
-    <button type="button" class="service-card-enhanced p-6 cursor-pointer space-y-4 text-left w-full block transition-all duration-300" onclick="openServiceModal('spots')" onkeydown="if(event.key==='Enter')openServiceModal('spots')">
-    <div class="flex justify-between items-center">
-    <span class="font-mono text-[10px] text-signal-red tracking-widest uppercase" data-i18n="t_179">// SERVICIO 02</span>
-    <svg class="w-8 h-8 stroke-signal-red" fill="none" viewbox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
-    </div>
-    <h3 class="font-headline text-2xl text-white uppercase" data-i18n="t_180">Spots para redes</h3>
-    <p class="font-sans text-sm text-white/85 font-normal" data-i18n="t_181">Cortos verticales con gancho para Instagram, TikTok y LinkedIn. Tu mensaje y tu llamada a la acción en segundos.</p>
-    <span class="font-mono text-[10px] text-signal-red uppercase font-bold block pt-2" data-i18n="t_178">
-                    VER QUÉ INCLUYE →
-                </span>
-    </button>
-    <!-- Service 03: Directos &amp; streaming -->
-    <button type="button" class="service-card-enhanced p-6 cursor-pointer space-y-4 text-left w-full block transition-all duration-300" onclick="openServiceModal('streaming')" onkeydown="if(event.key==='Enter')openServiceModal('streaming')">
-    <div class="flex justify-between items-center">
-    <span class="font-mono text-[10px] text-signal-red tracking-widest uppercase" data-i18n="t_182">// SERVICIO 03</span>
-    <svg class="w-8 h-8 stroke-signal-red" fill="none" viewbox="0 0 24 24"><path d="M5.636 18.364a9 9 0 010-12.728m12.728 0a9 9 0 010 12.728m-9.9-2.828a5 5 0 010-7.07m7.072 0a5 5 0 010 7.07M13 12a1 1 0 11-2 0 1 1 0 012 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
-    </div>
-    <h3 class="font-headline text-2xl text-white uppercase" data-i18n="t_183">Directos &amp; streaming</h3>
-    <p class="font-sans text-sm text-white/85 font-normal" data-i18n="t_184">Eventos, lanzamientos, jornadas y congresos emitidos en directo y con calidad broadcast, en cualquier medio.</p>
-    <span class="font-mono text-[10px] text-signal-red uppercase font-bold block pt-2" data-i18n="t_178">
-                    VER QUÉ INCLUYE →
-                </span>
-    </button>
-    <!-- Service 04: Podcast &amp; videopodcast -->
-    <button type="button" class="service-card-enhanced p-6 cursor-pointer space-y-4 text-left w-full block transition-all duration-300" onclick="openServiceModal('podcast')" onkeydown="if(event.key==='Enter')openServiceModal('podcast')">
-    <div class="flex justify-between items-center">
-    <span class="font-mono text-[10px] text-signal-red tracking-widest uppercase" data-i18n="t_185">// SERVICIO 04</span>
-    <svg class="w-8 h-8 stroke-signal-red" fill="none" viewbox="0 0 24 24"><path d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
-    </div>
-    <h3 class="font-headline text-2xl text-white uppercase" data-i18n="t_186">Podcast &amp; videopodcast</h3>
-    <p class="font-sans text-sm text-white/85 font-normal" data-i18n="t_187">Tu programa en sonido o en vídeo, en tu oficina o en nuestro estudio. Contenido que genera autoridad y cercanía.</p>
-    <span class="font-mono text-[10px] text-signal-red uppercase font-bold block pt-2" data-i18n="t_178">
-                    VER QUÉ INCLUYE →
-                </span>
-    </button>
-    <!-- Service 05: Sonido &amp; música para tu marca -->
-    <button type="button" class="service-card-enhanced p-6 cursor-pointer space-y-4 text-left w-full block transition-all duration-300" onclick="openServiceModal('sonido')" onkeydown="if(event.key==='Enter')openServiceModal('sonido')">
-    <div class="flex justify-between items-center">
-    <span class="font-mono text-[10px] text-signal-red tracking-widest uppercase" data-i18n="t_188">// SERVICIO 05</span>
-    <svg class="w-8 h-8 stroke-signal-red" fill="none" viewbox="0 0 24 24"><path d="M9 18V5l12-2v13" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><circle cx="6" cy="18" r="3" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><circle cx="18" cy="16" r="3" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
-    </div>
-    <h3 class="font-headline text-2xl text-white uppercase" data-i18n="t_189">Sonido &amp; música para tu marca</h3>
-    <p class="font-sans text-sm text-white/85 font-normal" data-i18n="t_190">Identidad sonora, jingles, locución y mezclas con la calidad de las grandes producciones (incluye sesiones en directo).</p>
-    <span class="font-mono text-[10px] text-signal-red uppercase font-bold block pt-2" data-i18n="t_178">
-                    VER QUÉ INCLUYE →
-                </span>
-    </button>
-    <!-- Service 06: Postproducción &amp; contenido con IA -->
-    <button type="button" class="service-card-enhanced p-6 cursor-pointer space-y-4 text-left w-full block transition-all duration-300" onclick="openServiceModal('post')" onkeydown="if(event.key==='Enter')openServiceModal('post')">
-    <div class="flex justify-between items-center">
-    <span class="font-mono text-[10px] text-signal-red tracking-widest uppercase" data-i18n="t_191">// SERVICIO 06</span>
-    <svg class="w-8 h-8 stroke-signal-red" fill="none" viewbox="0 0 24 24"><path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
-    </div>
-    <h3 class="font-headline text-2xl text-white uppercase" data-i18n="t_192">Postproducción &amp; contenido con IA</h3>
-    <p class="font-sans text-sm text-white/85 font-normal" data-i18n="t_193">Color, montaje y piezas que nacen de un solo rodaje, potenciadas con IA segura y legal.</p>
-    <span class="font-mono text-[10px] text-signal-red uppercase font-bold block pt-2" data-i18n="t_178">
-                    VER QUÉ INCLUYE →
-                </span>
-    </button>
-    <!-- Service 07: Formación en vídeo -->
-    <button type="button" class="service-card-enhanced p-6 cursor-pointer space-y-4 text-left w-full block transition-all duration-300" onclick="openServiceModal('formacion')" onkeydown="if(event.key==='Enter')openServiceModal('formacion')">
-    <div class="flex justify-between items-center">
-    <span class="font-mono text-[10px] text-signal-red tracking-widest uppercase" data-i18n="t_194">// SERVICIO 07</span>
-    <svg class="w-8 h-8 stroke-signal-red" fill="none" viewbox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0112 20.055a11.952 11.952 0 01-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
-    </div>
-    <h3 class="font-headline text-2xl text-white uppercase" data-i18n="t_195">Formación en vídeo</h3>
-    <p class="font-sans text-sm text-white/85 font-normal" data-i18n="t_196">Cursos, tutoriales y onboarding en vídeo para que tu equipo aprenda y crezca.</p>
-    <span class="font-mono text-[10px] text-signal-red uppercase font-bold block pt-2" data-i18n="t_178">
-                    VER QUÉ INCLUYE →
-                </span>
-    </button>
-    <!-- Service 08: IA para tu comunicación -->
-    <button type="button" class="service-card-enhanced p-6 cursor-pointer space-y-4 text-left w-full block transition-all duration-300" onclick="openServiceModal('ia')" onkeydown="if(event.key==='Enter')openServiceModal('ia')">
-    <div class="flex justify-between items-center">
-    <span class="font-mono text-[10px] text-signal-red tracking-widest uppercase" data-i18n="t_197">// SERVICIO 08</span>
-    <svg class="w-8 h-8 stroke-signal-red" fill="none" viewbox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
-    </div>
-    <h3 class="font-headline text-2xl text-white uppercase" data-i18n="t_198">IA para tu comunicación</h3>
-    <p class="font-sans text-sm text-white/85 font-normal" data-i18n="t_199">Implantamos IA en tu empresa: catálogos, anuncios y flujos que multiplican tu producción de contenido.</p>
-    <span class="font-mono text-[10px] text-signal-red uppercase font-bold block pt-2" data-i18n="t_178">
-                    VER QUÉ INCLUYE →
-                </span>
-    </button>
-    <!-- Service 09: Apoyo a agencias &amp; productoras -->
-    <button type="button" class="service-card-enhanced p-6 cursor-pointer space-y-4 text-left w-full block transition-all duration-300" onclick="openServiceModal('agencias')" onkeydown="if(event.key==='Enter')openServiceModal('agencias')">
-    <div class="flex justify-between items-center">
-    <span class="font-mono text-[10px] text-signal-red tracking-widest uppercase" data-i18n="t_f09_label">// SERVICIO 09</span>
-    <svg class="w-8 h-8 stroke-signal-red" fill="none" viewbox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><circle cx="9" cy="7" r="4" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M23 21v-2a4 4 0 0 0-3-3.87" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M16 3.13a4 4 0 0 1 0 7.75" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
-    </div>
-    <h3 class="font-headline text-2xl text-white uppercase" data-i18n="t_f09_title">Apoyo a agencias &amp; productoras</h3>
-    <p class="font-sans text-sm text-white/85 font-normal" data-i18n="t_f09_desc">Agencias y productoras con un estudio de confianza: sonido, postproducción e IA, con la entrega garantizada.</p>
-    <span class="font-mono text-[10px] text-signal-red uppercase font-bold block pt-2" data-i18n="t_178">
-                    VER QUÉ INCLUYE →
-                </span>
-    </button>
-    <!-- Service 10: Web &amp; campaña -->
-    <button type="button" class="service-card-enhanced p-6 cursor-pointer space-y-4 text-left w-full block transition-all duration-300" onclick="openServiceModal('web')" onkeydown="if(event.key==='Enter')openServiceModal('web')">
-    <div class="flex justify-between items-center">
-    <span class="font-mono text-[10px] text-signal-red tracking-widest uppercase" data-i18n="t_f10_label">// SERVICIO 10</span>
-    <svg class="w-8 h-8 stroke-signal-red" fill="none" viewbox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><line x1="2" y1="12" x2="22" y2="12" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
-    </div>
-    <h3 class="font-headline text-2xl text-white uppercase" data-i18n="t_f10_title">Web &amp; campaña</h3>
-    <p class="font-sans text-sm text-white/85 font-normal" data-i18n="t_f10_desc">Tu web y tus vídeos trabajando juntos: landing clara, rápida y pensada para convertir visitas en clientes.</p>
-    <span class="font-mono text-[10px] text-signal-red uppercase font-bold block pt-2" data-i18n="t_178">
-                    VER QUÉ INCLUYE →
-                </span>
-    </button>
-    <!-- Service 11: Videoclips & música en vivo -->
-    <button type="button" class="service-card-enhanced p-6 cursor-pointer space-y-4 text-left w-full block transition-all duration-300" onclick="openServiceModal('videoclip')" onkeydown="if(event.key==='Enter')openServiceModal('videoclip')">
-    <div class="flex justify-between items-center">
-    <span class="font-mono text-[10px] text-signal-red tracking-widest uppercase" data-i18n="t_s11_label">// SERVICIO 11</span>
-    <svg class="w-8 h-8 stroke-signal-red" fill="none" viewbox="0 0 24 24"><path d="M9 18V5l12-2v13" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><circle cx="6" cy="18" r="3" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><circle cx="18" cy="16" r="3" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
-    </div>
-    <h3 class="font-headline text-2xl text-white uppercase" data-i18n="t_service_videoclip_title">Videoclips &amp; música en vivo</h3>
-    <p class="font-sans text-sm text-white/85 font-normal" data-i18n="t_service_videoclip_desc">Tu canción o tu marca con imágenes que suenan: videoclips, directos y sesiones grabadas en cualquier escenario.</p>
-    <span class="font-mono text-[10px] text-signal-red uppercase font-bold block pt-2" data-i18n="t_178">
-                    VER QUÉ INCLUYE →
-                </span>
-    </button>
-    <!-- Service 12: Eventos: sonido e iluminación -->
-    <button type="button" class="service-card-enhanced p-6 cursor-pointer space-y-4 text-left w-full block transition-all duration-300" onclick="openServiceModal('eventos')" onkeydown="if(event.key==='Enter')openServiceModal('eventos')">
-    <div class="flex justify-between items-center">
-    <span class="font-mono text-[10px] text-signal-red tracking-widest uppercase" data-i18n="t_s12_label">// SERVICIO 12</span>
-    <svg class="w-8 h-8 stroke-signal-red" fill="none" viewbox="0 0 24 24"><path d="M20 11a2 2 0 00-2-2h-8a2 2 0 00-2 2v0a2 2 0 002 2h8a2 2 0 002-2v0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><circle cx="7" cy="11" r="5" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M12 18v3m0-13V5" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
-    </div>
-    <h3 class="font-headline text-2xl text-white uppercase" data-i18n="t_service_eventos_title">Eventos: sonido e iluminación</h3>
-    <p class="font-sans text-sm text-white/85 font-normal" data-i18n="t_service_eventos_desc">Charlas, presentaciones y fiestas que se ven y se escuchan perfectas: sonido, iluminación y técnica profesional in situ.</p>
-    <span class="font-mono text-[10px] text-signal-red uppercase font-bold block pt-2" data-i18n="t_178">
-                    VER QUÉ INCLUYE →
-                </span>
-    </button>
-    <!-- Service 13: DJ sessions & performances -->
-    <button type="button" class="service-card-enhanced p-6 cursor-pointer space-y-4 text-left w-full block transition-all duration-300" onclick="openServiceModal('dj')" onkeydown="if(event.key==='Enter')openServiceModal('dj')">
-    <div class="flex justify-between items-center">
-    <span class="font-mono text-[10px] text-signal-red tracking-widest uppercase" data-i18n="t_s13_label">// SERVICIO 13</span>
-    <svg class="w-8 h-8 stroke-signal-red" fill="none" viewbox="0 0 24 24"><path d="M21 15V6a1 1 0 00-1-1H10a1 1 0 00-1 1v9m12 0a9 9 0 01-18 0m18 0h-3M9 15H6a3 3 0 01-3-3" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M12 3l-1 3m3-1l-1 2" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
-    </div>
-    <h3 class="font-headline text-2xl text-white uppercase" data-i18n="t_service_dj_title">DJ sessions &amp; performances</h3>
-    <p class="font-sans text-sm text-white/85 font-normal" data-i18n="t_service_dj_desc">Ambientación musical para tu evento con sesiones de DJ y espectáculos propios, con la energía que tu público recuerda.</p>
-    <span class="font-mono text-[10px] text-signal-red uppercase font-bold block pt-2" data-i18n="t_178">
-                    VER QUÉ INCLUYE →
-                </span>
-    </button>
-    <!-- Service 14: Mastering & cambios de formato -->
-    <button type="button" class="service-card-enhanced p-6 cursor-pointer space-y-4 text-left w-full block transition-all duration-300" onclick="openServiceModal('mastering')" onkeydown="if(event.key==='Enter')openServiceModal('mastering')">
-    <div class="flex justify-between items-center">
-    <span class="font-mono text-[10px] text-signal-red tracking-widest uppercase" data-i18n="t_s14_label">// SERVICIO 14</span>
-    <svg class="w-8 h-8 stroke-signal-red" fill="none" viewbox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M14 7h7v7" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
-    </div>
-    <h3 class="font-headline text-2xl text-white uppercase" data-i18n="t_service_mastering_title">Mastering &amp; cambios de formato</h3>
-    <p class="font-sans text-sm text-white/85 font-normal" data-i18n="t_service_mastering_desc">Preparamos tu audio y vídeo para cualquier plataforma: masterización, niveles, subtítulos y adaptación a todos los formatos.</p>
-    <span class="font-mono text-[10px] text-signal-red uppercase font-bold block pt-2" data-i18n="t_178">
-                    VER QUÉ INCLUYE →
-                </span>
-    </button>
-    <!-- Service 15: eCommerce & SEO -->
-    <button type="button" class="service-card-enhanced p-6 cursor-pointer space-y-4 text-left w-full block transition-all duration-300" onclick="openServiceModal('ecommerce')" onkeydown="if(event.key==='Enter')openServiceModal('ecommerce')">
-    <div class="flex justify-between items-center">
-    <span class="font-mono text-[10px] text-signal-red tracking-widest uppercase" data-i18n="t_s15_label">// SERVICIO 15</span>
-    <svg class="w-8 h-8 stroke-signal-red" fill="none" viewbox="0 0 24 24"><circle cx="9" cy="21" r="1" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><circle cx="20" cy="21" r="1" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
-    </div>
-    <h3 class="font-headline text-2xl text-white uppercase" data-i18n="t_service_ecommerce_title">eCommerce &amp; SEO</h3>
-    <p class="font-sans text-sm text-white/85 font-normal" data-i18n="t_service_ecommerce_desc">Tu tienda online y tu visibilidad trabajando juntas: vídeos de producto, catálogo optimizado y posicionamiento real.</p>
-    <span class="font-mono text-[10px] text-signal-red uppercase font-bold block pt-2" data-i18n="t_178">
-                    VER QUÉ INCLUYE →
-                </span>
-    </button>
-    <!-- Service 16: Consultoría audiovisual -->
-    <button type="button" class="service-card-enhanced p-6 cursor-pointer space-y-4 text-left w-full block transition-all duration-300" onclick="openServiceModal('consultoria')" onkeydown="if(event.key==='Enter')openServiceModal('consultoria')">
-    <div class="flex justify-between items-center">
-    <span class="font-mono text-[10px] text-signal-red tracking-widest uppercase" data-i18n="t_s16_label">// SERVICIO 16</span>
-    <svg class="w-8 h-8 stroke-signal-red" fill="none" viewbox="0 0 24 24"><path d="M8 17a3.5 3.5 0 00-3.5-3.5M8 17a3.5 3.5 0 013.5-3.5M8 17v2.5M11.5 13.5L20 5m-2 0l2 2M16 3l2 2" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><circle cx="8" cy="17" r="3" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
-    </div>
-    <h3 class="font-headline text-2xl text-white uppercase" data-i18n="t_service_consultoria_title">Consultoría audiovisual</h3>
-    <p class="font-sans text-sm text-white/85 font-normal" data-i18n="t_service_consultoria_desc">Asesoramos a tu equipo para producir mejor con menos recursos: planificación, formación y herramientas a tu medida.</p>
-    <span class="font-mono text-[10px] text-signal-red uppercase font-bold block pt-2" data-i18n="t_178">
-                    VER QUÉ INCLUYE →
-                </span>
-    </button>
-
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+<div class="glass-panel p-6 border border-white/15 flex flex-col h-full reveal reveal-delay hover:border-signal-red/40">
+<svg class="w-8 h-8 text-signal-red icon-float-glow mb-3" viewBox="0 0 24 24" fill="currentColor"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg><h3 class="font-headline text-xl sm:text-2xl uppercase text-signal-red mb-3">VIDEO CORPORATIVO & SPOTS</h3>
+<p class="font-sans text-lg sm:text-xl text-white/95 leading-relaxed flex-1">Videos corporativos, spots publicitarios y piezas para redes. Guión, rodaje, montaje, color y sonido optimizados para cada formato y objetivo.</p>
+</div>
+<div class="glass-panel p-6 border border-white/15 flex flex-col h-full reveal reveal-delay hover:border-signal-red/40">
+<svg class="w-8 h-8 text-signal-red icon-float-glow mb-3" viewBox="0 0 24 24" fill="currentColor"><path d="M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z"/></svg><h3 class="font-headline text-xl sm:text-2xl uppercase text-signal-red mb-3">STREAMING & PODCAST</h3>
+<p class="font-sans text-lg sm:text-xl text-white/95 leading-relaxed flex-1">Producción, dirección técnica, captación multicámara, switch, grafismos, emisión en directo y postproducción para podcast/videocast profesional.</p>
+</div>
+<div class="glass-panel p-6 border border-white/15 flex flex-col h-full reveal reveal-delay hover:border-signal-red/40">
+<svg class="w-8 h-8 text-signal-red icon-float-glow mb-3" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg><h3 class="font-headline text-xl sm:text-2xl uppercase text-signal-red mb-3">SONIDO & MÚSICA</h3>
+<p class="font-sans text-lg sm:text-xl text-white/95 leading-relaxed flex-1">Diseño sonoro, locuciones, Foley, mezcla, composición/adaptación musical e identidad sonora coherente con tu marca.</p>
+</div>
+<div class="glass-panel p-6 border border-white/15 flex flex-col h-full reveal reveal-delay hover:border-signal-red/40">
+<svg class="w-8 h-8 text-signal-red icon-float-glow mb-3" viewBox="0 0 24 24" fill="currentColor"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a.996.996 0 000-1.41l-2.34-2.34a.996.996 0 00-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg><h3 class="font-headline text-xl sm:text-2xl uppercase text-signal-red mb-3">ASESORÍA TÉCNICA & DESARROLLO DE PROYECTO</h3>
+<p class="font-sans text-lg sm:text-xl text-white/95 leading-relaxed flex-1">Auditoría técnica, preproducción, planificación, presupuesto optimizado, integración IA y acompañamiento integral desde la idea a la entrega.</p>
+</div>
+<div class="glass-panel p-6 border border-white/15 flex flex-col h-full reveal reveal-delay hover:border-signal-red/40">
+<svg class="w-8 h-8 text-signal-red icon-float-glow mb-3" viewBox="0 0 24 24" fill="currentColor"><path d="M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/></svg><h3 class="font-headline text-xl sm:text-2xl uppercase text-signal-red mb-3">WEBS & APLICACIONES</h3>
+<p class="font-sans text-lg sm:text-xl text-white/95 leading-relaxed flex-1">Diseño y desarrollo web, landing pages, webs corporativas, SEO técnico/on-page, eCommerce y aplicaciones funcionales orientadas a conversión.</p>
+</div>
+<div class="glass-panel p-6 border border-white/15 flex flex-col h-full reveal reveal-delay hover:border-signal-red/40">
+<svg class="w-8 h-8 text-signal-red icon-float-glow mb-3" viewBox="0 0 24 24" fill="currentColor"><circle cx="9" cy="9" r="4"/><path d="M9 15c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4zm7.76-9.64l-1.68 1.69c.84 1.18.84 2.71 0 3.89l1.68 1.69c2.02-2.02 2.02-5.07 0-7.27zM20.07 2l-1.63 1.63c2.77 3.02 2.77 7.56 0 10.74L20.07 16c3.9-3.89 3.91-9.95 0-14z"/></svg><h3 class="font-headline text-xl sm:text-2xl uppercase text-signal-red mb-3">DJ SESSIONS & PERFORMANCES</h3>
+<p class="font-sans text-lg sm:text-xl text-white/95 leading-relaxed flex-1">Sesiones DJ, directos, eventos corporativos, festivales, visuales sincronizados y producción técnica completa para live shows.</p>
+</div>
+<div class="col-span-1 sm:col-span-2 lg:col-span-3 xl:col-span-4 flex justify-center">
+<div class="glass-panel p-6 border border-white/15 flex flex-col h-full max-w-md">
+<svg class="w-8 h-8 text-signal-red icon-float-glow mb-3" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg><h3 class="font-headline text-xl sm:text-2xl uppercase text-signal-red mb-3">MASTERING & CAMBIOS DE FORMATO</h3>
+<p class="font-sans text-lg sm:text-xl text-white/95 leading-relaxed flex-1 ">Mastering para múltiples plataformas, conversión entre formatos, normalización LUFS, entrega adaptada a specs (16:9/9:16/1:1) y optimización para web/streaming.</p>
 </div>
 </div>
-</section>
+</div>
+</section></section>
 <!-- ═══ BANDA DE OFERTA 15% ═══ -->
 <section class="py-16 px-6 sm:px-10 max-w-[1600px] mx-auto reveal" id="oferta">
 <div class="glass-panel p-8 sm:p-12 border border-signal-red/40 relative overflow-hidden text-center space-y-5">
 <div class="absolute top-0 left-1/2 -translate-x-1/2 w-56 h-[2px] bg-signal-red"></div>
 <span class="font-mono text-signal-red text-sm uppercase tracking-widest" data-i18n="t_offer_kicker">// OFERTA DE LANZAMIENTO</span>
-<h2 class="font-headline text-5xl sm:text-7xl uppercase text-white tracking-tight section-headline-clean" data-i18n="t_offer_title">TU 15% DE DESCUENTO TE ESPERA</h2>
+<h2 class="font-headline text-4xl sm:text-6xl uppercase text-white tracking-tight section-headline-clean" data-i18n="t_offer_title">TU 15% DE DESCUENTO TE ESPERA</h2>
 <p class="font-sans text-base sm:text-lg text-white/85 font-normal leading-relaxed max-w-xl mx-auto" data-i18n="t_offer_txt">Pide presupuesto por el formulario web y aplícalo a tu proyecto. Sin letra pequeña.</p>
 <a class="inline-block bg-signal-red text-white font-mono text-xs font-bold px-8 py-4 uppercase tracking-widest hover:bg-signal-red-hover transition-all shadow-lg hover:shadow-signal-red/30 btn-cta" data-i18n="t_offer_cta" href="#presupuesto"><span>PEDIR PRESUPUESTO</span></a>
 </div>
 </section>
 <!-- ═══ MÓDULO POTENCIADO: CANALES & PLATAFORMAS (Limpio & Sin Explicaciones Secundarias) ═══ -->
-<section class="py-20 px-6 sm:px-10 max-w-[1600px] mx-auto reveal" id="redes">
-<div class="text-center space-y-4 mb-14 max-w-4xl mx-auto">
-<span class="font-mono text-signal-red text-sm uppercase tracking-widest" data-i18n="t_162">// NUESTRO TRABAJO EN VIVO</span>
-<h2 class="font-headline text-5xl sm:text-7xl uppercase text-white tracking-tight section-headline-clean" data-i18n="t_163">Proyectos & Reels</h2>
-<p class="font-sans text-base sm:text-lg text-white/85 font-normal leading-relaxed" data-i18n="t_164">
-                Vídeo, música y directos para marcas de todos los tamaños. Entra y comprueba la calidad real del trabajo, con el respaldo de tres décadas de oficio.
-            </p>
-</div>
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 reveal-stagger">
-<!-- YouTube Main Card -->
-<a class="glass-panel p-8 border border-white/10 hover:border-signal-red space-y-4 group transition-all" href="https://www.youtube.com/@chus_bzn" rel="noopener" target="_blank">
-<div class="flex items-center justify-between">
-<div class="p-3 bg-signal-red/20 text-signal-red rounded-lg group-hover:bg-signal-red group-hover:text-white transition-colors">
-<svg class="w-8 h-8" fill="currentColor" viewbox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
-</div>
-<span class="font-mono text-[10px] text-signal-red uppercase font-bold" data-i18n="t_redes_cta_yt">VER VÍDEOS →</span>
-</div>
-<div>
-<h3 class="font-headline text-2xl text-white uppercase group-hover:text-signal-red transition-colors" data-i18n="t_redes_card_yt">YouTube Canal Oficial</h3>
-</div>
-</a>
-<!-- YouTube Shorts Card -->
-<a class="glass-panel p-8 border border-white/10 hover:border-signal-red space-y-4 group transition-all" href="https://www.youtube.com/@chus_bzn/shorts" rel="noopener" target="_blank">
-<div class="flex items-center justify-between">
-<div class="p-3 bg-signal-red/20 text-signal-red rounded-lg group-hover:bg-signal-red group-hover:text-white transition-colors">
-<svg class="w-8 h-8" fill="currentColor" viewbox="0 0 24 24"><path d="M17.77 10.32l-1.2-.5L18 9.06c1.84-.96 2.53-3.23 1.56-5.07s-3.24-2.53-5.07-1.56L6.2 6.57C4.7 7.36 3.8 8.95 3.84 10.65c.04 1.7 1.01 3.23 2.54 3.96l1.17.53L6 15.94c-1.84.96-2.53 3.23-1.56 5.07.96 1.84 3.23 2.53 5.07 1.56l8.28-4.14c1.51-.79 2.48-2.38 2.44-4.08-.03-1.7-1.01-3.23-2.46-4.03zM9.5 15.5v-7l6 3.5-6 3.5z"></path></svg>
-</div>
-<span class="font-mono text-[10px] text-signal-red uppercase font-bold" data-i18n="t_redes_cta_shorts">VER SHORTS →</span>
-</div>
-<div>
-<h3 class="font-headline text-2xl text-white uppercase group-hover:text-signal-red transition-colors" data-i18n="t_redes_card_shorts">YouTube Shorts</h3>
-</div>
-</a>
-<!-- Instagram Card -->
-<a class="glass-panel p-8 border border-white/10 hover:border-signal-red space-y-4 group transition-all" href="https://www.instagram.com/chus_bzn" rel="noopener" target="_blank">
-<div class="flex items-center justify-between">
-<div class="p-3 bg-signal-red/20 text-signal-red rounded-lg group-hover:bg-signal-red group-hover:text-white transition-colors">
-<svg class="w-8 h-8" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
-</div>
-<span class="font-mono text-[10px] text-signal-red uppercase font-bold" data-i18n="t_redes_cta_reels">VER REELS →</span>
-</div>
-<div>
-<h3 class="font-headline text-2xl text-white uppercase group-hover:text-signal-red transition-colors" data-i18n="t_redes_card_ig">Instagram Reels &amp; Lab</h3>
-</div>
-</a>
-<!-- Spotify Card -->
-<a class="glass-panel p-8 border border-white/10 hover:border-signal-red space-y-4 group transition-all" href="https://open.spotify.com/intl-es/artist/0n4agjgaicmPmX8xXXADHL?si=BT-gHD11TIGBOuNvRn8hkA" rel="noopener" target="_blank">
-<div class="flex items-center justify-between">
-<div class="p-3 bg-signal-red/20 text-signal-red rounded-lg group-hover:bg-signal-red group-hover:text-white transition-colors">
-<svg class="w-8 h-8" fill="currentColor" viewbox="0 0 24 24"><path d="M12 0C5.376 0 0 5.376 0 12s5.376 12 12 12 12-5.376 12-12S18.624 0 12 0zm5.521 17.341c-.217.357-.681.469-1.038.252-2.846-1.74-6.429-2.133-10.65-1.167-.406.094-.813-.162-.906-.568-.094-.406.162-.813.568-.906 4.624-1.056 8.583-.604 11.774 1.348.357.217.469.681.252 1.041zm1.474-3.272c-.273.444-.852.585-1.296.313-3.257-2.002-8.223-2.584-12.077-1.414-.504.153-1.033-.133-1.186-.637-.153-.504.133-1.033.637-1.186 4.409-1.338 9.873-.692 13.609 1.628.444.273.585.852.313 1.296zm.127-3.411c-3.906-2.319-10.354-2.533-14.108-1.393-.6.182-1.237-.162-1.419-.762-.182-.6.162-1.237.762-1.419 4.312-1.309 11.433-1.055 15.93 1.614.54.32.718 1.02.398 1.56-.32.54-1.02.718-1.563.399z"></path></svg>
-</div>
-<span class="font-mono text-[10px] text-signal-red uppercase font-bold" data-i18n="t_redes_cta_play">ESCUCHAR →</span>
-</div>
-<div>
-<h3 class="font-headline text-2xl text-white uppercase group-hover:text-signal-red transition-colors" data-i18n="t_redes_card_spotify">Spotify Perfil Artista</h3>
-</div>
-</a>
-<!-- SoundCloud Card -->
-<a class="glass-panel p-8 border border-white/10 hover:border-signal-red space-y-4 group transition-all" href="https://on.soundcloud.com/45pQf3AQv99X3JbCcj" rel="noopener" target="_blank">
-<div class="flex items-center justify-between">
-<div class="p-3 bg-signal-red/20 text-signal-red rounded-lg group-hover:bg-signal-red group-hover:text-white transition-colors">
-<svg class="w-8 h-8" fill="currentColor" viewbox="0 0 24 24"><path d="M1.175 12.225c-.05 0-.096.038-.104.092L.008 18.72c-.008.06.034.112.094.112h1.177c.056 0 .103-.045.103-.103l.094-6.41c.008-.057-.038-.104-.094-.104H1.175zm2.095-1.472c-.056 0-.103.045-.103.103l-.297 7.76c-.008.057.038.104.094.104h1.186c.056 0 .103-.045.103-.103l.297-7.76c.008-.057-.038-.104-.094-.104H3.27zm2.112-1.074c-.056 0-.103.045-.103.103l-.224 8.835c-.008.057.038.104.094.104h1.186c.056 0 .103-.045.103-.103l.224-8.835c.008-.057-.038-.104-.094-.104H5.382zm2.112-1.127c-.056 0-.103.045-.103.103l-.15 9.96c-.008.057.038.104.094.104h1.186c.056 0 .103-.045.103-.103l.15-9.96c.008-.057-.038-.104-.094-.104H7.494zm2.112-.66c-.056 0-.103.045-.103.103l-.078 10.62c0 .057.046.103.103.103h1.186c.056 0 .103-.045.103-.103l.078-10.62c0-.057-.046-.103-.103-.103H9.606zm13.197 3.513c-.58 0-1.136.143-1.626.398C20.73 9.4 18.57 7.5 16.02 7.5c-.53 0-1.04.08-1.52.23-.27-2.14-2.1-3.8-4.32-3.8-.18 0-.35.01-.52.03-.06.01-.1.06-.1.12l.06 14.65c0 .06.05.1.1.1h13.17c1.7 0 3.09-1.38 3.09-3.09 0-1.7-1.38-3.09-3.09-3.09z"></path></svg>
-</div>
-<span class="font-mono text-[10px] text-signal-red uppercase font-bold" data-i18n="t_redes_cta_play">ESCUCHAR →</span>
-</div>
-<div>
-<h3 class="font-headline text-2xl text-white uppercase group-hover:text-signal-red transition-colors" data-i18n="t_redes_card_sc">SoundCloud Archive</h3>
-</div>
-</a>
-<!-- LinkedIn Card -->
-<a class="glass-panel p-8 border border-white/10 hover:border-signal-red space-y-4 group transition-all" href="https://www.linkedin.com/in/chusbzn" rel="noopener" target="_blank">
-<div class="flex items-center justify-between">
-<div class="p-3 bg-signal-red/20 text-signal-red rounded-lg group-hover:bg-signal-red group-hover:text-white transition-colors">
-<svg class="w-8 h-8" fill="currentColor" viewbox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.7a1.63 1.63 0 1 0 1.63 1.63A1.63 1.63 0 0 0 7.86 6.7z"></path></svg>
-</div>
-<span class="font-mono text-[10px] text-signal-red uppercase font-bold" data-i18n="t_redes_cta_li">VER PERFIL →</span>
-</div>
-<div>
-<h3 class="font-headline text-2xl text-white uppercase group-hover:text-signal-red transition-colors" data-i18n="t_redes_card_li">LinkedIn Perfil Oficial</h3>
-</div>
-</a>
-<!-- GitHub Card -->
-<a class="glass-panel p-8 border border-white/10 hover:border-signal-red space-y-4 group transition-all scroll-mt-24" href="https://github.com/produktes-code" id="github" rel="noopener" target="_blank">
-<div class="flex items-center justify-between">
-<div class="p-3 bg-signal-red/20 text-signal-red rounded-lg group-hover:bg-signal-red group-hover:text-white transition-colors">
-<svg class="w-8 h-8" fill="currentColor" viewbox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"></path></svg>
-</div>
-<span class="font-mono text-[10px] text-signal-red uppercase font-bold" data-i18n="t_redes_cta_gh">AUDITAR CÓDIGO →</span>
-</div>
-<div>
-<h3 class="font-headline text-2xl text-white uppercase group-hover:text-signal-red transition-colors" data-i18n="t_redes_card_gh">GitHub Repositorios</h3>
-</div>
-</a>
-</div>
-</section>
+
 <!-- ═══ ECOSISTEMA DE DESARROLLO PROPIO (Recuperación de Imagotipos Propietarios) ═══ -->
 <section class="photo-banner py-24 bg-surface-dim/70 border-y border-white/10 reveal" id="ecosistema" style="background-image:url('assets/server_room.webp')">
 <div class="scroll-mt-24" id="ia"></div>
 <div class="max-w-[1600px] mx-auto px-6 sm:px-10">
 <div class="text-center space-y-4 mb-14 max-w-4xl mx-auto">
 <span class="font-mono text-signal-red text-sm uppercase tracking-widest" data-i18n="t_200">// NUESTRO MÉTODO: OFICIO + IA</span>
-<h2 class="font-headline text-5xl sm:text-7xl uppercase text-white tracking-tight section-headline-clean" data-i18n="t_201">De la idea al resultado</h2>
+<h2 class="font-headline text-4xl sm:text-6xl uppercase text-white tracking-tight section-headline-clean" data-i18n="t_201">De la idea al resultado</h2>
 <p class="font-sans text-base sm:text-lg text-white/85 max-w-3xl mx-auto font-normal leading-relaxed" data-i18n="t_202">
                 Herramientas propias, desarrolladas en nuestro estudio, para que tus proyectos terminen antes, con calidad constante y coste controlado.
             </p>
@@ -1291,7 +1064,7 @@
 <span class="font-mono text-[10px] text-signal-red" data-i18n="t_203">v1.0.0 Stable // Electron + React</span>
 </div>
 </div>
-<p class="font-sans text-sm text-white/85 font-normal leading-relaxed" data-i18n="t_204">
+<p class="font-sans text-base sm:text-lg text-white/90 font-normal leading-relaxed text-left" data-i18n="t_204">
 <strong>Tu postproducción en local:</strong> una única aplicación une edición de vídeo, procesado de imagen y masterización con nivel broadcast.
                 </p>
 </div>
@@ -1304,7 +1077,7 @@
 <span class="font-mono text-[10px] text-signal-red" data-i18n="t_205">v1.0.0 Stable // FastAPI + FFmpeg</span>
 </div>
 </div>
-<p class="font-sans text-sm text-white/85 font-normal leading-relaxed" data-i18n="t_206">
+<p class="font-sans text-base sm:text-lg text-white/90 font-normal leading-relaxed text-left" data-i18n="t_206">
 <strong>Color y formatos profesionales al instante:</strong> LUTs de cine, colorimetría y entrega para cualquier plataforma, en tiempo récord.
                 </p>
 </div>
@@ -1317,7 +1090,7 @@
 <span class="font-mono text-[10px] text-signal-red" data-i18n="t_207">v1.0.0 Stable // LLM Multimodal</span>
 </div>
 </div>
-<p class="font-sans text-sm text-white/85 font-normal leading-relaxed" data-i18n="t_208">
+<p class="font-sans text-base sm:text-lg text-white/90 font-normal leading-relaxed text-left" data-i18n="t_208">
 <strong>La banda sonora de tu negocio:</strong> identidad sonora, locuciones y playlists comerciales a medida para tu tienda o marca.
                 </p>
 </div>
@@ -1328,25 +1101,25 @@
 <section class="py-20 reveal" id="showcase">
 <div class="max-w-[1600px] mx-auto px-6 sm:px-10">
 <div class="text-center space-y-3 mb-12 max-w-4xl mx-auto">
-<span class="font-mono text-signal-red text-sm uppercase tracking-widest" data-i18n="t_209">// SHOWCASE &amp; REELS</span>
-<h2 class="font-headline text-5xl sm:text-7xl uppercase text-white tracking-tight section-headline-clean" data-i18n="t_210">
+<span class="font-mono text-signal-red text-sm uppercase tracking-widest" data-i18n="t_209">// SHOWCASE & REELS</span>
+<h2 class="font-headline text-4xl sm:text-6xl uppercase text-white tracking-tight section-headline-clean" data-i18n="t_210">
                 Muestra de Producciones Generativas
             </h2>
-<p class="font-sans text-base text-white/85 font-normal max-w-2xl mx-auto leading-relaxed" data-i18n="t_211">
+<p class="font-sans text-lg sm:text-xl text-white/90 font-normal max-w-2xl mx-auto leading-relaxed" data-i18n="t_211">
                 Selección de proyectos audiovisuales. Haga clic sobre cualquier tarjeta o el botón <strong>PLAY</strong> para abrir el reproductor con <strong>audio completo de alta fidelidad</strong>.
             </p>
 </div>
 <!-- RETÍCULA DE VÍDEOS (4 Columnas x 2 Filas = 8 Producciones Únicas) -->
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5" id="showcase-grid">
 <!-- VÍDEO 01: Instagram Reel "America'n Job 🇺🇸" -->
-<button type="button" class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer text-left w-full block transition-all duration-500" onclick="handleVideoCardClick(event, this);" data-badge="// INSTAGRAM REEL (ACTING IA)" data-badge-key="t_212" data-desc="Acting I.A por @chus_bzn: Estética cinemática estilo 1967 y diseño sonoro con John Williams - Prologue (JFK) &amp; Walter Cronkite." data-desc-key="t_217" data-id="DQh86inDDTm" data-link="https://www.instagram.com/reel/DQh86inDDTm/" data-local="assets/proxy/american_job.mp4" data-platform="instagram" data-ratio="9/16" data-title="America'n Job 🇺🇸" data-title-key="t_216">
+<button type="button" class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer text-left w-full block transition-all duration-500" onclick="handleVideoCardClick(event, this);" data-badge="// INSTAGRAM REEL (ACTING IA)" data-badge-key="t_212" data-desc="Acting I.A por @chus_bzn: Estética cinemática estilo 1967 y diseño sonoro con John Williams - Prologue (JFK) & Walter Cronkite." data-desc-key="t_217" data-id="DQh86inDDTm" data-link="https://www.instagram.com/reel/DQh86inDDTm/" data-local="assets/proxy/american_job.mp4" data-platform="instagram" data-ratio="9/16" data-title="America'n Job 🇺🇸" data-title-key="t_216">
 <div class="space-y-2.5">
 <div class="flex justify-between items-center font-mono text-[9px]">
 <span class="text-signal-red font-bold uppercase tracking-wider" data-i18n="t_212">// INSTAGRAM REEL (ACTING IA)</span>
 <span class="text-terminal-green animate-pulse" data-i18n="t_213">[PLAY EN VIVO]</span>
 </div>
 <div class="relative w-full aspect-[4/3] bg-black border border-white/10 overflow-hidden rounded shadow-xl group block">
-<video loop muted playsinline webkit-playsinline preload="metadata" disableRemotePlayback="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" poster="assets/american_job.jpg" src="assets/american_job.mp4"></video>
+<video loop muted playsinline webkit-playsinline preload="none" disableRemotePlayback="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" poster="assets/american_job.jpg" src="assets/american_job.mp4"></video>
 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-center justify-center pointer-events-none">
 <div class="w-10 h-10 bg-signal-red group-hover:bg-white text-white group-hover:text-signal-red rounded-full flex items-center justify-center shadow-lg shadow-signal-red/50 transition-all transform group-hover:scale-110">
 <svg class="w-5 h-5 translate-x-0.5" fill="currentColor" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
@@ -1362,7 +1135,7 @@
                             America'n Job 🇺🇸
                         </h3>
 <p class="font-sans text-[11px] text-text-secondary font-light leading-snug line-clamp-2" data-i18n="t_217">
-                            Acting I.A por @chus_bzn: Estética 1967 y diseño sonoro con John Williams &amp; Walter Cronkite.
+                            Acting I.A por @chus_bzn: Estética 1967 y diseño sonoro con John Williams & Walter Cronkite.
                         </p>
 </div>
 </div>
@@ -1381,7 +1154,7 @@
 <span class="text-terminal-green animate-pulse" data-i18n="t_213">[PLAY EN VIVO]</span>
 </div>
 <div class="relative w-full aspect-[4/3] bg-black border border-white/10 overflow-hidden rounded shadow-xl group block">
-<video loop muted playsinline webkit-playsinline preload="metadata" disableRemotePlayback="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" poster="assets/doritos.jpg" src="assets/doritos.mp4"></video>
+<video loop muted playsinline webkit-playsinline preload="none" disableRemotePlayback="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" poster="assets/doritos.jpg" src="assets/doritos.mp4"></video>
 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-center justify-center pointer-events-none">
 <div class="w-10 h-10 bg-signal-red group-hover:bg-white text-white group-hover:text-signal-red rounded-full flex items-center justify-center shadow-lg shadow-signal-red/50 transition-all transform group-hover:scale-110">
 <svg class="w-5 h-5 translate-x-0.5" fill="currentColor" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
@@ -1416,7 +1189,7 @@
 <span class="text-terminal-green animate-pulse" data-i18n="t_213">[PLAY EN VIVO]</span>
 </div>
 <div class="relative w-full aspect-[4/3] bg-black border border-white/10 overflow-hidden rounded shadow-xl group block">
-<video loop muted playsinline webkit-playsinline preload="metadata" disableRemotePlayback="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" poster="assets/cocacola.jpg" src="assets/cocacola.mp4"></video>
+<video loop muted playsinline webkit-playsinline preload="none" disableRemotePlayback="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" poster="assets/cocacola.jpg" src="assets/cocacola.mp4"></video>
 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-center justify-center pointer-events-none">
 <div class="w-10 h-10 bg-signal-red group-hover:bg-white text-white group-hover:text-signal-red rounded-full flex items-center justify-center shadow-lg shadow-signal-red/50 transition-all transform group-hover:scale-110">
 <svg class="w-5 h-5 translate-x-0.5" fill="currentColor" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
@@ -1444,14 +1217,14 @@
 </div>
 </button>
 <!-- VÍDEO 04: VENENO (BreakBeat Mix) -->
-<button type="button" class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer text-left w-full block transition-all duration-500" onclick="handleVideoCardClick(event, this);" data-badge="// SONIDO &amp; RAVE 90S" data-badge-key="t_226" data-desc="VENENO: Creación de @chus_bzn inspirada en ritmos BreakBeat, guitarras eléctricas, sonidos ácidos y el estilo Rave de los 90s." data-desc-key="t_229" data-id="Da8mEpyAddG" data-link="https://www.instagram.com/reel/Da8mEpyAddG/" data-local="assets/proxy/veneno.mp4" data-platform="instagram" data-ratio="9/16" data-title="VENENO (BreakBeat Mix)" data-title-key="t_228">
+<button type="button" class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer text-left w-full block transition-all duration-500" onclick="handleVideoCardClick(event, this);" data-badge="// SONIDO & RAVE 90S" data-badge-key="t_226" data-desc="VENENO: Creación de @chus_bzn inspirada en ritmos BreakBeat, guitarras eléctricas, sonidos ácidos y el estilo Rave de los 90s." data-desc-key="t_229" data-id="Da8mEpyAddG" data-link="https://www.instagram.com/reel/Da8mEpyAddG/" data-local="assets/proxy/veneno.mp4" data-platform="instagram" data-ratio="9/16" data-title="VENENO (BreakBeat Mix)" data-title-key="t_228">
 <div class="space-y-2.5">
 <div class="flex justify-between items-center font-mono text-[9px]">
-<span class="text-signal-red font-bold uppercase tracking-wider" data-i18n="t_226">// SONIDO &amp; RAVE 90S</span>
+<span class="text-signal-red font-bold uppercase tracking-wider" data-i18n="t_226">// SONIDO & RAVE 90S</span>
 <span class="text-terminal-green animate-pulse" data-i18n="t_213">[PLAY EN VIVO]</span>
 </div>
 <div class="relative w-full aspect-[4/3] bg-black border border-white/10 overflow-hidden rounded shadow-xl group block">
-<video loop muted playsinline webkit-playsinline preload="metadata" disableRemotePlayback="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" poster="assets/veneno.jpg" src="assets/veneno.mp4"></video>
+<video loop muted playsinline webkit-playsinline preload="none" disableRemotePlayback="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" poster="assets/veneno.jpg" src="assets/veneno.mp4"></video>
 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-center justify-center pointer-events-none">
 <div class="w-10 h-10 bg-signal-red group-hover:bg-white text-white group-hover:text-signal-red rounded-full flex items-center justify-center shadow-lg shadow-signal-red/50 transition-all transform group-hover:scale-110">
 <svg class="w-5 h-5 translate-x-0.5" fill="currentColor" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
@@ -1472,7 +1245,7 @@
 </div>
 </div>
 <div class="pt-2 border-t border-white/10 flex justify-between items-center font-mono text-[9px]">
-<span class="text-white/50 uppercase" data-i18n="t_230">FORMATO: AUDIO &amp; VÍDEO</span>
+<span class="text-white/50 uppercase" data-i18n="t_230">FORMATO: AUDIO & VÍDEO</span>
 <span class="text-signal-red font-bold uppercase group-hover:underline" data-i18n="t_219">
                         REPRODUCIR CON AUDIO →
                     </span>
@@ -1486,7 +1259,7 @@
 <span class="text-terminal-green animate-pulse" data-i18n="t_213">[PLAY EN VIVO]</span>
 </div>
 <div class="relative w-full aspect-[4/3] bg-black border border-white/10 overflow-hidden rounded shadow-xl group block">
-<video loop muted playsinline webkit-playsinline preload="metadata" disableRemotePlayback="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" poster="assets/barcelona_clown.jpg" src="assets/barcelona_clown.mp4"></video>
+<video loop muted playsinline webkit-playsinline preload="none" disableRemotePlayback="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" poster="assets/barcelona_clown.jpg" src="assets/barcelona_clown.mp4"></video>
 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-center justify-center pointer-events-none">
 <div class="w-10 h-10 bg-signal-red group-hover:bg-white text-white group-hover:text-signal-red rounded-full flex items-center justify-center shadow-lg shadow-signal-red/50 transition-all transform group-hover:scale-110">
 <svg class="w-5 h-5 translate-x-0.5" fill="currentColor" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
@@ -1521,7 +1294,7 @@
 <span class="text-terminal-green animate-pulse" data-i18n="t_213">[PLAY EN VIVO]</span>
 </div>
 <div class="relative w-full aspect-[4/3] bg-black border border-white/10 overflow-hidden rounded shadow-xl group block">
-<video loop muted playsinline webkit-playsinline preload="metadata" disableRemotePlayback="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" poster="assets/bronx_1980.jpg" src="assets/bronx_1980.mp4"></video>
+<video loop muted playsinline webkit-playsinline preload="none" disableRemotePlayback="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" poster="assets/bronx_1980.jpg" src="assets/bronx_1980.mp4"></video>
 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-center justify-center pointer-events-none">
 <div class="w-10 h-10 bg-signal-red group-hover:bg-white text-white group-hover:text-signal-red rounded-full flex items-center justify-center shadow-lg shadow-signal-red/50 transition-all transform group-hover:scale-110">
 <svg class="w-5 h-5 translate-x-0.5" fill="currentColor" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
@@ -1549,14 +1322,14 @@
 </div>
 </button>
 <!-- VÍDEO 07: KILLA — Deus Ex Machina 🎶🔥 -->
-<button type="button" class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer text-left w-full block transition-all duration-500" onclick="handleVideoCardClick(event, this);" data-badge="// INSTAGRAM REEL (GORILLA &amp; DANCE)" data-badge-key="t_239" data-desc="KILLA Deus ex Machina por @alphaberracos: Producción generativa con chicas, gorilas y merchandising KILLA." data-desc-key="t_241" data-id="DH_X3ZrML1h" data-link="https://www.instagram.com/reel/DH_X3ZrML1h/" data-local="assets/proxy/killa_ig.mp4" data-platform="instagram" data-ratio="9/16" data-title="KILLA — Deus Ex Machina 🎶🔥" data-title-key="t_240">
+<button type="button" class="video-card glass-panel p-4 border border-white/15 space-y-3 flex flex-col justify-between hover:border-signal-red transition-all duration-500 group cursor-pointer text-left w-full block transition-all duration-500" onclick="handleVideoCardClick(event, this);" data-badge="// INSTAGRAM REEL (GORILLA & DANCE)" data-badge-key="t_239" data-desc="KILLA Deus ex Machina por @alphaberracos: Producción generativa con chicas, gorilas y merchandising KILLA." data-desc-key="t_241" data-id="DH_X3ZrML1h" data-link="https://www.instagram.com/reel/DH_X3ZrML1h/" data-local="assets/proxy/killa_ig.mp4" data-platform="instagram" data-ratio="9/16" data-title="KILLA — Deus Ex Machina 🎶🔥" data-title-key="t_240">
 <div class="space-y-2.5">
 <div class="flex justify-between items-center font-mono text-[9px]">
-<span class="text-signal-red font-bold uppercase tracking-wider" data-i18n="t_239">// INSTAGRAM REEL (GORILLA &amp; DANCE)</span>
+<span class="text-signal-red font-bold uppercase tracking-wider" data-i18n="t_239">// INSTAGRAM REEL (GORILLA & DANCE)</span>
 <span class="text-terminal-green animate-pulse" data-i18n="t_213">[PLAY EN VIVO]</span>
 </div>
 <div class="relative w-full aspect-[4/3] bg-black border border-white/10 overflow-hidden rounded shadow-xl group block">
-<video loop muted playsinline webkit-playsinline preload="metadata" disableRemotePlayback="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" poster="assets/killa_ig.jpg" src="assets/killa_ig.mp4"></video>
+<video loop muted playsinline webkit-playsinline preload="none" disableRemotePlayback="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" poster="assets/killa_ig.jpg" src="assets/killa_ig.mp4"></video>
 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-center justify-center pointer-events-none">
 <div class="w-10 h-10 bg-signal-red group-hover:bg-white text-white group-hover:text-signal-red rounded-full flex items-center justify-center shadow-lg shadow-signal-red/50 transition-all transform group-hover:scale-110">
 <svg class="w-5 h-5 translate-x-0.5" fill="currentColor" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
@@ -1591,7 +1364,7 @@
 <span class="text-terminal-green animate-pulse" data-i18n="t_213">[PLAY EN VIVO]</span>
 </div>
 <div class="relative w-full aspect-[4/3] bg-black border border-white/10 overflow-hidden rounded shadow-xl group block">
-<video loop muted playsinline webkit-playsinline preload="metadata" disableRemotePlayback="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" poster="assets/code_black_ig.jpg" src="assets/code_black_ig.mp4"></video>
+<video loop muted playsinline webkit-playsinline preload="none" disableRemotePlayback="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" poster="assets/code_black_ig.jpg" src="assets/code_black_ig.mp4"></video>
 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-center justify-center pointer-events-none">
 <div class="w-10 h-10 bg-signal-red group-hover:bg-white text-white group-hover:text-signal-red rounded-full flex items-center justify-center shadow-lg shadow-signal-red/50 transition-all transform group-hover:scale-110">
 <svg class="w-5 h-5 translate-x-0.5" fill="currentColor" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
@@ -1622,131 +1395,96 @@
 </div>
 </section>
 <!-- ═══ CINE · TELEVISIÓN · SONIDO · IA (EMPRESA / PRODUCTORA) ═══ -->
-<section class="photo-banner py-24 border-t border-white/10 bg-white/[0.01] reveal" id="metodologia" style="background-image:url('assets/consola_mezcla.webp')">
-<div class="max-w-[1600px] mx-auto px-6 sm:px-10">
-<!-- Header Centrado de Sección -->
-<div class="text-center space-y-4 mb-16 max-w-4xl mx-auto">
-<h2 class="font-headline text-4xl sm:text-6xl uppercase tracking-tight text-white section-headline-clean" data-i18n="t_246">
-                Currículum &amp; Trayectoria Profesional
-            </h2>
-<p class="font-sans text-base sm:text-lg text-white/85 font-normal max-w-3xl mx-auto leading-relaxed" data-i18n="t_247">
-                Más de 30 años de oficio en cine, televisión, sonido y tecnologías audiovisuales, aplicados hoy a la comunicación de PYMES y marcas.
-            </p>
+<section class="py-20 px-6 sm:px-10 max-w-6xl mx-auto reveal" id="manifesto">
+<div class="text-center space-y-10">
+<div class="space-y-4">
+<span class="font-mono text-signal-red text-sm uppercase tracking-widest">// ASÍ SOMOS</span>
+<h2 class="font-headline text-4xl sm:text-6xl uppercase text-white tracking-tight section-headline-clean">MANIFIESTO</h2>
 </div>
-<!-- 1. Manifiesto & Retrato Formal en Traje Negro -->
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-16">
-<!-- Left Column: Manifiesto Corporativo -->
-<div class="lg:col-span-7 space-y-6 scroll-mt-24" id="manif">
-<div class="glass-panel p-8 border border-white/15 space-y-4 relative overflow-hidden">
-<div class="absolute top-0 left-0 w-1 h-full bg-signal-red"></div>
-<span class="font-mono text-xs text-signal-red uppercase tracking-widest font-bold" data-i18n="t_248">// MANIFIESTO INDUSTRIAL CHUS BZN</span>
-<blockquote class="font-sans text-base text-white font-normal leading-relaxed italic" data-i18n="t_mission">
-                        «Nuestra misión es proporcionar a marcas, productoras y empresas una dirección técnica integral donde la aceleración por Inteligencia Artificial y la precisión artesanal del sonido e imagen conviven bajo un estándar de emisión impecable.»
-                    </blockquote>
-<div class="pt-4 border-t border-white/10 font-sans text-base sm:text-lg text-white/85 space-y-3 font-normal leading-relaxed">
-<p data-i18n="t_249">
-<strong>CHUS BZN</strong> nació en la cultura urbana de Barcelona (BZN MCs) y hoy es un estudio de proyectos audiovisuales y tecnológicos para empresas. Esa energía sigue en cada encargo.
-                        </p>
-<p data-i18n="t_250">
-                            Hemos trabajado en cine, televisión en directo, publicidad, doblaje y streaming para grandes cadenas y plataformas, y aplicamos esa experiencia a tu proyecto con la cercanía de un estudio local.
-                        </p>
-<p data-i18n="t_251">
-                            Todo el trabajo incluye garantía legal y derechos de autor (SGAE, AISGE, AEDYP, AIE) y se entrega listo para usar: fichas técnicas, MEO y seguro de RC. Tú comunicas, nosotros nos ocupamos del resto.
-                        </p>
+<div class="space-y-8 text-white/90 leading-relaxed max-w-5xl mx-auto text-left" style="text-align:left">
+<div class="space-y-4">
+<p class="font-sans text-lg sm:text-xl md:text-2xl font-normal max-w-4xl mx-auto" style="text-align:left">
+No creemos en soluciones genéricas. Cada proyecto parte de un análisis claro para transformar ideas en piezas audiovisuales que comunican con precisión y fuerza.
+</p>
+<p class="font-sans text-lg sm:text-xl md:text-2xl font-normal max-w-4xl mx-auto" style="text-align:left">
+Integramos creatividad, técnica y estrategia para conseguir resultados medibles, sin perder la identidad que hace única tu marca.
+</p>
 </div>
-</div>
-<!-- Panel de Confianza / Slogan con retrato formal de traje + matrix de fondo -->
-<div class="lg:col-span-5 flex justify-center">
-<div class="relative overflow-hidden glass-panel p-8 border border-white/20 flex flex-col justify-between gap-8 w-full max-w-sm min-h-[24rem]">
-<div class="absolute inset-0">
-<div class="absolute inset-0 matrix-rain" aria-hidden="true"><canvas></canvas></div>
-<div class="absolute inset-0 bg-black/55"></div>
-<div class="absolute top-0 right-0 w-1 h-full bg-signal-red z-10"></div>
-<blockquote class="relative z-10 font-headline text-white font-normal text-center" style="font-size:clamp(26px,3.4vw,44px);line-height:1.18;max-width:640px;margin:0 auto 24px" data-i18n="t_slogan_quote">
-                    «Creatividad + Lógica = Resultados. Tu comunicación merece verse y escucharse bien.»
-                </blockquote>
-<p class="relative z-10 font-sans text-base sm:text-lg text-white/90 font-normal leading-relaxed" data-i18n="t_slogan_pyme">
-                    ¿Buscas una productora audiovisual y tecnológica en Barcelona para tu empresa? Cuéntanos tu proyecto y te proponemos un plan a medida, con presupuesto claro y en tu idioma.
-                </p>
-<div class="relative z-10 space-y-3">
-<div class="flex flex-wrap gap-2 font-mono text-[10px] uppercase tracking-widest">
-<span class="px-3 py-1 border border-signal-red/40 text-signal-red" data-i18n="t_badge_avail">24/365 todos los días</span>
-<span class="px-3 py-1 border border-white/20 text-white" data-i18n="t_badge_dto">-15% dto. de lanzamiento</span>
-<span class="px-3 py-1 border border-white/20 text-white" data-i18n="t_badge_lang">10 idiomas</span>
-</div>
-<a class="inline-block bg-signal-red text-white font-headline text-sm py-3 px-6 uppercase tracking-widest hover:bg-signal-red-hover transition-all shadow-lg hover:shadow-signal-red/30" href="#presupuesto" data-i18n="t_302">SOLICITAR PRESUPUESTO →</a>
+<div class="mt-10">
+<div class="glass-panel inline-block px-8 py-6 border border-signal-red/40 max-w-5xl mx-auto" style="border-left:3px solid #ff1f1f">
+<p class="font-sans text-xl sm:text-2xl md:text-3xl font-semibold text-white leading-tight uppercase tracking-tight">
+«CREATIVIDAD + LÓGICA = RESULTADOS. TU COMUNICACIÓN MERECE VERSE Y ESCUCHARSE BIEN.»
+</p>
 </div>
 </div>
 </div>
 </div>
-</div>
-</div>
-        </div>
-    </section>
+</section>
 <!-- ═══ METODOLOGÍA: MÉTODO DE TRABAJO 01-08 ═══ -->
 <section class="py-24 px-6 sm:px-10 max-w-[1600px] mx-auto reveal relative" id="metodo">
 <div class="matrix-rain" aria-hidden="true"><canvas></canvas></div>
 <div class="text-center space-y-4 mb-16 max-w-4xl mx-auto relative z-10">
 <span class="font-mono text-signal-red text-sm uppercase tracking-widest" data-i18n="t_met_kicker">// CÓMO TRABAJAMOS</span>
-<h2 class="font-headline text-5xl sm:text-7xl uppercase text-white tracking-tight section-headline-clean" data-i18n="t_met_title">Un método claro, sin sorpresas</h2>
+<h2 class="font-headline text-4xl sm:text-6xl uppercase text-white tracking-tight section-headline-clean" data-i18n="t_met_title">Un método claro, sin sorpresas</h2>
 <p class="font-sans text-base sm:text-lg text-white/85 font-normal max-w-3xl mx-auto leading-relaxed" data-i18n="t_met_intro">Cada proyecto pasa por 8 pasos: sabrás qué hacemos, cuándo y a qué precio, desde el primer día.</p>
 </div>
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 reveal-stagger relative z-10">
-<div class="glass-panel p-6 border border-white/10 space-y-4 relative group transition-all">
-<div class="flex items-center justify-between">
+<div class="glass-panel p-6 border-l-2 border-l-signal-red border-white/10 space-y-4 relative group transition-all text-center hover:translate-y-[-4px] hover:shadow-[0_10px_40px_rgba(255,31,31,0.15)]">
+<div class="flex items-center justify-center">
 <span class="font-mono text-[10px] text-signal-red tracking-widest uppercase">// 01</span>
 </div>
-<h3 class="font-headline text-xl sm:text-2xl text-white uppercase" data-i18n="t_met_01">Diagnóstico</h3>
-<p class="font-sans text-sm text-white/85 font-normal leading-relaxed" data-i18n="t_met_d01">Analizamos tu marca, tu público y tu objetivo. Te decimos qué hace falta y qué no.</p>
+<h3 class="font-headline text-xl sm:text-2xl text-signal-red uppercase" data-i18n="t_met_01">Diagnóstico</h3>
+<p class="font-sans text-base sm:text-lg text-white/90 font-normal leading-relaxed text-left" data-i18n="t_met_d01">Analizamos tu marca, tu público y tu objetivo. Te decimos qué hace falta y qué no.</p>
 </div>
-<div class="glass-panel p-6 border border-white/10 space-y-4 relative group transition-all">
-<div class="flex items-center justify-between">
+<div class="glass-panel p-6 border-l-2 border-l-signal-red border-white/10 space-y-4 relative group transition-all text-center hover:translate-y-[-4px] hover:shadow-[0_10px_40px_rgba(255,31,31,0.15)]">
+<div class="flex items-center justify-center">
 <span class="font-mono text-[10px] text-signal-red tracking-widest uppercase">// 02</span>
 </div>
-<h3 class="font-headline text-xl sm:text-2xl text-white uppercase" data-i18n="t_met_02">Plan &amp; Presupuesto</h3>
-<p class="font-sans text-sm text-white/85 font-normal leading-relaxed" data-i18n="t_met_d02">Un plan claro y un presupuesto cerrado en menos de 24 h. Sin letra pequeña ni costes ocultos.</p>
+<h3 class="font-headline text-xl sm:text-2xl text-signal-red uppercase" data-i18n="t_met_02">Plan & Presupuesto</h3>
+<p class="font-sans t
+ext-sm text-white/85 font-normal leading-relaxed" data-i18n="t_met_d02">Un plan claro y un presupuesto cerrado en menos de 24 h. Sin letra pequeña ni costes ocultos.</p>
 </div>
-<div class="glass-panel p-6 border border-white/10 space-y-4 relative group transition-all">
-<div class="flex items-center justify-between">
+<div class="glass-panel p-6 border-l-2 border-l-signal-red border-white/10 space-y-4 relative group transition-all text-center hover:translate-y-[-4px] hover:shadow-[0_10px_40px_rgba(255,31,31,0.15)]">
+<div class="flex items-center justify-center">
 <span class="font-mono text-[10px] text-signal-red tracking-widest uppercase">// 03</span>
 </div>
-<h3 class="font-headline text-xl sm:text-2xl text-white uppercase" data-i18n="t_met_03">Guion &amp; Dirección</h3>
-<p class="font-sans text-sm text-white/85 font-normal leading-relaxed" data-i18n="t_met_d03">Escribimos y dirigimos el mensaje para que se entienda en segundos y llegue a tu cliente.</p>
+<h3 class="font-headline text-xl sm:text-2xl text-signal-red uppercase" data-i18n="t_met_03">Guion & Dirección</h3>
+<p class="font-sans text-base sm:text-lg text-white/90 font-normal leading-relaxed text-left" data-i18n="t_met_d03">Escribimos y dirigimos el mensaje para que se entienda en segundos y llegue a tu cliente.</p>
 </div>
-<div class="glass-panel p-6 border border-white/10 space-y-4 relative group transition-all">
-<div class="flex items-center justify-between">
+<div class="glass-panel p-6 border-l-2 border-l-signal-red border-white/10 space-y-4 relative group transition-all text-center hover:translate-y-[-4px] hover:shadow-[0_10px_40px_rgba(255,31,31,0.15)]">
+<div class="flex items-center justify-center">
 <span class="font-mono text-[10px] text-signal-red tracking-widest uppercase">// 04</span>
 </div>
-<h3 class="font-headline text-xl sm:text-2xl text-white uppercase" data-i18n="t_met_04">Producción</h3>
-<p class="font-sans text-sm text-white/85 font-normal leading-relaxed" data-i18n="t_met_d04">Rodaje en tu local o en estudio con cámara, sonido e iluminación profesionales.</p>
+<h3 class="font-headline text-xl sm:text-2xl text-signal-red uppercase" data-i18n="t_met_04">Producción</h3>
+<p class="font-sans text-base sm:text-lg text-white/90 font-normal leading-relaxed text-left" data-i18n="t_met_d04">Rodaje en tu local o en estudio con cámara, sonido e iluminación profesionales.</p>
 </div>
-<div class="glass-panel p-6 border border-white/10 space-y-4 relative group transition-all">
-<div class="flex items-center justify-between">
+<div class="glass-panel p-6 border-l-2 border-l-signal-red border-white/10 space-y-4 relative group transition-all text-center hover:translate-y-[-4px] hover:shadow-[0_10px_40px_rgba(255,31,31,0.15)]">
+<div class="flex items-center justify-center">
 <span class="font-mono text-[10px] text-signal-red tracking-widest uppercase">// 05</span>
 </div>
-<h3 class="font-headline text-xl sm:text-2xl text-white uppercase" data-i18n="t_met_05">Postproducción</h3>
-<p class="font-sans text-sm text-white/85 font-normal leading-relaxed" data-i18n="t_met_d05">Montaje, color, sonido y grafismo listos para la plataforma donde se va a ver.</p>
+<h3 class="font-headline text-xl sm:text-2xl text-signal-red uppercase" data-i18n="t_met_05">Postproducción</h3>
+<p class="font-sans text-base sm:text-lg text-white/90 font-normal leading-relaxed text-left" data-i18n="t_met_d05">Montaje, color, sonido y grafismo listos para la plataforma donde se va a ver.</p>
 </div>
-<div class="glass-panel p-6 border border-white/10 space-y-4 relative group transition-all">
-<div class="flex items-center justify-between">
+<div class="glass-panel p-6 border-l-2 border-l-signal-red border-white/10 space-y-4 relative group transition-all text-center hover:translate-y-[-4px] hover:shadow-[0_10px_40px_rgba(255,31,31,0.15)]">
+<div class="flex items-center justify-center">
 <span class="font-mono text-[10px] text-signal-red tracking-widest uppercase">// 06</span>
 </div>
-<h3 class="font-headline text-xl sm:text-2xl text-white uppercase" data-i18n="t_met_06">IA &amp; Optimización</h3>
-<p class="font-sans text-sm text-white/85 font-normal leading-relaxed" data-i18n="t_met_d06">Multiplicamos tu material con IA segura y legal: versiones, catálogo y adaptaciones.</p>
+<h3 class="font-headline text-xl sm:text-2xl text-signal-red uppercase" data-i18n="t_met_06">IA & Optimización</h3>
+<p class="font-sans text-base sm:text-lg text-white/90 font-normal leading-relaxed text-left" data-i18n="t_met_d06">Multiplicamos tu material con IA segura y legal: versiones, catálogo y adaptaciones.</p>
 </div>
-<div class="glass-panel p-6 border border-white/10 space-y-4 relative group transition-all">
-<div class="flex items-center justify-between">
+<div class="glass-panel p-6 border-l-2 border-l-signal-red border-white/10 space-y-4 relative group transition-all text-center hover:translate-y-[-4px] hover:shadow-[0_10px_40px_rgba(255,31,31,0.15)]">
+<div class="flex items-center justify-center">
 <span class="font-mono text-[10px] text-signal-red tracking-widest uppercase">// 07</span>
 </div>
-<h3 class="font-headline text-xl sm:text-2xl text-white uppercase" data-i18n="t_met_07">Entrega garantizada</h3>
-<p class="font-sans text-sm text-white/85 font-normal leading-relaxed" data-i18n="t_met_d07">Entregamos en fecha y con todos los derechos en regla. Listo para publicar.</p>
+<h3 class="font-headline text-xl sm:text-2xl text-signal-red uppercase" data-i18n="t_met_07">Entrega garantizada</h3>
+<p class="font-sans text-base sm:text-lg text-white/90 font-normal leading-relaxed text-left" data-i18n="t_met_d07">Entregamos en fecha y con todos los derechos en regla. Listo para publicar.</p>
 </div>
-<div class="glass-panel p-6 border border-white/10 space-y-4 relative group transition-all">
-<div class="flex items-center justify-between">
+<div class="glass-panel p-6 border-l-2 border-l-signal-red border-white/10 space-y-4 relative group transition-all text-center hover:translate-y-[-4px] hover:shadow-[0_10px_40px_rgba(255,31,31,0.15)]">
+<div class="flex items-center justify-center">
 <span class="font-mono text-[10px] text-signal-red tracking-widest uppercase">// 08</span>
 </div>
-<h3 class="font-headline text-xl sm:text-2xl text-white uppercase" data-i18n="t_met_08">Soporte 24/365</h3>
-<p class="font-sans text-sm text-white/85 font-normal leading-relaxed" data-i18n="t_met_d08">Dudas, cambios y ampliaciones respondidos en menos de 24 horas, todos los días.</p>
+<h3 class="font-headline text-xl sm:text-2xl text-signal-red uppercase" data-i18n="t_met_08">Soporte 24/365</h3>
+<p class="font-sans text-base sm:text-lg text-white/90 font-normal leading-relaxed text-left" data-i18n="t_met_d08">Dudas, cambios y ampliaciones respondidos en menos de 24 horas, todos los días.</p>
 </div>
 </div>
 </section>
@@ -1756,7 +1494,7 @@
 <div class="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-[2px] bg-signal-red"></div>
 <div class="text-center space-y-3 mb-12">
 <span class="font-mono text-signal-red text-sm uppercase tracking-widest" data-i18n="t_283">// HABLEMOS DE TU PROYECTO</span>
-<h2 class="font-headline text-5xl sm:text-7xl uppercase text-white tracking-tight section-headline-clean" data-i18n="t_284">Presupuesto sin compromiso</h2>
+<h2 class="font-headline text-4xl sm:text-6xl uppercase text-white tracking-tight section-headline-clean" data-i18n="t_284">Presupuesto sin compromiso</h2>
 <p class="font-sans text-base sm:text-lg text-white/85 max-w-md mx-auto font-normal leading-relaxed" data-i18n="t_285">
                     Cuéntanos qué necesitas: respondemos 24/365, en menos de 24 horas. Y si pides presupuesto por esta web, te llevas un 15% de descuento.
                 </p>
@@ -1765,39 +1503,39 @@
 <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" aria-hidden="true"/>
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
 <div class="space-y-2">
-<label class="text-[10px] text-white/70 uppercase tracking-widest" data-i18n="t_286" for="contact-name">Nombre y Apellidos / Contacto *</label>
-<input class="w-full bg-black/90 border border-white/15 focus:border-signal-red text-white p-3 font-mono text-xs outline-none transition-colors" placeholder="&gt; Nombre del solicitante..." data-i18n-ph="t_ph_name" required="" type="text" id="contact-name"/>
+<label class="block text-center text-[10px] text-white/70 uppercase tracking-widest" data-i18n="t_286" for="contact-name">Nombre y Apellidos / Contacto *</label>
+<input class="text-center w-full bg-black/90 border border-white/15 focus:border-signal-red text-white p-3 font-mono text-xs outline-none transition-colors" placeholder="&gt; Nombre del solicitante..." data-i18n-ph="t_ph_name" required="" type="text" id="contact-name"/>
 </div>
 <div class="space-y-2">
-<label class="text-[10px] text-white/70 uppercase tracking-widest" data-i18n="t_287" for="contact-email">Correo Electrónico Corporativo *</label>
-<input class="w-full bg-black/90 border border-white/15 focus:border-signal-red text-white p-3 font-mono text-xs outline-none transition-colors" placeholder="&gt; correo@empresa.com" data-i18n-ph="t_ph_email" required="" type="email" id="contact-email"/>
+<label class="block text-center text-[10px] text-white/70 uppercase tracking-widest" data-i18n="t_287" for="contact-email">Correo Electrónico Corporativo *</label>
+<input class="text-center w-full bg-black/90 border border-white/15 focus:border-signal-red text-white p-3 font-mono text-xs outline-none transition-colors" placeholder="&gt; correo@empresa.com" data-i18n-ph="t_ph_email" required="" type="email" id="contact-email"/>
 </div>
 </div>
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
 <div class="space-y-2">
-<label class="text-[10px] text-white/70 uppercase tracking-widest" data-i18n="t_288" for="company-name">Empresa / Organización</label>
-<input class="w-full bg-black/90 border border-white/15 focus:border-signal-red text-white p-3 font-mono text-xs outline-none transition-colors" placeholder="&gt; Nombre de la firma..." data-i18n-ph="t_ph_firma" type="text" id="company-name"/>
+<label class="block text-center text-[10px] text-white/70 uppercase tracking-widest" data-i18n="t_288" for="company-name">Empresa / Organización</label>
+<input class="text-center w-full bg-black/90 border border-white/15 focus:border-signal-red text-white p-3 font-mono text-xs outline-none transition-colors" placeholder="&gt; Nombre de la firma..." data-i18n-ph="t_ph_firma" type="text" id="company-name"/>
 </div>
 <!-- Desplegable Ampliado de Servicios -->
 <div class="space-y-2">
-<label class="text-[10px] text-white/70 uppercase tracking-widest" data-i18n="t_289" for="service-select">Servicio / Trabajo Requerido *</label>
-<select class="w-full bg-black border border-white/15 focus:border-signal-red text-white p-3 font-mono text-xs outline-none cursor-pointer" id="service-select" onchange="toggleOtherServiceInput()" required="">
+<label class="block text-center text-[10px] text-white/70 uppercase tracking-widest" data-i18n="t_289" for="service-select">Servicio / Trabajo Requerido *</label>
+<select class="text-center w-full bg-black border border-white/15 focus:border-signal-red text-white p-3 font-mono text-xs outline-none cursor-pointer" id="service-select" onchange="toggleOtherServiceInput()" required="">
 <option value="" disabled selected data-i18n="t_290">-- ELIGE TU SERVICIO --</option>
 <option data-i18n="t_291" value="video">Vídeo corporativo</option>
 <option data-i18n="t_opt_spots" value="spots">Spots para redes</option>
-<option data-i18n="t_293" value="streaming">Directos, streaming &amp; eventos en vivo</option>
-<option data-i18n="t_opt_podcast" value="podcast">Podcast &amp; videopodcast</option>
-<option data-i18n="t_292" value="sonido">Sonido, música &amp; identidad para tu marca</option>
-<option data-i18n="t_296" value="post">Postproducción &amp; contenido con IA</option>
+<option data-i18n="t_293" value="streaming">Directos, streaming & eventos en vivo</option>
+<option data-i18n="t_opt_podcast" value="podcast">Podcast & videopodcast</option>
+<option data-i18n="t_292" value="sonido">Sonido, música & identidad para tu marca</option>
+<option data-i18n="t_296" value="post">Postproducción & contenido con IA</option>
 <option data-i18n="t_298" value="formacion">Formación en vídeo</option>
 <option data-i18n="t_297" value="ia">Implantación de IA en tu comunicación</option>
-<option data-i18n="t_opt_agencias" value="agencias">Asesoría para agencias &amp; productoras</option>
- <option data-i18n="t_295" value="web">Webs &amp; campañas</option>
- <option data-i18n="t_service_videoclip_title" value="videoclip">Videoclips &amp; música en vivo</option>
+<option data-i18n="t_opt_agencias" value="agencias">Asesoría para agencias & productoras</option>
+ <option data-i18n="t_295" value="web">Webs & campañas</option>
+ <option data-i18n="t_service_videoclip_title" value="videoclip">Videoclips & música en vivo</option>
  <option data-i18n="t_service_eventos_title" value="eventos">Eventos: sonido e iluminación</option>
- <option data-i18n="t_service_dj_title" value="dj">DJ sessions &amp; performances</option>
- <option data-i18n="t_service_mastering_title" value="mastering">Mastering &amp; cambios de formato</option>
- <option data-i18n="t_service_ecommerce_title" value="ecommerce">eCommerce &amp; SEO</option>
+ <option data-i18n="t_service_dj_title" value="dj">DJ sessions & performances</option>
+ <option data-i18n="t_service_mastering_title" value="mastering">Mastering & cambios de formato</option>
+ <option data-i18n="t_service_ecommerce_title" value="ecommerce">eCommerce & SEO</option>
  <option data-i18n="t_service_consultoria_title" value="consultoria">Consultoría audiovisual</option>
  <option data-i18n="t_299" value="otros">⚡ OTROS (Especificación personalizada)</option>
 </select>
@@ -1805,14 +1543,14 @@
 </div>
 <!-- Campo Desplegable Dinámico cuando se elige OTROS -->
 <div class="hidden space-y-2 animate-fadeIn" id="other-service-wrap">
-<label class="text-[10px] text-signal-red uppercase tracking-widest font-bold" data-i18n="t_300" for="other-service-input">// CUÉNTANOS TU PROYECTO: OBJETIVOS Y PLAZOS</label>
-<input class="w-full bg-black/90 border border-signal-red/60 focus:border-signal-red text-white p-3 font-mono text-xs outline-none" id="other-service-input" placeholder="&gt; Ejemplo: Masterización binaural para VR, instalación acústica, app móvil..." data-i18n-ph="t_ph_ejemplo" type="text"/>
+<label class="block text-center text-[10px] text-signal-red uppercase tracking-widest font-bold" data-i18n="t_300" for="other-service-input">// CUÉNTANOS TU PROYECTO: OBJETIVOS Y PLAZOS</label>
+<input class="text-center w-full bg-black/90 border border-signal-red/60 focus:border-signal-red text-white p-3 font-mono text-xs outline-none" id="other-service-input" placeholder="&gt; Ejemplo: Masterización binaural para VR, instalación acústica, app móvil..." data-i18n-ph="t_ph_ejemplo" type="text"/>
 </div>
 <div class="space-y-2">
-<label class="text-[10px] text-white/70 uppercase tracking-widest" data-i18n="t_301" for="project-details">Ideas, presupuesto orientativo y fechas</label>
-<textarea class="w-full bg-black/90 border border-white/15 focus:border-signal-red text-white p-3 font-mono text-xs outline-none transition-colors" placeholder="&gt; Especifique el alcance, ubicación o requerimientos del encargo..." data-i18n-ph="t_ph_alcance" required="" rows="4" id="project-details"></textarea>
+<label class="block text-center text-[10px] text-white/70 uppercase tracking-widest" data-i18n="t_301" for="project-details">Ideas, presupuesto orientativo y fechas</label>
+<textarea class="text-center w-full bg-black/90 border border-white/15 focus:border-signal-red text-white p-3 font-mono text-xs outline-none transition-colors" placeholder="&gt; Especifique el alcance, ubicación o requerimientos del encargo..." data-i18n-ph="t_ph_alcance" required="" rows="4" id="project-details"></textarea>
 </div>
-<button class="w-full bg-signal-red text-white font-headline text-xl sm:text-2xl py-4 uppercase tracking-widest hover:bg-signal-red-hover transition-all shadow-lg hover:shadow-signal-red/30" data-i18n="t_302" type="submit">
+<button class="block mx-auto w-full max-w-md bg-signal-red text-white font-headline text-xl sm:text-2xl py-4 uppercase tracking-widest hover:bg-signal-red-hover transition-all shadow-lg hover:shadow-signal-red/30" data-i18n="t_302" type="submit">
                     SOLICITAR PRESUPUESTO →
                 </button>
 <div class="hidden text-center text-terminal-green font-mono text-xs pt-2" data-i18n="t_form_ok" id="form-success">
@@ -1841,46 +1579,46 @@
 <a class="inline-block group" href="#top">
 <img alt="CHUS BZN Logo Oficial" class="h-14 w-auto object-contain border border-white/20 p-1 rounded group-hover:border-signal-red transition-all" loading="lazy" src="assets/logo.jpg"/>
 </a>
-<p class="font-sans text-xs text-text-secondary max-w-sm font-light" data-i18n="t_308">
-                CHUS BZN es un estudio de proyectos audiovisuales en Barcelona: sonido, vídeo, streaming e inteligencia artificial para empresas que quieren comunicar como las grandes.
+<p class="font-sans text-xs sm:text-sm text-white/95 max-w-sm font-light" data-i18n="t_308">
+                CHUS BZN es un estudio de proyectos audiovisuales en Barcelona: sonido, vídeo, streaming e inteligencia artificial para PYMES, profesionales y marcas que quieren comunicar como las grandes empresas.
             </p>
 </div>
-<div class="md:col-span-4 font-mono text-xs space-y-3">
-<span class="text-signal-red uppercase tracking-widest font-bold block mb-2" data-i18n="t_309">// CANALES &amp; PLATAFORMAS OFICIALES</span>
+<div class="md:col-span-4 font-mono text-xs space-y-2">
+<span class="text-signal-red uppercase tracking-widest font-bold block mb-2" data-i18n="t_309">// CANALES & PLATAFORMAS OFICIALES</span>
 <div class="flex items-center gap-3">
 <svg class="w-4 h-4 text-signal-red" fill="currentColor" viewbox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"></path></svg>
-<a class="text-white/80 hover:text-signal-red transition-colors" data-i18n="t_310" href="mailto:info@chusbzn.com">info@chusbzn.com</a>
+<a class="text-white/90 hover:text-signal-red transition-colors text-xs sm:text-sm" data-i18n="t_310" href="mailto:info@chusbzn.com">info@chusbzn.com</a>
 </div>
 <div class="flex items-center gap-3">
 <svg class="w-4 h-4 text-signal-red" fill="currentColor" viewbox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
-<a class="text-white/80 hover:text-signal-red transition-colors" data-i18n="t_311" href="https://www.youtube.com/@chus_bzn" rel="noopener" target="_blank">Canal Oficial YouTube</a>
+<a class="text-white/90 hover:text-signal-red transition-colors text-xs sm:text-sm" data-i18n="t_311" href="https://www.youtube.com/@chus_bzn" rel="noopener" target="_blank">Canal Oficial YouTube</a>
 </div>
 <div class="flex items-center gap-3">
 <svg class="w-4 h-4 text-signal-red" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
-<a class="text-white/80 hover:text-signal-red transition-colors" data-i18n="t_312" href="https://www.instagram.com/chus_bzn" rel="noopener" target="_blank">Instagram Reels &amp; Lab</a>
+<a class="text-white/90 hover:text-signal-red transition-colors text-xs sm:text-sm" data-i18n="t_312" href="https://www.instagram.com/chus_bzn" rel="noopener" target="_blank">Instagram Reels & Lab</a>
 </div>
 <div class="flex items-center gap-3">
 <svg class="w-4 h-4 text-signal-red" fill="currentColor" viewbox="0 0 24 24"><path d="M12 0C5.376 0 0 5.376 0 12s5.376 12 12 12 12-5.376 12-12S18.624 0 12 0zm5.521 17.341c-.217.357-.681.469-1.038.252-2.846-1.74-6.429-2.133-10.65-1.167-.406.094-.813-.162-.906-.568-.094-.406.162-.813.568-.906 4.624-1.056 8.583-.604 11.774 1.348.357.217.469.681.252 1.041zm1.474-3.272c-.273.444-.852.585-1.296.313-3.257-2.002-8.223-2.584-12.077-1.414-.504.153-1.033-.133-1.186-.637-.153-.504.133-1.033.637-1.186 4.409-1.338 9.873-.692 13.609 1.628.444.273.585.852.313 1.296zm.127-3.411c-3.906-2.319-10.354-2.533-14.108-1.393-.6.182-1.237-.162-1.419-.762-.182-.6.162-1.237.762-1.419 4.312-1.309 11.433-1.055 15.93 1.614.54.32.718 1.02.398 1.56-.32.54-1.02.718-1.563.399z"></path></svg>
-<a class="text-white/80 hover:text-signal-red transition-colors" data-i18n="t_313" href="https://open.spotify.com/intl-es/artist/0n4agjgaicmPmX8xXXADHL?si=BT-gHD11TIGBOuNvRn8hkA" rel="noopener" target="_blank">Spotify Perfil Artista</a>
+<a class="text-white/90 hover:text-signal-red transition-colors text-xs sm:text-sm" data-i18n="t_313" href="https://open.spotify.com/intl-es/artist/0n4agjgaicmPmX8xXXADHL?si=BT-gHD11TIGBOuNvRn8hkA" rel="noopener" target="_blank">Spotify Perfil Artista</a>
 </div>
 <div class="flex items-center gap-3">
 <svg class="w-5 h-4 text-signal-red" fill="currentColor" viewbox="0 0 24 24"><path d="M1.175 12.225c-.05 0-.096.038-.104.092L.008 18.72c-.008.06.034.112.094.112h1.177c.056 0 .103-.045.103-.103l.094-6.41c.008-.057-.038-.104-.094-.104H1.175zm2.095-1.472c-.056 0-.103.045-.103.103l-.297 7.76c-.008.057.038.104.094.104h1.186c.056 0 .103-.045.103-.103l.297-7.76c.008-.057-.038-.104-.094-.104H3.27zm2.112-1.074c-.056 0-.103.045-.103.103l-.224 8.835c-.008.057.038.104.094.104h1.186c.056 0 .103-.045.103-.103l.224-8.835c.008-.057-.038-.104-.094-.104H5.382zm2.112-1.127c-.056 0-.103.045-.103.103l-.15 9.96c-.008.057.038.104.094.104h1.186c.056 0 .103-.045.103-.103l.15-9.96c.008-.057-.038-.104-.094-.104H7.494zm2.112-.66c-.056 0-.103.045-.103.103l-.078 10.62c0 .057.046.103.103.103h1.186c.056 0 .103-.045.103-.103l.078-10.62c0-.057-.046-.103-.103-.103H9.606zm13.197 3.513c-.58 0-1.136.143-1.626.398C20.73 9.4 18.57 7.5 16.02 7.5c-.53 0-1.04.08-1.52.23-.27-2.14-2.1-3.8-4.32-3.8-.18 0-.35.01-.52.03-.06.01-.1.06-.1.12l.06 14.65c0 .06.05.1.1.1h13.17c1.7 0 3.09-1.38 3.09-3.09 0-1.7-1.38-3.09-3.09-3.09z"></path></svg>
-<a class="text-white/80 hover:text-signal-red transition-colors" data-i18n="t_314" href="https://on.soundcloud.com/45pQf3AQv99X3JbCcj" rel="noopener" target="_blank">SoundCloud Archive Oficial</a>
+<a class="text-white/90 hover:text-signal-red transition-colors text-xs sm:text-sm" data-i18n="t_314" href="https://on.soundcloud.com/45pQf3AQv99X3JbCcj" rel="noopener" target="_blank">SoundCloud Archive Oficial</a>
 </div>
 <div class="flex items-center gap-3">
 <svg class="w-4 h-4 text-signal-red" fill="currentColor" viewbox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.7a1.63 1.63 0 1 0 1.63 1.63A1.63 1.63 0 0 0 7.86 6.7z"></path></svg>
-<a class="text-white/80 hover:text-signal-red transition-colors" data-i18n="t_315" href="https://www.linkedin.com/in/chusbzn" rel="noopener" target="_blank">LinkedIn Perfil Oficial</a>
+<a class="text-white/90 hover:text-signal-red transition-colors text-xs sm:text-sm" data-i18n="t_315" href="https://www.linkedin.com/in/chusbzn" rel="noopener" target="_blank">LinkedIn Perfil Oficial</a>
 </div>
 <div class="flex items-center gap-3">
 <svg class="w-4 h-4 text-signal-red" fill="currentColor" viewbox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"></path></svg>
-<a class="text-white/80 hover:text-signal-red transition-colors" data-i18n="t_316" href="https://github.com/produktes-code" rel="noopener" target="_blank">GitHub Pool Repositories</a>
+<a class="text-white/90 hover:text-signal-red transition-colors text-xs sm:text-sm" data-i18n="t_316" href="https://github.com/produktes-code" rel="noopener" target="_blank">GitHub Pool Repositories</a>
 </div>
 </div>
 <div class="md:col-span-3 font-mono text-xs space-y-3">
 <span class="text-signal-red uppercase tracking-widest font-bold block mb-2" data-i18n="t_317">// NAVEGACIÓN</span>
-<div><a class="text-white/80 hover:text-signal-red transition-colors" data-i18n="t_318" href="perfil.html">→ Perfil Profesional</a></div>
-<div><a class="text-white/80 hover:text-signal-red transition-colors" data-i18n="t_319" href="#ecosistema">→ Software Propietario IA</a></div>
-<div><a class="text-white/80 hover:text-signal-red transition-colors" data-i18n="t_320" href="blog.html">→ Blog de Novedades</a></div>
+<div><a class="text-white/90 hover:text-signal-red transition-colors text-xs sm:text-sm" data-i18n="t_318" href="perfil.html">→ Perfil Profesional</a></div>
+<div><a class="text-white/90 hover:text-signal-red transition-colors text-xs sm:text-sm" data-i18n="t_319" href="#ecosistema">→ Software Propietario IA</a></div>
+<div><a class="text-white/90 hover:text-signal-red transition-colors text-xs sm:text-sm" data-i18n="t_320" href="blog.html">→ Blog de Novedades</a></div>
 </div>
 </div>
 <div class="max-w-[1600px] mx-auto pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center font-mono text-[10px] text-white/40 tracking-widest uppercase gap-4">
@@ -1889,12 +1627,12 @@
 </div>
 </footer>
 <!-- ═══ MODALES EXPLICATIVOS DE SERVICIO ═══ -->
-<div class="modal-backdrop" id="service-modal" onclick="closeServiceModal(event)">
+<div class="modal-backdrop" id="service-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-desc" onclick="closeServiceModal(event)">
 <div class="glass-panel p-6 sm:p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto border border-signal-red/40 relative space-y-6" onclick="event.stopPropagation()">
-<button class="absolute top-4 right-4 text-white/60 hover:text-signal-red font-mono text-xl" onclick="closeServiceModal()">×</button>
+<button type="button" class="absolute top-4 right-4 text-white/60 hover:text-signal-red font-mono text-xl" aria-label="Cerrar" data-i18n-aria="t_aria_close" onclick="closeServiceModal()">×</button>
 <span class="font-mono text-xs text-signal-red tracking-widest uppercase" data-i18n="t_321" id="modal-code">// DOSSIER TÉCNICO</span>
 <h3 class="font-headline text-3xl text-white uppercase" id="modal-title">---</h3>
-<p class="font-sans text-base text-white/85 font-normal leading-relaxed" id="modal-desc">---</p>
+<p class="font-sans text-lg sm:text-xl text-white/90 font-normal leading-relaxed" id="modal-desc">---</p>
 <div class="space-y-3 font-mono text-xs text-white/90 border-t border-white/10 pt-4" id="modal-specs">---</div>
 <div class="pt-4 flex justify-end">
 <a class="bg-signal-red text-white font-mono text-xs px-6 py-3 uppercase tracking-widest hover:bg-signal-red-hover" data-i18n="t_322" href="#presupuesto" onclick="closeServiceModal()">SOLICITAR ESTE SERVICIO</a>
@@ -1917,7 +1655,7 @@
 </div>
 <!-- Descripción & Botón a la Fuente Oficial -->
 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pt-2 border-t border-white/10 font-mono text-xs">
-<p class="font-sans text-sm text-white/85 font-normal max-w-xl" id="vmodal-desc">---</p>
+<p class="font-sans text-base sm:text-lg text-white/90 font-normal max-w-xl" id="vmodal-desc">---</p>
 <a class="bg-signal-red hover:bg-white text-white hover:text-signal-red font-mono text-xs px-5 py-2.5 uppercase tracking-wider font-bold transition-all whitespace-nowrap shadow-lg" data-i18n="t_324" href="#" id="vmodal-link" rel="noopener" target="_blank">
                 ABRIR EN FUENTE ORIGINAL →
             </a>
@@ -1934,8 +1672,9 @@
     
     // ═══ LAZY VIDEO INTERSECTION OBSERVER (REDUCES GPU DECODING LAG + iOS COMPAT) ═══
     // iOS Safari limita los recursos de descarga simultáneos: con muchos <video> a
-    // preload="auto" agota el presupuesto y los fuera de pantalla jamás cargan (se
-    // quedan en el póster). Cargamos bajo demanda y reforzamos con el primer gesto.
+    // preload="none" evita que los 8 previews descargen a la vez al abrir la página
+    // (provocaba drops de red y parones). Cargamos bajo demanda y reforzamos con el
+    // primer gesto.
     //
     // Además, reproduced varios clips a la vez (hasta 6 en el grid de escritorio)
     // saturaba el decodificador y provocaba DROPS y falta de agilidad. Ahora solo
@@ -2107,6 +1846,16 @@
         let comets = [];
         let curW = 320, curH = 256;
         let running = true;
+        let matrixTimer = null;
+
+        // El matrix dibuja solo si se ve Y la pestaña está activa: fuera de pantalla
+        // o en segundo plano el coste es cero, no se despierta en absoluto.
+        const setRunning = function (on) {
+            if (on === running && !!(matrixTimer) === on) return;
+            running = on;
+            if (on && !matrixTimer) matrixTimer = setInterval(drawMatrix, 34);
+            else if (!on && matrixTimer) { clearInterval(matrixTimer); matrixTimer = null; }
+        };
 
         function refreshDrops() {
             const rows = Math.max(16, Math.ceil(curH / fontSize) * 2);
@@ -2259,7 +2008,9 @@
             requestAnimationFrame(function firstPaint() {
                 refreshDrops();
                 drawMatrix();
-                setInterval(drawMatrix, 26);
+                matrixTimer = setInterval(drawMatrix, 34);
+                // Sin esto el intervalo seguiría despertando aunque el hero no se vea.
+                if (!running && matrixTimer) { clearInterval(matrixTimer); matrixTimer = null; }
             });
         }
 
@@ -2280,14 +2031,20 @@
         }
 
         // Pausa el renderizado cuando la terminal sale de pantalla (ahorra CPU/GPU)
+        let inView = true;
         if ('IntersectionObserver' in window) {
             const hero = document.getElementById('matrix-wrapper');
             if (hero) {
                 new IntersectionObserver((entries) => {
-                    running = !!entries[0].isIntersecting;
+                    inView = !!entries[0].isIntersecting;
+                    setRunning(inView && !document.hidden);
                 }).observe(hero);
             }
         }
+        // Con la pestaña oculta no hay nada que pintar: se detiene el temporizador.
+        document.addEventListener('visibilitychange', function () {
+            setRunning(inView && !document.hidden);
+        });
     })();
 
     // ═══ BULLETPROOF LIGHTBOX VIDEO PLAYER WITH IPHONE TOUCH PLAY OVERLAY ═══
@@ -2329,7 +2086,7 @@
 
     window.buildModalVideo = function(localVideo) {
         return '<div class="relative w-full h-full flex items-center justify-center bg-black group overflow-hidden rounded">' +
-            '<video id="active-modal-video" src="' + localVideo + '" controls playsinline webkit-playsinline preload="auto" class="w-full h-full object-contain rounded shadow-2xl" type="video/mp4"></video>' +
+            '<video id="active-modal-video" src="' + localVideo + '" controls playsinline webkit-playsinline preload="metadata" class="w-full h-full object-contain rounded shadow-2xl" type="video/mp4"></video>' +
             '<div id="modal-play-overlay" onclick="startModalVideoPlayback(event)" ontouchstart="startModalVideoPlayback(event)" style="touch-action: manipulation;" class="absolute inset-0 bg-black/60 hover:bg-black/40 flex flex-col items-center justify-center cursor-pointer transition-all z-40 p-4 text-center">' +
             '<div class="w-16 h-16 bg-signal-red text-white rounded-full flex items-center justify-center shadow-2xl transform group-hover:scale-110 mb-3 border-2 border-white/50">' +
             '<svg class="w-8 h-8 translate-x-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></div>' +
@@ -2559,7 +2316,7 @@
     };
 
 
-    window.openServiceModal = function(key) {
+    window.openServiceModal = function(key, ev) {
         const currentLang = localStorage.getItem('site_lang') || 'es';
         const t = (typeof translations !== 'undefined' && translations[currentLang]) || (typeof translations !== 'undefined' && translations['es']) || {};
         
@@ -2575,6 +2332,14 @@
         const modal = document.getElementById('service-modal');
         if (modal) modal.classList.add('open');
         document.body.style.overflow = 'hidden';
+        // Devolver el foco a la tarjeta que abrió el modal al cerrarlo.
+        const src = (ev && ev.currentTarget) || (ev && ev.target) || document.activeElement;
+        window.__lastServiceTrigger = (src && src.focus) ? src : null;
+        const panel = modal && modal.querySelector('.glass-panel');
+        if (panel) {
+            if (!panel.hasAttribute('tabindex')) panel.setAttribute('tabindex', '-1');
+            panel.focus({ preventScroll: true });
+        }
     };
 
     window.closeServiceModal = function(e) {
@@ -2582,7 +2347,43 @@
         const modal = document.getElementById('service-modal');
         if (modal) modal.classList.remove('open');
         document.body.style.overflow = '';
+        const back = window.__lastServiceTrigger;
+        if (back && back.focus) { try { back.focus({ preventScroll: true }); } catch (err) { back.focus(); } }
     };
+
+    // Escape cierra cualquier modal abierto y devuelve el foco al disparador.
+    // El foco queda atrapado dentro del modal mientras está abierto (teclado).
+    (function modalKeyboard() {
+        function openPanels() {
+            return Array.prototype.slice.call(document.querySelectorAll('.modal-backdrop.open'));
+        }
+        document.addEventListener('keydown', function (e) {
+            if (e.key !== 'Escape' && e.key !== 'Esc' && e.keyCode !== 27) return;
+            const open = openPanels();
+            if (!open.length) return;
+            e.preventDefault();
+            const last = open[open.length - 1];
+            const svc = document.getElementById('service-modal');
+            const vid = document.getElementById('video-modal');
+            if (last === svc && typeof window.closeServiceModal === 'function') window.closeServiceModal();
+            else if (last === vid && typeof window.closeVideoModal === 'function') window.closeVideoModal();
+            else { last.classList.remove('open'); document.body.style.overflow = ''; }
+        }, true);
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key !== 'Tab') return;
+            const open = openPanels();
+            if (!open.length) return;
+            const panel = open[open.length - 1].querySelector('.glass-panel');
+            if (!panel) return;
+            const f = panel.querySelectorAll('a[href], button:not([disabled]), video[controls], [tabindex]:not([tabindex="-1"])');
+            if (!f.length) return;
+            const first = f[0], lastEl = f[f.length - 1];
+            if (e.shiftKey && document.activeElement === first) { e.preventDefault(); lastEl.focus(); }
+            else if (!e.shiftKey && document.activeElement === lastEl) { e.preventDefault(); first.focus(); }
+            else if (!panel.contains(document.activeElement)) { e.preventDefault(); first.focus(); }
+        });
+    })();
 
     // Scroll reveal observer & Mobile Active Scroll Illumination
     (function initReveal() {
@@ -2731,11 +2532,11 @@
                 const t = e.changedTouches[0];
                 if (!wasTap(startX, startY, t.clientX, t.clientY)) return;
                 const onclickAttr = card.getAttribute('onclick') || '';
-                const match = onclickAttr.match(/openServiceModal\(['"]([^'"]+)['"]\)/);
+                const match = onclickAttr.match(/openServiceModal\(\s*['"]([^'"]+)['"]/);
                 if (match && match[1]) {
                     e.preventDefault();
                     e.stopPropagation();
-                    window.openServiceModal(match[1]);
+                    window.openServiceModal(match[1], e);
                 }
             }, { passive: false });
         });
@@ -2757,6 +2558,58 @@
             }, { passive: false });
         });
     });
+</script>
+<script>
+    // ═══ ORBES ORGÁNICOS: reacción suave al cursor ═══
+    // Los orbes ya derivan solos con CSS (organic-drift-a/b sobre `transform`).
+    // Aquí solo se mueve la propiedad `translate`, que se compone con el
+    // `transform` de la animación: por eso no se pisan entre sí.
+    (function () {
+        const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const fine = window.matchMedia && window.matchMedia('(pointer: fine)').matches;
+        const orbs = [
+            { el: document.querySelector('.organic-orb-1'), amp: 46 },
+            { el: document.querySelector('.organic-orb-2'), amp: 62 }
+        ].filter(o => o.el);
+        if (reduce || !fine || !orbs.length) return;
+
+        // El ratón se normaliza a -1..1 y cada orbe persigue ese valor con
+        // suavizado (lerp): arrive suave, sin tirones ni saltos.
+        let tx = 0, ty = 0, running = false;
+        orbs.forEach(function (o, i) {
+            // El segundo orbe va al revés: se nota el paralaje.
+            o.sx = i === 0 ? 1 : -1;
+            o.sy = i === 0 ? 0.75 : 1;
+            o.x = 0; o.y = 0;
+        });
+
+        function onMove(e) {
+            tx = (e.clientX / window.innerWidth) * 2 - 1;
+            ty = (e.clientY / window.innerHeight) * 2 - 1;
+            if (!running) { running = true; requestAnimationFrame(tick); }
+        }
+
+        function tick() {
+            let moving = false;
+            orbs.forEach(function (o) {
+                const goalX = tx * o.amp * o.sx, goalY = ty * o.amp * 0.55 * o.sy;
+                o.x += (goalX - o.x) * 0.06;
+                o.y += (goalY - o.y) * 0.06;
+                if (Math.abs(goalX - o.x) > 0.05 || Math.abs(goalY - o.y) > 0.05) moving = true;
+                o.el.style.translate = o.x.toFixed(2) + 'px ' + o.y.toFixed(2) + 'px';
+            });
+            // Al llegar al destino se detiene el bucle (los orbes se quedan
+            // donde están y la deriva CSS sigue).
+            if (!moving) { running = false; return; }
+            requestAnimationFrame(tick);
+        }
+
+        window.addEventListener('pointermove', onMove, { passive: true });
+        window.addEventListener('pointerleave', function () {
+            tx = 0; ty = 0;
+            if (!running) { running = true; requestAnimationFrame(tick); }
+        });
+    })();
 </script>
 <script>
     // ═══ VIVACIDAD: barra de progreso de scroll + indicador REC en tarjetas ═══
