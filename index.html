@@ -67,6 +67,17 @@
 <!-- Tailwind CSS compilado estáticamente -->
 <link href="css/tailwind.css" rel="stylesheet"/>
 <style>
+    @media (max-width: 640px) {
+        h1,h2,h3,p,span,a {
+            word-break: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
+        }
+        .section-headline-clean {
+            padding-left: 0;
+        }
+    }
+
     :root {
         --bg-black: #000000;
         --surface-dim: #121212;
@@ -84,12 +95,12 @@
         outline-offset: 2px;
     }
 
-    .btn-cta {
+    .btn-cta whitespace-normal {
         position: relative;
         overflow: hidden;
         isolation: isolate;
     }
-    .btn-cta::after {
+    .btn-cta whitespace-normal::after {
         content: '';
         position: absolute;
         top: 0; left: -120%;
@@ -99,7 +110,7 @@
         transition: left 0.55s ease;
         z-index: -1;
     }
-    .btn-cta:hover::after {
+    .btn-cta whitespace-normal:hover::after {
         left: 160%;
     }
 
@@ -910,10 +921,10 @@
 </button>
 </div>
 <div class="flex flex-wrap items-center justify-center gap-4" style="margin-top:36px">
-<a class="bg-signal-red text-white font-mono text-xs font-bold px-8 py-4 uppercase tracking-widest hover:bg-signal-red-hover transition-all shadow-lg hover:shadow-signal-red/30 btn-cta" data-i18n="t_146" href="#presupuesto">
+<a class="bg-signal-red text-white font-mono text-xs font-bold px-8 py-4 uppercase tracking-widest hover:bg-signal-red-hover transition-all shadow-lg hover:shadow-signal-red/30 btn-cta whitespace-normal" data-i18n="t_146" href="#presupuesto">
 <span>PEDIR PRESUPUESTO</span>
 </a>
-<a class="bg-transparent border border-white/20 text-white font-mono text-xs font-medium px-8 py-4 uppercase tracking-widest hover:border-signal-red hover:text-signal-red transition-all btn-cta" data-i18n="t_147" href="#showcase">
+<a class="bg-transparent border border-white/20 text-white font-mono text-xs font-medium px-8 py-4 uppercase tracking-widest hover:border-signal-red hover:text-signal-red transition-all btn-cta whitespace-normal" data-i18n="t_147" href="#showcase">
 <span>VER NUESTRO TRABAJO</span>
 </a>
 </div>
@@ -995,7 +1006,7 @@
 <section class="py-20 px-6 sm:px-10 max-w-[1600px] mx-auto reveal" id="servicios">
 <div class="text-center space-y-3 mb-14">
 <span class="font-mono text-signal-red text-sm uppercase tracking-widest">// SERVICIOS</span>
-<h2 class="font-headline text-4xl sm:text-6xl uppercase text-white tracking-tight section-headline-clean">Servicios y Creatividad a Medida</h2>
+<h2 class="font-headline text-3xl sm:text-6xl uppercase text-white tracking-tight section-headline-clean">Servicios y Creatividad a Medida</h2>
 <p class="font-sans text-lg sm:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">Soluciones audiovisuales integradas para dar forma, sonido e imagen a tus proyectos con precisión técnica y enfoque estratégico.</p>
 </div>
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -1036,9 +1047,9 @@
 <div class="glass-panel p-8 sm:p-12 border border-signal-red/40 relative overflow-hidden text-center space-y-5">
 <div class="absolute top-0 left-1/2 -translate-x-1/2 w-56 h-[2px] bg-signal-red"></div>
 <span class="font-mono text-signal-red text-sm uppercase tracking-widest" data-i18n="t_offer_kicker">// OFERTA DE LANZAMIENTO</span>
-<h2 class="font-headline text-4xl sm:text-6xl uppercase text-white tracking-tight section-headline-clean" data-i18n="t_offer_title">TU 15% DE DESCUENTO TE ESPERA</h2>
+<h2 class="font-headline text-3xl sm:text-6xl uppercase text-white tracking-tight section-headline-clean" data-i18n="t_offer_title">TU 15% DE DESCUENTO TE ESPERA</h2>
 <p class="font-sans text-base sm:text-lg text-white/85 font-normal leading-relaxed max-w-xl mx-auto" data-i18n="t_offer_txt">Pide presupuesto por el formulario web y aplícalo a tu proyecto. Sin letra pequeña.</p>
-<a class="inline-block bg-signal-red text-white font-mono text-xs font-bold px-8 py-4 uppercase tracking-widest hover:bg-signal-red-hover transition-all shadow-lg hover:shadow-signal-red/30 btn-cta" data-i18n="t_offer_cta" href="#presupuesto"><span>PEDIR PRESUPUESTO</span></a>
+<a class="inline-block bg-signal-red text-white font-mono text-xs font-bold px-8 py-4 uppercase tracking-widest hover:bg-signal-red-hover transition-all shadow-lg hover:shadow-signal-red/30 btn-cta whitespace-normal" data-i18n="t_offer_cta" href="#presupuesto"><span>PEDIR PRESUPUESTO</span></a>
 </div>
 </section>
 <!-- ═══ MÓDULO POTENCIADO: CANALES & PLATAFORMAS (Limpio & Sin Explicaciones Secundarias) ═══ -->
@@ -1049,7 +1060,7 @@
 <div class="max-w-[1600px] mx-auto px-6 sm:px-10">
 <div class="text-center space-y-4 mb-14 max-w-4xl mx-auto">
 <span class="font-mono text-signal-red text-sm uppercase tracking-widest" data-i18n="t_200">// NUESTRO MÉTODO: OFICIO + IA</span>
-<h2 class="font-headline text-4xl sm:text-6xl uppercase text-white tracking-tight section-headline-clean" data-i18n="t_201">De la idea al resultado</h2>
+<h2 class="font-headline text-3xl sm:text-6xl uppercase text-white tracking-tight section-headline-clean" data-i18n="t_201">De la idea al resultado</h2>
 <p class="font-sans text-base sm:text-lg text-white/85 max-w-3xl mx-auto font-normal leading-relaxed" data-i18n="t_202">
                 Herramientas propias, desarrolladas en nuestro estudio, para que tus proyectos terminen antes, con calidad constante y coste controlado.
             </p>
@@ -1102,7 +1113,7 @@
 <div class="max-w-[1600px] mx-auto px-6 sm:px-10">
 <div class="text-center space-y-3 mb-12 max-w-4xl mx-auto">
 <span class="font-mono text-signal-red text-sm uppercase tracking-widest" data-i18n="t_209">// SHOWCASE & REELS</span>
-<h2 class="font-headline text-4xl sm:text-6xl uppercase text-white tracking-tight section-headline-clean" data-i18n="t_210">
+<h2 class="font-headline text-3xl sm:text-6xl uppercase text-white tracking-tight section-headline-clean" data-i18n="t_210">
                 Muestra de Producciones Generativas
             </h2>
 <p class="font-sans text-lg sm:text-xl text-white/90 font-normal max-w-2xl mx-auto leading-relaxed" data-i18n="t_211">
@@ -1399,20 +1410,20 @@
 <div class="text-center space-y-10">
 <div class="space-y-4">
 <span class="font-mono text-signal-red text-sm uppercase tracking-widest">// ASÍ SOMOS</span>
-<h2 class="font-headline text-4xl sm:text-6xl uppercase text-white tracking-tight section-headline-clean">MANIFIESTO</h2>
+<h2 class="font-headline text-3xl sm:text-6xl uppercase text-white tracking-tight section-headline-clean">MANIFIESTO</h2>
 </div>
 <div class="space-y-8 text-white/90 leading-relaxed max-w-5xl mx-auto text-left" style="text-align:left">
 <div class="space-y-4">
-<p class="font-sans text-lg sm:text-xl md:text-2xl font-normal max-w-4xl mx-auto" style="text-align:left">
+<p class="font-sans text-lg sm:text-xl md:text-xl font-normal max-w-4xl mx-auto" style="text-align:left">
 No creemos en soluciones genéricas. Cada proyecto parte de un análisis claro para transformar ideas en piezas audiovisuales que comunican con precisión y fuerza.
 </p>
-<p class="font-sans text-lg sm:text-xl md:text-2xl font-normal max-w-4xl mx-auto" style="text-align:left">
+<p class="font-sans text-lg sm:text-xl md:text-xl font-normal max-w-4xl mx-auto" style="text-align:left">
 Integramos creatividad, técnica y estrategia para conseguir resultados medibles, sin perder la identidad que hace única tu marca.
 </p>
 </div>
 <div class="mt-10">
 <div class="glass-panel inline-block px-8 py-6 border border-signal-red/40 max-w-5xl mx-auto" style="border-left:3px solid #ff1f1f">
-<p class="font-sans text-xl sm:text-2xl md:text-3xl font-semibold text-white leading-tight uppercase tracking-tight">
+<p class="font-sans text-xl sm:text-xl md:text-2xl font-semibold text-white leading-tight uppercase tracking-tight">
 «CREATIVIDAD + LÓGICA = RESULTADOS. TU COMUNICACIÓN MERECE VERSE Y ESCUCHARSE BIEN.»
 </p>
 </div>
@@ -1425,7 +1436,7 @@ Integramos creatividad, técnica y estrategia para conseguir resultados medibles
 <div class="matrix-rain" aria-hidden="true"><canvas></canvas></div>
 <div class="text-center space-y-4 mb-16 max-w-4xl mx-auto relative z-10">
 <span class="font-mono text-signal-red text-sm uppercase tracking-widest" data-i18n="t_met_kicker">// CÓMO TRABAJAMOS</span>
-<h2 class="font-headline text-4xl sm:text-6xl uppercase text-white tracking-tight section-headline-clean" data-i18n="t_met_title">Un método claro, sin sorpresas</h2>
+<h2 class="font-headline text-3xl sm:text-6xl uppercase text-white tracking-tight section-headline-clean" data-i18n="t_met_title">Un método claro, sin sorpresas</h2>
 <p class="font-sans text-base sm:text-lg text-white/85 font-normal max-w-3xl mx-auto leading-relaxed" data-i18n="t_met_intro">Cada proyecto pasa por 8 pasos: sabrás qué hacemos, cuándo y a qué precio, desde el primer día.</p>
 </div>
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 reveal-stagger relative z-10">
@@ -1494,7 +1505,7 @@ ext-sm text-white/85 font-normal leading-relaxed" data-i18n="t_met_d02">Un plan 
 <div class="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-[2px] bg-signal-red"></div>
 <div class="text-center space-y-3 mb-12">
 <span class="font-mono text-signal-red text-sm uppercase tracking-widest" data-i18n="t_283">// HABLEMOS DE TU PROYECTO</span>
-<h2 class="font-headline text-4xl sm:text-6xl uppercase text-white tracking-tight section-headline-clean" data-i18n="t_284">Presupuesto sin compromiso</h2>
+<h2 class="font-headline text-3xl sm:text-6xl uppercase text-white tracking-tight section-headline-clean" data-i18n="t_284">Presupuesto sin compromiso</h2>
 <p class="font-sans text-base sm:text-lg text-white/85 max-w-md mx-auto font-normal leading-relaxed" data-i18n="t_285">
                     Cuéntanos qué necesitas: respondemos 24/365, en menos de 24 horas. Y si pides presupuesto por esta web, te llevas un 15% de descuento.
                 </p>
