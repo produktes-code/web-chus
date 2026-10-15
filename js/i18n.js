@@ -244,20 +244,6 @@ document.addEventListener('DOMContentLoaded', () => {
             el.setAttribute('content', OG_LOCALES[lang] || OG_LOCALES[defaultLang]);
         });
 
-        // Spot promocional localizado por idioma (solo index)
-        const heroSpot = document.getElementById('hero-spot');
-        if (heroSpot) {
-            const target = 'assets/proxy/promo.' + lang + '.mp4';
-            const cur = heroSpot.currentSrc || heroSpot.src;
-            if (cur.indexOf('promo.' + lang + '.mp4') === -1) {
-                const wasMuted = heroSpot.muted;
-                heroSpot.src = target;
-                heroSpot.muted = wasMuted;
-                heroSpot.load();
-                heroSpot.play().catch(() => {});
-            }
-        }
-
         // Trigger custom event for dynamic components (modals, video cards)
         window.dispatchEvent(new CustomEvent('site_lang_changed', { detail: { lang } }));
     }
