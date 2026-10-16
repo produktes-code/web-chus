@@ -12,12 +12,12 @@ Web de **CHUS BZN** (`www.chusbzn.com`), una sola fuente con 4 páginas estátic
 | Blog | `blog.html` | 19 |
 | Post | `post.html` | 30 |
 
-- Previsualización local: `http://localhost:8971` (servida por `srv.mjs`, root con caché no cacheante — hay que recargar con force para ver cambios de vídeo).
-- CDP/cabezas experimentales: `http://localhost:9223` (perfil Chrome dedicado, `localStorage.site_lang` persiste entre tests; un visitante real va a `en` por defecto).
+- Previsualización local: `http://localhost:8081` (servida por `srv.mjs`, root con caché no cacheante — hay que recargar con force para ver cambios de vídeo).
+- CDP/cabezas experimentales: `http://localhost:9222` (perfil Chrome dedicado, `localStorage.site_lang` persiste entre tests; un visitante real va a `en` por defecto).
 - Origen Git: repo `a3e792a` en `/Users/jesusferrer/workspace/web-chus-v2`. **NO hay commits de este trabajo** (7 ficheros modificados + vídeos sin trackear, ver abajo). Pendiente decisión del usuario sobre commit.
 
 ## Mecánica i18n (JS)
-- `js/translations.js` (cargado antes): objeto `translations[lang]`, **580 claves × 10 idiomas** (es, ca, en, it, de, ru, ja, uk, zh-CN, ar).
+- `js/translations.js` (cargado antes): **cargador** que inserta el diccionario del idioma activo (+ `es` de respaldo) desde `js/translations/<lang>.js`; **611 claves × 10 idiomas** (es, ca, en, it, de, ru, ja, uk, zh-CN, ar). Solo se descarga el idioma en uso (~20 KB gzip).
 - `js/i18n.js` expone `window.applySiteTranslations(lang)` y gestiona el dropdown custom (clic en `.lang-custom-dropdown button[data-value="es|ca|en|..."]`); el `<select>` nativo NO dispara listener.
 - Selectores en `applyTranslations`:
   - `[data-i18n]` → texto/HTML
@@ -29,7 +29,7 @@ Web de **CHUS BZN** (`www.chusbzn.com`), una sola fuente con 4 páginas estátic
 - Modal servicios es dinámico: `window.openServiceModal(key)` (index ~2579) lee `t['t_service_${key}_code|title|desc|specs']` con fallback a `serviceData` hardcodeado (index 2477–2567, español) → escribe en `#modal-code/title/desc/specs`.
 - post/blog tienen dict `labels` para la UI Blogger; **ambos ya incluyen `zh-CN`** (un `rg` dio 9 por artefacto de patrón, era 10).
 - Los "dead keys" `t_1..t_127` son FALSO POSITIVO: los consumen vistas renderizadas por JS (perfil).
-- Generador de traducciones: `tools/update_i18n.py` (CATALOG central) + regen → `js/translations.js`.
+- Diccionarios en ficheros por idioma: `js/translations/<lang>.js` (el generador `tools/update_i18n.py` no está en este repo).
 
 ## Estado del trabajo (todo verificado ✓ salvo lo pendiente)
 
@@ -82,16 +82,16 @@ Barrido con regex (`<` inicio de tag + `>` fin, sufijos reales `data-i18n-aria/-
      - Cabeceras prod: HSTS `max-age=31556952` ✓, http→https 301 ✓, `accept-ranges: bytes` ✓, `video/mp4` ✓, `cache-control` 600 s ✓. GitHub Pages NO permite headers custom → se añadió **CSP vía `<meta http-equiv>`** (script/style/font/frame/connect/img/media/obj/base/form verificados contra los hosts realmente usados) + `<meta name="referrer" content="strict-origin-when-cross-origin">` + frame-buster JS. **0 violaciones CSP** en las 12 combinaciones.
      - **`robots.txt` y `sitemap.xml` añadidos** (ambos 404 en producción antes). `srv.mjs`: añadidos MIME `.txt`/`.xml`.
      - **Bug estructural encontrado y corregido**: `index.html` sección `#metodologia` tenía un `<div>` sin cerrar (224 opens / 223 closes) → el contenido posterior quedaba anidado dentro del panel. Añadido el `</div>` del contenedor `max-w-[1600px]`. Verificado depth 0.
-     - Sin IDs duplicados (58/6/7/14), `section/button/a` balanceados, 0 imágenes sin `alt`, 0 `[data-i18n]` vacíos, 1 H1 por página, canonicales correctas, 0 overflow horizontal. Único error de red: **403 del API de Blogger** (clave pública; fallback de 6 posts OK).
+     - Sin IDs duplicados (58/6/7/14), `section/button/a` balanceados, 0 imágenes sin `alt`, 0 `[data-i18n]` vacíos, 1 H1 por página, canonicales correctas, 0 overflow horizontal. Único error de red: **403 del API de Blogger** (clave pública; fallback de 6 posts OK). _(Resuelto 2026-10-17: el blog usa el feed público JSONP; ver entrada «Blog».)_
      - Rastreo de 33 recursos locales: 31 → 200, 2 → 404 (los nuevos `robots.txt`/`sitemap.xml`, ya resueltos al desplegar).
-     - `js/translations.js` = 201 KB gzip (10 idiomas completos en un solo bundle, se carga en las 4 páginas). **No partido** (decisión: mantener switch instantáneo); candidato futuro a carga por idioma si el peso pasa a molestar.
-   - **Auditoría visual pendiente**: el modelo de esta sesión **no puede leer imágenes**, así que el hero horizontal se validó por geometría/CDP/OCR, NO visualmente. Conviene que el usuario revise el resultado con sus ojos en `http://localhost:8971/`.
-   - **DESPLEGADO Y VERIFICADO** (commit `ad2a48f`): `https://chusbzn.com/` sirve ya el hero horizontal y los promos de 8.66 MB. Verificado en producción: 4 páginas + `robots.txt` + `sitemap.xml` en 200, promos 200 (8.660.449 B), poster 200 (94.603 B), `assets/proxy/full/` → **404** (los 244 MB de masters no se desplegaron, correcto). CDP contra producción (4 páginas × desk/mob × es/ar): 0 violaciones CSP, 0 errores JS (solo el 403 de Blogger), `h1=1`, 0 alt faltantes, 0 i18n vacíos, sin overflow, `heroAlign=left` en desktop, vídeo cargando y reproduciendo a 1280×720 en todas las cargas. **Prueba de aplicación de la CSP**: `fetch` a host no permitido → `BLOQUEADO`; a host permitido (`www.googleapis.com`) → `PERMITIDO`.
+     - `js/translations.js` era 201 KB gzip (10 idiomas en un solo bundle, cargado en las 4 páginas). **Resuelto (2026-10-17)**: dividido en `js/translations/<lang>.js` + cargador → solo se descarga el idioma activo (~20 KB gzip; ~39 KB si no es `es`, que añade el respaldo).
+   - **Auditoría visual pendiente**: el modelo de esta sesión **no puede leer imágenes**, así que el hero horizontal se validó por geometría/CDP/OCR, NO visualmente. Conviene que el usuario revise el resultado con sus ojos en `http://localhost:8081/`.
+   - **DESPLEGADO Y VERIFICADO** (commit `ad2a48f`): `https://chusbzn.com/` sirve ya el hero horizontal y los promos de 8.66 MB. Verificado en producción: 4 páginas + `robots.txt` + `sitemap.xml` en 200, promos 200 (8.660.449 B), poster 200 (94.603 B), `assets/proxy/full/` → **404** (los 244 MB de masters no se desplegaron, correcto). CDP contra producción (4 páginas × desk/mob × es/ar): 0 violaciones CSP, 0 errores JS (el 403 de Blogger ya no existe: blog por feed público JSONP), `h1=1`, 0 alt faltantes, 0 i18n vacíos, sin overflow, `heroAlign=left` en desktop, vídeo cargando y reproduciendo a 1280×720 en todas las cargas. **Prueba de aplicación de la CSP**: `fetch` a host no permitido → `BLOQUEADO`; a host permitido (`www.googleapis.com`) → `PERMITIDO`.
    - **Nota de seguridad**: la CSP está en `<meta>` (limitación de GitHub Pages, no hay headers). Los hosts permitidos son los que la web usa realmente (Google Fonts, `www.googleapis.com` para Blogger, `www.instagram.com` para los embeds, `formsubmit.co` para el formulario). Si se añade un dominio externo nuevo hay que ampliar la CSP o la web lo bloqueará.
 0c. **2026-10-01: DESPLEGADO en producción** — commit `d6f8090` + push a `origin/main` desplegó el upgrade a `https://chusbzn.com/` (repo = producción, Pages CNAME `chusbzn.com`). Verificado: 4 páginas 200, hero 1080p (23 MB) + poster 200, H2 `text-5xl sm:text-7xl` presentes. GitHub Pages se reconstruye en cada push a main. Auditoría final previa: 0 i18n vacíos, sin overflow, ancla muerta `#compliance` eliminada en `perfil.html` (nav desk+móvil), favicon añadido a `blog.html` (faltaba → 404 `favicon.ico`), único 404 restante = Blogger API 403 (cliente-key pública ya en a3e792a; fallback de 6 posts verificado). Corte "services showcase" (`assets/promo.mp4`, ES 1080p) NO localizado: sin fuente de composición ni shaping árabe fiable → se mantiene el montaje localizado ×10. No se empeoraron 7 ficheros previos.
    - **Decisión usuario (2026-10-01)**: tras el susto de "me has cargado la web antigua", el usuario eligió **MANTENER el estado actual en producción** (hero nuevo + cambios de contenido acumulados). La web anterior está archivada en git en `a3e792a` (rollback `git revert d6f8090` o checkout de ese árbol si algún día se quiere).
 0b. **Hero/vídeo (2026-10-01)**: upgrade completo (1080p + hero agencia) DONE y verificado (ver sección arriba). Quedan opciones en manos del usuario: (a) localizar el corte "services showcase" (`assets/promo.mp4`, ES 1080p) en los 10 idiomas para sustituir el montaje, (b) subir el spot a Vimeo (necesita su cuenta) e insertarlo como goagency, (c) decidir si el texto "NKE"/microtextos del footage molesta. Videos/sin commit.
-0. **Pendiente en curso (2026-09-28, última sesión)**: usuario revisará la web paso a paso con instrucciones concretas — `http://localhost:8971/` · `/perfil.html` · `/blog.html` · `/post.html` (+ selector idioma arriba derecha). NO tocar redacción/estructura sin que él lo pida.
+0. **Pendiente en curso (2026-09-28, última sesión)**: usuario revisará la web paso a paso con instrucciones concretas — `http://localhost:8081/` · `/perfil.html` · `/blog.html` · `/post.html` (+ selector idioma arriba derecha). NO tocar redacción/estructura sin que él lo pida.
    - YA HECHO hoy: **anulada la foto B/N de Jesús Ferrer** (`assets/retrato_formal.webp`) en sus 2 ocurrencias: img `grayscale` del panel hero en `index.html` (~1666) y `div.perfil-photo-bg` (fondo hero, 756×1188) en `perfil.html:434` (toda la línea + el div). Verificado: 0 refs en ficheros ni DOM vivo (`site_lang` en localStorage del perfil CDP puede estar en 'ar'/'es'; resetear para capturas estables).
    - **Aviso de textos**: el árbol de trabajo difiere SUSTANCIALMENTE de HEAD (a3e792a) en `index.html` (bloque plataformas sociales "VER VÍDEOS → YouTube…" fue sustituido por tarjetas "VER QUÉ INCLUYE" por servicio) y `perfil.html` (contenido "TRAYECTORIA AUDITADA"/UCs FPCAT/LEGADO_JFB reemplazado por narrativa "Currículum"). Son cambios SIN commitear acumulados (no decididos). El 2026-09-28 se preguntó al usuario si restaurar → **dismissed**; prefiere revisar página a página y dar pasos concretos.
    - Estado de render verificado hoy: los `data-i18n` de las 4 páginas renderizan texto (0 spans vacíos).
@@ -102,11 +102,9 @@ Barrido con regex (`<` inicio de tag + `>` fin, sufijos reales `data-i18n-aria/-
 ## Comandos útiles
 ```bash
 cd "/Users/jesusferrer/workspace/web-chus-v2"
-node srv.mjs &                              # preview en :8971 (ya en marcha)
-python3 tools/update_i18n.py                # regenera js/translations.js desde CATALOG
+node srv.mjs &                              # preview en :8081 (o ./preview.sh start)
+# diccionarios i18n: js/translations/<lang>.js (611 claves/idioma); el cargador es js/translations.js
 node --check js/translations.js js/i18n.js
-# Build de los promos localizados (si se vuelve a tocar el vídeo):
-# ver promo2/README.md — extract_titles -> make_cards -> build_promos <lang>
 # Harneses CDP ya listos:
 cd /var/folders/n6/xwxnzz_54vv7rbz2qnl5zndw0000gn/T/opencode
 node cdp_audit.mjs   # verifica aria/alt/title/marquee/specs cross-lang (es/ar/zh)
@@ -118,9 +116,9 @@ ffmpeg -ss <t> -i <mp4> -frames:v 1 /tmp/f.png && swift ocr.swift /tmp/f.png ...
 
 ## Rutas clave
 - Web: `/Users/jesusferrer/workspace/web-chus-v2`
-- Pipeline de promos: `promo2/` DENTRO del repo (versionado). Assets temporales en `/tmp/promoV2` (`PROMO_TMP`)
+- Pipeline de promos: ya **no** está en el repo (se eliminó `promo2/` en 2026-10-17; backup en `/tmp/promo2-backup-*`).
 - Harneses CDP + `faces.swift` + OCR en `/tmp/ocr`: `/var/folders/n6/xwxnzz_54vv7rbz2qnl5zndw0000gn/T/opencode`
-- Previews: `http://127.0.0.1:8971` (ojo: en Chrome headless `localhost` a veces no resuelve; usar `127.0.0.1`) · CDP `http://127.0.0.1:9223`
+- Previews: `http://127.0.0.1:8081` (ojo: en Chrome headless `localhost` a veces no resuelve; usar `127.0.0.1`) · CDP `http://127.0.0.1:9222`
 - Ojo con `srv.mjs`: muere ante peticiones malformadas (`ERR_OUT_OF_RANGE`); si devuelve 000, relanzarlo.
 
 ## Estado actual (2026-10-01)

@@ -48,7 +48,7 @@ Detalles de comportamiento:
 
 ### Claves del diccionario
 
-`js/translations.js` contiene **511 claves por idioma × 10 idiomas**. Las claves usan nombres semánticos (`t_mission`, `t_metric_*`, `t_marq_*`, `t_title_*`, `t_desc_*`, `t_form_*`, `t_modal_*`, `t_case1/2`, `t_comment_*`, `t_aria_*`, `t_ui_*`, `t_footer_*`…) además del bloque numerado histórico de Studio (`t_330..t_363`).
+`js/translations/<lang>.js` contiene los diccionarios, **611 claves por idioma × 10 idiomas**, en ficheros por idioma. `js/translations.js` es un **cargador**: inserta de forma síncrona el diccionario del idioma activo (más `es` como respaldo), de modo que solo se descarga lo necesario (~20 KB gzip en vez de ~212 KB). Al cambiar de idioma, `js/i18n.js` carga bajo demanda el fichero que falte. Las claves usan nombres semánticos (`t_mission`, `t_metric_*`, `t_marq_*`, `t_title_*`, `t_desc_*`, `t_form_*`, `t_modal_*`, `t_case1/2`, `t_comment_*`, `t_aria_*`, `t_ui_*`, `t_footer_*`…) además del bloque numerado histórico de Studio (`t_330..t_363`).
 
 ## Formulario de contacto
 

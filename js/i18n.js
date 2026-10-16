@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 e.stopPropagation();
                 const selectedLang = code;
                 selectEl.value = selectedLang;
-                applyTranslations(selectedLang);
+                ensureTranslations([selectedLang], () => applyTranslations(selectedLang));
                 if (langSelect && langSelect !== selectEl) langSelect.value = selectedLang;
                 if (mobileLangSelect && mobileLangSelect !== selectEl) mobileLangSelect.value = selectedLang;
                 // Notificar a los componentes dinámicos de cada página (blog/post)
@@ -168,6 +168,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     document.addEventListener('click', closeAllMenus);
+
+    // Carga bajo demanda el diccionario de un idioma si no está en memoria.
+    // 'es' siempre está cargado (respaldo), así que solo se pide el idioma nuevo.
+    function ensureTranslations(langs, cb) {
+        const pending = langs.filter(l => !translations[l]);
+        if (!pending.length) { cb(); return; }
+        let remaining = pending.length;
+        pending.forEach(l => {
+            const s = document.createElement('script');
+            s.src = 'js/translations/' + l + '.js';
+            s.onload = s.onerror = () => { if (--remaining === 0) cb(); };
+            document.head.appendChild(s);
+        });
+    }
 
     function applyTranslations(lang) {
         localStorage.setItem('site_lang', lang);
@@ -250,7 +264,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Expuesto para que las páginas con contenido inyectado (blog/post) puedan
     // re-aplicar las traducciones sobre HTML añadido después de la carga inicial.
-    window.applySiteTranslations = (lang) => applyTranslations(lang || localStorage.getItem('site_lang') || defaultLang);
+    window.applySiteTranslations = (lang) => {
+        const l = lang || localStorage.getItem('site_lang') || defaultLang;
+        ensureTranslations([l], () => applyTranslations(l));
+    };
 
     function ensureScriptStyles() {
         if (document.getElementById('i18n-dir-css')) return;
