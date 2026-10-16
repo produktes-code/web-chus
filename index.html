@@ -244,19 +244,28 @@
     }
 /* Glass Panels */
     .glass-panel {
-        background: linear-gradient(180deg, rgba(32, 32, 32, 0.92), rgba(18, 18, 18, 0.88) 40%, rgba(12, 12, 12, 0.9));
-        backdrop-filter: blur(24px);
-        -webkit-backdrop-filter: blur(24px);
+        /* Sin backdrop-filter ni will-change: 40 paneles con blur forzaban 40
+           capas compuestas y re-blur continuo al hacer scroll (el mayor coste en
+           iPhone). El degradado ya era ~90% opaco, así que el blur no se percibía;
+           se sube la opacidad para conservar el aspecto. */
+        background: linear-gradient(180deg, rgba(32, 32, 32, 0.96), rgba(18, 18, 18, 0.92) 40%, rgba(12, 12, 12, 0.94));
         border: 1px solid rgba(255, 255, 255, 0.1);
         box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 10px 30px rgba(0, 0, 0, 0.4);
         transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
-        will-change: transform;
-        transform: translate3d(0, 0, 0);
     }
     .glass-panel:hover {
         border-color: rgba(255, 31, 31, 0.6);
         box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07), 0 15px 35px rgba(0, 0, 0, 0.85), 0 0 25px rgba(255, 31, 31, 0.18);
         transform: translateY(-4px);
+    }
+
+    /* Con la pestaña/app en segundo plano no hay nada que animar: se congelan
+       TODAS las animaciones CSS (marquesinas, orbes, pings, ken-burns...). Ahorra
+       CPU/batería en iPhone al cambiar de app sin efecto visual perceptible. */
+    html.page-hidden *,
+    html.page-hidden *::before,
+    html.page-hidden *::after {
+        animation-play-state: paused !important;
     }
 
     /* Terminal Matrix CRT overlay (scanlines + glow de esquinas) */
@@ -297,8 +306,6 @@
         overflow: hidden;
         box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
         transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
-        will-change: transform;
-        transform: translate3d(0, 0, 0);
     }
     .service-card-enhanced::before {
         content: '';
@@ -814,7 +821,7 @@
 <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
 <div class="bg-grain"></div>
 <!-- ═══ HEADER / NAVIGATION UNIFICADA (URLs de Redes Verificadas al 100%) ═══ -->
-<header class="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/10 h-20 transition-all duration-300">
+<header class="fixed top-0 w-full z-50 bg-black/95 border-b border-white/10 h-20 transition-all duration-300">
 <div class="max-w-[1600px] mx-auto px-6 sm:px-10 h-full flex justify-between items-center">
 <!-- Brand Logo (Original Logo Image assets/logo.jpg) -->
 <a class="flex items-center gap-3 text-decoration-none group" data-i18n="t_128" href="#top" id="brand-logo">
@@ -1136,7 +1143,7 @@
 <svg class="w-5 h-5 translate-x-0.5" fill="currentColor" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
 </div>
 </div>
-<div class="absolute bottom-1.5 left-1.5 right-1.5 flex justify-between items-center font-mono text-[8px] text-white bg-black/85 backdrop-blur-md px-2 py-1 rounded border border-white/10">
+<div class="absolute bottom-1.5 left-1.5 right-1.5 flex justify-between items-center font-mono text-[8px] text-white bg-black/85 px-2 py-1 rounded border border-white/10">
 <span data-i18n="t_214">INSTAGRAM REEL</span>
 <span class="text-signal-red font-bold uppercase" data-i18n="t_215">ESCUCHAR AUDIO →</span>
 </div>
@@ -1171,7 +1178,7 @@
 <svg class="w-5 h-5 translate-x-0.5" fill="currentColor" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
 </div>
 </div>
-<div class="absolute bottom-1.5 left-1.5 right-1.5 flex justify-between items-center font-mono text-[8px] text-white bg-black/85 backdrop-blur-md px-2 py-1 rounded border border-white/10">
+<div class="absolute bottom-1.5 left-1.5 right-1.5 flex justify-between items-center font-mono text-[8px] text-white bg-black/85 px-2 py-1 rounded border border-white/10">
 <span data-i18n="t_214">INSTAGRAM REEL</span>
 <span class="text-signal-red font-bold uppercase" data-i18n="t_215">ESCUCHAR AUDIO →</span>
 </div>
@@ -1206,7 +1213,7 @@
 <svg class="w-5 h-5 translate-x-0.5" fill="currentColor" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
 </div>
 </div>
-<div class="absolute bottom-1.5 left-1.5 right-1.5 flex justify-between items-center font-mono text-[8px] text-white bg-black/85 backdrop-blur-md px-2 py-1 rounded border border-white/10">
+<div class="absolute bottom-1.5 left-1.5 right-1.5 flex justify-between items-center font-mono text-[8px] text-white bg-black/85 px-2 py-1 rounded border border-white/10">
 <span data-i18n="t_214">INSTAGRAM REEL</span>
 <span class="text-signal-red font-bold uppercase" data-i18n="t_215">ESCUCHAR AUDIO →</span>
 </div>
@@ -1241,7 +1248,7 @@
 <svg class="w-5 h-5 translate-x-0.5" fill="currentColor" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
 </div>
 </div>
-<div class="absolute bottom-1.5 left-1.5 right-1.5 flex justify-between items-center font-mono text-[8px] text-white bg-black/85 backdrop-blur-md px-2 py-1 rounded border border-white/10">
+<div class="absolute bottom-1.5 left-1.5 right-1.5 flex justify-between items-center font-mono text-[8px] text-white bg-black/85 px-2 py-1 rounded border border-white/10">
 <span data-i18n="t_227">YOUTUBE SHORT</span>
 <span class="text-signal-red font-bold uppercase" data-i18n="t_215">ESCUCHAR AUDIO →</span>
 </div>
@@ -1276,7 +1283,7 @@
 <svg class="w-5 h-5 translate-x-0.5" fill="currentColor" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
 </div>
 </div>
-<div class="absolute bottom-1.5 left-1.5 right-1.5 flex justify-between items-center font-mono text-[8px] text-white bg-black/85 backdrop-blur-md px-2 py-1 rounded border border-white/10">
+<div class="absolute bottom-1.5 left-1.5 right-1.5 flex justify-between items-center font-mono text-[8px] text-white bg-black/85 px-2 py-1 rounded border border-white/10">
 <span data-i18n="t_227">YOUTUBE SHORT</span>
 <span class="text-signal-red font-bold uppercase" data-i18n="t_215">ESCUCHAR AUDIO →</span>
 </div>
@@ -1311,7 +1318,7 @@
 <svg class="w-5 h-5 translate-x-0.5" fill="currentColor" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
 </div>
 </div>
-<div class="absolute bottom-1.5 left-1.5 right-1.5 flex justify-between items-center font-mono text-[8px] text-white bg-black/85 backdrop-blur-md px-2 py-1 rounded border border-white/10">
+<div class="absolute bottom-1.5 left-1.5 right-1.5 flex justify-between items-center font-mono text-[8px] text-white bg-black/85 px-2 py-1 rounded border border-white/10">
 <span data-i18n="t_227">YOUTUBE SHORT</span>
 <span class="text-signal-red font-bold uppercase" data-i18n="t_215">ESCUCHAR AUDIO →</span>
 </div>
@@ -1346,7 +1353,7 @@
 <svg class="w-5 h-5 translate-x-0.5" fill="currentColor" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
 </div>
 </div>
-<div class="absolute bottom-1.5 left-1.5 right-1.5 flex justify-between items-center font-mono text-[8px] text-white bg-black/85 backdrop-blur-md px-2 py-1 rounded border border-white/10">
+<div class="absolute bottom-1.5 left-1.5 right-1.5 flex justify-between items-center font-mono text-[8px] text-white bg-black/85 px-2 py-1 rounded border border-white/10">
 <span data-i18n="t_214">INSTAGRAM REEL</span>
 <span class="text-signal-red font-bold uppercase" data-i18n="t_215">ESCUCHAR AUDIO →</span>
 </div>
@@ -1381,7 +1388,7 @@
 <svg class="w-5 h-5 translate-x-0.5" fill="currentColor" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
 </div>
 </div>
-<div class="absolute bottom-1.5 left-1.5 right-1.5 flex justify-between items-center font-mono text-[8px] text-white bg-black/85 backdrop-blur-md px-2 py-1 rounded border border-white/10">
+<div class="absolute bottom-1.5 left-1.5 right-1.5 flex justify-between items-center font-mono text-[8px] text-white bg-black/85 px-2 py-1 rounded border border-white/10">
 <span data-i18n="t_214">INSTAGRAM REEL</span>
 <span class="text-signal-red font-bold uppercase" data-i18n="t_215">ESCUCHAR AUDIO →</span>
 </div>
@@ -1712,6 +1719,9 @@ ext-sm text-white/85 font-normal leading-relaxed" data-i18n="t_met_d02">Un plan 
         const activeSet = new Set();
         const activate = function(vid) {
             forceIOSInline(vid);
+            // El atributo autoplay ayuda a iOS Safari a arrancar el clip sin gesto;
+            // se retira al desactivarlo para que no se relance por su cuenta.
+            vid.setAttribute('autoplay', '');
             vid.preload = 'auto';
             if (vid.readyState === 0) { try { vid.load(); } catch (err) {} }
             if (vid.readyState < 2) {
@@ -1722,6 +1732,7 @@ ext-sm text-white/85 font-normal leading-relaxed" data-i18n="t_met_d02">Un plan 
             tryPlay(vid);
         };
         const deactivate = function(vid) {
+            vid.removeAttribute('autoplay');
             try { vid.pause(); } catch (err) {}
             // baja a metadata: deja de consumir descarga, el póster se mantiene
             if (vid.readyState >= 1) { try { vid.preload = 'metadata'; } catch (err) {} }
@@ -1774,6 +1785,8 @@ ext-sm text-white/85 font-normal leading-relaxed" data-i18n="t_met_d02">Un plan 
         ['scroll', 'resize', 'touchstart', 'touchend', 'click'].forEach(evt => {
             document.addEventListener(evt, onScroll, { passive: true });
         });
+        // Expuesto para re-evaluar (p. ej. al volver la pestaña a primer plano).
+        window.__updatePreviews = update;
         update();
     };
     if (document.readyState === 'loading') {
@@ -2714,6 +2727,38 @@ ext-sm text-white/85 font-normal leading-relaxed" data-i18n="t_met_d02">Un plan 
             });
         }
     })();
+
+    // ═══ AUTOPLAY DEFENSIVO (iPhone) + PAUSA EN SEGUNDO PLANO ═══
+    // El atributo autoplay puede ignorarse (iOS en modo de bajo consumo, o al
+    // cargar la pestaña en segundo plano). Reintentamos reproducir el hero en el
+    // primer gesto del usuario y al volver a primer plano; si el navegador lo
+    // bloquea, el catch deja el póster sin romper nada.
+    (function() {
+        var hero = document.getElementById('hero-spot');
+        if (!hero) return;
+        var playHero = function() {
+            if (hero.paused) { var p = hero.play(); if (p && p.catch) p.catch(function() {}); }
+        };
+        if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', playHero);
+        else playHero();
+        window.addEventListener('load', playHero);
+        ['touchstart', 'touchend', 'pointerdown', 'click', 'keydown'].forEach(function(ev) {
+            document.addEventListener(ev, playHero, { passive: true });
+        });
+    })();
+
+    // Al pasar a segundo plano: congelar animaciones CSS y pausar vídeos (batería).
+    // Al volver: reanudar el hero y recalcular el preview centrado.
+    document.addEventListener('visibilitychange', function() {
+        document.documentElement.classList.toggle('page-hidden', document.hidden);
+        if (document.hidden) {
+            document.querySelectorAll('video').forEach(function(v) { try { v.pause(); } catch (e) {} });
+        } else {
+            var h = document.getElementById('hero-spot');
+            if (h && h.paused) { var p = h.play(); if (p && p.catch) p.catch(function() {}); }
+            if (typeof window.__updatePreviews === 'function') window.__updatePreviews();
+        }
+    });
 </script>
 </body>
 </html>
