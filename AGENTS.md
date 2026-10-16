@@ -33,6 +33,15 @@ Web de **CHUS BZN** (`www.chusbzn.com`), una sola fuente con 4 páginas estátic
 
 ## Estado del trabajo (todo verificado ✓ salvo lo pendiente)
 
+### Blog: feed público JSONP (2026-10-17) ✓
+- **Síntoma**: los artículos publicados en `chusbzn.blogspot.com` no aparecían en `blog.html`.
+- **Causa**: `blog.html`/`post.html` usaban la **Blogger API v3** con una `API_KEY` inválida (`400 API_KEY_INVALID`; en localhost además `403` por referer) → `fetch` fallaba y caía al **fallback de posts de ejemplo**.
+- **Fix**: sustituido por el **feed público de Blogger** vía **JSONP** (`https://chusbzn.blogspot.com/feeds/posts/default?alt=json-in-script&callback=…`): listado (`loadBlogFeed` + `parseFeedEntry`) y post individual (`…/feeds/posts/default/<id>`). Key muerta eliminada. `post.html` ahora inicializa el sistema de comentarios también en posts reales (bug latente corregido).
+- **CSP**: añadido `https://chusbzn.blogspot.com` a `script-src` en `blog.html` y `post.html`.
+- Miniaturas `media$thumbnail` (`=s72-c`) reescaladas a `=w640-h360-c` + `loading="lazy"`; `onerror` → asset local.
+- **Verificado (CDP local, emulación iPhone)**: `blog.html` renderiza **13 entradas reales** (títulos del feed), `post.html?id=635905414370524679` carga el artículo (4838 chars + 1 img + formulario de comentarios), **0 errores JS**, **0 violaciones CSP**, sin scripts ni callbacks residuales. Nota: `blogger.googleusercontent.com` da 404 con `Referer` localhost/throttling en headless → en producción (Referer `chusbzn.com`) cargan.
+- **Limpieza**: eliminado `promo2/` (no referenciado; backup en `/tmp/promo2-backup-*`). README actualizado (las referencias históricas al "403 esperado" ya no aplican).
+
 ### Upgrade Hero/vídeo profesional (2026-10-01) ✓
 - Objetivo del usuario: el promo del header "no es profesional, no representativo de la calidad". Referencias auditadas: `goagency.es` (hero full-bleed con Vimeo iframe, eyebrow+H1+CTA, H2 grandes, media-kit) y su spot Vimeo "Spot Go! Agency" `/video/1091617981` (57 s). Usuario dijo "procede como creas mejor, confío en ti".
 - Descubrimiento: `assets/promo.mp4` (root, 1920×1080 @4.16 Mbps, 33.43 s) es un CORTE DISTINTO más comercial ("SERVICIO 01/08 VÍDEO CORPORATIVO …"/"08/08 CAMPAÑAS & IA") y solo ES. Los proxies servidos eran 960×540 → pixelados al escalar.

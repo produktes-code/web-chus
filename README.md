@@ -12,7 +12,7 @@ Sitio oficial y portfolio interactivo de **Jesús Ferrer García (CHUS BZN)**, I
 | --- | --- |
 | `index.html` | Portada principal (manifiesto, servicios, 8 tarjetas de vídeo, retrato marquee/nameplate, timeline, compliance, formulario de contacto) |
 | `perfil.html` | Perfil/trayectoria profesional (nameplate y cinta de créditos incluidos) |
-| `blog.html` | Blog y novedades (consume la Blogger API) |
+| `blog.html` | Blog y novedades (feed público de Blogger vía JSONP) |
 | `post.html` | Página de artículo del blog + sistema de comentarios local |
 | `js/translations.js` | Diccionarios i18n (**10 idiomas, 511 claves por idioma**) |
 | `js/i18n.js` | Motor de cambio de idioma y accesibilidad (persistencia en `localStorage`) |
@@ -44,7 +44,7 @@ Detalles de comportamiento:
 - **Dropdown de idioma accesible**: botón con `aria-haspopup="listbox"`, `aria-expanded` (sincronizado al abrir/cerrar) y `aria-label` localizado (`t_aria_lang` + nombre del idioma). El `<select>` nativo se oculta pero se mantiene para sincronía y se le despacha un evento `change` nativo al elegir, para que los componentes dinámicos reaccionen.
 - **Contenido inyectado** (blog/post): se expone `window.applySiteTranslations(lang)` para re-aplicar traducciones sobre HTML añadido después de la carga inicial (p. ej. comentarios renderizados por JS).
 - **Cobertura completa** de texto hardcodeado (cita del manifiesto, métricas "33+", marquesinas, copyright del footer, placeholders, aria-labels, casos de estudio, menú móvil, footer del blog/post y UI de comentarios).
-- El contenido de los artículos del blog proviene de la Blogger API y está redactado originalmente en español (no forma parte de los diccionarios de UI).
+- El contenido de los artículos del blog proviene del feed público de Blogger y está redactado originalmente en español (no forma parte de los diccionarios de UI).
 
 ### Claves del diccionario
 
@@ -110,18 +110,16 @@ Vivacidad ambiental sin sobrecarga: se anima únicamente con **transform/opacity
 - Conversión de imágenes a **WebP** para aligerar la carga (`vintage_mixing`, `camera_rig`, `consola_mezcla`, `mixing_console_bg`, `server_room`, `retrato_formal`, `blog_*`).
 - Eliminado `broadcast_control.png` (en desuso).
 
-## Blog (Blogger API)
+## Blog (Blogger, feed público)
 
-- `index.html` / `blog.html` / `post.html` cargan los artículos con la **Blogger API v3**.
-- `BLOGGER_BLOG_ID = "8737045333650211847"`
-- `BLOGGER_API_KEY` está en el HTML (pública) y **debe permanecer restringida** en Google Cloud Console:
+- `index.html` / `blog.html` / `post.html` cargan los artículos desde el **feed público de Blogger** mediante **JSONP** (`…/feeds/posts/default?alt=json-in-script&callback=…`). **No usa API key.**
+- `BLOGGER_BLOG_ID = "8737045333650211847"`; blog: `https://chusbzn.blogspot.com`.
+- Por qué JSONP: el feed no envía cabecera `Access-Control-Allow-Origin`, así que `fetch()` lo bloquea por CORS; JSONP lo evita. La CSP de `blog.html`/`post.html` incluye `https://chusbzn.blogspot.com` en `script-src`.
+- Post individual: se pide la entrada por su id numérico (`…/feeds/posts/default/<id>?alt=json-in-script&callback=…`).
+- Miniaturas: el `media$thumbnail` (`=s72-c`) se reescala a `=w640-h360-c` para las tarjetas; si no hay imagen se usa el primer `<img>` del contenido y, como último recurso, un asset local (`onerror`).
+- Si el feed falla, se muestra el **fallback con contenido de ejemplo**.
 
-> Credenciales → Clave de API → Restricciones de aplicaciones: **Sitios web (referrers)** con 4 entradas:
-> `https://chusbzn.com/*`, `http://chusbzn.com/*`, `https://*.chusbzn.com/*`, `http://*.chusbzn.com/*`
->
-> Restricciones de API: **solo Blogger API v3**.
-
-Mientras exista esa restricción, las peticiones que no lleguen desde `chusbzn.com` reciben `403 "Requests from referer … are blocked"` (comportamiento correcto: en `localhost` se usa el **fallback con contenido de ejemplo**). Nota: extensiones/privacy que eliminen la cabecera `Referer` impedirán cargar el blog a esos usuarios.
+> La antigua **Blogger API v3** con `API_KEY` quedó descartada: su clave devolvía `400 API_KEY_INVALID` (y en localhost daba `403` por restricción de referer). El feed público no necesita credenciales.
 
 ## Desarrollo local
 
@@ -155,7 +153,7 @@ Antes de publicar se ejecuta una batería automática (Chrome headless vía CDP)
 - **Responsive**: sin scroll horizontal a 390px y 756px en las 4 páginas.
 - **Formularios**: contacto del index (payload, éxito y error) y comentario del post (persistencia y render).
 - **Interacción**: cambio de idioma en contenido dinámico, modal de vídeo y menú móvil.
-- **Enlaces**: solo el `403` esperado de la Blogger API en localhost.
+- **Enlaces**: sin enlaces locales rotos (el blog carga desde el feed público de Blogger; ya no hay `403` de la API v3).
 
 ## Documentos internos
 
