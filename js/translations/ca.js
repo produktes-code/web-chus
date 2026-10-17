@@ -447,7 +447,7 @@ window.translations["ca"] = {
     "t_aria_servicios": "Serveis: vídeo creatiu, disseny de so, broadcasting, desenvolupament web i IA, formació",
     "t_aria_close": "Tanca",
     "t_aria_modal": "Tanca la finestra",
-    "t_title_index": "CHUS BZN | Agència & Estudi de Projectes Audiovisuals & Tecnològics",
+    "t_title_index": "CHUS BZN | Productora Audiovisual a Barcelona",
     "t_desc_index": "Productora audiovisual i tecnològica a Barcelona per a pimes i marques. Vídeo corporatiu, anuncis, streaming, so, web i implantació d'IA. 15% de descompte de llançament en el teu pressupost.",
     "t_title_perfil": "Currículum & Trajectòria Professional | CHUS BZN",
     "t_desc_perfil": "Currículum i trajectòria professional de CHUS BZN: més de 30 anys en cinema, televisió, àudio broadcast i integració d'IA a Barcelona.",

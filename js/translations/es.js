@@ -447,7 +447,7 @@ window.translations["es"] = {
     "t_aria_servicios": "Servicios: vídeo creativo, diseño sonoro, broadcasting, desarrollo web e IA, formación",
     "t_aria_close": "Cerrar",
     "t_aria_modal": "Cerrar modal",
-    "t_title_index": "CHUS BZN | Agencia & Estudio de Proyectos Audiovisuales & Tecnológicos",
+    "t_title_index": "CHUS BZN | Productora Audiovisual en Barcelona",
     "t_desc_index": "Productora audiovisual y tecnológica en Barcelona para PYMES y marcas. Vídeo corporativo, spots, streaming, sonido, web y implantación de IA. 15% de descuento de lanzamiento en tu presupuesto.",
     "t_title_perfil": "Currículum & Trayectoria Profesional | CHUS BZN",
     "t_desc_perfil": "Currículum y trayectoria profesional de CHUS BZN: más de 30 años en cine, televisión, audio broadcast e integración de IA en Barcelona.",

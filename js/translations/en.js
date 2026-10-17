@@ -447,7 +447,7 @@ window.translations["en"] = {
     "t_aria_servicios": "Services: creative video, sound design, broadcasting, web development and AI, training",
     "t_aria_close": "Close",
     "t_aria_modal": "Close modal",
-    "t_title_index": "CHUS BZN | Agency & Studio of Audiovisual & Tech Projects",
+    "t_title_index": "CHUS BZN | Audiovisual Production Company in Barcelona",
     "t_desc_index": "Audiovisual and technology production company in Barcelona for SMEs and brands. Corporate video, ads, streaming, sound, web and AI integration. 15% launch discount on your quote.",
     "t_title_perfil": "Curriculum & Professional Track Record | CHUS BZN",
     "t_desc_perfil": "CHUS BZN's professional curriculum and track record: 30+ years in film, television, broadcast audio and AI integration in Barcelona.",
