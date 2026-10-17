@@ -18,7 +18,7 @@
 
     // El español siempre va primero (respaldo de claves ausentes).
     var langs = (lang === DEFAULT) ? [DEFAULT] : [DEFAULT, lang];
-    var base = 'js/translations/';
+    var base = '/js/translations/';
     for (var i = 0; i < langs.length; i++) {
         document.write('<script src="' + base + langs[i] + '.js"><\/script>');
     }

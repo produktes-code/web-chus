@@ -177,7 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let remaining = pending.length;
         pending.forEach(l => {
             const s = document.createElement('script');
-            s.src = 'js/translations/' + l + '.js';
+            s.src = '/js/translations/' + l + '.js';
             s.onload = s.onerror = () => { if (--remaining === 0) cb(); };
             document.head.appendChild(s);
         });

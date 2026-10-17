@@ -1,16 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://chusbzn.com/</loc>
     <lastmod>2026-10-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://chusbzn.com/"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://chusbzn.com/ca/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chusbzn.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://chusbzn.com/"/>
+  </url>
+  <url>
+    <loc>https://chusbzn.com/ca/</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://chusbzn.com/"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://chusbzn.com/ca/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chusbzn.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://chusbzn.com/"/>
+  </url>
+  <url>
+    <loc>https://chusbzn.com/en/</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://chusbzn.com/"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://chusbzn.com/ca/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chusbzn.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://chusbzn.com/"/>
   </url>
   <url>
     <loc>https://chusbzn.com/perfil.html</loc>
     <lastmod>2026-10-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://chusbzn.com/perfil.html"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://chusbzn.com/ca/perfil.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chusbzn.com/en/perfil.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://chusbzn.com/perfil.html"/>
+  </url>
+  <url>
+    <loc>https://chusbzn.com/ca/perfil.html</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://chusbzn.com/perfil.html"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://chusbzn.com/ca/perfil.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chusbzn.com/en/perfil.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://chusbzn.com/perfil.html"/>
+  </url>
+  <url>
+    <loc>https://chusbzn.com/en/perfil.html</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://chusbzn.com/perfil.html"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://chusbzn.com/ca/perfil.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://chusbzn.com/en/perfil.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://chusbzn.com/perfil.html"/>
   </url>
   <url>
     <loc>https://chusbzn.com/blog.html</loc>
