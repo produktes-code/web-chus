@@ -568,7 +568,7 @@ window.translations["ar"] = {
     "t_service_consultoria_specs": "<strong>الحل والمخرجات:</strong><br/>• تشخيص إنتاجك السمعي البصري الحالي: سير العمل والتكاليف والجودة.<br/>• خطة تحسين وتدريب لفريقك على الأدوات المناسبة.<br/>• <strong>التطبيق:</strong> إنتاج محتوى منتظم دون الاعتماد على أي جهة خارجية.",
     "t_ss_youtube": "YouTube – القناة الرسمية",
     "t_ss_instagram": "Instagram Reels والمختبر",
-    "t_ss_spotify": "Spotify – صفحة الفنان (Jesús Ferrer Baza)",
+    "t_ss_spotify": "Spotify – صفحة الفنان · LERM (Jesús Ferrer García)",
     "t_ss_soundcloud": "SoundCloud – الرسمي CHUS BZN",
     "t_ss_linkedin": "LinkedIn – الملف الرسمي",
     "t_ss_tiktok": "TikTok – القناة الرسمية",

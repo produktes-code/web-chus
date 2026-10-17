@@ -568,7 +568,7 @@ window.translations["ja"] = {
     "t_dto_scroll_c": "Webでお見積り依頼",
     "t_ss_youtube": "YouTube – 公式チャンネル",
     "t_ss_instagram": "Instagram Reels & Lab",
-    "t_ss_spotify": "Spotify – アーティストプロフィール（Jesús Ferrer Baza）",
+    "t_ss_spotify": "Spotify – アーティストプロフィール・LERM（Jesús Ferrer García）",
     "t_ss_soundcloud": "SoundCloud – 公式 CHUS BZN",
     "t_ss_linkedin": "LinkedIn – 公式プロフィール",
     "t_ss_tiktok": "TikTok – 公式チャンネル",

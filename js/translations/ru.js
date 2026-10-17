@@ -568,7 +568,7 @@ window.translations["ru"] = {
     "t_dto_scroll_c": "ЗАПРОСИТЕ СМЕТУ НА САЙТЕ",
     "t_ss_youtube": "YouTube – официальный канал",
     "t_ss_instagram": "Instagram Reels и лаборатория",
-    "t_ss_spotify": "Spotify – профиль артиста (Jesús Ferrer Baza)",
+    "t_ss_spotify": "Spotify – профиль артиста · LERM (Jesús Ferrer García)",
     "t_ss_soundcloud": "SoundCloud – официальный CHUS BZN",
     "t_ss_linkedin": "LinkedIn – официальный профиль",
     "t_ss_tiktok": "TikTok – Официальный канал",

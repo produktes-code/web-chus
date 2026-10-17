@@ -568,7 +568,7 @@ window.translations["zh-CN"] = {
     "t_dto_scroll_c": "在网站上索取报价",
     "t_ss_youtube": "YouTube – 官方频道",
     "t_ss_instagram": "Instagram Reels 与实验项目",
-    "t_ss_spotify": "Spotify – 艺人主页（Jesús Ferrer Baza）",
+    "t_ss_spotify": "Spotify – 艺人主页・LERM（Jesús Ferrer García）",
     "t_ss_soundcloud": "SoundCloud – 官方 CHUS BZN",
     "t_ss_linkedin": "LinkedIn – 官方主页",
     "t_ss_tiktok": "TikTok – 官方频道",

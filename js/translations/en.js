@@ -568,7 +568,7 @@ window.translations["en"] = {
     "t_dto_scroll_c": "REQUEST A QUOTE ON THE WEB",
     "t_ss_youtube": "YouTube – Official Channel",
     "t_ss_instagram": "Instagram Reels & Lab",
-    "t_ss_spotify": "Spotify – Artist Profile (Jesús Ferrer Baza)",
+    "t_ss_spotify": "Spotify – Artist Profile · LERM (Jesús Ferrer García)",
     "t_ss_soundcloud": "SoundCloud – Official CHUS BZN",
     "t_ss_linkedin": "LinkedIn – Official Profile",
     "t_ss_tiktok": "TikTok – Official Channel",
