@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://chusbzn.com/sitemap.xml
+llms.txt
