@@ -325,7 +325,7 @@ window.translations["es"] = {
     "t_313": "Spotify Perfil Artista",
     "t_314": "SoundCloud Archive Oficial",
     "t_315": "LinkedIn Perfil Oficial",
-        "t_355": "TikTok Canal Oficial",
+    "t_355": "TikTok Canal Oficial",
     "t_316": "GitHub Pool Repositories",
     "t_317": "// NAVEGACIÓN",
     "t_319": "→ Software Propietario IA",

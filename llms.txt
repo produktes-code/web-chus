@@ -1,3 +1,42 @@
-User-agent: *
-Allow: /
-Sitemap: https://chusbzn.com/sitemap.xml
+# CHUS BZN — Productora audiovisual y tecnológica (Barcelona)
+
+> CHUS BZN (Jesús Ferrer García) es una productora audiovisual y tecnológica con sede en Barcelona, con más de 30 años de experiencia. Trabaja para PYMES, agencias y marcas. Ofrece vídeo corporativo, spots para redes, directos/streaming, podcast y videopodcast, sonido e identidad sonora, postproducción con IA, formación, implantación de IA, webs y campañas, videoclips, eventos (sonido + iluminación), DJ, mastering y consultoría audiovisual.
+
+## Datos clave
+- Web: https://chusbzn.com/
+- Perfil profesional: https://chusbzn.com/perfil.html
+- Blog: https://chusbzn.com/blog.html
+- Contacto: info@chusbzn.com
+- Ubicación: Barcelona, Cataluña, España
+- Disponibilidad: respuesta en menos de 24h, 24/365
+- Oferta de lanzamiento: 15% de descuento al solicitar presupuesto por la web (https://chusbzn.com/#presupuesto)
+- Compliance: SGAE, AISGE, AEDYP, AIE, FPCAT Nivel 3, conforme a EU AI Act
+
+## Servicios
+- Vídeo corporativo
+- Spots para redes sociales
+- Directos y streaming
+- Podcast y videopodcast
+- Sonido e identidad sonora
+- Postproducción con IA
+- Formación audiovisual
+- Implantación de IA en PYMES
+- Webs y campañas digitales
+- Videoclips
+- Eventos: sonido e iluminación
+- DJ
+- Mastering y cambios de formato
+- eCommerce y SEO
+- Consultoría audiovisual
+
+## Redes oficiales
+- YouTube: https://www.youtube.com/@chus_bzn
+- Instagram: https://www.instagram.com/chus_bzn
+- TikTok: https://www.tiktok.com/@chusbzn
+- LinkedIn: https://www.linkedin.com/in/chusbzn
+- Spotify: https://open.spotify.com/artist/0n4aggaicmPmX8xXXADHL
+- SoundCloud: https://on.soundcloud.com/bOLh2noHDB770HITNj
+- GitHub: https://github.com/produktes-code
+
+## Cómo solicitar presupuesto
+Usar el formulario de la web: https://chusbzn.com/#presupuesto o escribir a info@chusbzn.com.

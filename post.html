@@ -36,18 +36,26 @@
 <script type="application/ld+json">
 {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "BlogPosting",
     "@id": "https://chusbzn.com/post.html#article",
     "mainEntityOfPage": "https://chusbzn.com/post.html",
+    "url": "https://chusbzn.com/post.html",
     "headline": "Artículo técnico CHUS BZN",
+    "image": "https://chusbzn.com/assets/og-default.jpg",
+    "inLanguage": "es-ES",
     "publisher": {
         "@type": "ProfessionalService",
         "@id": "https://chusbzn.com/#organization",
-        "name": "CHUS BZN"
+        "name": "CHUS BZN",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://chusbzn.com/assets/og-default.jpg"
+        }
     },
     "author": {
         "@type": "Person",
-        "name": "Jesús Ferrer García"
+        "name": "Jesús Ferrer García",
+        "url": "https://chusbzn.com/perfil.html"
     }
 }
 </script>
@@ -957,6 +965,60 @@
         if (window.applySiteTranslations) window.applySiteTranslations(localStorage.getItem('site_lang') || 'es');
     }
 
+    // Extrae la primera imagen del HTML del artículo (para OG/Twitter)
+    function extractFirstImage(html) {
+        const m = /<img[^>]+src="([^"]+)"/i.exec(html || '');
+        return m ? m[1] : '';
+    }
+
+    // Actualiza canonical, Open Graph/Twitter y el JSON-LD Article con los datos reales del post
+    function updatePostMeta(post, postId) {
+        if (!post) return;
+        const canonical = 'https://chusbzn.com/post.html?id=' + encodeURIComponent(postId);
+        const title = post.title || 'Artículo | CHUS BZN';
+        const desc = (post.content || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 160);
+        let img = extractFirstImage(post.content);
+        if (img && img.indexOf('http') !== 0) img = 'https://chusbzn.com/' + img.replace(/^\//, '');
+        if (!img) img = 'https://chusbzn.com/assets/og-default.jpg';
+
+        const setAttr = (sel, attr, val) => {
+            const el = document.querySelector(sel);
+            if (el) el.setAttribute(attr, val);
+        };
+        setAttr('link[rel="canonical"]', 'href', canonical);
+        setAttr('meta[property="og:url"]', 'content', canonical);
+        setAttr('meta[name="twitter:url"]', 'content', canonical);
+        setAttr('meta[property="og:title"]', 'content', title);
+        setAttr('meta[name="twitter:title"]', 'content', title);
+        setAttr('meta[property="og:image"]', 'content', img);
+        setAttr('meta[name="twitter:image"]', 'content', img);
+        setAttr('meta[property="og:description"]', 'content', desc);
+        setAttr('meta[name="twitter:description"]', 'content', desc);
+
+        const titleEl = document.querySelector('title');
+        if (titleEl) { titleEl.removeAttribute('data-i18n'); titleEl.textContent = title + ' | CHUS BZN'; }
+
+        const ld = document.querySelector('script[type="application/ld+json"]');
+        if (ld) {
+            try {
+                const data = JSON.parse(ld.textContent);
+                data.url = canonical;
+                data.mainEntityOfPage = canonical;
+                data.headline = title;
+                data.description = desc;
+                data.image = img;
+                if (post.published) { data.datePublished = post.published; data.dateModified = post.published; }
+                data.author = {
+                    "@type": "Person",
+                    "name": "Jesús Ferrer García",
+                    "url": "https://chusbzn.com/perfil.html",
+                    "sameAs": ["https://www.linkedin.com/in/chusbzn", "https://www.tiktok.com/@chusbzn"]
+                };
+                ld.textContent = JSON.stringify(data, null, 4);
+            } catch (e) { console.warn('No se pudo actualizar el JSON-LD del artículo:', e); }
+        }
+    }
+
     // Cargar artículo individual
     async function loadPostData() {
         const params = new URLSearchParams(window.location.search);
@@ -973,6 +1035,7 @@
                 pageState.status = 'not-found';
             }
             renderState();
+            updatePostMeta(pageState.post, targetPostId);
             initCommentsSystem(targetPostId);
             return;
         }
@@ -989,6 +1052,7 @@
                     content: (entry.content && entry.content.$t) || ''
                 };
                 renderState();
+                updatePostMeta(pageState.post, targetPostId);
                 initCommentsSystem(targetPostId);
                 return;
             }
