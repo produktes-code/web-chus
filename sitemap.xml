@@ -24,4 +24,18 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
+  <url>
+    <loc>https://chusbzn.com/videos/</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url><loc>https://chusbzn.com/videos/american-job.html</loc><lastmod>2026-10-17</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://chusbzn.com/videos/doritos.html</loc><lastmod>2026-10-17</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://chusbzn.com/videos/coca-cola.html</loc><lastmod>2026-10-17</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://chusbzn.com/videos/veneno.html</loc><lastmod>2026-10-17</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://chusbzn.com/videos/barcelona-clown.html</loc><lastmod>2026-10-17</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://chusbzn.com/videos/bronx-1980.html</loc><lastmod>2026-10-17</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://chusbzn.com/videos/killa.html</loc><lastmod>2026-10-17</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://chusbzn.com/videos/nike-werewolf.html</loc><lastmod>2026-10-17</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
 </urlset>

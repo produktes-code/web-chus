@@ -612,5 +612,6 @@ window.translations["ca"] = {
     "t_blog_langs": "IDIOMES:",
     "t_blog_tagline": "BLOG & NOVETATS",
     "t_blog_archive": "// ARCHIVE_FEED",
-    "t_blog_loading": "Carregant entrades des de Blogger..."
+    "t_blog_loading": "Carregant entrades des de Blogger...",
+    "t_videos": "→ Vídeos"
 };

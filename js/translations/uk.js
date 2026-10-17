@@ -612,5 +612,6 @@ window.translations["uk"] = {
     "t_blog_langs": "МОВИ:",
     "t_blog_tagline": "БЛОГ & НОВИНИ",
     "t_blog_archive": "// ARCHIVE_FEED",
-    "t_blog_loading": "Завантаження записів із Blogger..."
+    "t_blog_loading": "Завантаження записів із Blogger...",
+    "t_videos": "→ Відео"
 };

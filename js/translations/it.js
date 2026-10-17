@@ -612,5 +612,6 @@ window.translations["it"] = {
     "t_blog_langs": "LINGUE:",
     "t_blog_tagline": "BLOG & NOVITÀ",
     "t_blog_archive": "// ARCHIVE_FEED",
-    "t_blog_loading": "Caricamento articoli da Blogger..."
+    "t_blog_loading": "Caricamento articoli da Blogger...",
+    "t_videos": "→ Video"
 };

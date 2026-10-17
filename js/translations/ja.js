@@ -612,5 +612,6 @@ window.translations["ja"] = {
     "t_blog_langs": "言語：",
     "t_blog_tagline": "ブログ & ニュース",
     "t_blog_archive": "// ARCHIVE_FEED",
-    "t_blog_loading": "Blogger から記事を読み込み中..."
+    "t_blog_loading": "Blogger から記事を読み込み中...",
+    "t_videos": "→ 動画"
 };

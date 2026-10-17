@@ -612,5 +612,6 @@ window.translations["ar"] = {
     "t_blog_langs": "اللغات:",
     "t_blog_tagline": "المدونة والأخبار",
     "t_blog_archive": "// ARCHIVE_FEED",
-    "t_blog_loading": "جارٍ تحميل المقالات من Blogger..."
+    "t_blog_loading": "جارٍ تحميل المقالات من Blogger...",
+    "t_videos": "→ فيديو"
 };

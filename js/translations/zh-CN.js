@@ -612,5 +612,6 @@ window.translations["zh-CN"] = {
     "t_blog_langs": "语言：",
     "t_blog_tagline": "博客 & 资讯",
     "t_blog_archive": "// ARCHIVE_FEED",
-    "t_blog_loading": "正在从 Blogger 加载文章..."
+    "t_blog_loading": "正在从 Blogger 加载文章...",
+    "t_videos": "→ 视频"
 };

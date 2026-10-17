@@ -612,5 +612,6 @@ window.translations["ru"] = {
     "t_blog_langs": "ЯЗЫКИ:",
     "t_blog_tagline": "БЛОГ & НОВОСТИ",
     "t_blog_archive": "// ARCHIVE_FEED",
-    "t_blog_loading": "Загрузка записей из Blogger..."
+    "t_blog_loading": "Загрузка записей из Blogger...",
+    "t_videos": "→ Видео"
 };
