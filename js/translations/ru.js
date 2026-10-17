@@ -573,6 +573,7 @@ window.translations["ru"] = {
     "t_ss_linkedin": "LinkedIn – официальный профиль",
     "t_ss_tiktok": "TikTok – Официальный канал",
     "t_ss_github": "GitHub Pool – репозитории",
+    "t_ss_google": "Google Business Profile – Профиль",
     "t_aria_dto": "Специальное предложение: скидка 15 процентов",
     "t_aria_menu": "Меню",
     "t_aria_open_menu": "Открыть меню",

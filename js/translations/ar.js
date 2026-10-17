@@ -573,6 +573,7 @@ window.translations["ar"] = {
     "t_ss_linkedin": "LinkedIn – الملف الرسمي",
     "t_ss_tiktok": "TikTok – القناة الرسمية",
     "t_ss_github": "GitHub Pool – المستودعات",
+    "t_ss_google": "Google Business Profile – الملف المحلي",
     "t_aria_dto": "عرض الإطلاق: خصم 15 بالمائة",
     "t_aria_menu": "القائمة",
     "t_aria_open_menu": "فتح القائمة",

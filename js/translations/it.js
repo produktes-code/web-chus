@@ -573,6 +573,7 @@ window.translations["it"] = {
     "t_ss_linkedin": "LinkedIn – Profilo Ufficiale",
     "t_ss_tiktok": "TikTok – Canale Ufficiale",
     "t_ss_github": "GitHub Pool – Repository",
+    "t_ss_google": "Google Business Profile – Scheda locale",
     "t_aria_dto": "Offerta di lancio: sconto del 15 per cento",
     "t_aria_menu": "Menu",
     "t_aria_open_menu": "Apri menu",

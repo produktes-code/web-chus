@@ -573,6 +573,7 @@ window.translations["zh-CN"] = {
     "t_ss_linkedin": "LinkedIn – 官方主页",
     "t_ss_tiktok": "TikTok – 官方频道",
     "t_ss_github": "GitHub Pool – 代码仓库",
+    "t_ss_google": "Google Business Profile – 本地商家",
     "t_aria_dto": "上线特惠：享15%优惠",
     "t_aria_menu": "菜单",
     "t_aria_open_menu": "打开菜单",

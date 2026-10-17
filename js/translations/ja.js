@@ -573,6 +573,7 @@ window.translations["ja"] = {
     "t_ss_linkedin": "LinkedIn – 公式プロフィール",
     "t_ss_tiktok": "TikTok – 公式チャンネル",
     "t_ss_github": "GitHub Pool – リポジトリ",
+    "t_ss_google": "Google Business Profile – ローカル情報",
     "t_aria_dto": "ローンチ特典：15パーセントオフ",
     "t_aria_menu": "メニュー",
     "t_aria_open_menu": "メニューを開く",

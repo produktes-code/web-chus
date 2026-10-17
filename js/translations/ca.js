@@ -573,6 +573,7 @@ window.translations["ca"] = {
     "t_ss_linkedin": "LinkedIn – Perfil Oficial",
     "t_ss_tiktok": "TikTok – Canal Oficial",
     "t_ss_github": "GitHub Pool – Repositoris",
+    "t_ss_google": "Google Business Profile – Fitxa local",
     "t_aria_dto": "Oferta de llançament: 15 per cent de descompte",
     "t_aria_menu": "Menú",
     "t_aria_open_menu": "Obrir menú",
