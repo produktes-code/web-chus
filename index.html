@@ -8,8 +8,10 @@
 <meta content="strict-origin-when-cross-origin" name="referrer"/>
 <meta content="default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com https://www.googleapis.com https://www.instagram.com https://formsubmit.co; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.instagram.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; media-src 'self' blob: https:; frame-src https://www.instagram.com https://www.youtube.com https://www.youtube-nocookie.com; connect-src 'self' https://cloudflareinsights.com https://static.cloudflareinsights.com https://www.googleapis.com https://formsubmit.co https://www.instagram.com; object-src 'none'; base-uri 'self'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests" http-equiv="Content-Security-Policy"/>
 <script>if(window.top!==window.self){try{window.top.location=window.self.location;}catch(e){}}</script>
-<link href="assets/logo.jpg" rel="icon" type="image/jpeg"/>
-<link href="assets/logo.jpg" rel="apple-touch-icon"/>
+<link href="assets/favicon.ico" rel="icon" sizes="any"/>
+<link href="assets/favicon-32.png" rel="icon" type="image/png" sizes="32x32"/>
+<link href="assets/favicon-180.png" rel="apple-touch-icon"/>
+<link href="assets/presentacion_poster.webp" rel="preload" as="image" type="image/webp"/>
 <meta content="#000000" name="theme-color"/>
 <title data-i18n="t_title_index">CHUS BZN | Agencia & Estudio de Proyectos Audiovisuales & Tecnológicos</title>
 <meta content="Productora audiovisual y tecnológica en Barcelona para PYMES y marcas. Vídeo corporativo, spots, streaming, sonido, web y implantación de IA. 15% de descuento de lanzamiento en tu presupuesto." name="description" data-i18n-desc="t_desc_index"/>
@@ -284,6 +286,23 @@
     "alternateName": "CHUS BZN Studio",
     "inLanguage": "es-ES",
     "publisher": { "@id": "https://chusbzn.com/#organization" }
+}
+</script>
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": "https://chusbzn.com/#faq",
+    "isPartOf": { "@id": "https://chusbzn.com/#website" },
+    "inLanguage": "es-ES",
+    "mainEntity": [
+        { "@type": "Question", "name": "¿Qué servicios ofrece CHUS BZN?", "acceptedAnswer": { "@type": "Answer", "text": "Producción de vídeo (corporativo, spots, videoclips), directos y streaming, podcast y videopodcast, sonido e identidad sonora, postproducción con IA, webs y campañas, eventos, formación y consultoría audiovisual, además de implantación de IA para PYMES y agencias." } },
+        { "@type": "Question", "name": "¿Trabajáis con PYMES y agencias?", "acceptedAnswer": { "@type": "Answer", "text": "Sí. Trabajamos con PYMES, profesionales y agencias que necesitan producción audiovisual y tecnología, con más de 30 años de experiencia." } },
+        { "@type": "Question", "name": "¿Cuánto tarda un presupuesto?", "acceptedAnswer": { "@type": "Answer", "text": "Respondemos en menos de 24 horas, los 365 días del año. Puedes pedirlo desde el formulario de la web o escribiendo a info@chusbzn.com." } },
+        { "@type": "Question", "name": "¿Ofrecéis algún descuento?", "acceptedAnswer": { "@type": "Answer", "text": "Sí. Hay un 15% de descuento de lanzamiento si solicitas presupuesto a través de la web." } },
+        { "@type": "Question", "name": "¿Trabajáis fuera de Barcelona?", "acceptedAnswer": { "@type": "Answer", "text": "Trabajamos desde Barcelona y prestamos servicio en toda España y la Unión Europea, tanto presencial como en remoto." } },
+        { "@type": "Question", "name": "¿Usáis inteligencia artificial y cumplís la normativa?", "acceptedAnswer": { "@type": "Answer", "text": "Sí. Incorporamos IA en postproducción e implantación de procesos, con cumplimiento del EU AI Act y de las entidades de gestión SGAE, AISGE, AEDYP y AIE." } }
+    ]
 }
 </script>
 <!-- Google Fonts -->
@@ -1156,7 +1175,7 @@
 </div>
 <!-- Spot panorámico 16:9 a ancho completo, centrado bajo el claim -->
 <div class="relative w-full overflow-hidden border border-white/15 bg-black shadow-2xl" style="border-radius:14px;margin-top:40px">
-<video id="hero-spot" class="w-full block" style="aspect-ratio:16/9;object-fit:cover" poster="assets/presentacion_poster.jpg" src="assets/proxy/presentacion.mp4" autoplay muted loop playsinline preload="metadata"></video>
+<video id="hero-spot" class="w-full block" style="aspect-ratio:16/9;object-fit:cover" poster="assets/presentacion_poster.webp" src="assets/proxy/presentacion.mp4" autoplay muted loop playsinline preload="metadata"></video>
 <button type="button" id="hero-spot-toggle" class="absolute top-3 right-3 inline-flex items-center gap-2 rounded-full bg-black/70 border border-white/20 text-white font-mono uppercase tracking-widest px-3.5 py-2 hover:border-signal-red hover:text-signal-red transition-all cursor-pointer" style="z-index:20;font-size:10px">
 <span aria-hidden="true">🔇</span><span id="hero-spot-toggle-label">ACTIVAR SONIDO</span>
 </button>
@@ -1824,6 +1843,56 @@ ext-sm text-white/85 font-normal leading-relaxed" data-i18n="t_met_d02">Un plan 
 <span class="text-signal-red" data-i18n="t_307">EU_AI_ACT_COMPLIANT</span>
 </div>
 </section>
+<!-- ═══ FAQ (FAQPage) ═══ -->
+<section class="py-20 px-6 sm:px-10 max-w-4xl mx-auto reveal scroll-mt-24" id="faq">
+<h2 class="font-headline text-3xl sm:text-4xl uppercase tracking-tight text-white mb-2" data-i18n="t_faq_title">Preguntas frecuentes</h2>
+<p class="font-mono text-xs text-signal-red tracking-widest uppercase mb-8" data-i18n="t_faq_kicker">// PREGUNTAS FRECUENTES</p>
+<div class="space-y-3">
+<details class="border border-white/10 rounded-lg bg-white/5 hover:border-signal-red transition-colors">
+<summary class="cursor-pointer p-5 flex items-center justify-between gap-4 text-white/90 font-sans font-bold">
+<span data-i18n="t_faq_q1">¿Qué servicios ofrece CHUS BZN?</span>
+<span class="faq-ico text-signal-red text-xl">+</span>
+</summary>
+<div class="px-5 font-sans text-sm text-white/70 font-light" style="padding-bottom:1.25rem"><p data-i18n="t_faq_a1">Producción de vídeo (corporativo, spots, videoclips), directos y streaming, podcast y videopodcast, sonido e identidad sonora, postproducción con IA, webs y campañas, eventos, formación y consultoría audiovisual, además de implantación de IA para PYMES y agencias.</p></div>
+</details>
+<details class="border border-white/10 rounded-lg bg-white/5 hover:border-signal-red transition-colors">
+<summary class="cursor-pointer p-5 flex items-center justify-between gap-4 text-white/90 font-sans font-bold">
+<span data-i18n="t_faq_q2">¿Trabajáis con PYMES y agencias?</span>
+<span class="faq-ico text-signal-red text-xl">+</span>
+</summary>
+<div class="px-5 font-sans text-sm text-white/70 font-light" style="padding-bottom:1.25rem"><p data-i18n="t_faq_a2">Sí. Trabajamos con PYMES, profesionales y agencias que necesitan producción audiovisual y tecnología, con más de 30 años de experiencia.</p></div>
+</details>
+<details class="border border-white/10 rounded-lg bg-white/5 hover:border-signal-red transition-colors">
+<summary class="cursor-pointer p-5 flex items-center justify-between gap-4 text-white/90 font-sans font-bold">
+<span data-i18n="t_faq_q3">¿Cuánto tarda un presupuesto?</span>
+<span class="faq-ico text-signal-red text-xl">+</span>
+</summary>
+<div class="px-5 font-sans text-sm text-white/70 font-light" style="padding-bottom:1.25rem"><p data-i18n="t_faq_a3">Respondemos en menos de 24 horas, los 365 días del año. Puedes pedirlo desde el formulario de la web o escribiendo a info@chusbzn.com.</p></div>
+</details>
+<details class="border border-white/10 rounded-lg bg-white/5 hover:border-signal-red transition-colors">
+<summary class="cursor-pointer p-5 flex items-center justify-between gap-4 text-white/90 font-sans font-bold">
+<span data-i18n="t_faq_q4">¿Ofrecéis algún descuento?</span>
+<span class="faq-ico text-signal-red text-xl">+</span>
+</summary>
+<div class="px-5 font-sans text-sm text-white/70 font-light" style="padding-bottom:1.25rem"><p data-i18n="t_faq_a4">Sí. Hay un 15% de descuento de lanzamiento si solicitas presupuesto a través de la web.</p></div>
+</details>
+<details class="border border-white/10 rounded-lg bg-white/5 hover:border-signal-red transition-colors">
+<summary class="cursor-pointer p-5 flex items-center justify-between gap-4 text-white/90 font-sans font-bold">
+<span data-i18n="t_faq_q5">¿Trabajáis fuera de Barcelona?</span>
+<span class="faq-ico text-signal-red text-xl">+</span>
+</summary>
+<div class="px-5 font-sans text-sm text-white/70 font-light" style="padding-bottom:1.25rem"><p data-i18n="t_faq_a5">Trabajamos desde Barcelona y prestamos servicio en toda España y la Unión Europea, tanto presencial como en remoto.</p></div>
+</details>
+<details class="border border-white/10 rounded-lg bg-white/5 hover:border-signal-red transition-colors">
+<summary class="cursor-pointer p-5 flex items-center justify-between gap-4 text-white/90 font-sans font-bold">
+<span data-i18n="t_faq_q6">¿Usáis inteligencia artificial y cumplís la normativa?</span>
+<span class="faq-ico text-signal-red text-xl">+</span>
+</summary>
+<div class="px-5 font-sans text-sm text-white/70 font-light" style="padding-bottom:1.25rem"><p data-i18n="t_faq_a6">Sí. Incorporamos IA en postproducción e implantación de procesos, con cumplimiento del EU AI Act y de las entidades de gestión SGAE, AISGE, AEDYP y AIE.</p></div>
+</details>
+</div>
+</section>
+<style>#faq summary{list-style:none}#faq summary::-webkit-details-marker{display:none}#faq .faq-ico{transition:transform .2s;line-height:1}#faq details[open] .faq-ico{transform:rotate(45deg)}</style>
 </main>
 <!-- ═══ FOOTER & CANALES CON LOGOTIPOS OFICIALES ═══ -->
 <footer class="bg-black py-16 px-6 sm:px-10 border-t border-white/10 relative overflow-hidden">
