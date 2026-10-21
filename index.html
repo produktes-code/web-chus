@@ -12,6 +12,9 @@
 <link href="assets/favicon-32.png" rel="icon" type="image/png" sizes="32x32"/>
 <link href="assets/favicon-180.png" rel="apple-touch-icon"/>
 <link href="assets/presentacion_poster.webp" rel="preload" as="image" type="image/webp"/>
+<link href="assets/vintage_mixing.webp" rel="preload" as="image" type="image/webp" fetchpriority="high"/>
+<link href="/assets/fonts/hanken-variable.woff2" rel="preload" as="font" type="font/woff2" crossorigin/>
+<link href="/assets/fonts/anton-400.woff2" rel="preload" as="font" type="font/woff2" crossorigin/>
 <meta content="#000000" name="theme-color"/>
 <title data-i18n="t_title_index">CHUS BZN | Productora Audiovisual en Barcelona</title>
 <meta content="Productora audiovisual y tecnológica en Barcelona para PYMES y marcas. Vídeo corporativo, spots, streaming, sonido, web y implantación de IA. 15% de descuento de lanzamiento en tu presupuesto." name="description" data-i18n-desc="t_desc_index"/>
@@ -310,9 +313,7 @@
 }
 </script>
 <!-- Google Fonts -->
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Hanken+Grotesk:ital,wght@0,300;0,400;0,600;0,700;1,300&family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+<link href="/css/fonts.css" rel="stylesheet"/>
 <!-- Tailwind CSS compilado estáticamente -->
 <link href="css/tailwind.css" rel="stylesheet"/>
 <style>
@@ -1178,7 +1179,7 @@
 </div>
 <!-- Spot panorámico 16:9 a ancho completo, centrado bajo el claim -->
 <div class="relative w-full overflow-hidden border border-white/15 bg-black shadow-2xl" style="border-radius:14px;margin-top:40px">
-<video id="hero-spot" class="w-full block" style="aspect-ratio:16/9;object-fit:cover" poster="assets/presentacion_poster.webp" src="assets/proxy/presentacion.mp4" autoplay muted loop playsinline preload="metadata"></video>
+<video id="hero-spot" class="w-full block" style="aspect-ratio:16/9;object-fit:cover" poster="assets/presentacion_poster.webp" src="assets/proxy/presentacion.mp4" muted loop playsinline preload="none"></video>
 <button type="button" id="hero-spot-toggle" class="absolute top-3 right-3 inline-flex items-center gap-2 rounded-full bg-black/70 border border-white/20 text-white font-mono uppercase tracking-widest px-3.5 py-2 hover:border-signal-red hover:text-signal-red transition-all cursor-pointer" style="z-index:20;font-size:10px">
 <span aria-hidden="true">🔇</span><span id="hero-spot-toggle-label">ACTIVAR SONIDO</span>
 </button>
@@ -2848,8 +2849,8 @@ ext-sm text-white/85 font-normal leading-relaxed" data-i18n="t_met_d02">Un plan 
         }, 4000);
     }
 </script>
-<script src="js/translations.js"></script>
-<script src="js/i18n.js"></script>
+<script src="js/translations.js" defer></script>
+<script src="js/i18n.js" defer></script>
 <script>
     // ═══ IOS SAFARI TOUCH DELEGATION (tarjetas) — guard de desplazamiento para no abrir modales al hacer scroll ═══
     document.addEventListener('DOMContentLoaded', function() {
@@ -3076,5 +3077,13 @@ ext-sm text-white/85 font-normal leading-relaxed" data-i18n="t_met_d02">Un plan 
     });
 </script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "29b57efebf1a405ea3ded4a60a1d834d"}'></script><!-- End Cloudflare Web Analytics -->
+<!-- Arranque diferido del video hero: no compite con el LCP -->
+<script>
+window.addEventListener('load',function(){
+  var v=document.getElementById('hero-spot'); if(!v) return;
+  var go=function(){ v.play().catch(function(){}); };
+  if('requestIdleCallback' in window){ requestIdleCallback(go,{timeout:2500}); } else { setTimeout(go,1200); }
+});
+</script>
 </body>
 </html>
